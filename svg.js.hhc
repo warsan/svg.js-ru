@@ -1,0 +1,499 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<head><title>Three.js</title></head>
+<body>
+<object type="text/site properties">
+  <param name="SiteType" value="toc">
+  <param name="Image Width" value="16">
+  <param name="Window Styles" value="0x800007">
+  <param name="ExWindow Styles" value="0x100">
+</object>
+<ul>
+<li><object type="text/sitemap">
+	<param name="Name" value="svg.js - Обзор">
+    <param name="Local" value="overview.htm">
+</object>
+<li><object type="text/sitemap">
+    <param name="Name" value="Установка">
+    <param name="Local" value="install.htm">
+</object>
+<li><object type="text/sitemap">
+    <param name="Name" value="Начало работы">
+<param name="Local" value="intro.htm">
+</object>
+
+<li><object type="text/sitemap">
+	<param name="Name" value="Родительские элементы">
+	<param name="Local" value="parents.htm">
+</object>
+<ul><li><object type="text/sitemap">
+    <param name="Name" value="SVG.Doc">
+    <param name="Local" value="parents.htm#1">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.Nested">
+    <param name="Local" value="parents.htm#2">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.G">
+    <param name="Local" value="parents.htm#3">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.Symbol">
+    <param name="Local" value="parents.htm#4">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.Defs">
+    <param name="Local" value="parents.htm#5">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.A">
+    <param name="Local" value="parents.htm#6">
+  </object>
+</ul>
+
+  <li><object type="text/sitemap">
+    <param name="Name" value="Элементы">
+    <param name="Local" value="elements.htm">
+  </object>
+<ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.Rect">
+    <param name="Local" value="elements.htm#1">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.Circle">
+    <param name="Local" value="elements.htm#2">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.Ellipse">
+    <param name="Local" value="elements.htm#3">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.Line">
+    <param name="Local" value="elements.htm#4">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.Polyline">
+    <param name="Local" value="elements.htm#5">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.Polygon">
+    <param name="Local" value="elements.htm#6">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.Path">
+    <param name="Local" value="elements.htm#7">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.Text">
+    <param name="Local" value="elements.htm#8">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.TextPath">
+    <param name="Local" value="elements.htm#9">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.Tspan">
+    <param name="Local" value="elements.htm#10">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.Image">
+    <param name="Local" value="elements.htm#11">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.Gradient">
+    <param name="Local" value="elements.htm#12">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.Stop">
+    <param name="Local" value="elements.htm#13">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.Pattern">
+    <param name="Local" value="elements.htm#14">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.Mask">
+    <param name="Local" value="elements.htm#15">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.ClipPath">
+    <param name="Local" value="elements.htm#16">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.Use">
+    <param name="Local" value="elements.htm#17">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.Marker">
+    <param name="Local" value="elements.htm#18">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.Bare">
+    <param name="Local" value="elements.htm#19">
+  </object>
+</ul>
+
+  <li><object type="text/sitemap">
+    <param name="Name" value="Обращение">
+    <param name="Local" value="referencing.htm">
+  </object>
+<ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="По идентификатору (id)">
+    <param name="Local" value="referencing.htm#1">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="При помощи CSS селекторов">
+    <param name="Local" value="referencing.htm#2">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Через существующие элементы DOM">
+    <param name="Local" value="referencing.htm#3">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="При помощи jQuery или Zepto">
+    <param name="Local" value="referencing.htm#4">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Circular reference">
+    <param name="Local" value="referencing.htm#5">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Child references">
+    <param name="Local" value="referencing.htm#6">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Parent references">
+    <param name="Local" value="referencing.htm#7">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="URI references">
+    <param name="Local" value="referencing.htm#8">
+  </object>
+</ul>
+
+  <li><object type="text/sitemap">
+    <param name="Name" value="Управление">
+    <param name="Local" value="manipulating.htm">
+  </object>
+<ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Атрибуты">
+    <param name="Local" value="manipulating.htm#1">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Позиционирование">
+    <param name="Local" value="manipulating.htm#2">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Изменение размеров">
+    <param name="Local" value="manipulating.htm#3">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Синтаксический &quot;сахар&quot;">
+    <param name="Local" value="manipulating.htm#4">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Трансформация">
+    <param name="Local" value="manipulating.htm#5">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Стили">
+    <param name="Local" value="manipulating.htm#6">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Классы">
+    <param name="Local" value="manipulating.htm#7">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Данные">
+    <param name="Local" value="manipulating.htm#8">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Память">
+    <param name="Local" value="manipulating.htm#9">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="&quot;Дерево&quot; документа">
+    <param name="Local" value="manipulating.htm#10">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Организация элементов">
+    <param name="Local" value="manipulating.htm#11">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Геометрия">
+    <param name="Local" value="manipulating.htm#12">
+  </object>
+</ul>
+
+  <li><object type="text/sitemap">
+    <param name="Name" value="Прямоугольники">
+    <param name="Local" value="boxes.htm">
+  </object>
+<ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.Box">
+    <param name="Local" value="boxes.htm#1">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.ViewBox">
+    <param name="Local" value="boxes.htm#2">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.BBox">
+    <param name="Local" value="boxes.htm#3">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.RBox">
+    <param name="Local" value="boxes.htm#4">
+  </object>
+</ul>
+
+  <li><object type="text/sitemap">
+    <param name="Name" value="Анимации">
+    <param name="Local" value="animating.htm">
+  </object>
+<ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Анимация">
+    <param name="Local" value="animating.htm#1">
+  </object>
+    <li><object type="text/sitemap">
+    <param name="Name" value="Управление">
+    <param name="Local" value="animating.htm#2">
+  </object>
+    <li><object type="text/sitemap">
+    <param name="Name" value="Расчет времени (тайминг)">
+    <param name="Local" value="animating.htm#3">
+  </object>
+    <li><object type="text/sitemap">
+    <param name="Name" value="Функции обратного вызова">
+    <param name="Local" value="animating.htm#4">
+  </object>
+</ul>
+
+  <li><object type="text/sitemap">
+    <param name="Name" value="События">
+    <param name="Local" value="events.htm">
+  </object>
+<ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Базовые события">
+    <param name="Local" value="events.htm#1">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Слушатели событий">
+    <param name="Local" value="events.htm#2">
+  </object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Настраиваемые события">
+    <param name="Local" value="events.htm#3">
+  </object>
+</ul>
+
+  <li><object type="text/sitemap">
+    <param name="Name" value="Классы">
+    <param name="Local" value="classes.htm">
+</object>
+<ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.Array">
+    <param name="Local" value="classes.htm#1">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.PointArray">
+    <param name="Local" value="classes.htm#2">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.PathArray">
+    <param name="Local" value="classes.htm#3">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.Color">
+    <param name="Local" value="classes.htm#4">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.Matrix">
+    <param name="Local" value="classes.htm#5">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.Number">
+    <param name="Local" value="classes.htm#6">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.Set">
+    <param name="Local" value="classes.htm#7">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.Point">
+    <param name="Local" value="classes.htm#8">
+</object>
+</ul>
+
+  <li><object type="text/sitemap">
+    <param name="Name" value="Импорт/Экспорт SVG">
+    <param name="Local" value="import_export.htm">
+</object>
+
+  <li><object type="text/sitemap">
+    <param name="Name" value="Расширение">
+    <param name="Local" value="extending.htm">
+</object>
+<ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="SVG.invent">
+    <param name="Local" value="extending.htm#1">
+</object>
+</ul>
+
+  <li><object type="text/sitemap">
+    <param name="Name" value="Учебники и примеры">
+    <param name="Local" value="examples.htm">
+</object>
+
+  <li><object type="text/sitemap">
+    <param name="Name" value="Плагины">
+    <param name="Local" value="plugins.htm">
+</object>
+<ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="svg.colorat.js">
+    <param name="Local" value="plugins.htm#1">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="svg.connectable.js">
+    <param name="Local" value="plugins.htm#2">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="svg.easing.js">
+    <param name="Local" value="plugins.htm#3">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="svg.draw.js">
+    <param name="Local" value="plugins.htm#4">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="svg.draggable.js">
+    <param name="Local" value="plugins.htm#5">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="svg.filter.js">
+    <param name="Local" value="plugins.htm#6">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="svg.foreignobject.js">
+    <param name="Local" value="plugins.htm#7">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="svg.intersections.js">
+    <param name="Local" value="plugins.htm#8">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="svg.math.js">
+    <param name="Local" value="plugins.htm#9">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="svg.path.js">
+    <param name="Local" value="plugins.htm#10">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="svg.pathmorphing.js">
+    <param name="Local" value="plugins.htm#11">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="svg.resize.js">
+    <param name="Local" value="plugins.htm#12">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="svg.screenbbox.js">
+    <param name="Local" value="plugins.htm#13">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="svg.select.js">
+    <param name="Local" value="plugins.htm#14">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="svg.shapes.js">
+    <param name="Local" value="plugins.htm#15">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="svg.textmorph.js">
+    <param name="Local" value="plugins.htm#16">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="svg.topath.js">
+    <param name="Local" value="plugins.htm#17">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="svg.topoly.js">
+    <param name="Local" value="plugins.htm#18">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="svg.panzoom.js">
+    <param name="Local" value="plugins.htm#19">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="declarative.js">
+    <param name="Local" value="plugins.htm#20">
+</object>
+</ul>
+
+  <li><object type="text/sitemap">
+    <param name="Name" value="Сотрудничество">
+    <param name="Local" value="contributing.htm">
+</object>
+<ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Стиль написания кода">
+    <param name="Local" value="contributing.htm#1">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Документация">
+    <param name="Local" value="contributing.htm#2">
+</object>
+</ul>
+
+  <li><object type="text/sitemap">
+    <param name="Name" value="ЧАсто задаваемые ВОпросы">
+    <param name="Local" value="faq.htm">
+</object>
+<ul>
+  <li><object type="text/sitemap">
+    <param name="Name" value="При инициализации SVG.js создаются два SVG. Это ошибка?">
+    <param name="Local" value="faq.htm#1">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Может ли SVG.js работать на Node.js?">
+    <param name="Local" value="faq.htm#2">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Как можно изменить элемент, который уже существует в DOM?">
+    <param name="Local" value="faq.htm#3">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Нужна помошь, чтобы хоть что-то заработало...">
+    <param name="Local" value="faq.htm#4">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Я нашел ошибку. Куда сообщить об этом?">
+    <param name="Local" value="faq.htm#5">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Где можно найти учебники?">
+    <param name="Local" value="faq.htm#6">
+</object>
+  <li><object type="text/sitemap">
+    <param name="Name" value="Как внести свой вклад или исправить что-либо в документах?">
+    <param name="Local" value="faq.htm#7">
+</object>
+</ul>
+
+  <li><object type="text/sitemap">
+    <param name="Name" value="Признательность и благодарность">
+    <param name="Local" value="thanks.htm">
+</object>
+</ul>
+</body></html>

@@ -1,0 +1,819 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<title>svg.js Справочное руководство</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="1.css">
+<script type="text/javascript" src="1.js"></script>
+</head>
+
+<body>
+<h3>Управление</h3>
+Здесь все, что нужно знать об управлении элементами с помощью их атрибутов, преобразования, стилей, классов и многого другого.<br><br>
+
+<h4 id="1">Атрибуты</h4>
+<div class=blockindent><br>
+<pre id="1attr_set"><span class="lnk" onmouseover="show('attr - сокращ. англ. слова attribute - атрибут, признак, свойство')" onmouseout="hide()">attr()</span>          <i class=low>как установщик (сеттер)</i></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да (только для чисел (number), массивов (array), цвета (color), ... )</div>
+Установка одиночного атрибута:
+<pre>// javascript
+rect.attr('x', 50)</pre>
+Установка нескольких атрибутов одновременно:
+<pre>// javascript
+rect.attr({
+  fill: '#f06'
+, 'fill-opacity': 0.5
+, stroke: '#000'
+, 'stroke-width': 10
+})</pre>
+Установка атрибута с пространством имен (namespace):
+<pre>// javascript
+rect.attr('x', 50, 'http://www.w3.org/2000/svg')</pre>
+Явное удаление атрибута:
+<pre>// javascript
+rect.attr('fill', null)</pre><br>
+
+<pre id="1attr_get"><span class="lnk" onmouseover="show('attr - сокращ. англ. слова attribute - атрибут, признак, свойство')" onmouseout="hide()">attr()</span>          <i class=low>как получатель (getter)</i></pre>
+<div class=list>возвращает значение (value) (строку (string), число (number), ... )</div>
+Можно получать и устанавливать атрибуты элементов напрямую с помощью <tt>attr()</tt>.<br>
+Получение одиночного атрибута:
+<pre>// javascript
+var x = rect.attr('x')</pre>
+Получение всех атрибутов как объекта:
+<pre>// javascript
+var attributes = rect.attr()</pre></div><br>
+
+<h4 id="2">Позиционирование</h4>
+В то время как позиционирование элемента путем непосредственного задания его атрибутов работает только в том случае, если эти атрибуты изначально используются данным типом элемента;
+описанные ниже методы позиционирования намного удобнее, так как они работают для всех типов элементов.<br><br>
+Например, следующий код работает поскольку каждый элемент позиционируется установкой его исходных (собственных) атрибутов:
+<pre>// javascript
+rect.attr({ x: 20, y: 60 })
+circle.attr({ cx: 50, cy: 40 })</pre>
+Прямоугольник <tt>rect</tt> будет перемещен в соответствии с расположением его верхнего левого угла (т.е. нулевой точкой его координат) в новые координаты,
+а круг <tt>circle</tt> будет перемещен в соответствии с его центром (локальные нулевые координаты круга находятся в центре).
+Однако попытка переместить <tt>circle</tt> по его «верхнему левому углу» или<tt>rect</tt> по его центру потерпит неудачу.
+Строки кода, показанные ниже, будут молчаливо игнорироваться, так как атрибуты, которым они адресованы, изначально не используются элементом, устанавливающим их:
+However, trying to move a `circle` by its 'corner' or a `rect` by its centre in this way will fail. The following lines will get silently ignored as the attributes that are addressed are not natively used by the element setting them:
+
+<pre>// javascript
+rect.attr({ cx: 20, cy: 60 })
+circle.attr({ x: 50, y: 40 })</pre>
+Тем не менее, показанные ниже методы позиционирования, будут работать для всех типов элементов, независимо от того, являются ли атрибуты, которым они адресованы, исходными (родными) для данного типа.
+Так что, в отличие от строк выше, эти строки работают просто отлично:
+However, the positioning methods detailed below will work for all element types, regardless of whether the attributes being addressed are native to the type. So, unlike the lines above, these lines work just fine:
+
+<pre>// javascript
+rect.cx(20).cy(60)
+circle.x(50).y(40)</pre>
+Важно отметить все же, что эти методы предназначены только для использования с пользовательскими (безразмерными) координатами.
+Если например, размер элемента задан в процентах или других единицах, методы позиционирования, которые обращаются к его собственным атрибутам, скорее всего, все еще будут работать, но те, которые обращаются к не родным атрибутам, дадут неожиданные результаты - как получатели (геттеры), так и установщики (сеттеры)!
+It is important to note, though, that these methods are only intended for use with user (unitless) coordinates. If for example, an element has its size set via percentages or other units, the positioning methods that address its native attributes will most likely still work, but the ones that address non-native attributes will give unexpected results -- as both getters and setters!
+<div class=blockindent><br>
+<pre id="2move"><span class="lnk" onmouseover="show('move - перемещать, двигать')" onmouseout="hide()">move()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+Перемещает элемент по его верхнему левому углу в позицию, задаваемую координатами <tt>x</tt> и <tt>y</tt>.
+<pre>// javascript
+rect.move(200, 350)</pre><br>
+
+<pre id="2x_set"><span class="lnk" onmouseover="show('координата x')" onmouseout="hide()">x()</span>          <i class=low>как установщик (сеттер)</i></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+Перемещает элемент по его верхнему левому углу только по оси <tt>x</tt>:
+<pre>// javascript
+rect.x(200)</pre><br>
+
+<pre id="2x_get"><span class="lnk" onmouseover="show('координата x')" onmouseout="hide()">x()</span>          <i class=low>как получатель (геттер)</i></pre>
+<div class=list>возвращает значение (value)</div>
+Метод <tt>x()</tt> без аргумента работает как получатель (геттер):
+<pre>// javascript
+var x = rect.x()</pre><br>
+
+<pre id="2y_set"><span class="lnk" onmouseover="show('координата y')" onmouseout="hide()">y()</span>          <i class=low>как установщик (сеттер)</i></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+Перемещает элемент по его верхнему левому углу только по оси <tt>y</tt>:
+<pre>// javascript
+rect.y(350)</pre><br>
+
+<pre id="2y_get"><span class="lnk" onmouseover="show('координата y')" onmouseout="hide()">y()</span>          <i class=low>как получатель (геттер)</i></pre>
+<div class=list>возвращает значение (value)</div>
+Метод <tt>y()</tt> без аргумента работает как получатель (геттер):
+<pre>// javascript
+var y = rect.y()</pre><br>
+
+<pre id="2center"><span class="lnk" onmouseover="show('center - центр')" onmouseout="hide()">center()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+Перемещает элемент по его центру в позицию, задаваемую координатами <tt>cx</tt> и <tt>cy</tt>.
+<pre>// javascript
+rect.center(150, 150)</pre><br>
+
+<pre id="2cx_set"><span class="lnk" onmouseover="show('cx - сокращ. англ. слов center x - координата x центра')" onmouseout="hide()">cx()</span>          <i class=low>как установщик (сеттер)</i></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+Перемещает элемент по его центру только по оси <tt>x</tt>:
+<pre>// javascript
+rect.cx(200)</pre><br>
+
+<pre id="2cx_get"><span class="lnk" onmouseover="show('cx - сокращ. англ. слов center x - координата x центра')" onmouseout="hide()">cx()</span>          <i class=low>как получатель (геттер)</i></pre>
+<div class=list>возвращает значение (value)</div>
+Метод <tt>cx()</tt> без аргумента работает как получатель (геттер):
+<pre>// javascript
+var cx = rect.cx()</pre><br>
+
+<pre id="2cy_set"><span class="lnk" onmouseover="show('cy - сокращ. англ. слов center y - координата y центра')" onmouseout="hide()">cy()</span>          <i class=low>как установщик (сеттер)</i></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+Перемещает элемент по его центру только по оси <tt>y</tt>:
+<pre>// javascript
+rect.cy(350)</pre><br>
+
+<pre id="2cy_get"><span class="lnk" onmouseover="show('cy - сокращ. англ. слов center y - координата y центра')" onmouseout="hide()">cy()</span>          <i class=low>как получатель (геттер)</i></pre>
+<div class=list>возвращает значение (value)</div>
+Метод <tt>cy()</tt> без аргумента работает как получатель (геттер):
+<pre>// javascript
+var cy = rect.cy()</pre><br>
+
+<pre id="2dmove"><span class="lnk" onmouseover="show('dmove - сокращ. англ. слов d move - перемещение')" onmouseout="hide()">dmove()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+Сдвигает элемент по осям координат относительно его текущего положения на заданные значения <tt>x</tt> и <tt>y</tt>.
+Shift the element in both the `x` and `y` directions relative to its current position:
+
+<pre>// javascript
+rect.dmove(10, 30)</pre>
+<div class=note><b>Примечание:</b>**Note**: when using `dmove()` (and `dx()` or `dy()` too for that matter), always make sure you provide values of the same unit the element is originally positioned in. So if the element is at `x:10%`, use `element.dx('5%')` and not `element.dx('5px')`.</div><br>
+
+<pre id="2dx"><span class="lnk" onmouseover="show('dx - сокращ. англ. слов d x - ')" onmouseout="hide()">dx()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+Сдвигает элемент по оси <tt>x</tt> относительно его текущего положения:
+<pre>// javascript
+rect.dx(200)</pre><br>
+
+<pre id="2dy"><span class="lnk" onmouseover="show('dy - сокращ. англ. слов d y - ')" onmouseout="hide()">dy()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+Сдвигает элемент по оси <tt>y</tt> относительно его текущего положения:
+<pre>// javascript
+rect.dy(200)</pre></div><br>
+
+
+<h4 id="3">Изменение размеров (ресайзинг)</h4>
+<div class=blockindent><br>
+<pre id="3size"><span class="lnk" onmouseover="show('size - размер')" onmouseout="hide()">size()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+Установка размера элемента по заданным ширине (<tt>width</tt>) и высоте (<tt>height</tt>).
+<pre>// javascript
+rect.size(200, 300)</pre>
+Также возможно пропорциональное изменение размеров без передачи значения аргумента <tt>height</tt>.
+<pre>// javascript
+rect.size(200)</pre>
+Или передачей <tt>null</tt> в качестве значения для аргумента <tt>width</tt>:
+<pre>// javascript
+rect.size(null, 200)</pre>
+
+As with positioning, the size of an element could be set by using `attr()`. But because every type of element is handles its size differently the `size()` method is much more convenient.<br>
+
+There is one exception though: for `SVG.Text` elements, this method takes only one argument and applies the given value to the `font-size` attribute.<br><br>
+
+<pre id="3width_set"><span class="lnk" onmouseover="show('width - ширина')" onmouseout="hide()">width()</span>          <i class=low>как установщик (сеттер)</i></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+Установка ширины элемента:
+<pre>// javascript
+rect.width(200)</pre><br>
+
+<pre id="3width_get"><span class="lnk" onmouseover="show('width - ширина')" onmouseout="hide()">width()</span>          <i class=low>как получатель (геттер)</i></pre>
+<div class=list>возвращает значение (value)</div>
+<pre>// javascript
+var width = rect.width()</pre><br>
+
+<pre id="3height_set"><span class="lnk" onmouseover="show('height - высота')" onmouseout="hide()">height()</span>          <i class=low>как установщик (сеттер)</i></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+Установка высоты элемента:
+<pre>// javascript
+rect.height(325)</pre><br>
+
+<pre id="3height_get"><span class="lnk" onmouseover="show('height - высота')" onmouseout="hide()">height()</span>          <i class=low>как получатель (геттер)</i></pre>
+<div class=list>возвращает значение (value)</div>
+<pre>// javascript
+rect.height()</pre><br>
+
+<pre id="3radius"><span class="lnk" onmouseover="show('radius - радиус')" onmouseout="hide()">radius()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+Метод <tt>radius()</tt> могут использовать окружности, эллипсы и прямоугольники. В прямоугольниках этот аргумент определяет закругление углов.<br>
+Для окружности аргумент устанавливает атрибут <tt>r</tt> - радиус.
+<pre>// javascript
+circle.radius(10)</pre>
+Для эллипсов и прямоугольников передается два аргумента по установке отдельных атрибутов <tt>rx</tt> и <tt>ry</tt>. Или передается один аргумент, означающий что оба атрибута равны между собой.
+<pre>// javascript
+ellipse.radius(10, 20)
+rect.radius(5)</pre></div><br><br>
+
+
+<h4 id="4">Синтаксический "сахар"</h4>
+<div class=note_trans><b>Примечание переводчика:</b> <a href="https://ru.wikipedia.org/wiki/%D0%A1%D0%B8%D0%BD%D1%82%D0%B0%D0%BA%D1%81%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D1%81%D0%B0%D1%85%D0%B0%D1%80" target="_blank">Синтаксический сахар</a> (англ. syntactic sugar) в языке программирования
+— это синтаксические возможности, применение которых не влияет на поведение программы, но делает использование языка более удобным для человека.<br>
+Это может быть любой элемент синтаксиса, который даёт программисту альтернативный способ записи уже имеющейся в языке синтаксической конструкции,
+и при этом является более удобным, или более кратким, или похожим на другой распространённый способ записи, или помогает писать программы в хорошем стиле.</div>
+<div class=blockindent><br>
+<pre id="4fill"><span class="lnk" onmouseover="show('fill - заполнение, заливка')" onmouseout="hide()">fill()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+Метод <tt>fill()</tt> является хорошей альтернативой методу <tt>attr()</tt>:
+<pre>// javascript
+rect.fill({ color: '#f06', opacity: 0.6 })</pre>
+Также будет работать и одно шестнадцатиричное строковое значение:
+A single hex string will work as well:
+<pre>// javascript
+rect.fill('#f06')</pre>
+И последнее, но не менее важное; в качестве заливки также можно использовать картинку, просто передав URL-адрес изображения:
+<pre>// javascript
+rect.fill('images/shade.jpg')</pre>
+Или, если нужно управлять размером изображения, можно передать картинку вот так:
+<pre>// javascript
+rect.fill(draw.image('images/shade.jpg', 20, 20))</pre><br>
+
+<pre id="4stroke"><span class="lnk" onmouseover="show('stroke - штриховать')" onmouseout="hide()">stroke()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+Метод <tt>stroke()</tt> аналогичен методу <tt>fill()</tt>:
+<pre>// javascript
+rect.stroke({ color: '#f06', opacity: 0.6, width: 5 })</pre>
+Как и у метода <tt>fill()</tt>, здесь будет работать одиночное шестнадцатиричное строковое значение:
+<pre>// javascript
+rect.stroke('#f06')</pre>
+Также нет отличий от метода <tt>fill()</tt> и в использовании картинки при штриховке, простая передача URL-адреса изображения:
+<pre>// javascript
+rect.stroke('images/shade.jpg')</pre>
+Или, если нужно управлять размером изображения, можно передать картинку вот так:
+<pre>// javascript
+rect.stroke(draw.image('images/shade.jpg', 20, 20))</pre><br>
+
+<pre id="4opacity"><span class="lnk" onmouseover="show('opacity - непрозрачность')" onmouseout="hide()">opacity()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+Метод для установки общей непрозрачности элемента:
+<pre>// javascript
+rect.opacity(0.5)</pre>
+</div><br><br>
+
+
+<h4 id="5">Трансформация</h4>
+<div class=blockindent><br>
+<pre id="5transform_set"><span class="lnk" onmouseover="show('transform - преобразование')" onmouseout="hide()">transform()</span>          <i class=low>как установщик (сеттер)</i></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+
+As a setter it has two ways of working. By default transformations are absolute. For example, if you call:
+
+<pre>// javascript
+element.transform({ rotation: 125 }).transform({ rotation: 37.5 })</pre>
+
+The resulting rotation will be `37.5` and not the sum of the two transformations. But if that's what you want there is a way out by adding the `relative` parameter. That would be:
+<pre>// javascript
+element.transform({ rotation: 125 }).transform({ rotation: 37.5, relative: true })</pre>
+
+Alternatively a relative flag can be passed as the second argument:
+<pre>// javascript
+element.transform({ rotation: 125 }).transform({ rotation: 37.5 }, true)</pre>
+
+Доступные преобразования:<br>
+&nbsp; &#9679; &nbsp; <tt>rotation</tt> с дополнительными <tt>cx</tt> и <tt>cy</tt><br>
+&nbsp; &#9679; &nbsp; <tt>scale</tt> с дополнительными <tt>cx</tt> и <tt>cy</tt><br>
+&nbsp; &#9679; &nbsp; <tt>scaleX</tt> с дополнительными <tt>cx</tt> и <tt>cy</tt><br>
+&nbsp; &#9679; &nbsp; <tt>scaleY</tt> с дополнительными <tt>cx</tt> и <tt>cy</tt><br>
+&nbsp; &#9679; &nbsp; <tt>skewX</tt> с дополнительными <tt>cx</tt> и <tt>cy</tt><br>
+&nbsp; &#9679; &nbsp; <tt>skewY</tt> с дополнительными <tt>cx</tt> и <tt>cy</tt><br>
+&nbsp; &#9679; &nbsp; <tt>x</tt><br>
+&nbsp; &#9679; &nbsp; <tt>y</tt><br>
+&nbsp; &#9679; &nbsp; <tt>a</tt>, <tt>b</tt>, <tt>c</tt>, <tt>d</tt>, <tt>e</tt> и/или <tt>f</tt> или существующая матрица вместо объекта.<br><br>
+
+<pre id="5transform_get"><span class="lnk" onmouseover="show('transform - преобразование')" onmouseout="hide()">transform()</span>          <i class=low>как получатель (геттер)</i></pre>
+<div class=list>возвращает значение (value)</div>
+Метод <tt>transform()</tt> без аргументов действует как полноценный получатель (геттер).
+<pre>// javascript
+element.transform()</pre>
+Возвращаемый <tt>object</tt> содержит следующие значения:<br>
+&nbsp; &#9679; &nbsp; <tt>x</tt> (перемещение по оси <tt>x</tt>)<br>
+&nbsp; &#9679; &nbsp; <tt>y</tt> (перемещение по оси <tt>y</tt>)<br>
+&nbsp; &#9679; &nbsp; <tt>skewX</tt> (calculated skew on x-axis)<br>
+&nbsp; &#9679; &nbsp; <tt>skewY</tt> (calculated skew on y-axis)<br>
+&nbsp; &#9679; &nbsp; <tt>scaleX</tt> (рассчитанный масштаб по оси <tt>x</tt>)<br>
+&nbsp; &#9679; &nbsp; <tt>scaleY</tt> (рассчитанный масштаб по оси <tt>y</tt>)<br>
+&nbsp; &#9679; &nbsp; <tt>rotation</tt> (рассчитанный поворот)<br>
+&nbsp; &#9679; &nbsp; <tt>cx</tt> (last used rotation centre on x-axis)<br>
+&nbsp; &#9679; &nbsp; <tt>cy</tt> (last used rotation centre on y-axis)<br>
+Кроме того, для нужного свойства можно передать строковое значение:<br>
+<pre>// javascript
+element.transform('rotation')</pre><br>
+
+<pre id="5flip"><span class="lnk" onmouseover="show('flip - переворот')" onmouseout="hide()">flip()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+Переворачивает элемент вокруг заданной оси:
+<pre>// javascript
+element.flip('x')</pre>
+или
+<pre>// javascript
+element.flip('y')</pre>
+По умолчанию, элементы переворачиваются вокруг своей центральной точки. Позицию осевого переворота можно определять вторым аргументом:
+<pre>// javascript
+element.flip('x', 150)</pre>
+или
+<pre>// javascript
+element.flip('y', 100)</pre>
+Наконец, также можно переворачивать элемент сразу вокруг обоих осей не указывая значения оси.
+<pre>// javascript
+element.flip()</pre>
+
+And flipping on both axes at the same offset can be done by passing only a numeric value:
+<pre>// javascript
+element.flip(5)</pre><br>
+
+<pre id="5rotate"><span class="lnk" onmouseover="show('rotate - поворот')" onmouseout="hide()">rotate()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+Метод <tt>rotate()</tt> автоматически поворачивает элементы в соответствии с центральной точкой элемента:
+<pre>// javascript
+// rotate(degrees)
+element.rotate(45)</pre>
+Хотя также можно определить и конкретную точку поворота:
+<pre>// javascript
+// rotate(degrees, cx, cy)
+element.rotate(45, 50, 50)</pre><br>
+
+<pre id="5skew"><span class="lnk" onmouseover="show('skew - ')" onmouseout="hide()">skew()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+Метод <tt>skew()</tt> принимает значения <tt>x</tt> и <tt>y</tt>.
+<pre>// javascript
+// skew(x, y)
+element.skew(0, 45)</pre><br>
+
+<pre id="5scale"><span class="lnk" onmouseover="show('scale - масштаб')" onmouseout="hide()">scale()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+Метод <tt>scale()</tt> принимает значения <tt>x</tt> и <tt>y</tt>.
+<pre>// javascript
+// scale(x, y)
+element.scale(0.5, -1)</pre><br>
+
+<pre id="5translate"><span class="lnk" onmouseover="show('translate - перевод, перенос')" onmouseout="hide()">translate()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+Метод <tt>translate()</tt> принимает значения <tt>x</tt> и <tt>y</tt>.
+<pre>// javascript
+// translate(x, y)
+element.translate(0.5, -1)</pre></div><br><br>
+
+
+<h4 id="6">Стили</h4>
+<div class=blockindent><br>
+## style() _as setter_
+
+<div class=list>возвращает - самого себя (itself)</div>
+
+With the `style()` method the `style` attribute can be managed like attributes with `attr`:
+<pre>// javascript
+element.style('cursor', 'pointer')</pre>
+
+Multiple styles can be set at once using an object:
+<pre>// javascript
+element.style({ cursor: 'pointer', fill: '#f03' })</pre>
+
+Or a css string:
+<pre>// javascript
+element.style('cursor:pointer;fill:#f03;')</pre>
+
+Explicitly deleting individual style definitions works the same as with the `attr()` method:
+<pre>// javascript
+element.style('cursor', null)</pre><br>
+
+## style() _as getter_
+
+`returns` __`value`__ _(string, number, ...)_
+
+Similar to `attr()` the `style()` method can also act as a getter:
+
+<pre>// javascript
+element.style('cursor')
+// => pointer</pre>
+
+Or even a full getter:
+<pre>// javascript
+element.style()
+// => 'cursor:pointer;fill:#f03;'</pre><br>
+
+<pre id="6hide"><span class="lnk" onmouseover="show('hide - скрыть, спрятать')" onmouseout="hide()">hide()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+Скрыть элемент:
+<pre>// javascript
+element.hide()</pre><br>
+
+<pre id="6show"><span class="lnk" onmouseover="show('show - показать, вывести, предъявить')" onmouseout="hide()">show()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+Показать (отобразить) элемент:
+<pre>// javascript
+element.show()</pre><br>
+
+<pre id="6visible"><span class="lnk" onmouseover="show('visible - видимый, отображаемый')" onmouseout="hide()">visible()</span></pre>
+<div class=list>возвращает - логическое значение (boolean)</div>
+Метод для проверки, является ли элемент видимым:
+<pre>// javascript
+element.visible()</pre></div><br>
+
+
+<h4 id="7">Имена классов</h4>
+<div class=blockindent><br>
+<pre id="7addClass"><span class="lnk" onmouseover="show('add class - добавить класс')" onmouseout="hide()">addClass()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+Добавляет заданный класс CSS:
+<pre>// javascript
+element.addClass('pink-flower')</pre><br>
+
+<pre id="7classes"><span class="lnk" onmouseover="show('classes - классы')" onmouseout="hide()">classes()</span></pre>
+<div class=list>возвращает - массив (array)</div>
+Получает классы CSS для узла в виде массива:
+<pre>// javascript
+element.classes()</pre><br>
+
+<pre id="7hasClass"><span class="lnk" onmouseover="show('has class - имеет класс')" onmouseout="hide()">hasClass()</span></pre>
+<div class=list>возвращает - логическое значение (boolean)</div>
+Проверяет наличие заданного класса CSS:
+<pre>// javascript
+element.hasClass('purple-rain')</pre><br>
+
+<pre id="7removeClass"><span class="lnk" onmouseover="show('remove class - удалить класс')" onmouseout="hide()">removeClass()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+Удаляет заданный класс CSS:
+<pre>// javascript
+element.removeClass('pink-flower')</pre><br>
+
+<pre id="7toggleClass"><span class="lnk" onmouseover="show('toggle class - переключает класс')" onmouseout="hide()">toggleClass()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+Переключает заданный класс CSS:
+<pre>// javascript
+element.toggleClass('pink-flower')</pre></div><br><br>
+
+
+<h4 id="8">Данные</h4>
+Метод <tt>data()</tt> позволяет связывать произвольные объекты, строки и числа с элементами SVG.
+The `data()` method allows you to bind arbitrary objects, strings and numbers to SVG elements.
+<div class=blockindent><br>
+<pre id="8data_get"><span class="lnk" onmouseover="show('data - данные')" onmouseout="hide()">data()</span>          <i class=low>как получатель (геттер)</i></pre>
+<div class=list>возвращает значение (value)</div>
+Получает значения аналогично методу <tt>attr()</tt>:
+<pre>// javascript
+var key = rect.data('key')</pre><br>
+
+<pre id="8data_set"><span class="lnk" onmouseover="show('data - данные')" onmouseout="hide()">data()</span>          <i class=low>как установщик (сеттер)</i></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+
+<pre>// javascript
+rect.data('key', { value: { data: 0.3 }})</pre>
+Или устанавливает сразу несколько значений:
+<pre>// javascript
+rect.data({
+  forbidden: 'fruit'
+, multiple: {
+    values: 'in'
+  , an: 'object'
+  }
+})</pre>
+Полное удаление данных:
+<pre>// javascript
+rect.data('key', null)</pre>
+Значения всегда будут храниться в формате JSON и в некоторых случаях это может быть нежелательно. Если нужно сохранить значение как есть, просто передайте <tt>true</tt> в качестве третьего аргумента:
+<pre>// javascript
+rect.data('key', 'value', true)</pre></div><br><br>
+
+
+<h4 id="9">Память</h4>
+
+## remember() _as getter_
+
+`returns` __`value`__
+
+To retrieve a memory
+
+```javascript
+rect.remember('oldBBox')
+```
+
+## remember() _as setter_
+
+`returns` __`itself`__
+
+Storing data in-memory is very much like setting attributes:
+
+```javascript
+rect.remember('oldBBox', rect.bbox())
+```
+
+Multiple values can also be remembered at once:
+
+```javascript
+rect.remember({
+  oldFill:    rect.attr('fill')
+, oldStroke:  rect.attr('stroke')
+})
+```
+
+## forget()
+
+`returns` __`itself`__
+
+Erasing a single memory:
+
+```javascript
+rect.forget('oldBBox')
+```
+
+Or erasing multiple memories at once:
+
+
+```javascript
+rect.forget('oldFill', 'oldStroke')
+```
+
+And finally, just erasing the whole memory:
+
+```javascript
+rect.forget()
+```
+<br>
+
+<h4 id="10">"Дерево" документа</h4>
+
+## add()
+
+`returns` __`itself`__
+
+Sets the calling element as the parent node of the argument. Returns the parent:
+
+```javascript
+var rect = draw.rect(100, 100)
+var group = draw.group()
+
+group.add(rect) //-> returns group
+```
+
+## addTo()
+
+`returns` __`itself`__
+
+Sets the calling element as a child node of the argument. Returns the child:
+
+```javascript
+rect.addTo(group) //-> returns rect
+```
+
+## clone()
+
+`returns` __`SVG.Element`__
+
+To make an exact copy of an element the `clone()` method comes in handy:
+
+```javascript
+var clone = rect.clone()
+```
+
+This will create a new, unlinked copy. For making a linked clone, see the [use](/elements/use) element.
+By default, the cloned element is placed directly after the original element.
+When you pass a parent parameter to the `clone()` function it will append the cloned element to the given parent.
+
+## put()
+
+`returns` __`SVG.Element`__
+
+Sets the calling element as the parent node of the argument. Returns the child:
+
+```javascript
+group.put(rect) //-> returns rect
+```
+
+## putIn()
+
+`returns` __`SVG.Element`__
+
+Sets the calling element as a child node of the argument. Returns the parent:
+
+```javascript
+rect.putIn(group) //-> returns group
+```
+
+## remove()
+
+`returns` __`itself`__
+
+Removes the calling element from the svg document:
+
+```javascript
+rect.remove()
+```
+
+## replace()
+
+`returns` __`SVG.Element`__
+
+At the calling element's position in the svg document, replace the calling element with the element passed to the method.
+
+```javascript
+rect.replace(draw.circle(100))
+```
+
+## toDoc()
+
+`returns` __`itself`__
+
+Same as `toParent()` but with the root-node as parent
+
+## toParent()
+
+`returns` __`itself`__
+
+Moves an element to a different parent (similar to `addTo`), but without changing its visual representation. All transformations are merged and applied to the element.
+
+```javascript
+rect.toParent(group) // looks the same as before
+```
+
+## ungroup() / flatten()
+
+`returns` __`itself`__
+
+Break up a group/container and move all the elements to a given parent node without changing their visual representations. The result is a flat svg structure, e.g. for exporting.
+
+Ungroup all elements in this group recursively and places them into the given parent
+
+```javascript
+group.ungroup(parent, depth)
+// (default: parent container of the calling element)
+```
+
+Call it on the whole document to get a flat svg structure:
+
+```javascript
+drawing.ungroup()
+```
+
+Break up the group and places all elements in the drawing:
+
+```javascript
+group.ungroup(drawing)
+```
+
+Break up all groups until it reaches a depth of 3:
+
+```javascript
+drawing.ungroup(null, 3)
+```
+
+Flat and export svg:
+
+```javascript
+var svgString = drawing.ungroup().svg()
+```
+<br>
+
+<h4 id="11">Arranging</h4>
+You can arrange elements within their parent SVG document using the following methods.
+
+## after()
+
+`returns` __`itself`__
+
+Insert an element after another:
+
+```javascript
+// inserts circle after rect
+rect.after(circle)
+```
+
+## before()
+
+`returns` __`itself`__
+
+Insert an element before another:
+
+```javascript
+// inserts circle before rect
+rect.before(circle)
+```
+
+## back()
+
+`returns` __`itself`__
+
+Move element to the back:
+
+```javascript
+rect.back()
+```
+
+## backward()
+
+`returns` __`itself`__
+
+Move element one step backward:
+
+```javascript
+rect.backward()
+```
+
+## front()
+
+`returns` __`itself`__
+
+Move element to the front:
+
+```javascript
+rect.front()
+```
+
+## forward()
+
+`returns` __`itself`__
+
+Move element one step forward:
+
+```javascript
+rect.forward()
+```
+
+## next()
+
+`returns` __`SVG.Element`__
+
+Get the next sibling:
+
+```javascript
+rect.next()
+```
+
+## position()
+
+`returns` __`number`__
+
+Get the position (a number) of rect between its siblings:
+
+```javascript
+rect.position()
+```
+
+## previous()
+
+`returns` __`SVG.Element`__
+
+Get the previous sibling:
+
+```javascript
+rect.previous()
+```
+
+## siblings()
+
+`returns` __`array`__
+
+The arrange.js module brings some additional methods. To get all siblings of rect, including rect itself:
+
+```javascript
+rect.siblings()
+```
+<br>
+
+<h4 id="12">Геометрия</h4>
+
+## point()
+
+`returns` __[`SVG.Point`](/classes/#svg-point)__
+
+Transforms a point from screen coordinates to the elements coordinate system.
+
+```javascript
+// e is some mouseevent
+var point = path.point(e.screenX, e.screenY) // {x, y}
+```
+
+## inside()
+
+`returns` __`boolean`__
+
+To check if a given point is inside the bounding box of an element you can use the `inside()` method:
+
+```javascript
+var rect = draw.rect(100, 100).move(50, 50)
+
+rect.inside(25, 30) //-> returns false
+rect.inside(60, 70) //-> returns true
+```
+
+**Note**: the `x` and `y` positions are tested against the relative position of the element. Any offset on the parent element is not taken into account.
+
+
+<br><br>
+</body></html>

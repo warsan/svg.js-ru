@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<title>svg.js Справочное руководство</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="1.css">
+<script type="text/javascript" src="1.js"></script>
+</head>
+
+<body>
+<h3>Начало работы</h3>
+Основные сведения, которые следует знать, чтобы начать работу с SVG.js. От создания нового документа SVG до его принятия.
+Basic information you need to know to get started with SVG.js. From building a new SVG document to adopting one.
+<br><br>
+
+<h4>Подготовка</h4>
+SVG.js предполагает, что у вас есть созданный HTML-элемент с атрибутом <tt>id</tt>, готовый служить в качестве оболочки. Что-то вроде этого:
+<pre>&#60;!-- html --&#62;
+&#60;!DOCTYPE html&#62;
+&#60;html&#62;
+&#60;head&#62;
+  &#60;title&#62;SVG.js&#60;/title&#62;
+&#60;/head&#62;
+&#60;body&#62;
+  &#60;div id="drawing"&#62;&#60;/div&#62;
+&#60;/body&#62;
+&#60;/html&#62;</pre><br>
+
+<h4>Создание SVG документа</h4>
+Далее, используем функцию <tt>SVG()</tt> для создания внутри элемента оболочки SVG документа:
+<pre>// javascript
+var draw = SVG('drawing').size(300, 300)
+var rect = draw.rect(100, 100).attr({ fill: '#f06' })</pre>
+Первым аргументом может быть либо идентификатор (<tt>id</tt>) элемента, либо сам выбранный элемент. При этом сгенерируются следующие выходные данные:
+This will generate the following output:
+
+<pre>&#60;!-- html --&#62;
+&#60;div id="drawing"&#62;
+  &#60;svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="300" height="300"&#62;
+    &#60;rect width="100" height="100" fill="#f06"&#62;&#60;/rect&#62;
+  &#60;/svg&#62;
+&#60;/div&#62;</pre>
+По умолчанию svg-рисунок соответствует размерам своего родительского элемента, в данном случае это элемент <tt>drawing</tt>:
+<pre>// javascript
+var draw = SVG('drawing').size('100%', '100%')</pre><br>
+
+<h4>Проверка поддержки SVG браузером</h4>
+По умолчанию SVG.js предполагает, что браузер клиента поддерживает SVG. Проверить поддержку можно следующим образом:
+<pre>// javascript
+if (SVG.supported) {
+  var draw = SVG('drawing')
+  var rect = draw.rect(100, 100)
+} else {
+  alert('SVG not supported') // SVG не поддерживается
+}</pre><br>
+
+<h4>Ожидание загрузки DOM</h4>
+Для многих может показаться очевидным, но все же стоит упомянуть, если js-файлы включены в заголовок документа (т.е. внутри тега &#60;head&#62;&#60;/head&#62;), обязательно дождитесь загрузки DOM:
+<pre>// javascript
+SVG.on(document, 'DOMContentLoaded', function() {
+  var draw = SVG('drawing')
+})</pre>
+Это не будет проблемой, если включить свой JS-код внизу html-страницы.<br><br>
+
+<h4>Чистый SVG</h4>
+SVG.js также работает и вне HTML DOM, например внутри документа SVG:
+<pre>&#60;!-- hml --&#62;
+&#60;?xml version="1.0" encoding="utf-8" ?&#62;
+&#60;svg id="drawing" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" &#62;
+  &#60;script type="text/javascript" xlink:href="svg.min.js"&#62;&#60;/script&#62;
+  &#60;script type="text/javascript"&#62;
+    &#60;![CDATA[
+      var draw = SVG('drawing')
+      draw.rect(100,100).animate().fill('#f03').move(100,100)
+    ]]&#62;
+  &#60;/script&#62;
+&#60;/svg&#62;</pre><br>
+
+<h4>Игровая площадка</h4>
+Вот и все основные установки для начала работы с SVG.js. Предоставлено все чтобы поиграться с кодом.<br><br>
+
+<div style="font-family:Segoe UI; font-size:90%; margin-left:10px;">
+&nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("rect1","rect2");'>Код JavaScript</span>
+&nbsp; &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("rect2","rect1");'>Результат</span>
+<span style="float:right; margin-right:20px;"><a href="https://jsfiddle.net/wout/Lmu56awz/3/?utm_source=website&utm_medium=embed&utm_campaign=Lmu56awz" target="_blank">Редактировать в JSFiddle</a></span>
+<div id="rect1" style="height:220px; background-color:#eee; display:block; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:15px; width:80px;">
+<pre>// initialize SVG.js
+var draw = SVG('drawing')<br>
+// draw pink square
+draw.rect(100, 100).move(100, 50).fill('#f06')</pre></div>
+<div id="rect2" style="height:220px; background-color:#fff; display:none; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:125px; width:60px;">
+<img src="img/rect.png"></div></div><br>
+
+<br><br>
+</body></html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<title>svg.js Справочное руководство</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="1.css">
+<script type="text/javascript" src="1.js"></script>
+</head>
+
+<body>
+<div style="margin-top:-20px; float:right;"><span class="lnk" style="float:right;" onclick='javascript:show_txt(this)' onmouseover="show('авторы SVG.js')" onmouseout="hide()">АВТОРЫ JavaScript библиотеки SVG.js</span>
+<div style='display:none; margin-top:-10px;' onclick='javascript:show_txt(this)'>
+<table cellpadding="5" style="color:#000080;">
+<tr align=center><td><a href="https://github.com/dotnetCarpenter"><img src="img/dotnetCarpenter.png" width=100 border=0 alt="dotnetCarpenter"></a><br>
+<a href="https://twitter.com/dotnetcarpenter">Jon Ege Ronnenberg<br> <span style="font-size:80%;">aka</span><br>
+<span style="font-size:90%;"><tt>dotnetCarpenter</tt></span></a></td>
+<td><a href="https://github.com/Fuzzyma"><img src="img/Fuzzyma.jpg" width=100 border=0 alt="Fuzzyma"></a><br>
+<a href="https://github.com/Fuzzyma">Ulrich-Matthias Schäfer<br> <span style="font-size:80%;">aka</span><br>
+<span style="font-size:90%;"><tt>Fuzzyma</tt></span></a></td>
+<td><a href="https://github.com/saivan"><img src="img/saivan.jpg" width=100 border=0 alt="saivan"></a><br>
+<a href="https://github.com/saivan">theChosenOne<br> <span style="font-size:80%;">aka</span><br>
+<span style="font-size:90%;"><tt>saivan</tt></span></a></td>
+<td><a href="https://github.com/wout"><img src="img/wout.jpg" width=100 border=0 alt="wout"></a><br>
+<a href="https://github.com/wout">wout<br> <span style="font-size:80%;">aka</span><br>
+<span style="font-size:90%;"><tt>wout</tt></span></a></td></tr></table></div></div><br>
+
+<img src="img/logo.jpg" width=128 border=0 align=left><br><br>
+<h1 style="margin-top:20px; margin-left:200px; margin-bottom:40px;">svg.js<br>
+<span style="font-size:70%; margin-left:20px;">справочное&nbsp;руководство<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<a href="https://svgjs.com/docs/3.0/" target="_blank">исходный текст</a>)</span></h1><br>
+
+<div class=note_trans><b>Примечание переводчика:</b> в данной справке множество ссылок, которые выглядят вот так: <span onclick="showClick('ссылка')"><a href="#" onclick="return false" onblur="hideClick()" onmouseover="show('ссылка')" onmouseout="hide()">ссылка</a></span>. При наведении на неё курсора мышки появится всплывающая подсказка. При клике левой кнопкой мышки на ней либо появится ещё одна всплывающая подсказка, либо будет сделан переход в другое место данной справки или на какое-нибудь место в сети Интернет.</div><br>
+
+<em>svg.js</em> - это легковесная JavaScript библиотека для управления и анимации векторной графики в формате <a href="https://ru.wikipedia.org/wiki/SVG" target="_blank" onmouseover="show('SVG (от англ. Scalable Vector Graphics — масштабируемая векторная графика)<br>— язык разметки масштабируемой векторной графики, созданный Консорциумом<br>Всемирной паутины (W3C) и входящий в подмножество расширяемого языка<br>разметки XML, предназначен для описания двумерной векторной и смешанной<br>векторно/растровой графики в формате XML.')" onmouseout="hide()">SVG</a>.<br><br>
+<h3>Почему стоит выбрать SVG.js?</h3>
+SVG.js не имеет никаких зависимостей и стремится стать как можно меньше по размеру, при этом обеспечивая почти полное покрытие спецификации SVG.
+Если вы еще не убедились в этом, вот несколько основных моментов.<br><br>
+
+<h4>SVG.js экономный</h4>
+SVG.js легковесен. Цифры не лгут, вот он в сравнении с конкурентами:
+<div style="font-family:Segoe UI; font-size:90%; margin-left:10px;">
+&nbsp; &nbsp; <span class="lnk">Результат</span>
+<a href="https://jsfiddle.net/wout/kdy3ssqx/21/?utm_source=website&utm_medium=embed&utm_campaign=kdy3ssqx" target="_blank"><span style="float:right; margin-right:20px;">Редактировать в JSFiddle</span></a><br>
+<div style="background-color:#fff; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:15px; width:60px;">
+<img src="img/lean.png"></div></div>
+<div class=note><b>Примечание:</b> Чем меньше тем лучше.</div>
+Помните, SVG.js делает все тоже самое, но почти вполовину меньшим кодом!<br><br>
+
+<h4>SVG.js быстрый.</h4>
+SVG.js работает очень быстро. Конечно, он не быстрее <span class="lnk" onmouseover="show('Здесь имеется ввиду чистый JavaScript, без использования каких-либо библиотек.<br><br>VanillaJS (ванильный JavaScript) – это шутка, чтобы напомнить другим<br>разработчикам, что многое можно сделать в наши дни без дополнительных<br>библиотек JavaScript.')" onmouseout="hide()">vanilla js</span>, но намного быстрее конкурентов:
+<div style="font-family:Segoe UI; font-size:90%; margin-left:10px;">
+&nbsp; &nbsp; <span class="lnk">Результат</span>
+<a href="https://jsfiddle.net/wout/xutwzmg5/?utm_source=website&utm_medium=embed&utm_campaign=xutwzmg5" target="_blank"><span style="float:right; margin-right:20px;">Редактировать в JSFiddle</span></a><br>
+<div style="background-color:#fff; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:15px; width:60px;">
+<img src="img/speedy.png"></div></div>
+<div class=note>Указатели:
+<div class=list><tt>rects</tt> - создание 10000 прямоугольников</div>
+<div class=list><tt>fill</tt> - создание 10000 прямоугольников и заливка их цветом</div>
+<div class=list><tt>gradient</tt> - создание 10000 прямоугольников и заполнение их <a href="https://ru.wikipedia.org/wiki/%D0%93%D1%80%D0%B0%D0%B4%D0%B8%D0%B5%D0%BD%D1%82_(%D0%BA%D0%BE%D0%BC%D0%BF%D1%8C%D1%8E%D1%82%D0%B5%D1%80%D0%BD%D0%B0%D1%8F_%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D0%BA%D0%B0)" target="_blank" onmouseover="show('Градиент — вид заливки в компьютерной графике, которая по заданным<br>параметрам цвета в ключевых точках рассчитывает промежуточные цвета<br>остальных точек. При этом создаются плавные переходы из одного цвета<br>в другой. Обычно в градиенте можно использовать более двух цветов<br>и дополнительно указывать настройки прозрачности и смещения<br>границы цветов.')" onmouseout="hide()">градиентом</a></div>
+Чем меньше тем лучше. Протестировано на Intel Core m5 - 1,2 ГГц.</div><br>
+
+<h4>Легко читаемый, лаконичный синтаксис</h4>
+Создание и управление SVG при помощи одного лишь JavaScript'а достаточно многословно. Например, простое создание обычного розового квадрата требует довольно много строк кода:
+<div style="font-family:Segoe UI; font-size:90%; margin-left:10px;">
+&nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("rect1","rect2");'>Код JavaScript</span>
+&nbsp; &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("rect2","rect1");'>Результат</span>
+<span style="float:right; margin-right:20px;"><a href="https://jsfiddle.net/wout/wsss6rj9/?utm_source=website&utm_medium=embed&utm_campaign=wsss6rj9" target="_blank">Редактировать в JSFiddle</a></span>
+<div id="rect1" style="height:240px; background-color:#eee; display:block; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:15px; width:80px;">
+<pre>// Vanilla js
+var ns = 'http://www.w3.org/2000/svg'
+var div = document.getElementById('drawing')
+var svg = document.createElementNS(ns, 'svg')
+svg.setAttributeNS(null, 'width', '100%')
+svg.setAttributeNS(null, 'height', '100%')
+div.appendChild(svg)
+var rect = document.createElementNS(ns, 'rect')
+rect.setAttributeNS(null, 'width', 100)
+rect.setAttributeNS(null, 'height', 100)
+rect.setAttributeNS(null, 'fill', '#f06')
+svg.appendChild(rect)</pre></div>
+<div id="rect2" style="height:240px; background-color:#fff; display:none; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:125px; width:60px;">
+<img src="img/rect.png"></div></div><br>
+SVG.js предоставляет более краткий и легко читаемый синтаксис. Делаем то же, что и в примере выше с ванильным JS:
+<pre>// SVG.js
+var draw = SVG('drawing')
+  , rect = draw.rect(100, 100).fill('#f06')</pre>
+Это всего лишь <em>две</em> строки кода вместо <em>десяти</em>! И намного меньше повторений.<br><br>
+
+<h4>Сногсшибательные анимации</h4>
+<div style="font-family:Segoe UI; font-size:90%; margin-left:10px;">
+&nbsp; &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("dragon1","dragon2");'>Результат</span>
+&nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("dragon2","dragon1");'>Код JavaScript</span>
+<span style="float:right; margin-right:20px;"><a href="https://jsfiddle.net/wout/7wL1uv8n/?utm_source=website&utm_medium=embed&utm_campaign=7wL1uv8n" target="_blank">Редактировать в JSFiddle</a></span>
+<div id="dragon1" style="height:350px; background-color:#fff; display:block; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:20px; width:60px;">
+<div style="font-size:110%; border:1px solid #808080; margin:0px; padding:4px;"><tt>Dragon----- - - - -></tt></div>
+<img src="img/dragon.gif"></div>
+<div id="dragon2" style="height:350px; background-color:#eee; display:none; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:100px; width:80px;">
+<pre>var input = document.querySelector('input[type=text]')
+var draw = SVG('drawing').viewbox(0, 0, 300, 140)
+var text = draw.text(function(add) {
+	add.tspan( input.value )
+})<br>
+text
+	.path('M10 80 C 40 10, 65 10, 95 80 S 150 150, 180 80')
+	.animate(1000, '<>')
+	.plot('M10 80 C 40 150, 65 150, 95 80 S 150 10, 180 80')
+	.loop(true, true)<br>
+input.addEventListener('keyup', updateText(text))<br>
+function updateText(textPath) {
+	return function() {
+		textPath.tspan(this.value)
+	}
+}</pre></div></div><br>
+
+<h4>И кое-что ещё...</h4>
+<div class=list><a href="animating.htm" onmouseover="show('Анимация')" onmouseout="hide()">анимация</a> по размеру, положению, преобразованиям, цвету, ...</div>
+<div class=list><a href="extending.htm" onmouseover="show('Расширение')" onmouseout="hide()">безболезненное расширение</a> благодаря модульной структуре</div>
+<div class=list>доступны различные <a href="plugins.htm" onmouseover="show('Плагины')" onmouseout="hide()">полезные плагины</a></div>
+<div class=list>унифицированный API между типами форм с перемещением (move), размером (size), <a href="manipulating.htm#2center" onmouseover="show('')" onmouseout="hide()">центром (center)</a>, ...
+unified api between shape types with (link: /manipulating/#move text: move), (link: /manipulating/#resizing text: size), (link: /manipulating/#center text: center), ...</div>
+<div class=list>(link: /events/ text: binding events) to elements</div>
+<div class=list>full support for opacity (link: /elements/#svg-mask text: masks) and (link: /elements/#svg-clippath text: clipping paths)</div>
+<div class=list>(link: /elements/#svg-textpath text: text paths), even animated</div>
+<div class=list>element (link: /parents/#svg-g text: groups)</div>
+<div class=list>dynamic (link: /elements/#svg-gradient text: gradients) and (link: /elements/#svg-pattern text: patterns)</div>
+<div class=list>полная документация (кстати, сейчас вы смотрите её :-)</div><br>
+
+<h4>Лицензия</h4>
+SVG. js и его документация выпускаются в соответствии с условиями <a href="https://github.com/svgdotjs/svg.js/blob/master/LICENSE.txt" target="_blank">лицензии MIT</a>.<br>
+<a href="https://ru.wikipedia.org/wiki/%D0%9B%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D1%8F_MIT" target="_blank">Лицензия MIT</a> на Википедии.<br><br>
+
+<h4>Список изменений</h4>
+Хотите знать, что изменилось в последних версиях? Смотрите <a href="https://github.com/svgdotjs/svg.js/blob/master/CHANGELOG.md" target="_blank">журнал изменений</a>.<br><br>
+
+<br><br>
+</body></html>

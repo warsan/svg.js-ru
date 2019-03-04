@@ -1,0 +1,36 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=svg.js.chm
+Contents file=svg.js.hhc
+Default Window=Help
+Default topic=overview.htm
+Display compile progress=No
+Language=0x419 Русский (Россия)
+Title=svg.js
+
+[WINDOWS]
+Help="svg.js","svg.js.hhc",,"overview.htm",,,,,,0x62520,200,0x80e,[0,0,1000,700],,,,,,,0
+
+
+[FILES]
+animating.htm
+boxes.htm
+classes.htm
+compatibility.htm
+contributing.htm
+elements.htm
+events.htm
+examples.htm
+extending.htm
+faq.htm
+import_export.htm
+install.htm
+intro.htm
+manipulating.htm
+overview.htm
+parents.htm
+plugins.htm
+referencing.htm
+thanks.htm
+
+[INFOTYPES]

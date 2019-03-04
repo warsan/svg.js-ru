@@ -1,0 +1,1274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<title>svg.js Справочное руководство</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="1.css">
+<script type="text/javascript" src="1.js"></script>
+</head>
+
+<body>
+<h3>Элементы</h3>
+<tt>SVG.Element</tt> - это базовый прототип SVG.js, охватывающий все элементы (или узлы, коли на то пошло). С помощью <tt>SVG.Shape</tt> добавляется дополнительный уровень обработки.
+Каждый элемент может принимать атрибут <tt>fill</tt> и/или <tt>stroke</tt>. Предпочтительней расширять элементы собственными методами на <tt>SVG.Shape</tt>, а не на <tt>SVG.Element</tt>.<br><br>
+
+<h4 id="1">SVG.Rect</h4>
+<div class=blockindent><br>
+<pre id="1rect"><span class="lnk" onmouseover="show('rect - сокращ. англ. слова rectangle, rectangular - прямоугольник')" onmouseout="hide()">rect()</span>  <i class=low>конструктор</i></pre>
+<div class=list>конструктор на <tt>SVG.Container</tt></div>
+<div class=list>возвращает - <tt>SVG.Rect</tt>, который наследует от <tt>SVG.Shape</tt>.</div>
+У прямоугольников два аргумента, это его ширина (<tt>width</tt>) и высота (<tt>height</tt>):
+<pre>// javascript
+var rect = draw.rect(100, 100)</pre><br>
+<div style="font-family:Segoe UI; font-size:90%; margin-left:10px;">
+&nbsp; &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("rect1","rect2");'>Результат</span>
+&nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("rect2","rect1");'>Код JavaScript</span>
+<span style="float:right; margin-right:20px;"><a href="http://jsfiddle.net/wout/wmtt8rkz/7/?utm_source=website&utm_medium=embed&utm_campaign=wmtt8rkz" target="_blank">Редактировать в JSFiddle</a></span>
+<div id="rect1" style="height:220px; background-color:#fff; display:block; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:20px; width:60px;">
+<img src="img/rect.png"></div>
+<div id="rect2" style="height:220px; background-color:#eee; display:none; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:100px; width:80px;">
+<pre>var draw = SVG('drawing').size(300, 130)<br>
+var rect = draw.rect(100, 100).fill('#f06').move(20, 20)</pre></div></div><br>
+
+<pre id="1rect.radius"><span class="lnk" onmouseover="show('rectangular radius - радиус прямоугольника, т.е.<br>радиус закругления углов прямоугольника')" onmouseout="hide()"><span class="shadow">rect.</span>radius()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+Также у прямоугольников могут быть закругленные углы:
+<pre>// javascript
+rect.radius(10)</pre>
+Этот код устанавливает атрибуты <tt>rx</tt> и <tt>ry</tt> равные <tt>10</tt>. Код ниже для раздельной установки <tt>rx</tt> и <tt>ry</tt>
+<pre>// javascript
+rect.radius(10, 20)</pre></div><br><br>
+
+
+<h4 id="2">SVG.Circle</h4>
+<div class=blockindent><br>
+<pre id="2circle"><span class="lnk" onmouseover="show('circle - круг, окружность')" onmouseout="hide()">circle()</span>  <i class=low>конструктор</i></pre>
+<div class=list>конструктор на <tt>SVG.Container</tt></div>
+<div class=list>возвращает - <tt>SVG.Circle</tt>, который наследует от <tt>SVG.Shape</tt>.</div>
+Для круга необходим только один аргумент - диаметр:
+<pre>// javascript
+var circle = draw.circle(100)</pre><br>
+<div style="font-family:Segoe UI; font-size:90%; margin-left:10px;">
+&nbsp; &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("circle1","circle2");'>Результат</span>
+&nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("circle2","circle1");'>Код JavaScript</span>
+<span style="float:right; margin-right:20px;"><a href="http://jsfiddle.net/wout/79gmh7jf/?utm_source=website&utm_medium=embed&utm_campaign=79gmh7jf" target="_blank">Редактировать в JSFiddle</a></span>
+<div id="circle1" style="height:220px; background-color:#fff; display:block; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:20px; width:60px;">
+<img src="img/circle.png"></div>
+<div id="circle2" style="height:220px; background-color:#eee; display:none; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:100px; width:80px;">
+<pre>var draw = SVG('drawing').size(300, 130)<br>
+var rect = draw.circle(100).fill('#f06').move(20, 20)</pre></div></div><br>
+
+<pre id="2circle.radius"><span class="lnk" onmouseover="show('circle radius - радиус круга')" onmouseout="hide()"><span class="shadow">circle.</span>radius()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+<pre>// javascript
+circle.radius(75)</pre></div><br><br>
+
+
+<h4 id="3">SVG.Ellipse</h4>
+<div class=blockindent><br>
+<pre id="2ellipse"><span class="lnk" onmouseover="show('ellipse - эллипс')" onmouseout="hide()">circle()</span>  <i class=low>конструктор</i></pre>
+<div class=list>конструктор на <tt>SVG.Container</tt></div>
+<div class=list>возвращает - <tt>SVG.Circle</tt>, который наследует от <tt>SVG.Shape</tt>.</div>
+У эллипсов два аргумента, это его ширина (<tt>width</tt>) и высота (<tt>height</tt>):
+<pre>// javascript
+var ellipse = draw.ellipse(200, 100)</pre><br>
+<div style="font-family:Segoe UI; font-size:90%; margin-left:10px;">
+&nbsp; &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("ellipse1","ellipse2");'>Результат</span>
+&nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("ellipse2","ellipse1");'>Код JavaScript</span>
+<span style="float:right; margin-right:20px;"><a href="https://jsfiddle.net/wout/mr7kjab1/1/?utm_source=website&utm_medium=embed&utm_campaign=mr7kjab1" target="_blank">Редактировать в JSFiddle</a></span>
+<div id="ellipse1" style="height:220px; background-color:#fff; display:block; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:20px; width:60px;">
+<img src="img/ellipse.png"></div>
+<div id="ellipse2" style="height:220px; background-color:#eee; display:none; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:100px; width:80px;">
+<pre>var draw = SVG('drawing').size(300, 130)<br>
+var ellipse = draw.ellipse(150, 100).fill('#f06').move(20, 20)</pre></div></div><br>
+
+<pre id="3ellipse.radius"><span class="lnk" onmouseover="show('ellipse radius - радиус эллипса')" onmouseout="hide()"><span class="shadow">ellipse.</span>radius()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+Эллипсы также могут переопределяться по своим радиусам:
+<pre>// javascript
+ellipse.radius(75, 50)</pre></div><br><br>
+
+
+<h4 id="4">SVG.Line</h4>
+<div class=blockindent><br>
+<pre id="4line"><span class="lnk" onmouseover="show('line - линия')" onmouseout="hide()">line()</span>  <i class=low>конструктор</i></pre>
+<div class=list>конструктор на <tt>SVG.Container</tt></div>
+<div class=list>возвращает - <tt>SVG.Line</tt>, который наследует от <tt>SVG.Shape</tt>.</div>
+Создает линию от точки <tt>A</tt> до точки <tt>B</tt>:
+<pre>// javascript
+var line = draw.line(0, 0, 100, 150).stroke({ width: 1 })</pre>
+Создание элемента &#171;линия&#187; (<tt>line</tt>) может быть выполнено четырьмя способами. Посмотрите на метод <tt>plot()</tt>, чтобы увидеть все его возможности.
+Creating a line element can be done in four ways. Look at the `plot()` method to see all the possibilities.<br><br>
+<div style="font-family:Segoe UI; font-size:90%; margin-left:10px;">
+&nbsp; &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("line1","line2");'>Результат</span>
+&nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("line2","line1");'>Код JavaScript</span>
+<span style="float:right; margin-right:20px;"><a href="https://jsfiddle.net/wout/1z9LmLha/3/?utm_source=website&utm_medium=embed&utm_campaign=1z9LmLha" target="_blank">Редактировать в JSFiddle</a></span>
+<div id="line1" style="height:220px; background-color:#fff; display:block; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:20px; width:60px;">
+<img src="img/line.png"></div>
+<div id="line2" style="height:220px; background-color:#eee; display:none; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:100px; width:80px;">
+<pre>var draw = SVG('drawing').size(300, 130)<br>
+var line = draw.line(0, 100, 100, 0).move(20, 20)
+line.stroke({ color: '#f06', width: 10, linecap: 'round' })</pre></div></div><br>
+
+<pre id="4line.array"><span class="lnk" onmouseover="show('line array - массив линий')" onmouseout="hide()"><span class="shadow">line.</span>array()</span></pre>
+<div class=list>возвращает - <tt>SVG.PointArray</tt></div>
+
+References the `SVG.PointArray` instance. Этот метод предназначен скорее для внутреннего использования:
+<pre>// javascript
+polyline.array()</pre>
+
+Больше сведений смотрите в: <a href="classes.htm#2" onmouseover="show('SVG.PointArray')" onmouseout="hide()">SVG.PointArray</a>.<br><br>
+
+<pre id="4line.plot"><span class="lnk" onmouseover="show('line plot - план (прокладка) линии')" onmouseout="hide()"><span class="shadow">line.</span>plot()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+С помощью метода <tt>plot()</tt> выполняется обновление линии:
+<pre>// javascript
+line.plot(50, 30, 100, 150)</pre>
+Кроме того, метод принимает последовательность точек:
+<pre>// javascript
+line.plot('0,0 100,150')</pre>
+или массив точек:
+<pre>// javascript
+line.plot([[0, 0], [100, 150]])</pre>
+или экземпляр <tt><a href="classes.htm#2" onmouseover="show('SVG.PointArray')" onmouseout="hide()">SVG.PointArray</a></tt>:
+<pre>// javascript
+var array = new SVG.PointArray([[0, 0], [100, 150]])
+line.plot(array)</pre>
+Метод <tt>plot()</tt> также можно анимировать:
+<pre>// javascript
+line.animate(3000).plot([[200, 200], [100, 150]])</pre></div><br><br>
+
+
+<h4 id="5">SVG.Polyline</h4>
+<div class=blockindent><br>
+<pre id="5polyline"><span class="lnk" onmouseover="show('polyline - ломаная линия')" onmouseout="hide()">polyline()</span>  <i class=low>конструктор</i></pre>
+<div class=list>конструктор на <tt>SVG.Container</tt></div>
+<div class=list>возвращает - <tt>SVG.Polyine</tt>, который наследует от <tt>SVG.Shape</tt>.</div>
+Элемент &#171;ломаная линия&#187; (<tt>polyline</tt>) определяет набор, связанных между собой, отрезков прямой линии. Обычно ломаные линии представляют собой незамкнутые фигуры:
+The polyline element defines a set of connected straight line segments. Typically, polyline elements define open shapes:
+<pre>// javascript
+var polyline = draw.polyline('0,0 100,50 50,100').fill('none').stroke({ width: 1 })</pre>
+Строки кода ломаной линии состоят из списка точек, разделенных между собой запятыми или пробелами. Так что, вполне будут работать как <tt>x,y x,y x,y</tt>, так и <tt>x y x y x y</tt> или даже <tt>x,y,x,y,x,y</tt>.<br>
+Как альтернатива, будет работать и массив точек:
+<pre>// javascript
+var polyline = draw.polyline([[0,0], [100,50], [50,100]])</pre>
+Или, что предпочтительнее, даже плоский массив точек:
+<pre>// javascript
+var polyline = draw.polyline([0,0, 100,50, 50,100])</pre><br>
+<div style="font-family:Segoe UI; font-size:90%; margin-left:10px;">
+&nbsp; &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("polyline1","polyline2");'>Результат</span>
+&nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("polyline2","polyline1");'>Код JavaScript</span>
+<span style="float:right; margin-right:20px;"><a href="https://jsfiddle.net/wout/6wt24q7p/2/?utm_source=website&utm_medium=embed&utm_campaign=6wt24q7p" target="_blank">Редактировать в JSFiddle</a></span>
+<div id="polyline1" style="height:220px; background-color:#fff; display:block; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:20px; width:60px;">
+<img src="img/polyline.png"></div>
+<div id="polyline2" style="height:220px; background-color:#eee; display:none; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:100px; width:80px;">
+<pre>var draw = SVG('drawing').size(300, 130)<br>
+var polyline = draw.polyline('50,0 60,40 100,50 60,60 50,100 40,60 0,50 40,40')
+polyline.fill('none').move(20, 20)
+polyline.stroke({ color: '#f06', width: 4, linecap: 'round', linejoin: 'round' })</pre></div></div><br>
+
+<pre id="5polyline.array"><span class="lnk" onmouseover="show('polyline array - массив ломаных линий')" onmouseout="hide()"><span class="shadow">polyline.</span>array()</span></pre>
+<div class=list>возвращает - <tt>SVG.PointArray</tt>.</div>
+References the `SVG.PointArray` instance. Этот метод предназначен скорее для внутреннего использования:
+<pre>// javascript
+polyline.array()</pre>
+Больше сведений смотрите в: <a href="classes.htm#2" onmouseover="show('SVG.PointArray')" onmouseout="hide()">SVG.PointArray</a>.<br><br>
+
+<pre id="5polyline.clear"><span class="lnk" onmouseover="show('polyline clear - очистка ломаных линий')" onmouseout="hide()"><span class="shadow">polyline.</span>clear()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+При анализе данных задаваемой точки, результат кэшируется. Данный метод очищает кэш.
+When the given point data is parsed, the result is cached. This method clears the cache.
+<pre>// javascript
+polyline.clear()</pre><br>
+
+<pre id="5polyline.plot"><span class="lnk" onmouseover="show('polyline plot - план (прокладка) ломаных линий')" onmouseout="hide()"><span class="shadow">polyline.</span>plot()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+С помощью метода <tt>plot()</tt> можно обновлять ломаные линии:
+<pre>// javascript
+polyline.plot([[0,0], [100,50], [50,100], [150,50], [200,50]])</pre>
+Метод <tt>plot()</tt> также можно анимировать:
+<pre>// javascript
+polyline.animate(3000).plot([[0,0], [100,50], [50,100], [150,50], [200,50], [250,100], [300,50], [350,50]])</pre></div><br><br>
+
+
+<h4 id="6">SVG.Polygon</h4>
+<div class=blockindent><br>
+<pre id="6polygon"><span class="lnk" onmouseover="show('polygon - многоугольник, полигон')" onmouseout="hide()">polygon()</span>  <i class=low>конструктор</i></pre>
+<div class=list>конструктор на <tt>SVG.Container</tt></div>
+<div class=list>возвращает - <tt>SVG.Polygon</tt>, который наследует от <tt>SVG.Shape</tt>.</div>
+Элемент &#171;многоугольник&#187; (<tt>polygon</tt>), в отличие от элемента &#171;ломаная линия&#187; (<tt>polyline</tt>), представляется в виде замкнутой формы, состоящей из набора отрезков прямых линий, соединенных между собой:
+<pre>// javascript
+var polygon = draw.polygon('0,0 100,50 50,100').fill('none').stroke({ width: 1 })</pre>
+Строки или массивы многоугольника в точности теже самые, что и строки ломаной линии. При этом не нужно замыкать форму отрезком линии между первой и последней точками, это будет сделано автоматически.<br><br>
+<div style="font-family:Segoe UI; font-size:90%; margin-left:10px;">
+&nbsp; &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("polygon1","polygon2");'>Результат</span>
+&nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("polygon2","polygon1");'>Код JavaScript</span>
+<span style="float:right; margin-right:20px;"><a href="http://jsfiddle.net/wout/4aqnwLy0/?utm_source=website&utm_medium=embed&utm_campaign=4aqnwLy0" target="_blank">Редактировать в JSFiddle</a></span>
+<div id="polygon1" style="height:220px; background-color:#fff; display:block; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:20px; width:60px;">
+<img src="img/polygon.png"></div>
+<div id="polygon2" style="height:220px; background-color:#eee; display:none; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:100px; width:80px;">
+<pre>var draw = SVG('drawing').size(300, 130)<br>
+var polygon = draw.polygon('50,0 60,40 100,50 60,60 50,100 40,60 0,50 40,40')
+polygon.fill('#f06').move(20, 20)</pre></div></div><br>
+
+<pre id="6polygon.array"><span class="lnk" onmouseover="show('polygon array - массив многоугольника')" onmouseout="hide()"><span class="shadow">polygon.</span>array()</span></pre>
+<div class=list>возвращает - <tt>SVG.PointArray</tt>.</div>
+References the `SVG.PointArray` instance. Этот метод предназначен скорее для внутреннего использования:
+<pre>// javascript
+polygon.array()</pre>
+Больше сведений смотрите в: <a href="classes.htm#2" onmouseover="show('SVG.PointArray')" onmouseout="hide()">SVG.PointArray</a>.<br><br>
+
+<pre id="6polygon.clear"><span class="lnk" onmouseover="show('polygon clear - очистка многоугольника')" onmouseout="hide()"><span class="shadow">polygon.</span>clear()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+При анализе данных задаваемой точки, результат кэшируется. Данный метод очищает кэш.
+When the given point data is parsed, the result is cached. This method clears the cache.
+<pre>// javascript
+polygon.clear()</pre><br>
+
+<pre id="6polygon.plot"><span class="lnk" onmouseover="show('polygon plot - план (прокладка) многоугольника')" onmouseout="hide()"><span class="shadow">polygon.</span>plot()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+Подобно ломаным линиям, многоугольники могут быть обновлены с помощью метода <tt>plot()</tt>:
+<pre>// javascript
+polygon.plot([[0,0], [100,50], [50,100], [150,50], [200,50]])</pre>
+Метод <tt>plot()</tt> также можно анимировать:
+<pre>// javascript
+polygon.animate(3000).plot([[0,0], [100,50], [50,100], [150,50], [200,50], [250,100], [300,50], [350,50]])</pre></div><br><br>
+
+
+<h4 id="7">SVG.Path</h4>
+<div class=blockindent><br>
+<pre id="6path"><span class="lnk" onmouseover="show('path - путь, контур')" onmouseout="hide()">path()</span>  <i class=low>конструктор</i></pre>
+<div class=list>конструктор на <tt>SVG.Container</tt></div>
+<div class=list>возвращает - <tt>SVG.Path</tt>, который наследует от <tt>SVG.Shape</tt>.</div>
+
+The path string is similar to the polygon string but much more complex in order to support curves:
+<pre>// javascript
+draw.path('M0 0 H50 A20 20 0 1 0 100 50 v25 C50 125 0 85 0 85 z')</pre><br>
+
+<div style="font-family:Segoe UI; font-size:90%; margin-left:10px;">
+&nbsp; &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("path1","path2");'>Результат</span>
+&nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("path2","path1");'>Код JavaScript</span>
+<span style="float:right; margin-right:20px;"><a href="http://jsfiddle.net/wout/oxaxp55z/2/?utm_source=website&utm_medium=embed&utm_campaign=oxaxp55z" target="_blank">Редактировать в JSFiddle</a></span>
+<div id="path1" style="height:220px; background-color:#fff; display:block; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:20px; width:60px;">
+<img src="img/path.png"></div>
+<div id="path2" style="height:220px; background-color:#eee; display:none; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:100px; width:80px;">
+<pre>var draw = SVG('drawing').size(300, 130)<br>
+var path = draw.path('M0 0 H50 A20 20 0 1 0 100 50 v25 C50 125 0 85 0 85 z')
+path.fill('none').move(20, 20)
+path.stroke({ color: '#f06', width: 4, linecap: 'round', linejoin: 'round' })</pre></div></div><br>
+
+For more details on path data strings, please refer to the [SVG documentation on path data](http://www.w3.org/TR/SVG/paths.html#PathData).<br><br>
+
+## <span class="subject">path.</span>array()
+
+`returns` __`SVG.PathArray`__
+
+References the `SVG.PathArray` instance. This method is rather intended for internal use:
+<pre>// javascript
+path.array()</pre>
+
+More info: (link: /classes/#svg-patharray text: SVG.PathArray).<br><br>
+
+## <span class="subject">path.</span>clear()
+
+<div class=list>возвращает - самого себя (itself)</div>
+
+When the given path data is parsed, the result is cached. This method clears the cache.
+<pre>// javascript
+path.clear()</pre><br>
+
+## <span class="subject">path.</span>length()
+
+`returns` __`number`__
+
+Get the total length of a path element:
+<pre>// javascript
+var length = path.length()</pre><br>
+
+## <span class="subject">path.</span>pointAt()
+
+`returns` __`SVGPoint`__
+
+Get point on a path at given length:
+<pre>// javascript
+var point = path.pointAt(105)</pre>
+
+<div class=note><b>Примечание:</b> `pointAt()` returns a native `SVGPoint` and not a `SVG.Point`.</div><br>
+
+## <span class="subject">path.</span>plot()
+
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+
+Paths can be updated using the `plot()` method:
+<pre>// javascript
+path.plot('M10 80 C 40 10, 65 10, 95 80 S 150 150, 180 80')</pre>
+
+The `plot()` method can also be animated:
+<pre>// javascript
+path.animate(2000).plot('M10 80 C 40 150, 65 150, 95 80 S 150 10, 180 80').loop(true, true)</pre>
+
+There is only basic support for animating paths baked into SVG.js, which means that only paths with the same commands (`M`,`C`,`S` etc.) are animateable.
+
+If you need to animate paths that do not share the same commands in order, you can use [svg.pathmorphing.js](https://github.com/Fuzzyma/svg.pathmorphing.js)<br><br>
+
+
+<h4 id="8">SVG.Text</h4>
+<div class=blockindent><br>
+## text() <span class="suffix">constructor</span>
+
+`constructor on` __`SVG.Container`__
+`returns` __`SVG.Text`__ ` which inherits from ` __`SVG.Shape`__
+
+Unlike html, text in svg is much harder to tame. There is no way to create flowing text, so newlines should be entered manually. In SVG.js there are two ways to create text elements.
+
+The first and easiest method is to provide a string of text, split by newlines:
+<pre>// javascript
+var text = draw.text("Lorem ipsum dolor sit amet consectetur.\nCras sodales imperdiet auctor.")</pre>
+
+This will automatically create a block of text and insert newlines where necessary.
+
+The second method will give you much more control but requires a bit more code:
+<pre>// javascript
+var text = draw.text(function(add) {
+  add.tspan('Lorem ipsum dolor sit amet ').newLine()
+  add.tspan('consectetur').fill('#f06')
+  add.tspan('.')
+  add.tspan('Cras sodales imperdiet auctor.').newLine().dx(20)
+  add.tspan('Nunc ultrices lectus at erat').newLine()
+  add.tspan('dictum pharetra elementum ante').newLine()
+})</pre>
+
+If you want to go the other way and don't want to add tspans at all, just one line of text, you can use the `plain()` method instead:
+<pre>// javascript
+var text = draw.plain('Lorem ipsum dolor sit amet consectetur.')</pre>
+
+This is a shortcut to the `plain` method on the `SVG.Text` instance which doesn't render newlines at all.<br><br>
+
+<div style="font-family:Segoe UI; font-size:90%; margin-left:10px;">
+&nbsp; &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("text1","text2");'>Результат</span>
+&nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("text2","text1");'>Код JavaScript</span>
+<span style="float:right; margin-right:20px;"><a href="http://jsfiddle.net/wout/7pdww24q/5/?utm_source=website&utm_medium=embed&utm_campaign=7pdww24q" target="_blank">Редактировать в JSFiddle</a></span>
+<div id="text1" style="height:100px; background-color:#fff; display:block; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:20px; width:60px;">
+<div style="background-color:#fff; display:block; margin:20px; padding:20px; font-family:Segoe UI; color:#f06;">I know that eggs do well to stay out of frying pans.</div></div>
+<div id="text2" style="height:100px; background-color:#eee; display:none; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:100px; width:80px;">
+<pre>var draw = SVG('drawing').size(500, 50)<br>
+var text = draw.text('I know that eggs do well to stay out of frying pans.')
+text.move(20,20).font({ fill: '#f06', family: 'Inconsolata' })</pre></div></div><br>
+
+## <span class="subject">text.</span>build()
+
+<div class=list>возвращает - самого себя (itself)</div>
+
+The `build()` can be used to enable / disable build mode. With build mode disabled, the `plain()` and `tspan()` methods will first call the `clear()` method before adding the new content. So when build mode is enabled, `plain()` and `tspan()` will append the new content to the existing content. When passing a block to the `text()` method, build mode is toggled automatically before and after the block is called. But in some cases it might be useful to be able to toggle it manually:
+<pre>// javascript
+var text = draw.text('This is just the start, ')<br>
+text.build(true)  // enables build mode<br>
+var tspan = text.tspan('something pink in the middle ').fill('#00ff97')
+text.plain('and again boring at the end.')<br>
+text.build(false) // disables build mode<br>
+tspan.animate('2s').fill('#f06')</pre><br>
+
+## <span class="subject">text.</span>clear()
+
+<div class=list>возвращает - самого себя (itself)</div>
+
+Clear all the contents of the called text element:
+<pre>// javascript
+text.clear()</pre><br>
+
+## <span class="subject">text.</span>length()
+
+`returns` __`number`__
+
+Gets the total computed text length of all tspans together:
+<pre>// javascript
+text.length()</pre><br>
+
+## <span class="subject">text.</span>font() _as setter_
+
+<div class=list>возвращает - самого себя (itself)</div>
+
+A convenience method to add font-related properties:
+<pre>// javascript
+text.font({
+  family:   'Helvetica'
+, size:     144
+, anchor:   'middle'
+, leading:  '1.5em'
+})</pre>
+
+Not unlike the `attr()` method, the `font()` method also accepts a key/value pair:
+<pre>// javascript
+text.font('family', 'Menlo')</pre>
+
+Available properties are:
+- `leading` (will do the same as calling the `leading()` method as setter)
+- `anchor` (will set the `text-anchor` attribute)
+- `family` (will set the `font-family` attribute)
+- `size` (will set the `font-size` attribute)
+- `stretch` (will set the `font-stretch` attribute)
+- `style` (will set the `font-style` attribute)
+- `variant` (will set the `font-variant` attribute)
+- `weight` (will set the `font-weight` attribute)
+
+Any other property will be applied as given. So, for example, the `letter-spacing` property will just be applied as it would be given to the `attr()` method. More on (link: https://www.w3.org/TR/SVG/text.html#FontPropertiesUsedBySVG text: font-related properties here target: _blank).<br><br>
+
+## <span class="subject">text.</span>font() _as getter_
+
+As you might expect, the `font()` method also acts as a getter:
+
+<pre>// javascript
+var leading = text.font('leading')</pre><br>
+
+## <span class="subject">text.</span>leading() _as setter_
+
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+
+As opposed to html, where leading is defined by `line-height`, svg does not have a natural leading equivalent. In svg, lines are not defined naturally. They are defined by `<tspan>` nodes with a `dy` attribute defining the line height and an `x` value resetting the line to the `x` position of the parent text element. But you can also have many nodes in one line defining a different `y`, `dy`, `x` or even `dx` value. This gives us a lot of freedom, but also a lot more responsibility. We have to decide when a new line is defined, where it starts, what its offset is and what it's height is. The `leading()` method in SVG.js tries to ease the pain by giving you behaviour that is much closer to html. In combination with newline separated text, it works just like html:
+<pre>// javascript
+var text = draw.text("Lorem ipsum dolor sit amet consectetur.\nCras sodales imperdiet auctor.")
+text.leading(1.3)</pre>
+
+This will render a text element with a tspan element for each line, with a `dy` value of `130%` of the font size.<br>
+
+Note that the `leading()` method assumes that every first level tspan in a text node represents a new line. Using `leading()` on text elements containing multiple tspans in one line (e.g. without a wrapping tspan defining a new line) will render scrambled. So it is advisable to use this method with care, preferably only when throwing newline separated text at the text element or calling the `newLine()` method on every first level tspan added in the block passed as an argument to the text element.<br><br>
+
+## <span class="subject">text.</span>leading() _as getter_
+
+`returns` __`value`__
+
+Get the current leading value:
+<pre>// javascript
+var leading = text.leading()</pre><br>
+
+## <span class="subject">text.</span>lines()
+
+`returns` __`SVG.Set`__
+
+All first level tspans can be referenced with the `lines()` method:
+<pre>// javascript
+text.lines()</pre>
+
+This will return an instance of `SVG.Set` including all `tspan` elements.<br><br>
+
+## <span class="subject">text.</span>plain()
+
+<div class=list>возвращает - самого себя (itself)</div>
+
+If the content of the element doesn't need any styling or multiple lines, it might be sufficient to just add some plain text:
+<pre>// javascript
+text.plain('I do not have any expectations.')</pre><br>
+
+## <span class="subject">text.</span>rebuild()
+
+<div class=list>возвращает - самого себя (itself)</div>
+
+This is an internal callback that probably never needs to be called manually. Basically it rebuilds the text element whenerver `font-size` and `x` attributes or the `leading()` of the text element are modified. This method also acts a setter to enable or disable rebuilding:
+<pre>// javascript
+text.rebuild(false) //-> disables rebuilding
+text.rebuild(true)  //-> enables rebuilding and instantaneously rebuilds the text element</pre><br>
+
+## <span class="subject">text.</span>text() _as setter_
+
+<div class=list>возвращает - самого себя (itself)</div>
+
+Changing text afterwards is also possible with the `text()` method:
+<pre>// javascript
+text.text('Brilliant!')</pre><br>
+
+## <span class="subject">text.</span>text() _as getter_
+
+`returns` __`string`__
+
+To get the raw text content:
+<pre>// javascript
+text.text()</pre><br>
+
+## <span class="subject">text.</span>tspan()
+
+`returns` __`SVG.Tspan`__
+
+Just adding one tspan is also possible:
+
+<pre>// javascript
+text.tspan(' on a train...').fill('#f06')</pre></div><br><br>
+
+
+<h4 id="9">SVG.TextPath</h4>
+
+## path() <span class="suffix">constructor for textPath</span>
+
+`constructor on` __`SVG.Text`__
+`returns` __`SVG.TextPath`__ ` which inherits from ` __`SVG.Text`__
+
+A nice feature in svg is the ability to run text along a path:
+
+<pre>// javascript
+var text = draw.text(function(add) {
+  add.tspan('We go ')
+  add.tspan('up').fill('#f09').dy(-40)
+  add.tspan(', then we go down, then up again').dy(40)
+})<br>
+var path = 'M 100 200 C 200 100 300 0 400 100 C 500 200 600 300 700 200 C 800 100 900 100 900 100'<br>
+text.path(path).font({ size: 42.5, family: 'Verdana' })</pre>
+
+When calling the `path()` method on a text element, the text element is mutated into an intermediate between a text and a path element. From that point on the text element will also feature a `plot()` method to update the path:
+
+<pre>// javascript
+text.plot('M 300 500 C 200 100 300 0 400 100 C 500 200 600 300 700 200 C 800 100 900 100 900 100')</pre>
+
+Attributes specific to the `<textPath>` element can be applied to the textPath instance itself:
+
+<pre>// javascript
+text.textPath().attr('startOffset', '50%')</pre>
+
+And they can be animated as well of course:
+
+<pre>// javascript
+text.textPath().animate(3000).attr('startOffset', '80%')</pre>
+
+<div class=note><b>Примечание:</b> If a `startOffset` other than a percentage is given, then the value represents a distance along the path measured in the current user coordinate system.</div><br>
+
+<div style="font-family:Segoe UI; font-size:90%; margin-left:10px;">
+&nbsp; &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("dragon1","dragon2");'>Результат</span>
+&nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("dragon2","dragon1");'>Код JavaScript</span>
+<span style="float:right; margin-right:20px;"><a href="https://jsfiddle.net/wout/7wL1uv8n/?utm_source=website&utm_medium=embed&utm_campaign=7wL1uv8n" target="_blank">Редактировать в JSFiddle</a></span>
+<div id="dragon1" style="height:350px; background-color:#fff; display:block; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:20px; width:60px;">
+<div style="font-size:110%; border:1px solid #808080; margin:0px; padding:4px;"><tt>Dragon----- - - - -></tt></div>
+<img src="img/dragon.gif"></div>
+<div id="dragon2" style="height:350px; background-color:#eee; display:none; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:100px; width:80px;">
+<pre>var input = document.querySelector('input[type=text]')
+var draw = SVG('drawing').viewbox(0, 0, 300, 140)
+var text = draw.text(function(add) {
+	add.tspan( input.value )
+})<br>
+text
+	.path('M10 80 C 40 10, 65 10, 95 80 S 150 150, 180 80')
+	.animate(1000, '<>')
+	.plot('M10 80 C 40 150, 65 150, 95 80 S 150 10, 180 80')
+	.loop(true, true)<br>
+input.addEventListener('keyup', updateText(text))<br>
+function updateText(textPath) {
+	return function() {
+		textPath.tspan(this.value)
+	}
+}</pre></div></div><br>
+
+## <span class="subject">textPath.</span>array()
+
+`returns` __`SVG.PathArray`__
+
+Get the path array of the underlying path:
+
+<pre>// javascript
+var array = text.textPath().array()</pre><br>
+
+## <span class="subject">textPath.</span>plot()
+
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+
+Change the path on the textpath element:
+
+<pre>// javascript
+text.textPath().plot('M 300 500 C 200 100 300 0 400 100 C 500 200 600 300 700 200')</pre><br>
+
+## <span class="subject">textPath.</span>textPath()
+
+`returns` __`SVG.TextPath`__
+
+Referencing the textPath node directly:
+
+<pre>// javascript
+var textPath = text.textPath()</pre><br>
+
+## <span class="subject">textPath.</span>track()
+
+`returns` __`SVG.Path`__
+
+Referencing the linked path element directly:
+
+<pre>// javascript
+var path = text.track()</pre>
+
+<div class=note><b>Примечание:</b> `SVG.TextPath` inherits from `SVG.Text`, so all those methods are inherited as well.</div>
+
+<h5>Events for SVG.Text</h5>
+The text element has one event. It is fired every time the `rebuild()` method is called:
+
+<pre>// javascript
+text.on('rebuild', function() {
+  // whatever you need to do after rebuilding
+})</pre></div><br><br>
+
+
+<h4 id="10">SVG.Tspan</h4>
+
+## tspan() <span class="suffix">constructor</span>
+
+`constructor on` __`SVG.Text`__
+`returns` __`SVG.Tspan`__ ` which inherits from ` __`SVG.Shape`__
+
+The tspan elements are only available inside text elements or inside other tspan elements.
+
+<pre>// javascript
+text.tspan('spannened')</pre><br>
+
+## <span class="subject">tspan.</span>clear()
+
+<div class=list>возвращает - самого себя (itself)</div>
+
+Clear all the contents of the called tspan element:
+
+<pre>// javascript
+tspan.clear()</pre><br>
+
+## <span class="subject">tspan.</span>dx()
+
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+
+Define the dynamic `x` value of the element, much like a html element with `position:relative` and `left` defined:
+
+<pre>// javascript
+tspan.dx(30)</pre><br>
+
+## <span class="subject">tspan.</span>dy()
+
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+
+Define the dynamic `y` value of the element, much like a html element with `position:relative` and `top` defined:
+
+<pre>// javascript
+tspan.dy(30)</pre><br>
+
+## <span class="subject">tspan.</span>plain()
+
+<div class=list>возвращает - самого себя (itself)</div>
+
+Just adds some plain text:
+
+<pre>// javascript
+tspan.plain('I do not have any expectations.')</pre><br>
+
+## <span class="subject">tspan.</span>length()
+
+`returns` __`number`__
+
+Gets the total computed text length:
+
+<pre>// javascript
+tspan.length()</pre><br>
+
+## <span class="subject">tspan.</span>newLine()
+
+<div class=list>возвращает - самого себя (itself)</div>
+
+The `newLine()` is a convenience method for adding a new line with a `dy` attribute using the current "leading":
+
+<pre>// javascript
+var text = draw.text(function(add) {
+  add.tspan('Lorem ipsum dolor sit amet ').newLine()
+  add.tspan('consectetur').fill('#f06')
+  add.tspan('.')
+  add.tspan('Cras sodales imperdiet auctor.').newLine().dx(20)
+  add.tspan('Nunc ultrices lectus at erat').newLine()
+  add.tspan('dictum pharetra elementum ante').newLine()
+})</pre><br>
+
+## <span class="subject">tspan.</span>text()
+
+<div class=list>возвращает - самого себя (itself)</div>
+
+Update the content of the tspan. This can be done by either passing a string:
+
+<pre>// javascript
+tspan.text('Just a string.')</pre>
+
+Which will basicly call the `plain()` method:
+
+Or by passing a block to add more specific content inside the called tspan:
+
+<pre>// javascript
+tspan.text(function(add) {
+  add.plain('Just plain text.')
+  add.tspan('Fancy text wrapped in a tspan.').fill('#f06')
+  add.tspan(function(addMore) {
+    addMore.tspan('And you can doo deeper and deeper...')
+  })
+})</pre><br>
+
+## <span class="subject">tspan.</span>tspan()
+
+`returns` __`SVG.Tspan`__
+
+Add a nested tspan:
+<pre>// javascript
+tspan.tspan('I am a child of my parent').fill('#f06')</pre></div><br><br>
+
+
+<h4 id="11">SVG.Image</h4>
+<div class=blockindent><br>
+<pre id="11image"><span class="lnk" onmouseover="show('image - изображение, картинка')" onmouseout="hide()">image()</span>  <i class=low>конструктор</i></pre>
+<div class=list>конструктор на <tt>SVG.Container</tt></div>
+<div class=list>возвращает - <tt>SVG.Image</tt>, который наследует от <tt>SVG.Shape</tt>.</div>
+Как и предполагалось, создает изображения:
+<pre>// javascript
+var image = draw.image('<span class="lnk" onmouseover="show('/path/to/image.jpg - путь/к/изображению.в формате jpg<br>(формат можеть быть другим)')" onmouseout="hide()">/path/to/image.jpg</span>')</pre>
+Если размеры изображения известны, можно передать их в качестве второго и третьего аргументов:
+<pre>// javascript
+var image = draw.image('<span class="lnk" onmouseover="show('/path/to/image.jpg - путь/к/изображению.в формате jpg<br>(формат можеть быть другим)')" onmouseout="hide()">/path/to/image.jpg</span>', 200, 300)</pre>
+<div style="font-family:Segoe UI; font-size:90%; margin-left:10px;">
+&nbsp; &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("image1","image2");'>Результат</span>
+&nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("image2","image1");'>Код JavaScript</span>
+<span style="float:right; margin-right:20px;"><a href="https://jsfiddle.net/wout/25bzorm3/2/?utm_source=website&utm_medium=embed&utm_campaign=25bzorm3" target="_blank">Редактировать в JSFiddle</a></span>
+<div id="image1" style="height:220px; background-color:#fff; display:block; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:20px; width:60px;">
+<img src="img/logo.jpg"></div>
+<div id="image2" style="height:220px; background-color:#eee; display:none; margin:0px; padding:0px; overflow-y:scroll;">
+<hr class="underline" style="margin-left:100px; width:80px;">
+<pre>var draw = SVG('drawing').size(500, 130)<br>
+var image = draw.image('https://cdn.img42.com/4b6f5e63ac50c95fe147052d8a4db676.jpeg')
+image.size(100, 100).move(20, 20)</pre></div></div><br>
+
+<pre id="11image.load"><span class="lnk" onmouseover="show('image load - загрузка изображения')" onmouseout="hide()"><span class="shadow">image.</span>load()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+Загрузку другого изображения можно выполнить с помощью метода <tt>load()</tt>.
+<pre>// javascript
+image.load('<span class="lnk" onmouseover="show('/path/to/another/image.jpg - путь/к/другому/изображению.в формате jpg<br>(формат можеть быть другим)')" onmouseout="hide()">/path/to/another/image.jpg</span>')</pre><br>
+
+<pre id="11image.loaded"><span class="lnk" onmouseover="show('image loaded - загруженное изображение')" onmouseout="hide()"><span class="shadow">image.</span>loaded()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+Если размеры изображения неизвестны, то понятно, что придется подождать, пока оно не станет загруженным, т.е. <tt>loaded</tt>.
+<pre>// javascript
+var image = draw.image('<span class="lnk" onmouseover="show('/path/to/image.jpg - путь/к/изображению.в формате jpg<br>(формат можеть быть другим)')" onmouseout="hide()">/path/to/image.jpg</span>').loaded(function(loader) {
+  this.size(loader.width, loader.height)
+})</pre>
+Возвращаемый загрузчиком (<tt>loader</tt>) объект в качестве первого аргумента метода загрузки содержит четыре значения:<br>
+&nbsp; &#9679; &nbsp; <tt>width</tt> - ширина<br>
+&nbsp; &#9679; &nbsp; <tt>height</tt> - высота<br>
+&nbsp; &#9679; &nbsp; <tt>ratio</tt> (width / height) - отношение сторон (ширина/высота)<br>
+&nbsp; &#9679; &nbsp; <tt>url</tt> - url-адрес</div><br><br>
+
+
+<h4 id="12">SVG.Gradient</h4>
+<div class=blockindent><br>
+<pre id="12gradient"><span class="lnk" onmouseover="show('gradient - градиент, цветовой переход')" onmouseout="hide()">gradient()</span>  <i class=low>конструктор</i></pre>
+<div class=list>конструктор на <tt>SVG.Container</tt></div>
+<div class=list>возвращает - <tt>SVG.Gradient</tt>, который наследует от <tt>SVG.Container</tt>.</div>
+Существуют линейные (<tt>linear</tt>) и радиальные (<tt>radial</tt>) градиенты. Линейный градиент создается вот так:
+<pre>// javascript
+var gradient = draw.gradient('linear', function(stop) {
+  stop.at(0, '#333')
+  stop.at(1, '#fff')
+})</pre>
+А вот, использование градиента на элементе:
+<pre>// javascript
+rect.attr({ fill: gradient })</pre>
+или
+<pre>// javascript
+rect.fill(gradient)</pre>
+Метод <tt>fill()</tt> будет вызван с экземпляром градиента, переданного в качестве закрашивания любого элемента.<br><br>
+<div style="font-family:Segoe UI; font-size:90%; margin-left:10px;">
+&nbsp; &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("gradient1","gradient2");'>Результат</span>
+&nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("gradient2","gradient1");'>Код JavaScript</span>
+<span style="float:right; margin-right:20px;"><a href="https://jsfiddle.net/wout/25bzorm3/2/?utm_source=website&utm_medium=embed&utm_campaign=25bzorm3" target="_blank">Редактировать в JSFiddle</a></span>
+<div id="gradient1" style="height:220px; background-color:#fff; display:block; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:20px; width:60px;">
+<img src="img/gradient.png"></div>
+<div id="gradient2" style="height:220px; background-color:#eee; display:none; margin:0px; padding:0px; overflow-y:scroll;">
+<hr class="underline" style="margin-left:100px; width:80px;">
+<pre>var draw = SVG('drawing').size(500, 130)<br>
+var linear = draw.gradient('linear', function(stop) {
+  stop.at(0, '#f06')
+  stop.at(1, '#0f9')
+})<br>
+draw.rect(100, 100).move(20, 20).radius(10).fill(linear)<br>
+var radial = draw.gradient('radial', function(stop) {
+	stop.at(0, '#0f9')
+  stop.at(1, '#f06')
+})<br>
+draw.rect(100, 100).move(140, 20).radius(10).fill(radial)</pre></div></div><br>
+У <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Gradients" target="_blank">MDN имеется прекрасная страница</a> с примерами работы градиентов SVG.
+Вот <a href="https://developer.mozilla.org/ru/docs/Web/SVG/Tutorial/Gradients" target="_blank">она на русском языке</a>.<br><br>
+
+<pre id="12gradient.at"><span class="lnk" onmouseover="show('gradient at - градиент на')" onmouseout="hide()"><span class="shadow">gradient.</span>at()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+Параметры <tt>offset</tt> (смещение) и <tt>color</tt> (цвет) обязательны для граничных значений цвета (стопов - <tt>stop</tt>), параметр <tt>opacity</tt> (непрозрачность) - дополнительный, необязательный.
+Смещение (<tt>offset</tt>) представляет собой число с плавающей запятой в пределах от <tt>0</tt> до <tt>1</tt> или значение в процентах (например, <tt>33%</tt>).
+<pre>// javascript
+stop.at(0, '#333')</pre>
+или
+<pre>// javascript
+stop.at({ offset: 0, color: '#333', opacity: 1 })</pre><br>
+
+<pre id="12gradient.fill"><span class="lnk" onmouseover="show('gradient fill - заполнение градиента')" onmouseout="hide()"><span class="shadow">gradient.</span>fill()</span></pre>
+<div class=list>возвращает - строковое значение (<tt>string</tt>)</div>
+<pre>// javascript
+gradient.fill() //-> returns 'url(#SvgjsGradient1234)'</pre><br>
+
+<pre id="12gradient.from"><span class="lnk" onmouseover="show('gradient from - градиент от')" onmouseout="hide()"><span class="shadow">gradient.</span>from()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+Для определения направления перехода цвета можно установить от (<tt>from</tt>) <tt>x, y</tt> и до (<tt>to</tt>) <tt>x, y</tt>:
+<pre>// javascript
+gradient.from(0, 0).to(0, 1)</pre>
+Значения <tt>from</tt> и <tt>to</tt> также можно выразить в процентах.<br><br>
+
+<pre id="12gradient.get"><span class="lnk" onmouseover="show('gradient get - получить градиент')" onmouseout="hide()"><span class="shadow">gradient.</span>get()</span></pre>
+<div class=list>возвращает - <tt>SVG.Stop</tt></div>
+Метод <tt>get()</tt> упрощает получение стопового цвета из существующего градиента:
+<pre>// javascript
+var gradient = draw.gradient('radial', function(stop) {
+  stop.at({ offset: 0, color: '#000', opacity: 1 })   // -> first (первый)
+  stop.at({ offset: 0.5, color: '#f03', opacity: 1 }) // -> second (второй)
+  stop.at({ offset: 1, color: '#066', opacity: 1 })   // -> third (третий)
+})<br>
+var s1 = gradient.get(0) // -> returns "first" stop (возвращает первый стоповый цвет)</pre><br>
+
+<pre id="12gradient.radius"><span class="lnk" onmouseover="show('gradient radius - радиус градиента')" onmouseout="hide()"><span class="shadow">gradient.</span>radius()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+Для определения внешнего радиуса, до которого должен распространяться внутренний цвет, у радиальных градиентов имеется метод <tt>radius()</tt>:
+<pre>// javascript
+var gradient = draw.gradient('radial', function(stop) {
+  stop.at(0, '#333')
+  stop.at(1, '#fff')
+})<br>
+gradient.from(0.5, 0.5).to(0.5, 0.5).radius(0.5)</pre><br>
+
+<pre id="12gradient.to"><span class="lnk" onmouseover="show('gradient to - градиент до')" onmouseout="hide()"><span class="shadow">gradient.</span>to()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+Для определения направления перехода цвета можно установить от (<tt>from</tt>) <tt>x, y</tt> и до (<tt>to</tt>) <tt>x, y</tt>:
+<pre>// javascript
+gradient.from(0, 0).to(0, 1)</pre>
+Значения <tt>from</tt> и <tt>to</tt> также можно выразить в процентах.<br><br>
+
+<pre id="12gradient.update"><span class="lnk" onmouseover="show('gradient update - обновление градиента')" onmouseout="hide()"><span class="shadow">gradient.</span>update()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+В дальнейшем, градиент также может быть обновлен:
+<pre>// javascript
+gradient.update(function(stop) {
+  stop.at(0.1, '#333', 0.2)
+  stop.at(0.9, '#f03', 1)
+})</pre>
+И даже можно отдельно обновить один стоповый цвет:
+<pre>// javascript
+var s1, s2, s3<br>
+draw.gradient('radial', function(stop) {
+  s1 = stop.at(0, '#000')
+  s2 = stop.at(0.5, '#f03')
+  s3 = stop.at(1, '#066')
+})<br>
+s1.update(0.1, '#0f0', 1)</pre></div><br><br>
+
+
+<h4 id="13">SVG.Stop</h4>
+<div class=blockindent><br>
+<pre id="13at"><span class="lnk" onmouseover="show('at - предлог на, в')" onmouseout="hide()">at()</span>  <i class=low>конструктор</i></pre>
+<div class=list>конструктор на <tt>SVG.Gradient</tt></div>
+<div class=list>возвращает - <tt>SVG.Stop</tt>, который наследует от <tt>SVG.Element</tt>.</div>
+Элементы <tt>stop</tt> доступны только внутри элементов градиента.
+(элемент <tt>stop</tt> (стоповый цвет) - промежуточный цвет градиента.)
+The stop elements are only available inside gradient elements.
+<pre>// javascript
+var stop = gradient.at(0.5, '#f03')</pre>
+или
+<pre>// javascript
+var stop = gradient.at({ offset: 0.5, color: '#f06', opacity: 1 })</pre><br>
+
+<pre id="13stop.update"><span class="lnk" onmouseover="show('stop update - обновление стопового цвета')" onmouseout="hide()"><span class="shadow">stop.</span>update()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+Принимает теже параметры, что и конструктор.
+<pre>// javascript
+stop.update(0, '#333')</pre>
+или
+<pre>// javascript
+stop.update({ offset: 0, color: '#333', opacity: 1 })</pre></div><br><br>
+
+
+<h4 id="14">SVG.Pattern</h4>
+<div class=blockindent><br>
+<pre id="14pattern"><span class="lnk" onmouseover="show('pattern - шаблон, образец, паттерн')" onmouseout="hide()">pattern()</span>  <i class=low>конструктор</i></pre>
+<div class=list>конструктор на <tt>SVG.Container</tt></div>
+<div class=list>возвращает - <tt>SVG.Pattern</tt>, который наследует от <tt>SVG.Container</tt>.</div>
+Создание шаблона очень похоже на создание градиентов:
+Creating a pattern is very similar to creating gradients:
+
+<pre>// javascript
+var pattern = draw.pattern(20, 20, function(add) {
+  add.rect(20,20).fill('#f06')
+  add.rect(10,10)
+  add.rect(10,10).move(10,10)
+})</pre>
+
+This creates a checkered pattern of 20 x 20 pixels. You can add any available element to your pattern.
+
+Finally, to use the pattern on an element:
+
+<pre>// javascript
+rect.attr({ fill: pattern })</pre>
+или
+<pre>// javascript
+rect.fill(pattern)</pre>
+
+By passing the pattern instance as the fill on any element, the `fill()` method will be called on the pattern instance.<br><br>
+<div style="font-family:Segoe UI; font-size:90%; margin-left:10px;">
+&nbsp; &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("pattern1","pattern2");'>Результат</span>
+&nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("pattern2","pattern1");'>Код JavaScript</span>
+<span style="float:right; margin-right:20px;"><a href="http://jsfiddle.net/wout/jckwhha7/?utm_source=website&utm_medium=embed&utm_campaign=jckwhha7" target="_blank">Редактировать в JSFiddle</a></span>
+<div id="pattern1" style="height:220px; background-color:#fff; display:block; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:20px; width:60px;">
+<img src="img/pattern.png"></div>
+<div id="pattern2" style="height:220px; background-color:#eee; display:none; margin:0px; padding:0px; overflow-y:scroll;">
+<hr class="underline" style="margin-left:100px; width:80px;">
+<pre>var draw = SVG('drawing').size(500, 130)<br>
+var pattern = draw.pattern(20, 20, function(add) {
+  add.rect(20,20).fill('#f06')
+  add.rect(10,10).fill('#0f9')
+  add.rect(10,10).move(10,10).fill('#fff')
+})<br>
+draw.rect(100, 100).move(20, 20).radius(10).fill(pattern)</pre></div></div><br>
+
+<pre id="14pattern.fill"><span class="lnk" onmouseover="show('pattern fill - заливка шаблона')" onmouseout="hide()"><span class="shadow">pattern.</span>fill()</span></pre>
+<div class=list>возвращает - строковое значение (<tt>string</tt>)</div>
+<pre>// javascript
+pattern.fill() //-> returns 'url(#SvgjsPattern1234)'</pre><br>
+
+<pre id="14pattern.update"><span class="lnk" onmouseover="show('pattern update - обновление шаблона')" onmouseout="hide()"><span class="shadow">pattern.</span>update()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+В дальнейшем шаблон также может обновляться:
+<pre>// javascript
+pattern.update(function(add) {
+  add.circle(15).center(10,10)
+})</pre></div><br><br>
+
+
+<h4 id="15">SVG.Mask</h4>
+<div class=blockindent><br>
+## mask() <span class="suffix">constructor</span>
+
+`constructor on` __`SVG.Container`__
+`returns` __`SVG.Mask`__ ` which inherits from ` __`SVG.Container`__
+
+<pre>// javascript
+var ellipse = draw.ellipse(80, 40).move(10, 10).fill('#fff')<br>
+var mask = draw.mask().add(ellipse)<br>
+rect.maskWith(mask)</pre>
+
+But you can also use multiple elements:
+
+<pre>// javascript
+var ellipse = draw.ellipse(80, 40).move(10, 10).fill({ color: '#fff' })
+var text = draw.text('SVG.JS').move(10, 10).font({ size: 36 }).fill({ color: '#fff' })<br>
+var mask = draw.mask().add(text).add(ellipse)<br>
+rect.maskWith(mask)</pre>
+
+<iframe width="100%" height="205" src="//jsfiddle.net/wout/s5mb5zds/1/embedded/result,js/?accentColor=f06" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+## maskWith()
+
+`constructor on` __`SVG.Element`__
+<div class=list>возвращает - самого себя (itself)</div>
+
+The easiest way to mask is to use a single element:
+
+<pre>// javascript
+var ellipse = draw.ellipse(80, 40).move(10, 10).fill({ color: '#fff' })<br>
+rect.maskWith(ellipse)</pre>
+
+If you want the masked object to be rendered at 100% you need to set the fill color of the masking object to white. But you might also want to use a gradient:
+
+<pre>// javascript
+var gradient = draw.gradient('linear', function(stop) {
+  stop.at({ offset: 0, color: '#000' })
+  stop.at({ offset: 1, color: '#fff' })
+})<br>
+var ellipse = draw.ellipse(80, 40).move(10, 10).fill({ color: gradient })<br>
+rect.maskWith(ellipse)</pre><br>
+
+## <span class="subject">mask.</span>unmask()
+
+<div class=list>возвращает - самого себя (itself)</div>
+
+Unmasking the elements can be done with the `unmask()` method:
+
+<pre>// javascript
+rect.unmask()</pre>
+
+The `unmask()` method returns the masking element.<br><br>
+
+## <span class="subject">mask.</span>remove()
+
+<div class=list>возвращает - самого себя (itself)</div>
+
+Removing the mask altogether will also `unmask()` all masked elements as well:
+
+<pre>// javascript
+mask.remove()</pre><br>
+
+## masker
+
+`returns` __`SVG.Mask`__
+
+For your convenience, the masking element is also referenced in the masked element. This can be useful in case you want to change the mask:
+
+<pre>// javascript
+rect.masker.fill('#fff')</pre></div><br><br>
+
+
+<h4 id="16">SVG.ClipPath</h4>
+
+Clipping elements works exactly the same as masking elements. The only difference is that clipped elements will adopt the geometry of the clipping element. Therefore events are only triggered when entering the clipping element whereas with masks the masked element triggers the event. Another difference is that masks can define opacity with their fill colour and clipPaths can't.
+
+## clip() <span class="suffix">constructor</span>
+
+`constructor on` __`SVG.Container`__
+`returns` __`SVG.ClipPath`__ ` which inherits from ` __`SVG.Container`__
+
+Clip with multiple elements:
+
+<pre>// javascript
+var ellipse = draw.ellipse(80, 40).move(10, 10)
+var text = draw.text('SVG.JS').move(10, 10).font({ size: 36 })
+
+var clip = draw.clip().add(text).add(ellipse)
+
+rect.clipWith(clip)</pre><br>
+
+<iframe width="100%" height="205" src="//jsfiddle.net/wout/6g9pfr2m/1/embedded/result,js/?accentColor=f06" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+## clipWith()
+
+<div class=list>возвращает - самого себя (itself)</div>
+
+<pre>// javascript
+var ellipse = draw.ellipse(80, 40).move(10, 10)
+
+rect.clipWith(ellipse)</pre><br>
+
+## <span class="subject">clipPath.</span>unclip()
+
+<div class=list>возвращает - самого себя (itself)</div>
+
+Unclipping the elements can be done with the `unclip()` method:
+
+<pre>// javascript
+rect.unclip()</pre><br>
+
+## <span class="subject">clipPath.</span>remove()
+
+<div class=list>возвращает - самого себя (itself)</div>
+
+Removing the clip alltogether will also `unclip()` all clipped elements as well:
+
+<pre>// javascript
+clip.remove()</pre><br>
+
+## clipper
+
+`returns` __`SVG.ClipPath`__
+
+For your convenience, the clipping element is also referenced in the clipped element. This can be useful in case you want to change the clipPath:
+
+<pre>// javascript
+rect.clipper.move(10, 10)</pre></div><br><br>
+
+
+<h4 id="17">SVG.Use</h4>
+<div class=blockindent><br>
+## use() <span class="suffix">constructor</span>
+
+`constructor on` __`SVG.Container`__
+`returns` __`SVG.Use`__ ` which inherits from ` __`SVG.Shape`__
+
+The use element simply emulates another existing element. Any changes on the master element will be reflected on all the `use` instances. The usage of `use()` is very straightforward:
+
+<pre>// javascript
+var rect = draw.rect(100, 100).fill('#f09')
+var use  = draw.use(rect).move(200, 200)</pre>
+
+In the case of the example above two rects will appear on the svg drawing, the original and the `use` instance. In some cases, you might want to hide the original element. The best way to do this is to create the original element in the defs node:
+
+<pre>// javascript
+var rect = draw.defs().rect(100, 100).fill('#f09')
+var use  = draw.use(rect).move(200, 200)</pre>
+
+In this way, the rect element acts as a library element. You can edit it, but it won't be rendered.
+
+Another way is to point an external SVG file, just specified the element `id` and path to file.
+
+<pre>// javascript
+var use  = draw.use('elementId', 'path/to/file.svg')</pre>
+
+This way is useful when you have complex images already created.
+Note that, for external images (outside your domain) it may be necessary to load the file with XHR.</div><br>
+
+
+<h4 id="18">SVG.Marker</h4>
+<div class=blockindent><br>
+## marker() <span class="suffix">constructor</span>
+
+`constructor on` __`SVG.Container`__
+`returns` __`SVG.Marker`__ ` which inherits from ` __`SVG.Container`__
+
+Markers can be added to every individual point of a `line`, `polyline`, `polygon` and `path`. There are three types of markers: `start`, `mid` and `end`. Where `start` represents the first point, `end` the last and `mid` every point in between.
+
+<pre>// javascript
+var path = draw.path('M0 0 A50 50 0 0 1 50 50 A50 50 0 0 0 100 100')
+
+path.fill('none').move(20, 20).stroke({ width: 1, color: '#ccc' })
+
+path.marker('start', 10, 10, function(add) {
+  add.circle(10).fill('#f06')
+})
+path.marker('mid', 10, 10, function(add) {
+  add.rect(5, 10).cx(5).fill('#ccc')
+})
+path.marker('end', 20, 20, function(add) {
+  add.circle(6).center(4, 5)
+  add.circle(6).center(4, 15)
+  add.circle(6).center(12, 10)
+
+  this.fill('#0f9')
+})</pre>
+
+The `marker()` method can be used in three ways. Firstly, a marker can be created on any container element (e.g. svg, nested, group, ...). This is useful if you plan to reuse the marker many times, so it will create a marker in the defs but not show it yet:
+
+<pre>// javascript
+var marker = draw.marker(10, 10, function(add) {
+  add.rect(10, 10)
+})</pre>
+
+Secondly a marker can be created and applied directly on its target element:
+
+<pre>// javascript
+path.marker('start', 10, 10, function(add) {
+  add.circle(10).fill('#f06')
+})</pre>
+
+This will create a marker in the defs and apply it directly. Note that the first argument defines the position of the marker and that there are four arguments as opposed to three with the first example.
+
+Lastly, if a marker is created for reuse on a container element, it can be applied directly to the target element:
+
+<pre>// javascript
+path.marker('mid', marker)</pre>
+
+Finally, to get a marker instance from the target element reference:
+
+<pre>// javascript
+path.reference('marker-end')</pre>
+
+<iframe width="100%" height="205" src="//jsfiddle.net/wout/j3fr5okk/embedded/result,js/?accentColor=f06" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+## <span class="subject">marker.</span>height()
+
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+
+Defines the `markerHeight` attribute:
+
+<pre>// javascript
+marker.height(10)</pre><br>
+
+## <span class="subject">marker.</span>ref()
+
+<div class=list>возвращает - самого себя (itself)</div>
+
+By default, the `refX` and `refY` attributes of a marker are set to respectively half the `width` nd `height` values. To define the `refX` and `refY` of a marker differently:
+
+<pre>// javascript
+marker.ref(2, 7)</pre><br>
+
+## <span class="subject">marker.</span>size()
+
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+
+Defines the `markerWidth` and `markerHeight` attributes:
+
+<pre>// javascript
+marker.size(10, 10)</pre><br>
+
+## <span class="subject">marker.</span>update()
+
+<div class=list>возвращает - самого себя (itself)</div>
+
+Updating the contents of a marker will `clear()` the existing content and add the content defined in the block passed as the first argument:
+
+<pre>// javascript
+marker.update(function(add) {
+  add.circle(10)
+})</pre><br>
+
+## <span class="subject">marker.</span>width()
+
+<div class=list>возвращает - самого себя (itself)</div>
+<div class=list>анимируется - да</div>
+
+Defines the `markerWidth` attribute:
+
+<pre>// javascript
+marker.width(10)</pre></div><br><br>
+
+
+<h4 id="19">SVG.Bare</h4>
+<div class=blockindent><br>
+For all SVG elements that are not described by SVG.js, the `SVG.Bare` class comes in handy. This class inherits directly from `SVG.Element` and makes it possible to add custom methods in a separate namespace without polluting the main `SVG.Element` namespace. Consider it your personal playground.
+
+## element() <span class="suffix">constructor</span>
+
+`returns` __`SVG.Bare`__ ` which inherits from ` __`SVG.Element`__
+
+The `SVG.Bare` class can be instantiated with the `element()` method on any parent element:
+
+<pre>// javascript
+var element = draw.element('title')</pre>
+The string value passed as the first argument is the node name that should be generated.
+
+Additionally, any existing class name can be passed as the second argument to define from which class the element should inherit:
+
+<pre>// javascript
+var element = draw.element('symbol', SVG.Parent)</pre>
+
+This gives you as the user a lot of power. But remember, with great power comes great responsibility.
+
+## <span class="subject">element.</span>words()
+
+<div class=list>возвращает - самого себя (itself)</div>
+
+The `SVG.Bare` instance carries an additional method to add plain text:
+
+<pre>// javascript
+var element = draw.element('title').words('This is a title.')
+//-> <title>This is a title.</title></pre></div><br><br>
+
+<br><br>
+</body></html>

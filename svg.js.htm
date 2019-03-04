@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>three.js</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<style type="text/css">
+body {background-color:#f5f5f5; font-family:Helvetica, Arial, sans-serif; font-size:11pt; text-align:left; line-height:1.25; margin:16px auto; padding:4%;}
+ul {margin-left:10px; padding-left:10px; white-space:nowrap;}
+li {margin-left:0px;}
+a {rel="noopener";}
+a:link {color:#000080; text-decoration:none;}
+a:active {color:#000080; text-decoration:none;}
+a:visited {color:#000080; text-decoration:none;}
+a:hover {color:#000080; text-decoration:underline; background-color:#ffffff;}
+.floatTip { position:absolute; width:auto; border:1px solid #87cefa; border-radius:8px; box-shadow:3px 3px 3px rgba(0, 0, 0, .3); padding:8px; font-family:sans-serif; font-size:9pt; color:#333; background:#e0ffff; opacity:0; filter:alpha(opacity=0); z-index:98; transition-delay:0.5s; transition-duration:0.5s;}
+</style>
+<script type="text/javascript" src="1.js"></script>
+<base target="main">
+</head>
+<body>
+<a href="overview.htm">ОБЗОР</a>
+<br><br>
+<b><a href="install.htm" onmouseover="show('Установка')" onmouseout="hide()">Установка</a></b><br><br>
+<b><a href="intro.htm" onmouseover="show('Начало работы')" onmouseout="hide()">Начало работы</a></b><br><br>
+
+<b><a href="parents.htm" onmouseover="show('Родительские элементы')" onmouseout="hide()">Родительские элементы</a></b>
+<ul>
+<li><a href="parents.htm#1" onmouseover="show('SVG.Doc')" onmouseout="hide()">SVG.Doc</a></li>
+<li><a href="parents.htm#2" onmouseover="show('SVG.Nested')" onmouseout="hide()">SVG.Nested</a></li>
+<li><a href="parents.htm#3" onmouseover="show('SVG.G')" onmouseout="hide()">SVG.G</a></li>
+<li><a href="parents.htm#4" onmouseover="show('SVG.Symbol')" onmouseout="hide()">SVG.Symbol</a></li>
+<li><a href="parents.htm#5" onmouseover="show('SVG.Defs')" onmouseout="hide()">SVG.Defs</a></li>
+<li><a href="parents.htm#6" onmouseover="show('SVG.A')" onmouseout="hide()">SVG.A</a></li>
+</ul><br>
+
+<b><a href="elements.htm" onmouseover="show('Элементы')" onmouseout="hide()">Элементы</a></b>
+<ul>
+<li><a href="elements.htm#1" onmouseover="show('SVG.Rect')" onmouseout="hide()">SVG.Rect</a></li>
+<li><a href="elements.htm#2" onmouseover="show('SVG.Circle')" onmouseout="hide()">SVG.Circle</a></li>
+<li><a href="elements.htm#3" onmouseover="show('SVG.Ellipse')" onmouseout="hide()">SVG.Ellipse</a></li>
+<li><a href="elements.htm#4" onmouseover="show('SVG.Line')" onmouseout="hide()">SVG.Line</a></li>
+<li><a href="elements.htm#5" onmouseover="show('SVG.Polyline')" onmouseout="hide()">SVG.Polyline</a></li>
+<li><a href="elements.htm#6" onmouseover="show('SVG.Polygon')" onmouseout="hide()">SVG.Polygon</a></li>
+<li><a href="elements.htm#7" onmouseover="show('SVG.Path')" onmouseout="hide()">SVG.Path</a></li>
+<li><a href="elements.htm#8" onmouseover="show('SVG.Text')" onmouseout="hide()">SVG.Text</a></li>
+<li><a href="elements.htm#9" onmouseover="show('SVG.TextPath')" onmouseout="hide()">SVG.TextPath</a></li>
+<li><a href="elements.htm#10" onmouseover="show('SVG.Tspan')" onmouseout="hide()">SVG.Tspan</a></li>
+<li><a href="elements.htm#11" onmouseover="show('SVG.Image')" onmouseout="hide()">SVG.Image</a></li>
+<li><a href="elements.htm#12" onmouseover="show('SVG.Gradient')" onmouseout="hide()">SVG.Gradient</a></li>
+<li><a href="elements.htm#13" onmouseover="show('SVG.Stop')" onmouseout="hide()">SVG.Stop</a></li>
+<li><a href="elements.htm#14" onmouseover="show('SVG.Pattern')" onmouseout="hide()">SVG.Pattern</a></li>
+<li><a href="elements.htm#15" onmouseover="show('SVG.Mask')" onmouseout="hide()">SVG.Mask</a></li>
+<li><a href="elements.htm#16" onmouseover="show('SVG.ClipPath')" onmouseout="hide()">SVG.ClipPath</a></li>
+<li><a href="elements.htm#17" onmouseover="show('SVG.Use')" onmouseout="hide()">SVG.Use</a></li>
+<li><a href="elements.htm#18" onmouseover="show('SVG.Marker')" onmouseout="hide()">SVG.Marker</a></li>
+<li><a href="elements.htm#19" onmouseover="show('SVG.Bare')" onmouseout="hide()">SVG.Bare</a></li>
+</ul><br>
+<b><a href="referencing.htm" onmouseover="show('Обращение')" onmouseout="hide()">Обращение</a></b>
+<ul>
+<li><a href="referencing.htm#1" onmouseover="show('По идентификатору (<tt>id</tt>)')" onmouseout="hide()">По идентификатору (<tt>id</tt>)</a></li>
+<li><a href="referencing.htm#2" onmouseover="show('При помощи CSS селекторов')" onmouseout="hide()">При помощи CSS селекторов</a></li>
+<li><a href="referencing.htm#3" onmouseover="show('Через существующие элементы DOM')" onmouseout="hide()">Через существующие элементы DOM</a></li>
+<li><a href="referencing.htm#4" onmouseover="show('При помощи jQuery или Zepto')" onmouseout="hide()">При помощи jQuery или Zepto</a></li>
+<li><a href="referencing.htm#5" onmouseover="show('Circular reference')" onmouseout="hide()">Circular reference</a></li>
+<li><a href="referencing.htm#6" onmouseover="show('Child references')" onmouseout="hide()">Child references</a></li>
+<li><a href="referencing.htm#7" onmouseover="show('Parent references')" onmouseout="hide()">Parent references</a></li>
+<li><a href="referencing.htm#8" onmouseover="show('URI references')" onmouseout="hide()">URI references</a></li>
+</ul><br>
+
+<b><a href="manipulating.htm" onmouseover="show('Управление')" onmouseout="hide()">Управление</a></b>
+<ul>
+<li><a href="manipulating.htm#1" onmouseover="show('Атрибуты')" onmouseout="hide()">Атрибуты</a></li>
+<li><a href="manipulating.htm#2" onmouseover="show('Позиционирование')" onmouseout="hide()">Позиционирование</a></li>
+<li><a href="manipulating.htm#3" onmouseover="show('Изменение размеров')" onmouseout="hide()">Изменение размеров</a></li>
+<li><a href="manipulating.htm#4" onmouseover="show('Синтаксический "сахар"')" onmouseout="hide()">Синтаксический "сахар"</a></li>
+<li><a href="manipulating.htm#5" onmouseover="show('Трансформация')" onmouseout="hide()">Трансформация</a></li>
+<li><a href="manipulating.htm#6" onmouseover="show('Стили')" onmouseout="hide()">Стили</a></li>
+<li><a href="manipulating.htm#7" onmouseover="show('Классы')" onmouseout="hide()">Классы</a></li>
+<li><a href="manipulating.htm#8" onmouseover="show('Данные')" onmouseout="hide()">Данные</a></li>
+<li><a href="manipulating.htm#9" onmouseover="show('Память')" onmouseout="hide()">Память</a></li>
+<li><a href="manipulating.htm#10" onmouseover="show('&quot;Дерево&quot; документа')" onmouseout="hide()">"Дерево" документа</a></li>
+<li><a href="manipulating.htm#11" onmouseover="show('Организация элементов')" onmouseout="hide()">Организация элементов</a></li>
+<li><a href="manipulating.htm#12" onmouseover="show('Геометрия')" onmouseout="hide()">Геометрия</a></li>
+</ul><br>
+
+<b><a href="boxes.htm" onmouseover="show('Прямоугольники')" onmouseout="hide()">Прямоугольники</a></b>
+<ul>
+<li><a href="boxes.htm#1" onmouseover="show('SVG.Box')" onmouseout="hide()">SVG.Box</a></li>
+<li><a href="boxes.htm#2" onmouseover="show('SVG.ViewBox')" onmouseout="hide()">SVG.ViewBox</a></li>
+<li><a href="boxes.htm#3" onmouseover="show('SVG.BBox')" onmouseout="hide()">SVG.BBox</a></li>
+<li><a href="boxes.htm#4" onmouseover="show('SVG.RBox')" onmouseout="hide()">SVG.RBox</a></li>
+</ul><br>
+
+<b><a href="animating.htm" onmouseover="show('Анимации')" onmouseout="hide()">Анимации</a></b>
+<ul>
+<li><a href="animating.htm#1" onmouseover="show('Анимация')" onmouseout="hide()">Анимация</a></li>
+<li><a href="animating.htm#2" onmouseover="show('Управление')" onmouseout="hide()">Управление</a></li>
+<li><a href="animating.htm#3" onmouseover="show('Расчет времени (тайминг)')" onmouseout="hide()">Расчет времени (тайминг)</a></li>
+<li><a href="animating.htm#4" onmouseover="show('Функции обратного вызова')" onmouseout="hide()">Функции обратного вызова</a></li>
+</ul><br>
+
+<b><a href="events.htm" onmouseover="show('События')" onmouseout="hide()">События</a></b>
+<ul>
+<li><a href="events.htm#1" onmouseover="show('Базовые события')" onmouseout="hide()">Базовые события</a></li>
+<li><a href="events.htm#2" onmouseover="show('Слушатели событий')" onmouseout="hide()">Слушатели событий</a></li>
+<li><a href="events.htm#3" onmouseover="show('Настраиваемые события')" onmouseout="hide()">Настраиваемые события</a></li></ul><br>
+
+<b><a href="classes.htm" onmouseover="show('Классы')" onmouseout="hide()">Классы</a></b>
+<ul>
+<li><a href="classes.htm#1" onmouseover="show('SVG.Array')" onmouseout="hide()">SVG.Array</a></li>
+<li><a href="classes.htm#2" onmouseover="show('SVG.PointArray')" onmouseout="hide()">SVG.PointArray</a></li>
+<li><a href="classes.htm#3" onmouseover="show('SVG.PathArray')" onmouseout="hide()">SVG.PathArray</a></li>
+<li><a href="classes.htm#4" onmouseover="show('SVG.Color')" onmouseout="hide()">SVG.Color</a></li>
+<li><a href="classes.htm#5" onmouseover="show('SVG.Matrix')" onmouseout="hide()">SVG.Matrix</a></li>
+<li><a href="classes.htm#6" onmouseover="show('SVG.Number')" onmouseout="hide()">SVG.Number</a></li>
+<li><a href="classes.htm#7" onmouseover="show('SVG.Set')" onmouseout="hide()">SVG.Set</a></li>
+<li><a href="classes.htm#8" onmouseover="show('SVG.Point')" onmouseout="hide()">SVG.Point</a></li>
+</ul><br>
+
+<b><a href="import_export.htm" onmouseover="show('Импорт/Экспорт SVG')" onmouseout="hide()">Импорт/Экспорт SVG</a></b><br><br>
+
+<b><a href="extending.htm" onmouseover="show('Расширение')" onmouseout="hide()">Расширение</a></b>
+<ul>
+<li><a href="extending.htm#1" onmouseover="show('SVG.invent')" onmouseout="hide()">SVG.invent</a></li>
+<li><a href="extending.htm#2" onmouseover="show('SVG.extend')" onmouseout="hide()">SVG.extend</a></li>
+</ul><br>
+
+<b><a href="examples.htm" onmouseover="show('Учебники и примеры')" onmouseout="hide()">Учебники и примеры</a></b><br><br>
+
+<b><a href="plugins.htm" onmouseover="show('Плагины')" onmouseout="hide()">Плагины</a></b>
+<ul>
+<li><a href="plugins.htm#1" onmouseover="show('svg.colorat.js')" onmouseout="hide()">svg.colorat.js</a></li>
+<li><a href="plugins.htm#2" onmouseover="show('svg.connectable.js')" onmouseout="hide()">svg.connectable.js</a></li>
+<li><a href="plugins.htm#3" onmouseover="show('svg.easing.js')" onmouseout="hide()">svg.easing.js</a></li>
+<li><a href="plugins.htm#4" onmouseover="show('svg.draw.js')" onmouseout="hide()">svg.draw.js</a></li>
+<li><a href="plugins.htm#5" onmouseover="show('svg.draggable.js')" onmouseout="hide()">svg.draggable.js</a></li>
+<li><a href="plugins.htm#6" onmouseover="show('svg.filter.js')" onmouseout="hide()">svg.filter.js</a></li>
+<li><a href="plugins.htm#7" onmouseover="show('svg.foreignobject.js')" onmouseout="hide()">svg.foreignobject.js</a></li>
+<li><a href="plugins.htm#8" onmouseover="show('svg.intersections.js')" onmouseout="hide()">svg.intersections.js</a></li>
+<li><a href="plugins.htm#9" onmouseover="show('svg.math.js')" onmouseout="hide()">svg.math.js</a></li>
+<li><a href="plugins.htm#10" onmouseover="show('svg.path.js')" onmouseout="hide()">svg.path.js</a></li>
+<li><a href="plugins.htm#11" onmouseover="show('svg.pathmorphing.js')" onmouseout="hide()">svg.pathmorphing.js</a></li>
+<li><a href="plugins.htm#12" onmouseover="show('svg.resize.js')" onmouseout="hide()">svg.resize.js</a></li>
+<li><a href="plugins.htm#13" onmouseover="show('svg.screenbbox.js')" onmouseout="hide()">svg.screenbbox.js</a></li>
+<li><a href="plugins.htm#14" onmouseover="show('svg.select.js')" onmouseout="hide()">svg.select.js</a></li>
+<li><a href="plugins.htm#15" onmouseover="show('svg.shapes.js')" onmouseout="hide()">svg.shapes.js</a></li>
+<li><a href="plugins.htm#16" onmouseover="show('svg.textmorph.js')" onmouseout="hide()">svg.textmorph.js</a></li>
+<li><a href="plugins.htm#17" onmouseover="show('svg.topath.js')" onmouseout="hide()">svg.topath.js</a></li>
+<li><a href="plugins.htm#18" onmouseover="show('svg.topoly.js')" onmouseout="hide()">svg.topoly.js</a></li>
+<li><a href="plugins.htm#19" onmouseover="show('svg.panzoom.js')" onmouseout="hide()">svg.panzoom.js</a></li>
+<li><a href="plugins.htm#20" onmouseover="show('declarative.js')" onmouseout="hide()">declarative.js</a></li>
+</ul><br>
+
+<b><a href="contributing.htm" onmouseover="show('Содействие')" onmouseout="hide()">Сотрудничество</a></b>
+<ul>
+<li><a href="contributing.htm#1" onmouseover="show('Стиль написания кода')" onmouseout="hide()">Стиль написания кода</a></li>
+<li><a href="contributing.htm#2" onmouseover="show('Документация')" onmouseout="hide()">Документация</a></li>
+</ul><br>
+
+<b><a href="compatibility.htm" onmouseover="show('Совместимость')" onmouseout="hide()">Совместимость</a></b><br><br>
+
+<b><a href="faq.htm" onmouseover="show('ЧАсто задаваемые ВОпросы')" onmouseout="hide()">ЧАсто задаваемые ВОпросы</a></b>
+<ul>
+<li><a href="faq.htm#1" onmouseover="show('При инициализации SVG.js создаются два SVG. Это ошибка?')" onmouseout="hide()">При инициализации SVG.js создаются два SVG. Это ошибка?</a></li>
+<li><a href="faq.htm#2" onmouseover="show('Может ли SVG.js работать на Node.js?')" onmouseout="hide()">Может ли SVG.js работать на Node.js?</a></li>
+<li><a href="faq.htm#3" onmouseover="show('Как можно изменить элемент, который уже существует в DOM?')" onmouseout="hide()">Как можно изменить элемент, который уже существует в DOM?</a></li>
+<li><a href="faq.htm#4" onmouseover="show('Нужна помошь, чтобы хоть что-то заработало...')" onmouseout="hide()">Нужна помошь, чтобы хоть что-то заработало...</a></li>
+<li><a href="faq.htm#5" onmouseover="show('Я нашел ошибку. Куда сообщить об этом?')" onmouseout="hide()">Я нашел ошибку. Куда сообщить об этом?</a></li>
+<li><a href="faq.htm#6" onmouseover="show('Где можно найти учебники?')" onmouseout="hide()">Где можно найти учебники?</a></li>
+<li><a href="faq.htm#7" onmouseover="show('Как внести свой вклад или исправить что-либо в документах?')" onmouseout="hide()">Как внести свой вклад или исправить что-либо в документах?</a></li>
+</ul><br>
+
+<b><a href="thanks.htm" onmouseover="show('Признательность и благодарность')" onmouseout="hide()">Признательность и благодарность</a></b><br><br>
+
+</body></html>

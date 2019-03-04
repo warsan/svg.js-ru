@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<title>svg.js Справочное руководство</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="1.css">
+<script type="text/javascript" src="1.js"></script>
+</head>
+
+<body>
+<h3>Родительские элементы</h3>
+
+<h5>SVG.Parent</h5>
+Класс <tt>SVG.Parent</tt> является базовой оболочкой для всех элементов, которые могут содержать другие элементы. <tt>SVG.Parent</tt> наследует непосредственно от самого нижнего уровня всех классов SVG.js: <tt>SVG.Element</tt>.
+The `SVG.Parent` class is the base wrapper for all elements that can contain other elements. `SVG.Parent` inherits directly from the lowest level of all SVG.js classes: `SVG.Element`.<br><br>
+
+<h5>SVG.Container</h5>
+
+`SVG.Container` adds another level to the parent inheritance stack. Where `SVG.Parent` brings some low level methods like `add()`, `remove()` and `has()` to name a few, `SVG.Container` can and should be used if you want to add your own methods. That way the `SVG.Parent` prototype remains clean. Therefore you should always inherit from `SVG.Container` when implementing your own parent elements.<br><br>
+Стек родительского наследования: <tt>SVG.Element</tt> &#62; <tt>SVG.Parent</tt> &#62; <tt>SVG.Container</tt>.<br><br>
+
+<h4 id="1"><span class="lnk" onmouseover="show('здесь Doc скорее всего сокращение англ. слова document - документ')" onmouseout="hide()">SVG.Doc</span></h4>
+Основная функция-инициализатор в SVG.js, создает корневой svg-узел в заданном элементе и возвращает экземпляр <tt>SVG.Doc</tt>.
+<pre>SVG()</pre>
+возвращает <tt>SVG.Doc</tt>, который наследует от <tt>SVG.Container</tt>.
+<pre>// javascript
+var draw = SVG('drawing')</pre>
+<div class=note><b>Примечание:</b> При первом вызове <tt>SVG()</tt> будет создан второй невидимый <tt>&#60;svg&#62;</tt>.
+Это наш <span class="lnk" onmouseover="show('от англ. слова parser - синтаксический анализатор')" onmouseout="hide()">"парсер"</span>, как описано в <a href="faq.htm#1">ЧАсто задаваемых ВОпросах</a>.</div><br>
+
+<h4 id="2"><span class="lnk" onmouseover="show('nested - вложенный')" onmouseout="hide()">SVG.Nested</span></h4>
+Вкладывает SVG-документы друг в друга.
+<pre>nested()</pre>
+конструктор на <tt>SVG.Container</tt>.<br>
+возвращает <tt>SVG.Nested</tt>, который наследует от <tt>SVG.Container</tt>.<br>
+Вложенные SVG-документы имеют точно такие же функции, как и основной SVG-документ верхнего уровня:
+<pre>var nested = draw.nested()<br>
+var rect = nested.rect(200, 200)</pre><br>
+
+<h4 id="3"><span class="lnk" onmouseover="show('G скорее всего сокращение англ. слова Group - группа')" onmouseout="hide()">SVG.G</span></h4>
+Группирование элементов может быть полезно, если нужно изменять набор элементов, как если бы он был одним элементом. Все элементы в группе сохраняют свою позицию относительно группы, к которой они принадлежат.
+<div class=note><b>Примечание:</b> Группы не имеют собственных геометрических данных, они наследуется от их содержимого.
+Поэтому для группы нельзя получить атрибуты <tt><span class="lnk" onmouseover="show('координата x')" onmouseout="hide()">x</span></tt>, <tt><span class="lnk" onmouseover="show('координата y')" onmouseout="hide()">y</span></tt>,
+<tt><span class="lnk" onmouseover="show('width - ширина')" onmouseout="hide()">width</span></tt> и <tt><span class="lnk" onmouseover="show('height - высота')" onmouseout="hide()">height</span></tt>.
+Если вы ищете именно, используйте взамен вложенный svg - <tt>nested()</tt>.</div>
+<pre>group()</pre>
+конструктор на <tt>SVG.Container</tt>.<br>
+возвращает <tt>SVG.G</tt>, который наследует от <tt>SVG.Container</tt>.<br>
+Группа имеет те же самые методы элемента, что и корневой SVG-документ:
+<pre>var group = draw.group()
+group.path('M10,20L30,40')</pre>
+Элементы, уже существующие в SVG-документе, также могут быть добавлены в группу:
+<pre>group.add(rect)</pre><br>
+
+<h4 id="4">SVG.Symbol</h4>
+
+`constructor on` __`SVG.Container`__
+`returns` __`SVG.Symbol`__ ` which inherits from ` __`SVG.Container`__
+
+Not unlike the `group` element, the `symbol` element is a container element. The only difference between symbols and groups is that symbols are not rendered. Therefore a `symbol` element is ideal in combination with the `use` element:
+
+<pre>var symbol = draw.symbol()
+symbol.rect(100, 100).fill('#f09')
+
+var use  = draw.use(symbol).move(200, 200)</pre>
+
+<br>
+
+<h4 id="5">SVG.Defs</h4>
+
+The `&#60;defs&#62;` element is a container for referenced elements. Descendants of a `&#60;defs&#62;`node are not rendered directly. The `&#60;defs&#62;` node lives in the main `&#60;svg&#62;` document and can be accessed with the `defs()` method.
+
+## defs() <span class="suffix">constructor</span>
+
+`constructor on` __`SVG.Container`__
+`returns` __`SVG.Defs`__ ` which inherits from ` __`SVG.Container`__
+
+<pre>// javascript
+var defs = draw.defs()</pre>
+
+The defs are also available on any other element through the `doc()` method:
+
+<pre>// javascript
+var defs = rect.doc().defs()</pre>
+
+The defs node works exactly the same as groups.<br><br>
+
+<h4 id="6">SVG.A</h4>
+
+Create a hyperlink that will be activated on all child elements.
+
+## link() <span class="suffix">constructor</span>
+
+`constructor on` __`SVG.Container`__
+`returns` __`SVG.A`__ ` which inherits from ` __`SVG.Container`__
+
+A hyperlink or `&#60;a&#62;` tag creates a container that enables a link on all children:
+
+<pre>var link = draw.link('http://svgdotjs.github.io/')
+var rect = link.rect(100, 100)</pre>
+
+The link url can be updated with the `to()` method:
+
+<pre>link.to('http://apple.com')</pre>
+
+Furthermore, the link element has a `show()` method to create the `xlink:show` attribute:
+
+<pre>link.show('replace')</pre>
+
+And the `target()` method to create the `target` attribute:
+
+<pre>link.target('_blank')</pre>
+
+Elements can also be linked the other way around with the `linkTo()` method:
+
+<pre>rect.linkTo('http://svgdotjs.github.io/')</pre>
+
+Alternatively, a block can be passed instead of a URL for more options on the link element:
+
+<pre>rect.linkTo(function(link) {
+  link.to('http://svgdotjs.github.io/').target('_blank')
+})</pre><br>
+
+----
+
+Description: The SVG.Parent class is the base wrapper for all elements that can contain other elements. SVG.Parent inherits directly from the lowest level.
+
+
+<br><br>
+</body></html>

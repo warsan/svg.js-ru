@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<title>svg.js Справочное руководство</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="1.css">
+<script type="text/javascript" src="1.js"></script>
+</head>
+
+<body>
+<h3>Сотрудничество</h3>
+Мы любим сотрудничество. Да, в самом деле, мы использовали слово ЛЮБОВЬ! Но пожалуйста убедитесь, что вы придерживаетесь того же стиля кодирования, что и мы. Вот несколько рекомендаций.<br><br>
+
+<h4>Building</h4>
+After contributing you probably want to build the library to run some specs. Make sure you have Node.js installed on your system, `cd` to the svg.js directory and run:
+
+<pre> #<a href="https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%BD%D0%B0%D1%8F_%D0%BE%D0%B1%D0%BE%D0%BB%D0%BE%D1%87%D0%BA%D0%B0_Unix" target="_blank" onmouseover="show('Командная оболочка Unix (англ. Unix shell, часто просто «шелл» или «sh»)<br>— командный интерпретатор, используемый в операционных системах<br>семейства Unix, в котором пользователь может либо давать команды<br>операционной системе по отдельности, либо запускать скрипты, состоящие<br>из списка команд')" onmouseout="hide()">sh</a>
+$ npm install</pre>
+Создайте SVG.js, запустив <tt><a href="https://ru.wikipedia.org/wiki/Gulp" target="_blank" onmouseover="show('gulp — это таск-менеджер для автоматического выполнения часто используемых<br>задач (например, минификации, тестирования, объединения файлов), написанный<br>на языке программирования JavaScript')" onmouseout="hide()">gulp</a></tt>:
+<pre># sh
+$ npm run build</pre>
+В результате получим файлы:
+<div class=blockindent>1. <tt>dist/svg.js</tt><br>
+2. <tt>dist/svg.min.js</tt></div><br>
+
+<h4>Проверка (тестирование)</h4>
+Существует два способа запуска набора тестов. Первый - из командной строки, а второй - в браузере. Для запуска набора тестов из командной строки нужно иметь установленный браузер Firefox.
+<pre># sh
+$ npm test</pre>
+Для запуска набора тестов в браузере по умолчанию просто откройте <tt><a href="https://github.com/svgdotjs/svg.js/tree/master/spec" target="_blank" onmouseover="show('Jasmine — фреймворк, предназначенный для разработки через тестирование<br>для Javascript, не требующий других фреймворков для своей работы.<br>SpecRunner.html - файл с набором тестов от Jasmine')" onmouseout="hide()">/spec/SpecRunner.html</a></tt>. Обычно двойным кликом.<br>
+Если вы - осторожный тип, то возможно захотите прочитать, прежде чем нажать, о том, как предотвратить нажатие неудачных фиксаций.
+If you are the cautious type, you might want to read, [before you push](/contributing/#before-you-push), on how to prevent pushing failing commits.<br><br>
+
+<h4>Прежде чем нажать</h4>
+
+Imagine that you're tweaking some part of svg.js and as the responsible person you are, you made sure to run `npm test` before pushing. Unfortunately `npm test` tests the current `dist/svg.js` which only has your edits if you first did `npm run build`.
+
+This has happened to me a couple of times and as a svg.js contributor, it's embarrassing.
+
+Fortunately `git` has a `pre-push` hook which can save yourself from the embarrassment.
+
+I have created a `pre-push` hook that will build a new `dist/svg.js` and run the tests. It's developed on Ubuntu 16.04 but should work on all *nix platforms. You can disable this check with:
+
+<pre>git push --no-verify</pre>
+
+**(link: https://gist.github.com/dotnetCarpenter/bb6c2f040e11922cc8f81ef42a8054fd text: pre-push target: _blank)**
+
+<pre># sh
+#!/bin/sh
+
+npm run build:test && npm run test:quick
+
+# check how the test went
+testCode=$?
+[ "$testCode" = 0 ] || echo "Your current build does not pass our unit tests - please make them pass before you push"
+# revert artifacts created during build
+git reset --hard $(git log -1 --pretty=%H)
+# exit with the test exit code
+exit $testCode</pre>
+
+A failed push looks something like this:
+
+<pre>git push
+
+> svg.js@2.3.6 build:test /home/dotnet/projects/opensource/svg.js
+> gulp unify
+
+[14:20:12] Using gulpfile ~/projects/opensource/svg.js/gulpfile.js
+[14:20:12] Starting 'clean'...
+[14:20:12] Finished 'clean' after 34 ms
+[14:20:12] Starting 'unify'...
+[14:20:13] Full svg.js 137.14 kB
+[14:20:13] Finished 'unify' after 318 ms
+
+> svg.js@2.3.6 test:quick /home/dotnet/projects/opensource/svg.js
+> karma start .config/karma.quick.js
+
+PhantomJS 2.1.1 (Linux 0.0.0) ERROR
+  TypeError: undefined is not a function (evaluating 'root.callFailingFooBar()')
+  at dist/svg.js:21
+
+npm ERR! Linux 4.4.0-45-generic
+npm ERR! argv "/home/dotnet/.nvm/versions/node/v7.0.0/bin/node" "/home/dotnet/.nvm/versions/node/v7.0.0/bin/npm" "run" "test:quick"
+npm ERR! node v7.0.0
+npm ERR! npm  v3.10.8
+npm ERR! code ELIFECYCLE
+npm ERR! svg.js@2.3.6 test:quick: `karma start .config/karma.quick.js`
+npm ERR! Exit status 1
+npm ERR!
+npm ERR! Failed at the svg.js@2.3.6 test:quick script 'karma start .config/karma.quick.js'.
+npm ERR! Make sure you have the latest version of node.js and npm installed.
+npm ERR! If you do, this is most likely a problem with the svg.js package,
+npm ERR! not with npm itself.
+npm ERR! Tell the author that this fails on your system:
+npm ERR!     karma start .config/karma.quick.js
+npm ERR! You can get information on how to open an issue for this project with:
+npm ERR!     npm bugs svg.js
+npm ERR! Or if that isn't available, you can get their info via:
+npm ERR!     npm owner ls svg.js
+npm ERR! There is likely additional logging output above.
+
+npm ERR! Please include the following file with any support request:
+npm ERR!     /home/dotnet/projects/opensource/svg.js/npm-debug.log
+Your current build does not pass our unit tests - please make them pass before you push
+HEAD is now at b66f005 Calling new awesome method
+error: failed to push some refs to 'https://github.com/dotnetCarpenter/svg.js.git'</pre><br>
+
+
+<h4>Install</h4>
+Put (link: https://gist.github.com/dotnetCarpenter/bb6c2f040e11922cc8f81ef42a8054fd text: pre-push target: _blank) in your local SVG.js repository, in the .git/hooks folder and make it executable:
+
+<pre>sudo chmod +x .git/hooks/pre-push</pre>
+
+To disable the check when you push, write:
+
+<pre>git push --no-verify</pre><br><br>
+
+<h3 id="1">Стиль написания кода</h3>
+Мы стараемся поддерживать согласованный стиль написания кода в библиотеке. Вот несколько необходимых указаний.<br><br>
+
+<h5>Отступы</h5>
+Мы делаем их с <b>двумя пробелами</b>. Убедитесь, что не начинали пользоваться табуляцией, потому что тогда весь код становится неряшливым.<br><br>
+
+<h5>Избегайте растрепанного кода</h5>
+Нам нравится делать вещи простыми и чистыми, старайтесь не писать ничего ненужного. По возможности используйте <b>одинарные кавычки</b> и избегайте <b>точек с запятой</b>, мы здесь пишем не PHP-код.<br>
+
+<b>Хорошо</b>:
+<pre>// javascript
+var text = draw.text('with single quotes here')
+  , nest = draw.nested().attr('x', '50%')
+
+for (var i = 0; i &#60; 5; i++)
+  if (i != 3)
+    nest.circle(i * 100)</pre>
+
+<b>Плохо</b>:
+<pre>// javascript
+var text = draw.text("with double quotes here");
+var nest = draw.nested().attr("x", "50%");
+
+for (var i = 0; i &#60; 5; i++) {
+  if (i != 3) {
+    nest.circle(100);
+  };
+};</pre><br>
+
+<h5>Минимизируйте объявления переменных</h5>
+Все локальные переменные должны быть объявлены в начале функции или метода, если только нет единой переменной, которую нужно объявить.
+Хотя не обязательно назначать их одномоментно.
+Если используются операторы <tt>if</tt>, для которых нужно чтобы некие переменные были представлены только в данном операторе, необходимые переменные должны объявляться сразу после оператора <tt>if</tt>.<br>
+<b>Хорошо</b>:
+<pre>// javascript
+function reading_board() {
+  var aap, noot, mies
+
+  aap  = 1
+  noot = 2
+  mies = aap + noot
+}</pre>
+<b>Плохо</b>:
+<pre>// javascript
+function reading_board() {
+  var aap  = 1
+  var noot = 2
+  var mies = aap + noot
+}</pre><br>
+
+<h5>Let your code breathe people!</h5>
+Не пытайтесь быть компрессором для своего собственного кода, они по-любому сделают эту работу лучше.
+Don't try to be a code compressor yourself, they do way a better job anyway. Give your code some spaces and newlines.<br>
+
+<b>Хорошо</b>:
+<pre>// javascript
+var nest = draw.nested().attr({
+  x:      10
+, y:      20
+, width:  200
+, height: 300
+})
+
+for (var i = 0; i &#60; 5; i++)
+  nest.circle(100)</pre>
+<b>Плохо</b>:
+<pre>// javascript
+var nest=draw.nested().attr({x:10,y:20,width:200,height:300});
+for(var i=0;i&#60;5;i++)nest.circle(100);</pre><br>
+
+<h5>Не повредит добавление некоторых комментариев</h5>
+При необходимости расскажите что делаете, но будьте лаконичны. Мы используем только однострочные комментарии. Также придерживайтесь коротких имен переменных и методов, конечно же без потери читаемости кода.<br>
+<b>Хорошо</b>:
+<pre>// javascript
+// Adds orange-specific methods
+SVG.extend(SVG.Rect, {
+  // Add a nice, transparent orange
+  orangify: function() {
+    // fill with orange color
+    this.fill('orange')
+
+    // add a slight opacity
+    return this.opacity(0.85)
+  }
+})</pre>
+
+<b>Плохо</b>:
+<pre>// javascript
+/*
+ *
+ * does something with orange and opacity
+ *
+ */
+SVG.extend(SVG.Rect, {
+  orgf: function() {
+    return this.fill('orange').opacity(0.85)
+  }
+})</pre><br>
+
+<h5>Сделайте рефакторинг своего кода</h5>
+Как только ваша реализация будет готова, пересмотрите ее и переделайте. Нам нравится содержать код <a href="http://en.wikipedia.org/wiki/Don't_repeat_yourself" target="_blank" onmouseover="show('Здесь игра слов - аббревиатура DRY в переводе на русский - сухой,<br>т.е. вспомните - &#171;держать порох сухим&#187;,<br>а вообще DRY - сокращ. от англ. слов Don’t Repeat Yourself - не повторяйся —<br>это принцип разработки программного обеспечения, нацеленный на<br>снижение повторения информации различного рода, особенно в системах<br>со множеством слоёв абстрагирования. Принцип DRY формулируется как:<br>«Каждая часть знания должна иметь единственное, непротиворечивое<br>и авторитетное представление в рамках системы».')" onmouseout="hide()">DRY</a> (сухим).<br>
+<a href="https://ru.wikipedia.org/wiki/Don%E2%80%99t_repeat_yourself" target="_blank">Статья о DRY</a> в русскоязычной Википедии.<br><br>
+
+<h5>Проверяй. Свой. Код.</h5>
+Не так сложно написать хотя бы один пример для реализации, хотя предпочтительней бо&#769;льшее количество. После быстрой проверки своего кода в своем браузере может показаться, что он работает, но... зачастую просто нельзя все предвидеть.<br>
+
+Before running the specs you will need to build the library. Be aware that pull requests without specs will be declined.<br><br><br>
+
+<h3 id="2">Документация</h3>
+
+The SVG.js docs are built upon (link: https://getkirby.com/ text: Kirby target: _blank) with the (link: https://natesteiner.com/kdoc text: KDoc theme target: _blank).<br><br>
+
+<h4>Требования</h4>
+Вам понадобится:
+<div class=blockindent>PHP 5.4+<br>
+Node.js</div><br>
+
+<h4>Начало работы</h4>
+1. Download or clone the **(link: https://github.com/svgdotjs/svgdotjs.github.io text: svgdotjs.github.io target: _blank)** repo and switch to the <tt>source</tt> branch.<br>
+
+2. Run <tt>npm install</tt>. This is only required the first time.<br>
+
+3. Run <tt>npm run serve -s</tt> which will open up your default browser with the docs running.<br><br>
+
+<h4>Writing</h4>
+Войдите в Kirby на (link: http://localhost:8008/panel target: _blank) используя имя пользователя <b>svgjs</b> и пароль <b>svgjs</b>.<br><br>
+Для текстовых редакторов в Kirby включены <a href="https://daringfireball.net/projects/markdown/syntax" target="_blank">Markdown</a> и <a href="https://getkirby.com/docs/content/text" target="_blank">Kirbytext</a>.
+The text editors in Kirby are (link: https://daringfireball.net/projects/markdown/syntax text: Markdown target: _blank) and (link: https://getkirby.com/docs/content/text text: Kirbytext target: _blank) enabled.<br><br>
+
+<h4>Pull Requests</h4>
+If you're not a core collaborator on (link: https://github.com/svgdotjs/ text: svgdotjs target: _blank), fork the (link: https://github.com/svgdotjs/svgdotjs.github.io/tree/source text: `source` branch target: _blank), make the required changes in Kirby following the same style as the rest of the docs, and create a PR. We will take care of the rest, so no need to build or include a static version.<br><br>
+
+<h4>Building the static version</h4>
+
+1. Go to (link: http://localhost:8008/statify.php target: _blank) in a web browser to run the build. The static files will be generated at `static` at the root of the repo.
+
+2. Move the `static` folder out of the repo (e.g. your Desktop).
+
+3. Commit and push the changes in the `source` branch and switch to the `master` branch.
+
+4. Replace everything in the `master` branch with the contents of the `static` folder.
+
+5. Commit and push the changes in the `master` branch and you're done!
+
+----
+
+Description: The SVG.js docs are built upon Kirby with the KDoc theme. You'll only need PHP and Node.js to be able to build a new version.
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+</body></html>
