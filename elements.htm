@@ -947,7 +947,7 @@ By passing the pattern instance as the fill on any element, the `fill()` method 
 <div id="pattern1" style="height:220px; background-color:#fff; display:block; margin:0px; padding:0px;">
 <hr class="underline" style="margin-left:20px; width:60px;">
 <img src="img/pattern.png"></div>
-<div id="pattern2" style="height:220px; background-color:#eee; display:none; margin:0px; padding:0px; overflow-y:scroll;">
+<div id="pattern2" style="height:220px; background-color:#eee; display:none; margin:0px; padding:0px;">
 <hr class="underline" style="margin-left:100px; width:80px;">
 <pre>var draw = SVG('drawing').size(500, 130)<br>
 var pattern = draw.pattern(20, 20, function(add) {
@@ -973,29 +973,47 @@ pattern.update(function(add) {
 
 <h4 id="15">SVG.Mask</h4>
 <div class=blockindent><br>
-## mask() <span class="suffix">constructor</span>
-
-`constructor on` __`SVG.Container`__
-`returns` __`SVG.Mask`__ ` which inherits from ` __`SVG.Container`__
-
+<pre id="15mask"><span class="lnk" onmouseover="show('mask - маска')" onmouseout="hide()">mask()</span>  <i class=low>конструктор</i></pre>
+<div class=list>конструктор на <tt>SVG.Container</tt></div>
+<div class=list>возвращает - <tt>SVG.Mask</tt>, который наследует от <tt>SVG.Container</tt>.</div>
 <pre>// javascript
 var ellipse = draw.ellipse(80, 40).move(10, 10).fill('#fff')<br>
 var mask = draw.mask().add(ellipse)<br>
 rect.maskWith(mask)</pre>
-
-But you can also use multiple elements:
-
+Но также можно использовать несколько элементов:
 <pre>// javascript
 var ellipse = draw.ellipse(80, 40).move(10, 10).fill({ color: '#fff' })
 var text = draw.text('SVG.JS').move(10, 10).font({ size: 36 }).fill({ color: '#fff' })<br>
 var mask = draw.mask().add(text).add(ellipse)<br>
-rect.maskWith(mask)</pre>
+rect.maskWith(mask)</pre><br>
+<div style="font-family:Segoe UI; font-size:90%; margin-left:10px;">
+&nbsp; &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("mask1","mask2");'>Результат</span>
+&nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("mask2","mask1");'>Код JavaScript</span>
+<span style="float:right; margin-right:20px;"><a href="http://jsfiddle.net/wout/s5mb5zds/1/?utm_source=website&utm_medium=embed&utm_campaign=s5mb5zds" target="_blank">Редактировать в JSFiddle</a></span>
+<div id="mask1" style="height:220px; background-color:#fff; display:block; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:20px; width:60px;">
+<img src="img/mask.png"></div>
+<div id="mask2" style="height:220px; background-color:#eee; display:none; margin:0px; padding:0px; overflow-y:scroll;">
+<hr class="underline" style="margin-left:100px; width:80px;">
+<pre>var draw = SVG('drawing').size(300, 130)
+var circle = draw.circle(50).fill('#fff')<br>
+var mask = draw.mask()
+mask.add(circle.center(35, 35))
+mask.add(circle.clone().center(70, 70).size(70).fill('#ccc'))
+mask.add(circle.clone().center(90, 30).size(30).fill('#999'))
+mask.add(circle.clone().center(105, 115).size(50).fill('#333'))<br>
+var rect = draw.rect(100, 100).move(20, 20).fill('#f06')
+rect.maskWith(mask)<br>
+rect.on('mouseover', function() {
+	this.animate(300, '<>').fill('#0f9')
+})
+rect.on('mouseout', function() {
+	this.animate(300, '<>').fill('#f06')
+})</pre></div></div>
+<div class=caption>Здесь не видно анимации при наведении курсора мышки. Для полноценного просмотра перейдите на <a href="http://jsfiddle.net/wout/s5mb5zds/1/?utm_source=website&utm_medium=embed&utm_campaign=s5mb5zds" target="_blank">JSFiddle</a>.</div><br>
 
-<iframe width="100%" height="205" src="//jsfiddle.net/wout/s5mb5zds/1/embedded/result,js/?accentColor=f06" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-## maskWith()
-
-`constructor on` __`SVG.Element`__
+<pre id="15maskWith"><span class="lnk" onmouseover="show('mask with - маска с')" onmouseout="hide()">maskWith()</span></pre>
+<div class=list>конструктор на <tt>SVG.Element</tt></div>
 <div class=list>возвращает - самого себя (itself)</div>
 
 The easiest way to mask is to use a single element:
@@ -1003,7 +1021,7 @@ The easiest way to mask is to use a single element:
 <pre>// javascript
 var ellipse = draw.ellipse(80, 40).move(10, 10).fill({ color: '#fff' })<br>
 rect.maskWith(ellipse)</pre>
-
+Если вы хотите, чтобы замаскированный объект отображался на 100%, вам нужно установить цвет заливки маскирующего объекта на белый. Но также можно использовать градиент:
 If you want the masked object to be rendered at 100% you need to set the fill color of the masking object to white. But you might also want to use a gradient:
 
 <pre>// javascript
@@ -1014,30 +1032,24 @@ var gradient = draw.gradient('linear', function(stop) {
 var ellipse = draw.ellipse(80, 40).move(10, 10).fill({ color: gradient })<br>
 rect.maskWith(ellipse)</pre><br>
 
-## <span class="subject">mask.</span>unmask()
-
+<pre id="15mask.unmask"><span class="lnk" onmouseover="show('mask unmask - снять маску')" onmouseout="hide()"><span class="shadow">mask.</span>unmask()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
-Unmasking the elements can be done with the `unmask()` method:
-
+Снять маску с элементов можно методом <tt>unmask()</tt>:
 <pre>// javascript
 rect.unmask()</pre>
+Метод <tt>unmask()</tt> возвращает маскирующий элемент.<br><br>
 
-The `unmask()` method returns the masking element.<br><br>
-
-## <span class="subject">mask.</span>remove()
-
+<pre id="15mask.remove"><span class="lnk" onmouseover="show('mask remove - удалить маску')" onmouseout="hide()"><span class="shadow">mask.</span>remove()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
+Полное удаление маски также приведет к снятию маски (метод <tt>unmask()</tt>) со всех замаскированных элементов:
 Removing the mask altogether will also `unmask()` all masked elements as well:
 
 <pre>// javascript
 mask.remove()</pre><br>
 
-## masker
-
-`returns` __`SVG.Mask`__
-
+<pre id="15masker"><span class="lnk" onmouseover="show('masker - замаскированный элемент')" onmouseout="hide()">masker</span></pre>
+<div class=list>возвращает - <tt>SVG.Mask</tt>.</div>
+Для вашего удобства на маскирующий элемент также ссылаются в маскированном элементе. Это может быть полезно, если вы хотите изменить маску:
 For your convenience, the masking element is also referenced in the masked element. This can be useful in case you want to change the mask:
 
 <pre>// javascript
@@ -1048,34 +1060,52 @@ rect.masker.fill('#fff')</pre></div><br><br>
 
 Clipping elements works exactly the same as masking elements. The only difference is that clipped elements will adopt the geometry of the clipping element. Therefore events are only triggered when entering the clipping element whereas with masks the masked element triggers the event. Another difference is that masks can define opacity with their fill colour and clipPaths can't.
 
+<div class=blockindent><br>
+<pre id="15clip"><span class="lnk" onmouseover="show('clip - вырезка, отсечение')" onmouseout="hide()">clip()</span>  <i class=low>конструктор</i></pre>
 ## clip() <span class="suffix">constructor</span>
-
-`constructor on` __`SVG.Container`__
-`returns` __`SVG.ClipPath`__ ` which inherits from ` __`SVG.Container`__
+<div class=list>конструктор на <tt>SVG.Container</tt></div>
+<div class=list>возвращает - <tt>SVG.ClipPath</tt>, который наследует от <tt>SVG.Container</tt>.</div>
 
 Clip with multiple elements:
 
 <pre>// javascript
 var ellipse = draw.ellipse(80, 40).move(10, 10)
-var text = draw.text('SVG.JS').move(10, 10).font({ size: 36 })
-
-var clip = draw.clip().add(text).add(ellipse)
-
+var text = draw.text('SVG.JS').move(10, 10).font({ size: 36 })<br>
+var clip = draw.clip().add(text).add(ellipse)<br>
 rect.clipWith(clip)</pre><br>
 
-<iframe width="100%" height="205" src="//jsfiddle.net/wout/6g9pfr2m/1/embedded/result,js/?accentColor=f06" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<div style="font-family:Segoe UI; font-size:90%; margin-left:10px;">
+&nbsp; &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("clip1","clip2");'>Результат</span>
+&nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("clip2","clip1");'>Код JavaScript</span>
+<span style="float:right; margin-right:20px;"><a href="http://jsfiddle.net/wout/6g9pfr2m/1/?utm_source=website&utm_medium=embed&utm_campaign=6g9pfr2m" target="_blank">Редактировать в JSFiddle</a></span>
+<div id="clip1" style="height:220px; background-color:#fff; display:block; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:20px; width:60px;">
+<img src="img/clip.png"></div>
+<div id="clip2" style="height:220px; background-color:#eee; display:none; margin:0px; padding:0px; overflow-y:scroll;">
+<hr class="underline" style="margin-left:100px; width:80px;">
+<pre>var draw = SVG('drawing').size(300, 130)
+var circle = draw.circle(50).fill('#fff')<br>
+var clip = draw.clip()
+clip.add(circle.center(35, 35))
+clip.add(circle.clone().center(70, 70).size(70).fill('#ccc'))
+clip.add(circle.clone().center(90, 30).size(30).fill('#999'))
+clip.add(circle.clone().center(105, 115).size(50).fill('#333'))<br>
+var rect = draw.rect(100, 100).move(20, 20).fill('#f06')
+rect.clipWith(clip)<br>
+rect.on('mouseover', function() {
+	this.animate(300, '<>').fill('#0f9')
+})
+rect.on('mouseout', function() {
+	this.animate(300, '<>').fill('#f06')
+})</pre></div></div><br>
 
-## clipWith()
-
+<pre id="15clipWith"><span class="lnk" onmouseover="show('clip with - обрезка с')" onmouseout="hide()">clipWith()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
 <pre>// javascript
-var ellipse = draw.ellipse(80, 40).move(10, 10)
-
+var ellipse = draw.ellipse(80, 40).move(10, 10)<br>
 rect.clipWith(ellipse)</pre><br>
 
-## <span class="subject">clipPath.</span>unclip()
-
+<pre id="15clipPath.unclip"><span class="lnk" onmouseover="show('clip path unclip - удалить контур обрезки')" onmouseout="hide()"><span class="shadow">clipPath.</span>unclip()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
 
 Unclipping the elements can be done with the `unclip()` method:
@@ -1186,7 +1216,30 @@ Finally, to get a marker instance from the target element reference:
 <pre>// javascript
 path.reference('marker-end')</pre>
 
-<iframe width="100%" height="205" src="//jsfiddle.net/wout/j3fr5okk/embedded/result,js/?accentColor=f06" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<div style="font-family:Segoe UI; font-size:90%; margin-left:10px;">
+&nbsp; &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("marker1","marker2");'>Результат</span>
+&nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("marker2","marker1");'>Код JavaScript</span>
+<span style="float:right; margin-right:20px;"><a href="http://jsfiddle.net/wout/j3fr5okk/?utm_source=website&utm_medium=embed&utm_campaign=j3fr5okk" target="_blank">Редактировать в JSFiddle</a></span>
+<div id="marker1" style="height:220px; background-color:#fff; display:block; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:20px; width:60px;">
+<img src="img/marker.png"></div>
+<div id="marker2" style="height:220px; background-color:#eee; display:none; margin:0px; padding:0px; overflow-y:scroll;">
+<hr class="underline" style="margin-left:100px; width:80px;">
+<pre>var draw = SVG('drawing')<br>
+var path = draw.path('M0 0 A50 50 0 0 1 50 50 A50 50 0 0 0 100 100')<br>
+path.fill('none').move(20, 20).stroke({ width: 1, color: '#ccc' })<br>
+path.marker('start', 10, 10, function(add) {
+  add.circle(10).fill('#f06')
+})
+path.marker('mid', 10, 10, function(add) {
+  add.rect(5, 10).cx(5).fill('#ccc')
+})
+path.marker('end', 20, 20, function(add) {
+  add.circle(6).center(4, 5)
+  add.circle(6).center(4, 15)
+  add.circle(6).center(12, 10)<br>
+  this.fill('#0f9')
+})</pre></div></div><br>
 
 ## <span class="subject">marker.</span>height()
 
