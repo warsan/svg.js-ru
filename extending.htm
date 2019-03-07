@@ -7,32 +7,26 @@
 </head>
 
 <body>
-Title: Extending
+<h3>Расширение</h3>
+Благодаря объектно-ориентированной природе SVG.js объекты/прототипы могут быть расширены на любом уровне. Методы <tt>invent()</tt> и <tt>extend()</tt> предоставляют удобный способ реализовать свой собственный набор функций.<br><br>
 
-----
-
-Text:
-
-# Extending
-
-Due to the Object Oriented nature of SVG.js, objects/prototypes can be extended on any level. The `invent()` and `extend()`methods provide a convenient way to implement your own functionality.
-
-<br>
-# SVG.invent()
-
-Creating your own custom elements with SVG.js is a piece of cake thanks to the `SVG.invent` function. For the sake of this example, lets "invent" a shape. We want a `rect` with rounded corners that are always proportional to the height of the element. The new shape lives in the `SVG` namespace and is called `Rounded`. Here is how we achieve that.
-
-```javascript
+<h4 id="1"><span class="lnk" onmouseover="show('invent - изобретать, выдумывать, создавать')" onmouseout="hide()">SVG.invent()</span></h4>
+В SVG.js благодаря функции <tt>SVG.invent</tt>, создавать свои собственные, пользовательские элементы очень просто.
+Давайте, в качестве примера, "изобретем" форму и сделаем прямоугольник (<tt>rect</tt>) со скругленными углами, которые всегда пропорциональны высоте элемента.
+Новая фигура будет "жить" в пространстве имен <tt>SVG</tt> и будет называться <tt>Rounded</tt> - т.е. закругленная. Вот, как мы этого добъемся:
+<pre>// javascript
 SVG.Rounded = SVG.invent({
   // Define the type of element that should be created
-  create: 'rect'
-
+  // Определяем тип элемента, который должен быть создан
+  create: 'rect'<br>
   // Specify from which existing class this shape inherits
-, inherit: SVG.Shape
-
+  // Указываем, от какого существующего класса наследуется эта форма
+, inherit: SVG.Shape<br>
   // Add custom methods to invented shape
+  // Добавляем для создаваемой формы свои методы
 , extend: {
     // Create method to proportionally scale the rounded corners
+    // Создаем метод для пропорционального масштабирования скругленных уголков
     size: function(width, height) {
       return this.attr({
         width:  width
@@ -41,123 +35,92 @@ SVG.Rounded = SVG.invent({
       , ry:     height / 5
       })
     }
-  }
-
+  }<br>
   // Add method to parent elements
+  // Добавляем метод к родительским элементам
 , construct: {
     // Create a rounded element
+    // Создаем скругленный элемент
     rounded: function(width, height) {
       return this.put(new SVG.Rounded).size(width, height)
-    }
-
+    }<br>
   }
-})
-```
+})</pre>
+Код для создания элемента в рисунке:
+<pre>// javascript
+var rounded = draw.rounded(200, 100)</pre>
+Вот и все, теперь наше "изобретение" готово к использованию!<br><br>
 
-To create the element in your drawing:
+<h5>Допустимые значения</h5>
+Функция <tt>SVG.invent()</tt> всегда предполагает объект, который может иметь следующие значения конфигурации.
+<div class=blockindent><br>
+<pre id="1create"><span class="lnk" onmouseover="show('create - создание')" onmouseout="hide()">create</span></pre>
+<div class=list>обязательное значение</div>
+Значение должно быть либо строкой с названием узла (ноды) (т.е. <tt>rect</tt>, <tt>ellipse</tt>, <tt>...</tt>), либо пользовательской функцией инициализации.
+Can be either a string with the node name (e.g. `rect`, `ellipse`, ...) or a custom initializer function.<br><br>
 
-```javascript
-var rounded = draw.rounded(200, 100)
-```
+<pre id="1inherit"><span class="lnk" onmouseover="show('inherit - наследование')" onmouseout="hide()">inherit</span></pre>
+<div class=list>дополнительное, необязательное значение, но рекомендуемое</div>
+<div class=list>значение по умолчанию - к <tt>SVG.Element</tt></div>
+Значением может быть класс SVG.js, от которого будет наследование (например, <tt>SVG.Shape</tt>, <tt>SVG.Element</tt>, <tt>SVG.Container</tt>, <tt>SVG.Rect</tt>, <tt>...</tt>).<br><br>
 
-That's it, the invention is now ready to be used!
+<pre id="1extend"><span class="lnk" onmouseover="show('extend - ')" onmouseout="hide()">extend</span></pre>
+<div class=list>дополнительное, необязательное значение</div>
+Значение может быть объектом с методами, которые должны применяться к прототипу элемента.<br><br>
 
-## Accepted values
+<pre id="1construct"><span class="lnk" onmouseover="show('construct - ')" onmouseout="hide()">construct</span></pre>
+<div class=list>дополнительное, необязательное значение</div>
+Значение может быть объектом с методами для создания элемента в родительском элементе.<br><br>
 
-The `SVG.invent()` function always expects an object. The object can have the following configuration values.
+<pre id="1parent"><span class="lnk" onmouseover="show('parent - родитель')" onmouseout="hide()">parent</span></pre>
+<div class=list>дополнительное, необязательное значение</div>
+<div class=list>значение по умолчанию - к <tt>SVG.Container</tt></div>
+Родительский класс SVG.js, для которого должны быть доступны методы в переданном объекте <tt>construct</tt>.</div><br>
 
-### - create
-`required`
+<h5>Примечания по использованию</h5>
+Следует подчеркнуть, что из конфигурационного объекта передатся в <tt>SVG.invent()</tt>:
+<div class=blockindent>&nbsp; &#9679; &nbsp; - <tt>construct</tt> предоставляет не конструкторы, а скорее методы, которые могут <em>вызывать</em> конструкторы;<br>
+&nbsp; &#9679; &nbsp; - <tt>create</tt> определяет конструктор для указанного типа, а не является аналогом <tt>Object.create()</tt>.</div><br>
 
-Can be either a string with the node name (e.g. `rect`, `ellipse`, ...) or a custom initializer function.
+When defining specialised svg elements (such as `SVG.Rounded` in the example above), the function specified by `create` needs to do all the work of adding the element to the DOM for the svg document and connecting the DOM node to the SVG.js interface. All this is done automatically when the value of `create` is a string identifying an element type. If needed, see the source for a sense of how to do it explicitly.<br><br>
 
+Though the defaults are geared toward creating svg elements for the SVG.js framework, `SVG.invent()` can be used as a generalised function for defining types in Javascript. When used in this more general way, the function supplied as a value for `create` should be written as an ordinary JS constructor. (Indeed, the function is simply returned as the constructor for your newly defined type.)<br><br>
+SVG.js использует функцию <tt>SVG.invent()</tt> для создания всех внутренних элементов. Просмотр исходника покажет, как эта функция используется в разных ситуациях.<br><br>
 
-### - inherit
-`optional` __`but recommended`__
-`defaults` __`to SVG.Element`__
-
-The desired SVG.js class to inherit from (e.g. `SVG.Shape`, `SVG.Element`, `SVG.Container`, `SVG.Rect`, ...).
-
-### - extend
-`optional`
-
-An object with the methods that should be applied to the element's prototype.
-
-### - construct
-`optional`
-
-An object with the methods to create the element on the parent element.
-
-### - parent
-`optional`
-`defaults` __`to SVG.Container`__
-
-An SVG.js parent class on which the methods in the passed `construct` object should be available.
-
-## Usage notes
-
-It should be emphasised that in the configuration object passed to `SVG.invent()`:
-
-- `construct` does not supply constructors, but rather methods that are likely to *call* constructors;
-- `create` specifies the constructor for the type you are defining, and is not analogous to `Object.create()`.
-
-When defining specialised svg elements (such as `SVG.Rounded` in the example above), the function specified by `create` needs to do all the work of adding the element to the DOM for the svg document and connecting the DOM node to the SVG.js interface. All this is done automatically when the value of `create` is a string identifying an element type. If needed, see the source for a sense of how to do it explicitly.
-
-Though the defaults are geared toward creating svg elements for the SVG.js framework, `SVG.invent()` can be used as a generalised function for defining types in Javascript. When used in this more general way, the function supplied as a value for `create` should be written as an ordinary JS constructor. (Indeed, the function is simply returned as the constructor for your newly defined type.)
-
-Svg.js uses the `SVG.invent()` function to create all internal elements. A look at the source will show how this function is used in various ways.
-
-<br>
-# SVG.extend()
-
-SVG.js has a modular structure. It is very easy to add your own methods at different levels. Let's say we want to add a method to all shape types then we would add our method to `SVG.Shape`:
-
-```javascript
+<h4 id="2">SVG.extend()</h4>
+SVG.js имеет модульную структуру, поэтому очень просто добавлять свои собственные методы на различных уровнях. Допустим, нужно добавить метод ко всем типам фигур, тогда этот метод следует добавить в <tt>SVG.Shape</tt>:
+<pre>// javascript
 SVG.extend(SVG.Shape, {
   paintRed: function() {
     return this.fill('red')
   }
-})
-```
-
-Now all shapes will have the `paintRed()` method available. Say we want to have the `paintRed()` method on an ellipse apply a slightly different colour:
-
-```javascript
+})</pre>
+Теперь у всех форм появится действующий метод <tt>paintRed()</tt>. Скажем, нужно чтобы метод <tt>paintRed()</tt> на эллипсе применил слегка иной цвет:
+<pre>// javascript
 SVG.extend(SVG.Ellipse, {
   paintRed: function() {
     return this.fill('orangered')
   }
-})
-
-```
-The complete inheritance stack for `SVG.Ellipse` is:
-
-`SVG.Element` __`>`__ `SVG.Shape` __`>`__ `SVG.Ellipse`
+})</pre>
+Полный стек наследования для <tt>SVG.Ellipse</tt>: <tt>SVG.Element</tt> &#62; <tt>SVG.Shape</tt> &#62; <tt>SVG.Ellipse</tt>.<br>
 
 The SVG document can be extended by using:
-
-```javascript
+<pre>// javascript
 SVG.extend(SVG.Doc, {
   paintAllPink: function() {
     this.each(function() {
       this.fill('pink')
     })
   }
-})
-```
+})</pre>
 
 You can also extend multiple elements at once:
-```javascript
+<pre>// javascript
 SVG.extend(SVG.Ellipse, SVG.Path, SVG.Polygon, {
   paintRed: function() {
     return this.fill('orangered')
   }
-})
-```
-
-----
-
-Description: Due to the Object Oriented nature of SVG.js, objects/prototypes can be extended on any level. The invent() method provides a convenient way.
+})</pre>
 
 
 <br><br>
