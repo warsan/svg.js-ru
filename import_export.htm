@@ -7,47 +7,26 @@
 </head>
 
 <body>
-Title: Importing / Exporting
-
-----
-
-Text:
-
-# Import / export SVG
-
-## svg() _as getter_
-
-`returns` __`string`__
-
-Exporting the full generated SVG, or a part of it, can be done with the `svg()` method:
-
-```javascript
-draw.svg()
-```
-
-Exporting works on individual elements as well:
-
-```javascript
+<h3>Импорт/Экспорт SVG</h3>
+Экспорт полностью сгенерированного SVG или его части может быть выполнен с помощью метода <tt>svg()</tt>.
+Импорт выполняется тем же самым методом с передачей в качестве первого аргумента строкового значения <tt>svg</tt>.<br><br>
+<div class=blockindent><br>
+<pre id="1svg_get"><span class="lnk" onmouseover="show('svg - сокращ. англ. слов Scalable Vector Graphics<br>— масштабируемая векторная графика')" onmouseout="hide()">svg()</span>          <i class=low>как получатель (getter)</i></pre>
+<div class=list>возвращает - строковое значение (<tt>string</tt>)</div>
+Экспорт полностью сгенерированного SVG или его части может быть выполнен с помощью метода <tt>svg()</tt>.
+<pre>// javascript
+draw.svg()</pre>
+Экспорт также работает и по отдельным элементам:
+<pre>// javascript
 var rect = draw.rect()
-var svg  = rect.svg()
-```
+var svg  = rect.svg()</pre><br>
 
-## svg() _as setter_
-
-`returns` __`itself`__
-
-Importing is done with the same method by passing a string of svg as the first argument:
-
-```javascript
-draw.svg('<g><rect width="100" height="50" fill="#f06"></rect></g>')
-```
-
-Importing works on any element that inherits from `SVG.Parent`, which is basically every element that can contain other elements.
-
-----
-
-Description: Exporting the full generated SVG, or a part of it, can be done with the svg() method. Importing works by passing a string of svg as the first argument.
-
+<pre id="1svg_set"><span class="lnk" onmouseover="show('svg - сокращ. англ. слов Scalable Vector Graphics<br>— масштабируемая векторная графика')" onmouseout="hide()">svg()</span>          <i class=low>как установщик (сеттер)</i></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+Импорт выполняется тем же самым методом с передачей в качестве первого аргумента строкового значения <tt>svg</tt>:
+<pre>// javascript
+draw.svg('&#60;g&#62;&#60;rect width="100" height="50" fill="#f06"&#62;&#60;/rect>&#60;/g&#62;')</pre>
+Импорт работает с любым элементом, который наследуется от <tt>SVG.Parent</tt>, то есть по сути, с любым элементом, который может содержать другие элементы.</div><br>
 
 <br><br>
 </body></html>
