@@ -7,32 +7,217 @@
 </head>
 
 <body>
-Title: Tutorials / Examples
+<h3>Учебники и примеры</h3>
+<h4 id="1">Учебники</h4>
 
-----
+<h5>Руководство по созданию игры "пинг-понг"</h5>
+Хотите создать <a href="https://css-tricks.com/pong-svg-js/" target="_blank">игру пинг-понг с использованием SVG.js</a>?<br><br>
+<div style="font-family:Segoe UI; font-size:90%; margin-left:10px;">
+&nbsp; &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("pong1","pong2");'>Результат</span>
+&nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("pong2","pong1");'>Код JavaScript</span>
+<span style="float:right; margin-right:20px;"><a href="http://jsfiddle.net/wout/ncb3w5Lv/1/?utm_source=website&utm_medium=embed&utm_campaign=ncb3w5Lv" target="_blank">Редактировать в JSFiddle</a></span>
+<div id="pong1" style="height:350px; background-color:#fff; display:block; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:20px; width:60px;">
+<img src="img/pong.png"></div>
+<div id="pong2" style="height:350px; background-color:#eee; display:none; margin:0px; padding:0px; overflow-y:scroll;">
+<hr class="underline" style="margin-left:100px; width:80px;">
+<pre>// define document width and height
+var width = 450, height = 300<br>
+// create SVG document and set its size
+var draw = SVG('pong').size(width, height)
+draw.viewbox(0,0,450,300)<br><br>
+// draw background
+var background = draw.rect(width, height).fill('#dde3e1')<br>
+// draw line
+var line = draw.line(width/2, 0, width/2, height)
+line.stroke({ width: 5, color: '#fff', dasharray: '5,5' })<br><br>
+// define paddle width and height
+var paddleWidth = 15, paddleHeight = 80<br>
+// create and position left paddle
+var paddleLeft = draw.rect(paddleWidth, paddleHeight)
+paddleLeft.x(0).cy(height/2).fill('#00ff99')<br>
+// create and position right paddle
+var paddleRight = paddleLeft.clone()
+paddleRight.x(width-paddleWidth).fill('#ff0066')<br><br>
+// define ball size
+var ballSize = 10<br>
+// create ball
+var ball = draw.circle(ballSize)
+ball.center(width/2, height/2).fill('#7f7f7f')<br><br>
+// define inital player score
+var playerLeft = playerRight = 0<br>
+// create text for the score, set font properties
+var scoreLeft = draw.text(playerLeft+'').font({
+  size: 32,
+  family: 'Menlo, sans-serif',
+  anchor: 'end',
+  fill: '#fff'
+}).move(width/2-10, 10)<br>
+// cloning rocks!
+var scoreRight = scoreLeft.clone()
+  .text(playerRight+'')
+  .font('anchor', 'start')
+  .x(width/2+10)<br><br>
+// random velocity for the ball at start
+var vx = 0, vy = 0<br>
+// AI difficulty
+var difficulty = 2<br>
+// update is called on every animation step
+function update(dt) {
+  // move the ball by its velocity
+  ball.dmove(vx*dt, vy*dt)<br>
+  // get position of ball
+  var cx = ball.cx()
+    , cy = ball.cy()<br>
+  // get position of ball and paddle
+  var paddleLeftCy = paddleLeft.cy()<br>
+  // move the left paddle in the direction of the ball
+  var dy = Math.min(difficulty, Math.abs(cy - paddleLeftCy))
+  paddleLeftCy += cy > paddleLeftCy ? dy : -dy<br>
+  // constraint the move to the canvas area
+  paddleLeft.cy(Math.max(paddleHeight/2, Math.min(height-paddleHeight/2, paddleLeftCy)))<br>
+  // check if we hit top/bottom borders
+  if ((vy &#60; 0 && cy &#60;= 0) || (vy > 0 && cy >= height)) {
+    vy = -vy
+  }<br>
+  var paddleLeftY = paddleLeft.y()
+    , paddleRightY = paddleRight.y()<br>
+  // check if we hit the paddle
+  if((vx &#60; 0 && cx &#60;= paddleWidth && cy > paddleLeftY && cy &#60; paddleLeftY + paddleHeight) ||
+     (vx > 0 && cx >= width - paddleWidth && cy > paddleRightY && cy &#60; paddleRightY + paddleHeight)) {
+    // depending on where the ball hit we adjust y velocity
+    // for more realistic control we would need a bit more math here
+    // just keep it simple
+    vy = (cy - ((vx &#60; 0 ? paddleLeftY : paddleRightY) + paddleHeight/2)) * 7 // magic factor<br>
+    // make the ball faster on hit
+    vx = -vx * 1.05
+  } else<br>
+  // check if we hit left/right borders
+  if ((vx &#60; 0 && cx &#60;= 0) || (vx > 0 && cx >= width)) {
+    // when x-velocity is negative, it's a point for player 2, otherwise player 1
+    if(vx &#60; 0) { ++playerRight }
+    else { ++playerLeft }<br>
+    reset()<br>
+    scoreLeft.text(playerLeft+'')
+    scoreRight.text(playerRight+'')
+  }<br><br>
+  // move player paddle
+  var playerPaddleY = paddleRight.y()<br>
+  if (playerPaddleY &#60;= 0 && paddleDirection == -1) {
+    paddleRight.cy(paddleHeight/2)
+  } else if (playerPaddleY >= height-paddleHeight && paddleDirection == 1) {
+    paddleRight.y(height-paddleHeight)
+  } else {
+    paddleRight.dy(paddleDirection*paddleSpeed)
+  }<br><br>
+  // update ball color based on position
+  ball.fill(ballColor.at(1/width*ball.x()))<br>
+}<br><br>
+var lastTime, animFrame<br>
+function callback(ms) {
+  // we get passed a timestamp in milliseconds
+  // we use it to determine how much time has passed since the last call
+  if (lastTime) {
+    update((ms-lastTime)/1000) // call update and pass delta time in seconds
+  }<br>
+  lastTime = ms
+  animFrame = requestAnimationFrame(callback)
+}<br><br>
+callback()<br><br>
+var paddleDirection = 0
+  , paddleSpeed = 5<br>
+SVG.on(document, 'keydown', function(e) {
+  paddleDirection = e.keyCode == 40 ? 1 : e.keyCode == 38 ? -1 : 0
+  e.preventDefault()
+})<br>
+SVG.on(document, 'keyup', function(e) {
+  paddleDirection = 0
+  e.preventDefault()
+})<br>
+draw.on('click', function() {
+  if(vx === 0 && vy === 0) {
+    vx = Math.random() * 500 - 150
+    vy = Math.random() * 500 - 150
+  }
+})<br>
+function reset() {
+  // visualize boom
+  boom()<br>
+  // reset speed values
+  vx = 0
+  vy = 0<br>
+  // position the ball back in the middle
+  ball.animate(100).center(width/2, height/2)<br>
+  // reset the position of the paddles
+  paddleLeft.animate(100).cy(height/2)
+  paddleRight.animate(100).cy(height/2)
+}<br><br>
+// ball color update
+var ballColor = new SVG.Color('#ff0066')
+ballColor.morph('#00ff99')<br><br>
+// show visual explosion
+function boom() {
+  // detect winning player
+  var paddle = ball.cx() > width/2 ? paddleLeft : paddleRight<br>
+  // create the gradient
+  var gradient = draw.gradient('radial', function(stop) {
+    stop.at(0, paddle.attr('fill'), 1)
+    stop.at(1, paddle.attr('fill'), 0)
+  })<br>
+  // create circle to carry the gradient
+  var blast = draw.circle(300)
+  blast.center(ball.cx(), ball.cy()).fill(gradient)<br>
+  // animate to invisibility
+  blast.animate(1000, '>').opacity(0).after(function() {
+    blast.remove()
+  })
+}</pre></div></div><br>
+<div class=caption>Здесь игра не работает, это только стартовое изображение, для полноценного просмотра перейдите на <a href="http://jsfiddle.net/wout/ncb3w5Lv/1/?utm_source=website&utm_medium=embed&utm_campaign=ncb3w5Lv" target="_blank">JSFiddle</a>.</div><br><br>
 
-Description:
 
-----
+<h4 id="2">Примеры</h4>
 
-Text:
+<h5>Анимация движения фигур по заданной траектории</h5>
+<br><br>
+<div style="font-family:Segoe UI; font-size:90%; margin-left:10px;">
+&nbsp; &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("anim1","anim2");'>Результат</span>
+&nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("anim2","anim1");'>Код JavaScript</span>
+<span style="float:right; margin-right:20px;"><a href="https://jsfiddle.net/dotnetCarpenter/vceakozz/?utm_source=website&utm_medium=embed&utm_campaign=vceakozz" target="_blank">Редактировать в JSFiddle</a></span>
+<div id="anim1" style="height:440px; background-color:#fff; display:block; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:20px; width:60px;">
+<img src="img/anim.gif"></div>
+<div id="anim2" style="height:440px; background-color:#eee; display:none; margin:0px; padding:0px; overflow-x:scroll;">
+<hr class="underline" style="margin-left:100px; width:80px;">
+<pre>var canvas = SVG('drawing').size('100%', '100%').viewbox(0,0,800,1000)
+  , rect = canvas.rect(100, 100)
+  , path = canvas.path("m 357.64532,453.84097 c 17.62007,8.02216 -2.12058,27.70935 -13.33334,29.28571 -30.3859,4.27185 -48.34602,-29.97426 -45.23807,-55.9524 5.5594,-46.46879 56.1311,-70.59787 98.57145,-61.19043 62.28294,13.8058 93.32728,82.57702 77.1428,141.19051 C 453.21679,585.29693 365.67122,623.42358 290.97859,600.26951 196.98554,571.13248 151.71003,464.56996 181.93108,373.84089 218.53281,263.95583 344.23687,211.49702 450.97875,248.84102 576.77037,292.84963 636.43303,437.76771 591.93099,560.50775 540.55162,702.21597 376.3736,769.09583 237.6452,717.41234 80.01319,658.68628 5.9069261,475.21736 64.788247,320.50751 130.84419,146.94643 333.62587,65.607117 504.31214,131.69819 693.80625,205.0718 782.38357,427.18225 709.07382,613.84113")
+  , length = path.length()<br>
+path.fill('none').stroke({width:1, color: '#ccc'})<br>
+rect.animate(8000, '&#60;&#62;').during(function(pos, morph, eased){
+    var p = path.pointAt(eased * length)
+    rect.center(p.x, p.y)
+}).loop(true, true)</pre></div></div><br><br>
 
-# Tutorials
-
-## Pong tutorial
-
-Feel like building a (link: https://css-tricks.com/pong-svg-js/ text: pong game using SVG.js target: _blank)?
-
-<iframe width="100%" height="370" src="//jsfiddle.net/wout/ncb3w5Lv/1/embedded/result,js/?accentColor=f06" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-# Examples
-
-## Animating shapes along a path
-
-<iframe width="100%" height="370" src="//jsfiddle.net/dotnetCarpenter/vceakozz/embedded/result,js/?accentColor=f06" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-<iframe width="100%" height="370" src="//jsfiddle.net/Fuzzy/vceakozz/3/embedded/result,js/?accentColor=f06"  allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
+<div style="font-family:Segoe UI; font-size:90%; margin-left:10px;">
+&nbsp; &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("anime1","anime2");'>Результат</span>
+&nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("anime2","anime1");'>Код JavaScript</span>
+<span style="float:right; margin-right:20px;"><a href="http://jsfiddle.net/Fuzzy/vceakozz/3/?utm_source=website&utm_medium=embed&utm_campaign=vceakozz" target="_blank">Редактировать в JSFiddle</a></span>
+<div id="anime1" style="height:320px; background-color:#fff; display:block; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:20px; width:60px;">
+<img src="img/anime.gif"></div>
+<div id="anime2" style="height:320px; background-color:#eee; display:none; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:100px; width:80px;">
+<pre>var canvas = SVG('drawing').size('100%', '100%')
+  , rect = canvas.rect(5, 5)
+  , path = canvas.path("M 340,178 104,478 580,490 Z")
+  , length = path.length()<br>
+path.fill('none').stroke({width:1, color: '#ccc'}).move(10,10).scale(0.5)
+path.animate(3000).rotate(365).loop();<br>
+rect.animate(5000, '&#60;&#62;').during(function(pos, morph, eased){
+    var m = path.matrixify()
+    var p = new SVG.Point(path.pointAt(eased * length)).transform(m)
+    rect.move(p.x, p.y)
+}).loop(true, true)</pre></div></div><br><br>
 
 <br><br>
 </body></html>
