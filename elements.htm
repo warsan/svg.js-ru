@@ -447,7 +447,7 @@ var leading = text.font('leading')</pre><br>
 <div class=list>возвращает - самого себя (itself)</div>
 <div class=list>анимируется - да</div>
 
-As opposed to html, where leading is defined by `line-height`, svg does not have a natural leading equivalent. In svg, lines are not defined naturally. They are defined by `<tspan>` nodes with a `dy` attribute defining the line height and an `x` value resetting the line to the `x` position of the parent text element. But you can also have many nodes in one line defining a different `y`, `dy`, `x` or even `dx` value. This gives us a lot of freedom, but also a lot more responsibility. We have to decide when a new line is defined, where it starts, what its offset is and what it's height is. The `leading()` method in SVG.js tries to ease the pain by giving you behaviour that is much closer to html. In combination with newline separated text, it works just like html:
+As opposed to html, where leading is defined by `line-height`, svg does not have a natural leading equivalent. In svg, lines are not defined naturally. They are defined by `&#60;tspan>` nodes with a `dy` attribute defining the line height and an `x` value resetting the line to the `x` position of the parent text element. But you can also have many nodes in one line defining a different `y`, `dy`, `x` or even `dx` value. This gives us a lot of freedom, but also a lot more responsibility. We have to decide when a new line is defined, where it starts, what its offset is and what it's height is. The `leading()` method in SVG.js tries to ease the pain by giving you behaviour that is much closer to html. In combination with newline separated text, it works just like html:
 <pre>// javascript
 var text = draw.text("Lorem ipsum dolor sit amet consectetur.\nCras sodales imperdiet auctor.")
 text.leading(1.3)</pre>
@@ -540,7 +540,7 @@ When calling the `path()` method on a text element, the text element is mutated 
 <pre>// javascript
 text.plot('M 300 500 C 200 100 300 0 400 100 C 500 200 600 300 700 200 C 800 100 900 100 900 100')</pre>
 
-Attributes specific to the `<textPath>` element can be applied to the textPath instance itself:
+Attributes specific to the `&#60;textPath&#62;` element can be applied to the textPath instance itself:
 
 <pre>// javascript
 text.textPath().attr('startOffset', '50%')</pre>
@@ -569,7 +569,7 @@ var text = draw.text(function(add) {
 })<br>
 text
 	.path('M10 80 C 40 10, 65 10, 95 80 S 150 150, 180 80')
-	.animate(1000, '<>')
+	.animate(1000, '&#60;&#62;')
 	.plot('M10 80 C 40 150, 65 150, 95 80 S 150 10, 180 80')
 	.loop(true, true)<br>
 input.addEventListener('keyup', updateText(text))<br>
@@ -628,7 +628,7 @@ text.on('rebuild', function() {
 
 
 <h4 id="10">SVG.Tspan</h4>
-
+<div class=blockindent><br>
 ## tspan() <span class="suffix">constructor</span>
 
 `constructor on` __`SVG.Text`__
@@ -1005,10 +1005,10 @@ mask.add(circle.clone().center(105, 115).size(50).fill('#333'))<br>
 var rect = draw.rect(100, 100).move(20, 20).fill('#f06')
 rect.maskWith(mask)<br>
 rect.on('mouseover', function() {
-	this.animate(300, '<>').fill('#0f9')
+	this.animate(300, '&#60;&#62;').fill('#0f9')
 })
 rect.on('mouseout', function() {
-	this.animate(300, '<>').fill('#f06')
+	this.animate(300, '&#60;&#62;').fill('#f06')
 })</pre></div></div>
 <div class=caption>Здесь не видно анимации при наведении курсора мышки. Для полноценного просмотра перейдите на <a href="http://jsfiddle.net/wout/s5mb5zds/1/?utm_source=website&utm_medium=embed&utm_campaign=s5mb5zds" target="_blank">JSFiddle</a>.</div><br>
 
@@ -1093,10 +1093,10 @@ clip.add(circle.clone().center(105, 115).size(50).fill('#333'))<br>
 var rect = draw.rect(100, 100).move(20, 20).fill('#f06')
 rect.clipWith(clip)<br>
 rect.on('mouseover', function() {
-	this.animate(300, '<>').fill('#0f9')
+	this.animate(300, '&#60;&#62;').fill('#0f9')
 })
 rect.on('mouseout', function() {
-	this.animate(300, '<>').fill('#f06')
+	this.animate(300, '&#60;&#62;').fill('#f06')
 })</pre></div></div><br>
 
 <pre id="15clipWith"><span class="lnk" onmouseover="show('clip with - обрезка с')" onmouseout="hide()">clipWith()</span></pre>
@@ -1321,7 +1321,7 @@ The `SVG.Bare` instance carries an additional method to add plain text:
 
 <pre>// javascript
 var element = draw.element('title').words('This is a title.')
-//-> <title>This is a title.</title></pre></div><br><br>
+//-> &#60;title&#62;This is a title.&#60;/title&#62;</pre></div><br><br>
 
 <br><br>
 </body></html>
