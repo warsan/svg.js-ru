@@ -79,8 +79,8 @@ Can be either a string with the node name (e.g. `rect`, `ellipse`, ...) or a cus
 
 <h5>Примечания по использованию</h5>
 Следует подчеркнуть, что из конфигурационного объекта передатся в <tt>SVG.invent()</tt>:
-<div class=blockindent>&nbsp; &#9679; &nbsp; - <tt>construct</tt> предоставляет не конструкторы, а скорее методы, которые могут <em>вызывать</em> конструкторы;<br>
-&nbsp; &#9679; &nbsp; - <tt>create</tt> определяет конструктор для указанного типа, а не является аналогом <tt>Object.create()</tt>.</div><br>
+<div class=blockindent>&nbsp; &#9679; &nbsp; <tt>construct</tt> предоставляет не конструкторы, а скорее методы, которые могут <em>вызывать</em> конструкторы;<br>
+&nbsp; &#9679; &nbsp; <tt>create</tt> определяет конструктор для указанного типа, а не является аналогом <tt>Object.create()</tt>.</div><br>
 
 When defining specialised svg elements (such as `SVG.Rounded` in the example above), the function specified by `create` needs to do all the work of adding the element to the DOM for the svg document and connecting the DOM node to the SVG.js interface. All this is done automatically when the value of `create` is a string identifying an element type. If needed, see the source for a sense of how to do it explicitly.<br><br>
 
