@@ -7,134 +7,105 @@
 </head>
 
 <body>
-Title: Classes
+<h3>Классы</h3>
+SVG.js adds a lot of functionality that is not related to the SVG spec. Most of the extras are part of the OO nature but there are other useful utilities as well.<br><br>
 
-----
+<h4 id="1">SVG.Array</h4>
 
-Text:
-
-# Classes
-
-SVG.js adds a lot of functionality that is not related to the SVG spec. Most of the extras are part of the OO nature but there are other useful utilities as well.
-
-
-<br>
-# SVG.Array
 Is for simple, whitespace separated value strings:
 
-```javascript
-'0.343 0.669 0.119 0 0 0.249 -0.626 0.13 0 0 0.172 0.334 0.111 0 0 0 0 0 1 0'
-```
+<pre>// javascript
+'0.343 0.669 0.119 0 0 0.249 -0.626 0.13 0 0 0.172 0.334 0.111 0 0 0 0 0 1 0'</pre>
 
 Can also be passed like this in a more manageable format:
 
-```javascript
+<pre>// javascript
 new SVG.Array([ .343,  .669, .119, 0,   0
               , .249, -.626, .130, 0,   0
               , .172,  .334, .111, 0,   0
-              , .000,  .000, .000, 1,  -0 ])
-```
-
+              , .000,  .000, .000, 1,  -0 ])</pre>
+<div class=blockindent><br>
 ## at()
 
 `returns` __`new instance`__
 
 This method will morph the array to a given position between `0` and `1`:
-
-```javascript
-array.at(0.27).toString() //-> returns '27,0 73,100 127,127'
-```
+<pre>// javascript
+array.at(0.27).toString() //-> returns '27,0 73,100 127,127'</pre><br>
 
 ## bbox()
 
 `returns` __`object`__
 
 Gets the bounding box of the geometry of the array:
-
-```javascript
-array.bbox()
-```
-
-**Note**: this method is only available on `SVG.PointArray` and `SVG.PathArray`.
+<pre>// javascript
+array.bbox()</pre>
+<div class=note><b>Примечание:</b> this method is only available on `SVG.PointArray` and `SVG.PathArray`.</div><br>
 
 ## clone()
 
 `returns` __`new instance`__
 
 Makes a clone of the array and returns it:
-
-```javascript
+<pre>// javascript
 var array = new SVG.Array()
-var clone = array.clone()
-```
-
-**Note:** This method performs a deep clone on multi-dimensional arrays like `SVG.PointArray` and `SVG.PathArray`.
-**Note 2**: Obviously, the returned array is of the same class as the cloned array (e.g. `SVG.Array`, `SVG.PointArray` or `SVG.PathArray`).
+var clone = array.clone()</pre>
+<div class=note><b>Примечание:</b> This method performs a deep clone on multi-dimensional arrays like `SVG.PointArray` and `SVG.PathArray`.</div>
+<div class=note><b>Примечание 2:</b> Obviously, the returned array is of the same class as the cloned array (e.g. `SVG.Array`, `SVG.PointArray` or `SVG.PathArray`).</div><br>
 
 ## morph()
 
 `returns` __`itself`__
 
 In order to animate array values the `morph()` method lets you pass a destination value. This can be either the string value, a plain array or an instance of the same type of SVG.js array:
-
-```javascript
+<pre>// javascript
 var array = new SVG.PointArray([[0, 0], [100, 100]])
-array.morph('100,0 0,100 200,200')
-```
+array.morph('100,0 0,100 200,200')</pre>
 
 This method will prepare the array ensuring both the source and destination arrays have the same length.
 
-**Note**: In order to morph paths with different lengths, you need to include the [svg.pathmorphing.js](/plugins/svg-pathmorphing-js) plugin.
+<div class=note><b>Примечание:</b> In order to morph paths with different lengths, you need to include the [svg.pathmorphing.js](/plugins/svg-pathmorphing-js) plugin.</div><br>
 
 ## move()
 
 `returns` __`itself`__
 
 Moves geometry of the array with the given `x` and `y` values:
-
-```javascript
+<pre>// javascript
 var array = new SVG.PointArray([[0, 0], [100, 100]])
 array.move(33,75)
-array.toString() //-> returns '33,75 133,175'
-```
-
-**Note**: this method is only available on `SVG.PointArray` and `SVG.PathArray`
+array.toString() //-> returns '33,75 133,175'</pre>
+<div class=note><b>Примечание:</b> this method is only available on `SVG.PointArray` and `SVG.PathArray`</div><br>
 
 ## reverse()
 
 `returns` __`itself`__
 
 Reverses the order of the array:
-
-```javascript
+<pre>// javascript
 var array = new SVG.PointArray([[0, 0], [100, 100]])
 array.reverse()
-array.toString() //-> returns '100,100 0,0'
-```
+array.toString() //-> returns '100,100 0,0'</pre><br>
 
 ## settle()
 
 `returns` __`itself`__
 
 When morphing is done the `settle()` method will eliminate any transitional points like duplicates:
-
-```javascript
-array.settle()
-```
+<pre>// javascript
+array.settle()</pre><br>
 
 ## size()
 
 `returns` __`itself`__
 
 Resizes geometry of the array by the given `width` and `height` values:
-
-```javascript
+<pre>// javascript
 var array = new SVG.PointArray([[0, 0], [100, 100]])
 array.move(100,100).size(222,333)
-array.toString() //-> returns '100,100 322,433'
-```
+array.toString() //-> returns '100,100 322,433'</pre>
 
-**Note**: this method is only available on `SVG.PointArray` and `SVG.PathArray`
+<div class=note><b>Примечание:</b> this method is only available on `SVG.PointArray` and `SVG.PathArray`</div><br>
 
 ## transform()
 
@@ -142,560 +113,453 @@ array.toString() //-> returns '100,100 322,433'
 
 Transforms the points in the array with matrix,
 without modifying the original array:
-
-```javascript
+<pre>// javascript
 var array = new SVG.PointArray([[0, 0], [100, 100]])
 array.transform(new SVG.Matrix().translate(1, 2)).toString()
-//-> '1,2 101,102'
-```
+//-> '1,2 101,102'</pre>
 
-**Note**: this method is only available on `SVG.PointArray`
+<div class=note><b>Примечание:</b> this method is only available on `SVG.PointArray`</div></div><br><br>
 
-<br>
-# SVG.PointArray
+<h4 id="2">SVG.PointArray</h4>
 
 `inherits from` __`SVG.Array`__
 
 Is a bit more complex and is used for polyline and polygon elements. This is a poly-point string:
-
-```javascript
+<pre>// javascript
 '0,0 100,100'
 // or
 '0 0 100 100'
 // or
-'0, 0, 100, 100'
-```
+'0, 0, 100, 100'</pre>
 
 The flat array representation:
-
-```javascript
-[0, 0, 100, 100]
-```
+<pre>// javascript
+[0, 0, 100, 100]</pre>
 
 The multi-dimensional array representation:
-
-```javascript
+<pre>// javascript
 [
   [0, 0]
 , [100, 100]
-]
-```
+]</pre>
 
 Precompiling it as an `SVG.PointArray`:
-
-```javascript
+<pre>// javascript
 new SVG.PointArray([
   [0, 0]
 , [100, 100]
-])
-```
+])</pre>
 
 Note that every instance of `SVG.Polyline` and `SVG.Polygon` carries a reference to the `SVG.PointArray` instance:
+<pre>// javascript
+polygon.array() //-> returns the SVG.PointArray instance</pre><br>
 
-```javascript
-polygon.array() //-> returns the SVG.PointArray instance
-```
 
-<br>
-# SVG.PathArray
+<h4 id="3">SVG.PathArray</h4>
 
 `inherits from` __`SVG.Array`__
 
 Path arrays carry arrays representing every segment in a path string:
-
-```javascript
-'M0 0L100 100z'
-```
+<pre>// javascript
+'M0 0L100 100z'</pre>
 
 The flat array representation:
-
-```javascript
-[ 'M', 0, 0, 'L', 100, 100, 'z' ]
-```
+<pre>// javascript
+[ 'M', 0, 0, 'L', 100, 100, 'z' ]</pre>
 
 The multi-dimensional array representation:
-
-```javascript
+<pre>// javascript
 [
   ['M', 0, 0]
 , ['L', 100, 100]
 , ['z']
-]
-```
+]</pre>
 
 Precompiling it as an `SVG.PathArray`:
-
-```javascript
+<pre>// javascript
 new SVG.PathArray([
   ['M', 0, 0]
 , ['L', 100, 100]
 , ['z']
-])
-```
+])</pre>
 
 Note that every instance of `SVG.Path` carries a reference to the `SVG.PathArray` instance:
+<pre>// javascript
+path.array() //-> returns the SVG.PathArray instance</pre>
 
-```javascript
-path.array() //-> returns the SVG.PathArray instance
-```
-
-## Syntax
+<h5>Syntax</h5>
 The syntax for patharrays is very predictable. They are basically literal representations in the form of two dimentional arrays.
 
-### Move To
+<h6>Move To</h6>
 Original syntax is `M0 0` or `m0 0`. The SVG.js syntax `['M',0,0]` or `['m',0,0]`.
 
-### Line To
+<h6>Line To</h6>
 Original syntax is `L100 100` or `l100 100`. The SVG.js syntax `['L',100,100]` or `['l',100,100]`.
 
-### Horizontal line
+<h6>Horizontal line</h6>
 Original syntax is `H200` or `h200`. The SVG.js syntax `['H',200]` or `['h',200]`.
 
-### Vertical line
+<h6>Vertical line</h6>
 Original syntax is `V300` or `v300`. The SVG.js syntax `['V',300]` or `['v',300]`.
 
-### Bezier curve
-Original syntax is `C20 20 40 20 50 10` or `c20 20 40 20 50 10`. The SVG.js syntax `['C',20,20,40,20,50,10]` or `['c',20,20,40,20,50,10]`.
+<h6>Bezier curve</h6>
+Original syntax is `C20 20 40 20 50 10` or `c20 20 40 20 50 10`. The SVG.js syntax `['C',20,20,40,20,50,10]` or `['c',20,20,40,20,50,10]`.<br>
 
-Or mirrored with `S`:
+Or mirrored with `S`:<br>
 
-Original syntax is `S40 20 50 10` or `s40 20 50 10`. The SVG.js syntax `['S',40,20,50,10]` or `['s',40,20,50,10]`.
+Original syntax is `S40 20 50 10` or `s40 20 50 10`. The SVG.js syntax `['S',40,20,50,10]` or `['s',40,20,50,10]`.<br>
 
-Or quadratic with `Q`:
+Or quadratic with `Q`:<br>
 
-Original syntax is `Q20 20 50 10` or `q20 20 50 10`. The SVG.js syntax `['Q',20,20,50,10]` or `['q',20,20,50,10]`.
+Original syntax is `Q20 20 50 10` or `q20 20 50 10`. The SVG.js syntax `['Q',20,20,50,10]` or `['q',20,20,50,10]`.<br>
 
-Or a complete shortcut with `T`:
+Or a complete shortcut with `T`:<br>
 
 Original syntax is `T50 10` or `t50 10`. The SVG.js syntax `['T',50,10]` or `['t',50,10]`.
 
-### Arc
+<h6>Arc</h6>
 Original syntax is `A 30 50 0 0 1 162 163` or `a 30 50 0 0 1 162 163`. The SVG.js syntax `['A',30,50,0,0,1,162,163]` or `['a',30,50,0,0,1,162,163]`.
 
-### Close
+<h6>Close</h6>
 Original syntax is `Z` or `z`. The SVG.js syntax `['Z']` or `['z']`.
 
-The best documentation on paths can be found at (link: https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths text: MDN target: _blank).
+The best documentation on paths can be found at (link: https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths text: MDN target: _blank).<br><br>
 
-<br>
-# SVG.Color
+<h4 id="4">SVG.Color</h4>
 
 SVG.js has a dedicated color class handling different types of colors. Accepted values are:
+<div class=blockindent>
+&nbsp; &#9679; &nbsp; __hex string__; three based (e.g. #f06) or six based (e.g. #ff0066) `new SVG.Color('#f06')`<br>
+&nbsp; &#9679; &nbsp; __rgb string__; e.g. rgb(255, 0, 102) `new SVG.Color('rgb(255, 0, 102)')`<br>
+&nbsp; &#9679; &nbsp; __rgb object__; e.g. { r: 255, g: 0, b: 102 } `new SVG.Color({ r: 255, g: 0, b: 102 })`</div>
 
-- __hex string__; three based (e.g. #f06) or six based (e.g. #ff0066) `new SVG.Color('#f06')`
-- __rgb string__; e.g. rgb(255, 0, 102) `new SVG.Color('rgb(255, 0, 102)')`
-- __rgb object__; e.g. { r: 255, g: 0, b: 102 } `new SVG.Color({ r: 255, g: 0, b: 102 })`
-
-Note that when working with objects is important to provide all three values every time.
+Note that when working with objects is important to provide all three values every time.<br><br>
 
 The `SVG.Color` instance has a few methods of its own.
+<div class=blockindent><br>
 
 ## at()
 
 `returns` __`SVG.Color`__
 
 Get morphable color at given position:
-
-```javascript
+<pre>// javascript
 var color = new SVG.Color('#ff0066').morph('#000')
-color.at(0.5).toHex() //-> '#7f0033'
-```
+color.at(0.5).toHex() //-> '#7f0033'</pre><br>
 
 ## brightness()
 
 `returns` __`number`__
 
 Get the brightness of a color:
+<pre>// javascript
+color.brightness() //-> returns 0.344</pre>
 
-```javascript
-color.brightness() //-> returns 0.344
-```
-
-This is the perceived brightness where `0` is black and `1` is white.
+This is the perceived brightness where `0` is black and `1` is white.<br><br>
 
 ## morph()
 
 `returns` __`itself`__
 
 Make a color morphable:
-
-```javascript
-color.morph('#000')
-```
+<pre>// javascript
+color.morph('#000')</pre><br>
 
 ## toHex()
 
 `returns` __`string`__
 
 Get hex value:
-
-```javascript
-color.toHex() //-> returns '#ff0066'
-```
+<pre>// javascript
+color.toHex() //-> returns '#ff0066'</pre><br>
 
 ## toRgb()
 
 `returns` __`string`__
 
 Get rgb string value:
+<pre>// javascript
+color.toRgb() //-> returns 'rgb(255,0,102)'</pre></div><br>
 
-```javascript
-color.toRgb() //-> returns 'rgb(255,0,102)'
-```
 
-<br>
-# SVG.Matrix
+<h4 id="5">SVG.Matrix</h4>
 
-Matrices in SVG.js have their own class `SVG.Matrix`, wrapping the native `SVGMatrix`. They add a lot of functionality like extracting transform values, matrix morphing and improvements on the native methods.
+Matrices in SVG.js have their own class `SVG.Matrix`, wrapping the native `SVGMatrix`. They add a lot of functionality like extracting transform values, matrix morphing and improvements on the native methods.<br><br>
 
 In SVG.js, matrices accept various values on initialization.
 
-Without a value:
-
-```javascript
+Без значения:
+<pre>// javascript
 var matrix = new SVG.Matrix
-matrix.toString() //-> returns matrix(1,0,0,1,0,0)
-```
+matrix.toString() //-> returns matrix(1,0,0,1,0,0)</pre>
 
-Six arguments:
-
-```javascript
+Шесть аргументов:
+<pre>// javascript
 var matrix = new SVG.Matrix(1, 0, 0, 1, 100, 150)
-matrix.toString() //-> returns matrix(1,0,0,1,100,150)
-```
+matrix.toString() //-> returns matrix(1,0,0,1,100,150)</pre>
 
-A string value:
-
-```javascript
+Строковое значение:
+<pre>// javascript
 var matrix = new SVG.Matrix('1,0,0,1,100,150')
-matrix.toString() //-> returns matrix(1,0,0,1,100,150)
-```
+matrix.toString() //-> returns matrix(1,0,0,1,100,150)</pre>
 
 An object value:
-
-```javascript
+<pre>// javascript
 var matrix = new SVG.Matrix({ a: 1, b: 0, c: 0, d: 1, e: 100, f: 150 })
-matrix.toString() //-> returns matrix(1,0,0,1,100,150)
-```
+matrix.toString() //-> returns matrix(1,0,0,1,100,150)</pre><br>
 
 A native `SVGMatrix`:
-
-```javascript
+<pre>// javascript
 var svgMatrix = svgElement.getCTM()
 var matrix = new SVG.Matrix(svgMatrix)
-matrix.toString() //-> returns matrix(1,0,0,1,0,0)
-```
+matrix.toString() //-> returns matrix(1,0,0,1,0,0)</pre>
 
 Even an instance of `SVG.Element`:
-
-```javascript
+<pre>// javascript
 var rect = draw.rect(50, 25)
 var matrix = new SVG.Matrix(rect)
-matrix.toString() //-> returns matrix(1,0,0,1,0,0)
-```
+matrix.toString() //-> returns matrix(1,0,0,1,0,0)</pre>
+<div class=blockindent><br>
 
 ## around()
 
 `returns` __`SVG.Matrix`__
 
 Performs a given matrix transformation around a given center point:
-
-```javascript
+<pre>// javascript
 // cx, cy, matrix
-matrix.around(100, 150, new SVG.Matrix().skew(0, 45))
-```
+matrix.around(100, 150, new SVG.Matrix().skew(0, 45))</pre>
 
-The matrix passed as the third argument will be used to multiply.
+The matrix passed as the third argument will be used to multiply.<br><br>
 
 ## at()
 
 `returns` __`SVG.Matrix`__
 
 This method will morph the matrix to a given position between `0` and `1`:
+<pre>// javascript
+matrix.at(0.27)</pre>
 
-```javascript
-matrix.at(0.27)
-```
-
-This will only work when a destination matirx is defined using the `morph()` method.
+This will only work when a destination matirx is defined using the `morph()` method.<br><br>
 
 ## clone()
 
 `returns` __`SVG.Matrix`__
 
 Returns an exact copy of the matrix:
-
-```javascript
-matrix.clone()
-```
+<pre>// javascript
+matrix.clone()</pre><br>
 
 ## extract()
 
 `returns` __`object`__
 
 Gets the calculated values of the matrix as an object:
-
-```javascript
-matrix.extract()
-```
+<pre>// javascript
+matrix.extract()</pre>
 
 The returned object contains the following values:
-
-- `x` (translation on the x-axis)
-- `y` (translation on the y-axis)
-- `skewX` (calculated skew on x-axis)
-- `skewY` (calculated skew on y-axis)
-- `scaleX` (calculated scale on x-axis)
-- `scaleY` (calculated scale on y-axis)
-- `rotation` (calculated rotation)
+<div class=blockindent>
+&nbsp; &#9679; &nbsp; `x` (translation on the x-axis)<br>
+&nbsp; &#9679; &nbsp; `y` (translation on the y-axis)<br>
+&nbsp; &#9679; &nbsp; `skewX` (calculated skew on x-axis)<br>
+&nbsp; &#9679; &nbsp; `skewY` (calculated skew on y-axis)<br>
+&nbsp; &#9679; &nbsp; `scaleX` (calculated scale on x-axis)<br>
+&nbsp; &#9679; &nbsp; `scaleY` (calculated scale on y-axis)<br>
+&nbsp; &#9679; &nbsp; `rotation` (calculated rotation)</div><br>
 
 ## flip()
 
 `returns` __`SVG.Matrix`__
 
 Flips matrix over a given axis:
-
-```javascript
-matrix.flip('x')
-```
-
-or
-
-```javascript
-matrix.flip('y')
-```
+<pre>// javascript
+matrix.flip('x')</pre>
+или
+<pre>// javascript
+matrix.flip('y')</pre>
 
 By default elements are flipped over their center point. The flip axis position can be defined with the second argument:
-
-```javascript
-matrix.flip('x', 150)
-```
-
-or
-
-```javascript
-matrix.flip('y', 100)
-```
+<pre>// javascript
+matrix.flip('x', 150)</pre>
+или
+<pre>// javascript
+matrix.flip('y', 100)</pre><br>
 
 ## inverse()
 
 `returns` __`SVG.Matrix`__
 
 Creates an inverted matix:
-
-```javascript
-matrix.inverse()
-```
+<pre>// javascript
+matrix.inverse()</pre><br>
 
 ## morph()
 
 `returns` __`itself`__
 
 In order to animate matrices the `morph()` method lets you pass a destination matrix. This can be any value a `SVG.Matrix` would accept on initialization:
-
-```javascript
-matrix.morph('2,0,0,2,100,150')
-```
+<pre>// javascript
+matrix.morph('2,0,0,2,100,150')</pre><br>
 
 ## multiply()
 
 `returns` __`SVG.Matrix`__
 
 Multiplies by another given matrix:
-
-```javascript
-matrix.multiply(matrix2)
-```
+<pre>// javascript
+matrix.multiply(matrix2)</pre><br>
 
 ## native()
 
 `returns` __`SVGMatrix`__
 
 Returns a native `SVGMatrix` extracted from the `SVG.Matrix` instance:
-
-```javascript
-matrix.native()
-```
+<pre>// javascript
+matrix.native()</pre><br>
 
 ## rotate()
 
 `returns` __`SVG.Matrix`__
 
 Rotates matrix by degrees with one value given:
-
-```javascript
+<pre>// javascript
 // degrees
-matrix.rotate(45)
-```
+matrix.rotate(45)</pre>
 
 Rotates a matrix by degrees around a given point with three values:
-
-```javascript
+<pre>// javascript
 // degrees, cx, cy
-matrix.rotate(45, 100, 150)
-```
+matrix.rotate(45, 100, 150)</pre><br>
 
 ## scale()
 
 `returns` __`SVG.Matrix`__
 
 Scales matrix uniformal with one value:
-
-```javascript
+<pre>// javascript
 // scale
-matrix.scale(2)
-```
+matrix.scale(2)</pre>
 
 Scales matrix non-uniformal with two values:
-
-```javascript
+<pre>// javascript
 // scaleX, scaleY
-matrix.scale(2, 3)
-```
+matrix.scale(2, 3)</pre>
 
 Scales matrix uniformal on a given center point with three values:
-
-```javascript
+<pre>// javascript
 // scale, cx, cy
-matrix.scale(2, 100, 150)
-```
+matrix.scale(2, 100, 150)</pre>
 
 Scales matrix non-uniformal on a given center point with four values:
-
-```javascript
+<pre>// javascript
 // scaleX, scaleY, cx, cy
-matrix.scale(2, 3, 100, 150)
-```
+matrix.scale(2, 3, 100, 150)</pre><br>
 
 ## skew()
 
 `returns` __`SVG.Matrix`__
 
 Skews matrix a given degrees over x and or y axis with two values:
-
-```javascript
+<pre>// javascript
 // degreesX, degreesY
-matrix.skew(0, 45)
-```
+matrix.skew(0, 45)</pre>
 
 Skews matrix a given degrees over x and or y axis on a given point with four values:
-
-```javascript
+<pre>// javascript
 // degreesX, degreesY, cx, cy
-matrix.skew(0, 45, 150, 100)
-```
+matrix.skew(0, 45, 150, 100)</pre><br>
 
 ## toString()
 
 `returns` __`string`__
 
 Converts the matrix to a transform string:
-
-```javascript
+<pre>// javascript
 matrix.toString()
-// -> matrix(1,0,0,1,0,0)
-```
+// -> matrix(1,0,0,1,0,0)</pre><br>
 
 ## translate()
 
 `returns` __`SVG.Matrix`__
 
 Translates matrix by a given x and y value:
+<pre>// javascript
+matrix.translate(10, 20)</pre></div><br>
 
-```javascript
-matrix.translate(10, 20)
-```
 
-<br>
-# SVG.Number
+<h4 id="6">SVG.Number</h4>
 
 Numbers in SVG.js have a dedicated number class to be able to process string values. Creating a new number is simple:
-
-```javascript
+<pre>// javascript
 var number = new SVG.Number('78%')
 number.plus('3%').toString() //-> returns '81%'
-number.valueOf() //-> returns 0.81
-```
+number.valueOf() //-> returns 0.81</pre>
 
 Operators are defined as methods on the `SVG.Number` instance.
-
+<div class=blockindent><br>
 ## at()
 
 `returns` __`SVG.Number`__
 
 Get morphable number at given position:
-
-```javascript
+<pre>// javascript
 var number = new SVG.Number('79%').morph('3%')
-number.at(0.55).toString() //-> '37.2%'
-```
+number.at(0.55).toString() //-> '37.2%'</pre><br>
 
 ## divide()
 
 `returns` __`SVG.Number`__
 
 Division:
-
-```javascript
-number.divide('3%')
-```
+<pre>// javascript
+number.divide('3%')</pre><br>
 
 ## minus()
 
 `returns` __`SVG.Number`__
 
 Subtraction:
-
-```javascript
-number.minus('3%')
-```
+<pre>// javascript
+number.minus('3%')</pre><br>
 
 ## morph()
 
 `returns` __`itself`__
 
 Make a number morphable:
-
-```javascript
-number.morph('11%')
-```
+<pre>// javascript
+number.morph('11%')</pre><br>
 
 ## plus()
 
 `returns` __`SVG.Number`__
 
 Addition:
-
-```javascript
-number.plus('3%')
-```
+<pre>// javascript
+number.plus('3%')</pre><br>
 
 ## times()
 
 `returns` __`SVG.Number`__
 
 Multiplication:
-
-```javascript
-number.times(2)
-```
+<pre>// javascript
+number.times(2)</pre><br>
 
 ## to()
 
 `returns` __`SVG.Number`__
 
 Change number to another unit:
+<pre>// javascript
+number.to('px')</pre></div><br>
 
-```javascript
-number.to('px')
-```
 
-<br>
-# SVG.Set
+<h4 id="7">SVG.Set</h4>
 
 Sets are very useful if you want to modify or animate multiple elements at once. A set will accept all the same methods accessible on individual elements, even the ones that you add with your own plugins! Creating a set is exactly as you would expect:
-
-```javascript
+<pre>// javascript
 // create some elements
 var rect = draw.rect(100,100)
 var circle = draw.circle(100).move(100,100).fill('#f09')
@@ -705,110 +569,90 @@ var set = draw.set()
 set.add(rect).add(circle)
 
 // change the fill of all elements in the set at once
-set.fill('#ff0')
-```
+set.fill('#ff0')</pre>
 
 A single element can be a member of many sets. Sets also don't have a structural representation, in fact they are just fancy array's.
-
+<div class=blockindent><br>
 ## add()
 
 `returns` __`itself`__
 
 Add an element to a set:
-
-```javascript
-set.add(rect)
-```
+<pre>// javascript
+set.add(rect)</pre>
 
 Quite a useful feature of sets is the ability to accept multiple elements at once:
 
-```javascript
-set.add(rect, circle)
-```
+<pre>// javascript
+set.add(rect, circle)</pre><br>
 
 ## animate()
 
 `returns` __`SVG.SetFX`__
 
 Sets work with animations as well:
-
-```javascript
-set.animate(3000).fill('#ff0')
-```
+<pre>// javascript
+set.animate(3000).fill('#ff0')</pre><br>
 
 ## bbox()
 
 `returns` __`SVG.BBox`__
 
 Get the bounding box of all elements in the set:
-
-```javascript
-set.bbox()
-```
+<pre>// javascript
+set.bbox()</pre><br>
 
 ## clear()
 
 `returns` __`itself`__
 
 Or to remove all elements from a set:
-
-```javascript
-set.clear()
-```
+<pre>// javascript
+set.clear()</pre><br>
 
 ## each()
 
 `returns` __`itself`__
 
 Iterating over all members in a set is the same as with svg containers:
-
-```javascript
+<pre>// javascript
 set.each(function(i) {
   this.attr('id', 'shiny_new_id_' + i)
-})
-```
+})</pre>
 
-Note that `this` refers to the current child element.
+Note that `this` refers to the current child element.<br><br>
 
 ## first()
 
 `returns` __`SVG.Element`__
 
 Gets the first element:
-
-```javascript
-set.first()
-```
+<pre>// javascript
+set.first()</pre><br>
 
 ## get()
 
 `returns` __`SVG.Element`__
 
 Gets the element at a given index:
-
-```javascript
-set.get(1)
-```
+<pre>// javascript
+set.get(1)</pre><br>
 
 ## has()
 
 `returns` __`boolean`__
 
 Determine if an element is member of the set:
-
-```javascript
-set.has(rect)
-```
+<pre>// javascript
+set.has(rect)</pre><br>
 
 ## index()
 
 `returns` __`number`__
 
 Returns the index of a given element in the set.
-
-```javascript
-set.index(rect) //-> -1 if element is not a member
-```
+<pre>// javascript
+set.index(rect) //-> -1 if element is not a member</pre><br>
 
 ## last()
 
@@ -816,9 +660,8 @@ set.index(rect) //-> -1 if element is not a member
 
 Gets the last element:
 
-```javascript
-set.last()
-```
+<pre>// javascript
+set.last()</pre><br>
 
 ## remove()
 
@@ -826,34 +669,30 @@ set.last()
 
 To remove an element from a set:
 
-```javascript
-set.remove(rect)
-```
+<pre>// javascript
+set.remove(rect)</pre></div><br>
 
-<br>
-# SVG.Point
 
-SVG.Point is returned by [point()](/manipulating/#point) but is also a useful class to create vectors.
+<h4 id="8">SVG.Point</h4>
+
+SVG.Point is returned by [point()](/manipulating/#point) but is also a useful class to create vectors.<br>
 
 The contructor can take coordinates in many different forms:
-
-```javascript
+<pre>// javascript
 var vector1 = new SVG.Point(1)
 var vector2 = new SVG.Point(1,1)
 var vector3 = new SVG.Point([1,1])
 var vector4 = new SVG.Point({x:1,y:1})
-var vector5 = new SVG.Point(new SVG.Point(1,1))
-```
+var vector5 = new SVG.Point(new SVG.Point(1,1))</pre>
+<div class=blockindent><br>
 
 ## clone()
 
 `returns` __`SVG.Point`__
 
 Get a new `SVG.Point` with the same x/y value.
-
-```javascript
-var newPoint = new SVG.Point(1,1).clone()
-```
+<pre>// javascript
+var newPoint = new SVG.Point(1,1).clone()</pre><br>
 
 ## morph()
 
@@ -861,10 +700,9 @@ var newPoint = new SVG.Point(1,1).clone()
 
 Set the point to be morphable. Usually used with the `at()` method:
 
-```javascript
+<pre>// javascript
 var point = new SVG.Point(1,1).morph(11,10)
-point.at(0.5) //-> {x: 6, y: 5.5}
-```
+point.at(0.5) //-> {x: 6, y: 5.5}</pre><br>
 
 ## at()
 
@@ -872,10 +710,9 @@ point.at(0.5) //-> {x: 6, y: 5.5}
 
 Get morphable point at given position:
 
-```javascript
+<pre>// javascript
 var point = new SVG.Point(1,1).morph(11,10)
-point.at(0.5) //-> {x: 6, y: 5.5}
-```
+point.at(0.5) //-> {x: 6, y: 5.5}</pre><br>
 
 ## native()
 
@@ -884,10 +721,9 @@ point.at(0.5) //-> {x: 6, y: 5.5}
 Creates a native SVGPoint object outside of any document trees.
 The object is initialized to the SVG.Point point.
 
-```javascript
+<pre>// javascript
 var point = new SVG.Point(1,1).native()
-console.log(point) //-> SVGPoint {x: 1, y: 1}
-```
+console.log(point) //-> SVGPoint {x: 1, y: 1}</pre><br>
 
 ## transform()
 
@@ -895,16 +731,9 @@ console.log(point) //-> SVGPoint {x: 1, y: 1}
 
 Transform point with matrix, without modifying the original point:
 
-```javascript
+<pre>// javascript
 var point = new SVG.Point(1,1)
-point.transform(new SVG.Matrix().skew(0, 45)) //-> {x: 1, y: 2}
-```
-
-----
-
-Description: SVG.js adds a lot of functionality that is not related to the SVG spec. Most of the extras are part of the OO nature but there are other useful utilities also.
-
-
+point.transform(new SVG.Matrix().skew(0, 45)) //-> {x: 1, y: 2}</pre></div><br>
 
 <br><br>
 </body></html>
