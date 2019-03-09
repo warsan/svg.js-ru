@@ -465,7 +465,7 @@ element.toggleClass('pink-flower')</pre></div><br><br>
 The `data()` method allows you to bind arbitrary objects, strings and numbers to SVG elements.
 <div class=blockindent><br>
 <pre id="8data_get"><span class="lnk" onmouseover="show('data - данные')" onmouseout="hide()">data()</span>          <i class=low>как получатель (геттер)</i></pre>
-<div class=list>возвращает значение (value)</div>
+<div class=list>возвращает значение (<tt>value</tt>)</div>
 Получает значения аналогично методу <tt>attr()</tt>:
 <pre>// javascript
 var key = rect.data('key')</pre><br>
@@ -493,326 +493,244 @@ rect.data('key', 'value', true)</pre></div><br><br>
 
 
 <h4 id="9">Память</h4>
+<div class=blockindent><br>
+<pre id="9remember_get"><span class="lnk" onmouseover="show('remember - вспомнить')" onmouseout="hide()">remember()</span>          <i class=low>как получатель (геттер)</i></pre>
+<div class=list>возвращает значение (<tt>value</tt>)</div>
+Для восстановления памяти
+<pre>// javascript
+rect.remember('oldBBox')</pre><br>
 
-## remember() _as getter_
-
-`returns` __`value`__
-
-To retrieve a memory
-
-```javascript
-rect.remember('oldBBox')
-```
-
-## remember() _as setter_
-
-`returns` __`itself`__
-
-Storing data in-memory is very much like setting attributes:
-
-```javascript
-rect.remember('oldBBox', rect.bbox())
-```
-
-Multiple values can also be remembered at once:
-
-```javascript
+<pre id="9remember_set"><span class="lnk" onmouseover="show('remember - запомнить')" onmouseout="hide()">remember()</span>          <i class=low>как установщик (сеттер)</i></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+Сохранение данных в памяти очень похоже на установку атрибутов:
+<pre>// javascript
+rect.remember('oldBBox', rect.bbox())</pre>
+Также можно запоминать несколько значений сразу:
+<pre>// javascript
 rect.remember({
   oldFill:    rect.attr('fill')
 , oldStroke:  rect.attr('stroke')
-})
-```
+})</pre><br>
 
-## forget()
+<pre id="9forget"><span class="lnk" onmouseover="show('forget - забыть')" onmouseout="hide()">forget()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+Стирание одного значения в памяти:
+<pre>// javascript
+rect.forget('oldBBox')</pre>
+Или стирание сразу нескольких значений в памяти:
+<pre>// javascript
+rect.forget('oldFill', 'oldStroke')</pre>
+И наконец, просто стереть всю память целиком:
+<pre>// javascript
+rect.forget()</pre></div><br><br>
 
-`returns` __`itself`__
-
-Erasing a single memory:
-
-```javascript
-rect.forget('oldBBox')
-```
-
-Or erasing multiple memories at once:
-
-
-```javascript
-rect.forget('oldFill', 'oldStroke')
-```
-
-And finally, just erasing the whole memory:
-
-```javascript
-rect.forget()
-```
-<br>
 
 <h4 id="10">"Дерево" документа</h4>
-
-## add()
-
-`returns` __`itself`__
-
-Sets the calling element as the parent node of the argument. Returns the parent:
-
-```javascript
+<div class=blockindent><br>
+<pre id="10add"><span class="lnk" onmouseover="show('add - добавить')" onmouseout="hide()">add()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+Устанавливает вызывающий элемент (в примере это <tt>group</tt>) в качестве родительского узла для аргумента (т.е. <tt>rect</tt>). Возвращает родительский элемент:
+<pre>// javascript
 var rect = draw.rect(100, 100)
-var group = draw.group()
+var group = draw.group()<br>
+group.add(rect) //-> returns group (возвращает группу)</pre><br>
 
-group.add(rect) //-> returns group
-```
+<pre id="10addTo"><span class="lnk" onmouseover="show('add to - добавить в ...')" onmouseout="hide()">addTo()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+Устанавливает вызывающий элемент как дочерний узел аргумента. Возвращает дочерний элемент:
+<pre>// javascript
+rect.addTo(group) //-> returns rect (возвращает элемент rect)</pre><br>
 
-## addTo()
+<pre id="10clone"><span class="lnk" onmouseover="show('clone - клон, штамп')" onmouseout="hide()">clone()</span></pre>
+<div class=list>возвращает <tt>SVG.Element</tt></div>
+Метод <tt>clone()</tt> удобно использовать для получения точной копии элемента:
+<pre>// javascript
+var clone = rect.clone()</pre>
+Данный метод создает новую, несвязанную копию. Чтобы сделать связанную копию, смотрите элемент <tt><a href="elements.htm#17" onmouseover="show('Элементы / SVG.Use')" onmouseout="hide()">use</a></tt>.<br>
+По умолчанию клонированный элемент размещается непосредственно после исходного элемента.
+При передаче методу <tt>clone()</tt> параметра с родительским элементом, он добавит клонированный элемент к заданному родительскому элементу.<br><br>
 
-`returns` __`itself`__
+<pre id="10put"><span class="lnk" onmouseover="show('put - положить')" onmouseout="hide()">put()</span></pre>
+<div class=list>возвращает <tt>SVG.Element</tt></div>
+Устанавливает вызывающий элемент (в примере это <tt>group</tt>) в качестве родительского узла для аргумента (т.е. <tt>rect</tt>). Возвращает дочерний элемент:
+<pre>// javascript
+group.put(rect) //-> returns rect (возвращает элемент rect)</pre><br>
 
-Sets the calling element as a child node of the argument. Returns the child:
+<pre id="10putIn"><span class="lnk" onmouseover="show('put in - положить в ...')" onmouseout="hide()">putIn()</span></pre>
+<div class=list>возвращает <tt>SVG.Element</tt></div>
+Устанавливает вызывающий элемент (в примере это <tt>rect</tt>) в качестве дочернего узла для аргумента (т.е. для <tt>group</tt>). Возвращает родительский элемент:
+<pre>// javascript
+rect.putIn(group) //-> returns group (возвращает группу)</pre><br>
 
-```javascript
-rect.addTo(group) //-> returns rect
-```
+<pre id="10remove"><span class="lnk" onmouseover="show('remove - удалить')" onmouseout="hide()">remove()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+Удаляет вызывающий элемент из svg-документа:
+<pre>// javascript
+rect.remove()</pre><br>
 
-## clone()
+<pre id="10replace"><span class="lnk" onmouseover="show('replace - заменять, замещать')" onmouseout="hide()">replace()</span></pre>
+<div class=list>возвращает <tt>SVG.Element</tt></div>
+В позиции вызывающего элемента в svg-документе, вызывающий элемент (в примере это <tt>rect</tt>) заменяется элементом, переданным методу (в примере это <tt>circle</tt>).
+<pre>// javascript
+rect.replace(draw.circle(100))</pre><br>
 
-`returns` __`SVG.Element`__
+<pre id="10toDoc"><span class="lnk" onmouseover="show('to doc - в документ')" onmouseout="hide()">toDoc()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+Тоже самое, что и <tt>toParent()</tt>, но с коренным узлом в качестве родительского.
+Same as `toParent()` but with the root-node as parent<br><br>
 
-To make an exact copy of an element the `clone()` method comes in handy:
-
-```javascript
-var clone = rect.clone()
-```
-
-This will create a new, unlinked copy. For making a linked clone, see the [use](/elements/use) element.
-By default, the cloned element is placed directly after the original element.
-When you pass a parent parameter to the `clone()` function it will append the cloned element to the given parent.
-
-## put()
-
-`returns` __`SVG.Element`__
-
-Sets the calling element as the parent node of the argument. Returns the child:
-
-```javascript
-group.put(rect) //-> returns rect
-```
-
-## putIn()
-
-`returns` __`SVG.Element`__
-
-Sets the calling element as a child node of the argument. Returns the parent:
-
-```javascript
-rect.putIn(group) //-> returns group
-```
-
-## remove()
-
-`returns` __`itself`__
-
-Removes the calling element from the svg document:
-
-```javascript
-rect.remove()
-```
-
-## replace()
-
-`returns` __`SVG.Element`__
-
-At the calling element's position in the svg document, replace the calling element with the element passed to the method.
-
-```javascript
-rect.replace(draw.circle(100))
-```
-
-## toDoc()
-
-`returns` __`itself`__
-
-Same as `toParent()` but with the root-node as parent
-
-## toParent()
-
-`returns` __`itself`__
+<pre id="10toParent"><span class="lnk" onmouseover="show('to parent - ')" onmouseout="hide()">toParent()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
 
 Moves an element to a different parent (similar to `addTo`), but without changing its visual representation. All transformations are merged and applied to the element.
 
-```javascript
-rect.toParent(group) // looks the same as before
-```
+<pre>// javascript
+rect.toParent(group) // looks the same as before</pre><br>
 
-## ungroup() / flatten()
-
-`returns` __`itself`__
+<pre id="10ungroup"><span class="lnk" onmouseover="show('ungroup - разгруппировать<br>flatten - выравнивать, расплющить')" onmouseout="hide()">ungroup() / flatten()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
 
 Break up a group/container and move all the elements to a given parent node without changing their visual representations. The result is a flat svg structure, e.g. for exporting.
 
 Ungroup all elements in this group recursively and places them into the given parent
 
-```javascript
+<pre>// javascript
 group.ungroup(parent, depth)
-// (default: parent container of the calling element)
-```
+// (default: parent container of the calling element)</pre>
 
 Call it on the whole document to get a flat svg structure:
 
-```javascript
-drawing.ungroup()
-```
+<pre>// javascript
+drawing.ungroup()</pre>
 
 Break up the group and places all elements in the drawing:
 
-```javascript
-group.ungroup(drawing)
-```
+<pre>// javascript
+group.ungroup(drawing)</pre>
 
 Break up all groups until it reaches a depth of 3:
 
-```javascript
-drawing.ungroup(null, 3)
-```
+<pre>// javascript
+drawing.ungroup(null, 3)</pre>
 
 Flat and export svg:
 
-```javascript
-var svgString = drawing.ungroup().svg()
-```
-<br>
+<pre>// javascript
+var svgString = drawing.ungroup().svg()</pre></div><br><br>
+
 
 <h4 id="11">Arranging</h4>
 You can arrange elements within their parent SVG document using the following methods.
-
-## after()
-
-`returns` __`itself`__
+<div class=blockindent><br>
+<pre id="11after"><span class="lnk" onmouseover="show('after - после, затем')" onmouseout="hide()">after()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
 
 Insert an element after another:
 
-```javascript
+<pre>// javascript
 // inserts circle after rect
-rect.after(circle)
-```
+rect.after(circle)</pre><br>
 
 ## before()
-
-`returns` __`itself`__
+<div class=list>возвращает - самого себя (itself)</div>
 
 Insert an element before another:
 
-```javascript
+<pre>// javascript
 // inserts circle before rect
-rect.before(circle)
-```
+rect.before(circle)</pre><br>
 
 ## back()
-
-`returns` __`itself`__
+<div class=list>возвращает - самого себя (itself)</div>
 
 Move element to the back:
 
-```javascript
-rect.back()
-```
+<pre>// javascript
+rect.back()</pre><br>
 
 ## backward()
-
-`returns` __`itself`__
+<div class=list>возвращает - самого себя (itself)</div>
 
 Move element one step backward:
 
-```javascript
-rect.backward()
-```
+<pre>// javascript
+rect.backward()</pre><br>
 
 ## front()
-
-`returns` __`itself`__
+<div class=list>возвращает - самого себя (itself)</div>
 
 Move element to the front:
 
-```javascript
-rect.front()
-```
+<pre>// javascript
+rect.front()</pre><br>
 
 ## forward()
-
-`returns` __`itself`__
+<div class=list>возвращает - самого себя (itself)</div>
 
 Move element one step forward:
 
-```javascript
-rect.forward()
-```
+<pre>// javascript
+rect.forward()</pre><br>
 
 ## next()
 
-`returns` __`SVG.Element`__
+<div class=list>возвращает <tt>SVG.Element</tt></div>
 
 Get the next sibling:
 
-```javascript
-rect.next()
-```
+<pre>// javascript
+rect.next()</pre><br>
 
 ## position()
-
-`returns` __`number`__
+<div class=list>возвращает  число (<tt>number</tt>)</div>
 
 Get the position (a number) of rect between its siblings:
 
-```javascript
-rect.position()
-```
+<pre>// javascript
+rect.position()</pre><br>
 
 ## previous()
 
-`returns` __`SVG.Element`__
+<div class=list>возвращает <tt>SVG.Element</tt></div>
 
 Get the previous sibling:
 
-```javascript
-rect.previous()
-```
+<pre>// javascript
+rect.previous()</pre><br>
 
 ## siblings()
-
-`returns` __`array`__
+<div class=list>возвращает - массив (<tt>array</tt>)</div>
 
 The arrange.js module brings some additional methods. To get all siblings of rect, including rect itself:
 
-```javascript
-rect.siblings()
-```
-<br>
+<pre>// javascript
+rect.siblings()</pre></div><br><br>
+
 
 <h4 id="12">Геометрия</h4>
-
+<div class=blockindent><br>
 ## point()
 
 `returns` __[`SVG.Point`](/classes/#svg-point)__
 
 Transforms a point from screen coordinates to the elements coordinate system.
 
-```javascript
+<pre>// javascript
 // e is some mouseevent
-var point = path.point(e.screenX, e.screenY) // {x, y}
-```
+var point = path.point(e.screenX, e.screenY) // {x, y}</pre><br>
 
 ## inside()
 
-`returns` __`boolean`__
+<div class=list>возвращает - логическое значение (boolean)</div>
 
 To check if a given point is inside the bounding box of an element you can use the `inside()` method:
 
-```javascript
-var rect = draw.rect(100, 100).move(50, 50)
-
+<pre>// javascript
+var rect = draw.rect(100, 100).move(50, 50)<br>
 rect.inside(25, 30) //-> returns false
-rect.inside(60, 70) //-> returns true
-```
+rect.inside(60, 70) //-> returns true</pre>
 
-**Note**: the `x` and `y` positions are tested against the relative position of the element. Any offset on the parent element is not taken into account.
+<div class=note><b>Примечание:</b> the `x` and `y` positions are tested against the relative position of the element. Any offset on the parent element is not taken into account.</div></div>
 
 
 <br><br>
