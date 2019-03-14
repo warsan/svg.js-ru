@@ -25,37 +25,33 @@ new SVG.Array([ .343,  .669, .119, 0,   0
               , .172,  .334, .111, 0,   0
               , .000,  .000, .000, 1,  -0 ])</pre>
 <div class=blockindent><br>
-## at()
-
-`returns` __`new instance`__
-
+<pre id="1at"><span class="lnk" onmouseover="show('at - предлог в')" onmouseout="hide()">at()</span></pre>
+<div class=list>возвращает - новый экземпляр</div>
+Данный метод превратит массив в заданную позицию между&nbsp;<tt>0</tt> и&nbsp;<tt>1</tt>:
 This method will morph the array to a given position between `0` and `1`:
 <pre>// javascript
 array.at(0.27).toString() //-> returns '27,0 73,100 127,127'</pre><br>
 
-## bbox()
-
-`returns` __`object`__
+<pre id="1bbox"><span class="lnk" onmouseover="show('bbox - сокращ. англ. слов bounding box - ограничительный<br>прямоугольник, ограничительная рамка')" onmouseout="hide()">bbox()</span></pre>
+<div class=list>возвращает - объект</div>
 
 Gets the bounding box of the geometry of the array:
 <pre>// javascript
 array.bbox()</pre>
-<div class=note><b>Примечание:</b> this method is only available on `SVG.PointArray` and `SVG.PathArray`.</div><br>
+<div class=note><b>Примечание:</b> Этот метод доступен только для <tt><a href="#2" onmouseover="show('SVG.PointArray')" onmouseout="hide()">SVG.PointArray</a></tt> и <tt><a href="#3" onmouseover="show('SVG.PathArray')" onmouseout="hide()">SVG.PathArray</a></tt>.</div><br>
 
-## clone()
-
-`returns` __`new instance`__
-
-Makes a clone of the array and returns it:
+<pre id="1clone"><span class="lnk" onmouseover="show('clone - клон, клонировать')" onmouseout="hide()">clone()</span></pre>
+<div class=list>возвращает - новый экземпляр</div>
+Делает клон массива и возвращает его:
 <pre>// javascript
 var array = new SVG.Array()
 var clone = array.clone()</pre>
-<div class=note><b>Примечание:</b> This method performs a deep clone on multi-dimensional arrays like `SVG.PointArray` and `SVG.PathArray`.</div>
-<div class=note><b>Примечание 2:</b> Obviously, the returned array is of the same class as the cloned array (e.g. `SVG.Array`, `SVG.PointArray` or `SVG.PathArray`).</div><br>
+<div class=note><b>Примечание:</b> Данный метод выполняет глубокое клонирование многомерных массивов, таких как <tt><a href="#2" onmouseover="show('SVG.PointArray')" onmouseout="hide()">SVG.PointArray</a></tt>
+и <tt><a href="#3" onmouseover="show('SVG.PathArray')" onmouseout="hide()">SVG.PathArray</a></tt>.</div>
+<div class=note><b>Примечание 2:</b> Очевидно, что возвращаемый массив имеет тот же класс, что и клонируемый массив (например, <tt>SVG.Array</tt>, <tt>SVG.PointArray</tt> или <tt>SVG.PathArray</tt>).</div><br>
 
-## morph()
-
-`returns` __`itself`__
+<pre id="1morph"><span class="lnk" onmouseover="show('morph - морф, оборотень, превращаться')" onmouseout="hide()">morph()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
 
 In order to animate array values the `morph()` method lets you pass a destination value. This can be either the string value, a plain array or an instance of the same type of SVG.js array:
 <pre>// javascript
@@ -66,38 +62,34 @@ This method will prepare the array ensuring both the source and destination arra
 
 <div class=note><b>Примечание:</b> In order to morph paths with different lengths, you need to include the [svg.pathmorphing.js](/plugins/svg-pathmorphing-js) plugin.</div><br>
 
-## move()
-
-`returns` __`itself`__
+<pre id="1move"><span class="lnk" onmouseover="show('move - двигать, перемещать')" onmouseout="hide()">move()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
 
 Moves geometry of the array with the given `x` and `y` values:
 <pre>// javascript
 var array = new SVG.PointArray([[0, 0], [100, 100]])
 array.move(33,75)
 array.toString() //-> returns '33,75 133,175'</pre>
-<div class=note><b>Примечание:</b> this method is only available on `SVG.PointArray` and `SVG.PathArray`</div><br>
+<div class=note><b>Примечание:</b> Этот метод доступен только для <tt><a href="#2" onmouseover="show('SVG.PointArray')" onmouseout="hide()">SVG.PointArray</a></tt> и <tt><a href="#3" onmouseover="show('SVG.PathArray')" onmouseout="hide()">SVG.PathArray</a></tt>.</div><br>
 
-## reverse()
-
-`returns` __`itself`__
-
+<pre id="1reverse"><span class="lnk" onmouseover="show('reverse - задний ход, реверс')" onmouseout="hide()">reverse()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+Изменяет порядок массива на обратный:
 Reverses the order of the array:
 <pre>// javascript
 var array = new SVG.PointArray([[0, 0], [100, 100]])
 array.reverse()
 array.toString() //-> returns '100,100 0,0'</pre><br>
 
-## settle()
-
-`returns` __`itself`__
+<pre id="1settle"><span class="lnk" onmouseover="show('settle - ')" onmouseout="hide()">settle()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
 
 When morphing is done the `settle()` method will eliminate any transitional points like duplicates:
 <pre>// javascript
 array.settle()</pre><br>
 
-## size()
-
-`returns` __`itself`__
+<pre id="1size"><span class="lnk" onmouseover="show('size - размер')" onmouseout="hide()">size()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
 
 Resizes geometry of the array by the given `width` and `height` values:
 <pre>// javascript
@@ -105,31 +97,28 @@ var array = new SVG.PointArray([[0, 0], [100, 100]])
 array.move(100,100).size(222,333)
 array.toString() //-> returns '100,100 322,433'</pre>
 
-<div class=note><b>Примечание:</b> this method is only available on `SVG.PointArray` and `SVG.PathArray`</div><br>
+<div class=note><b>Примечание:</b> Этот метод доступен только для <tt><a href="#2" onmouseover="show('SVG.PointArray')" onmouseout="hide()">SVG.PointArray</a></tt> и <tt><a href="#3" onmouseover="show('SVG.PathArray')" onmouseout="hide()">SVG.PathArray</a></tt>.</div><br>
 
-## transform()
+<pre id="1transform"><span class="lnk" onmouseover="show('transform - преобразование, превращение')" onmouseout="hide()">transform()</span></pre>
+<div class=list>возвращает - <tt>SVG.PointArray</tt></div>
 
-`returns` __`SVG.PointArray`__
-
-Transforms the points in the array with matrix,
-without modifying the original array:
+Transforms the points in the array with matrix, without modifying the original array:
 <pre>// javascript
 var array = new SVG.PointArray([[0, 0], [100, 100]])
 array.transform(new SVG.Matrix().translate(1, 2)).toString()
 //-> '1,2 101,102'</pre>
 
-<div class=note><b>Примечание:</b> this method is only available on `SVG.PointArray`</div></div><br><br>
+<div class=note><b>Примечание:</b> Этот метод доступен только для <tt><a href="#2" onmouseover="show('SVG.PointArray')" onmouseout="hide()">SVG.PointArray</a></tt>.</div></div><br><br>
 
 <h4 id="2">SVG.PointArray</h4>
-
-`inherits from` __`SVG.Array`__
+<div class=list>наследует от <tt>SVG.Array</tt>.</div>
 
 Is a bit more complex and is used for polyline and polygon elements. This is a poly-point string:
 <pre>// javascript
 '0,0 100,100'
-// or
+// or (или)
 '0 0 100 100'
-// or
+// or (или)
 '0, 0, 100, 100'</pre>
 
 The flat array representation:
@@ -156,8 +145,7 @@ polygon.array() //-> returns the SVG.PointArray instance</pre><br>
 
 
 <h4 id="3">SVG.PathArray</h4>
-
-`inherits from` __`SVG.Array`__
+<div class=list>наследует от <tt>SVG.Array</tt>.</div>
 
 Path arrays carry arrays representing every segment in a path string:
 <pre>// javascript
@@ -237,10 +225,8 @@ Note that when working with objects is important to provide all three values eve
 
 The `SVG.Color` instance has a few methods of its own.
 <div class=blockindent><br>
-
-## at()
-
-`returns` __`SVG.Color`__
+<pre id="4at"><span class="lnk" onmouseover="show('at - предлог в')" onmouseout="hide()">at()</span></pre>
+<div class=list>возвращает - <tt>SVG.Color</tt></div>
 
 Get morphable color at given position:
 <pre>// javascript
@@ -258,8 +244,7 @@ color.brightness() //-> returns 0.344</pre>
 This is the perceived brightness where `0` is black and `1` is white.<br><br>
 
 ## morph()
-
-`returns` __`itself`__
+<div class=list>возвращает - самого себя (itself)</div>
 
 Make a color morphable:
 <pre>// javascript
@@ -320,10 +305,8 @@ var rect = draw.rect(50, 25)
 var matrix = new SVG.Matrix(rect)
 matrix.toString() //-> returns matrix(1,0,0,1,0,0)</pre>
 <div class=blockindent><br>
-
-## around()
-
-`returns` __`SVG.Matrix`__
+<pre id="5around"><span class="lnk" onmouseover="show('around - вокруг')" onmouseout="hide()">around()</span></pre>
+<div class=list>возвращает - <tt>SVG.Matrix</tt></div>
 
 Performs a given matrix transformation around a given center point:
 <pre>// javascript
@@ -332,9 +315,8 @@ matrix.around(100, 150, new SVG.Matrix().skew(0, 45))</pre>
 
 The matrix passed as the third argument will be used to multiply.<br><br>
 
-## at()
-
-`returns` __`SVG.Matrix`__
+<pre id="5at"><span class="lnk" onmouseover="show('at - предлог в')" onmouseout="hide()">at()</span></pre>
+<div class=list>возвращает - <tt>SVG.Matrix</tt></div>
 
 This method will morph the matrix to a given position between `0` and `1`:
 <pre>// javascript
@@ -343,8 +325,7 @@ matrix.at(0.27)</pre>
 This will only work when a destination matirx is defined using the `morph()` method.<br><br>
 
 ## clone()
-
-`returns` __`SVG.Matrix`__
+<div class=list>возвращает - <tt>SVG.Matrix</tt></div>
 
 Returns an exact copy of the matrix:
 <pre>// javascript
@@ -369,8 +350,7 @@ The returned object contains the following values:
 &nbsp; &#9679; &nbsp; `rotation` (calculated rotation)</div><br>
 
 ## flip()
-
-`returns` __`SVG.Matrix`__
+<div class=list>возвращает - <tt>SVG.Matrix</tt></div>
 
 Flips matrix over a given axis:
 <pre>// javascript
@@ -387,40 +367,35 @@ matrix.flip('x', 150)</pre>
 matrix.flip('y', 100)</pre><br>
 
 ## inverse()
-
-`returns` __`SVG.Matrix`__
+<div class=list>возвращает - <tt>SVG.Matrix</tt></div>
 
 Creates an inverted matix:
 <pre>// javascript
 matrix.inverse()</pre><br>
 
 ## morph()
-
-`returns` __`itself`__
+<div class=list>возвращает - самого себя (itself)</div>
 
 In order to animate matrices the `morph()` method lets you pass a destination matrix. This can be any value a `SVG.Matrix` would accept on initialization:
 <pre>// javascript
 matrix.morph('2,0,0,2,100,150')</pre><br>
 
 ## multiply()
-
-`returns` __`SVG.Matrix`__
+<div class=list>возвращает - <tt>SVG.Matrix</tt></div>
 
 Multiplies by another given matrix:
 <pre>// javascript
 matrix.multiply(matrix2)</pre><br>
 
 ## native()
-
-`returns` __`SVGMatrix`__
+<div class=list>возвращает - <tt>SVGMatrix</tt></div>
 
 Returns a native `SVGMatrix` extracted from the `SVG.Matrix` instance:
 <pre>// javascript
 matrix.native()</pre><br>
 
 ## rotate()
-
-`returns` __`SVG.Matrix`__
+<div class=list>возвращает - <tt>SVG.Matrix</tt></div>
 
 Rotates matrix by degrees with one value given:
 <pre>// javascript
@@ -433,8 +408,7 @@ Rotates a matrix by degrees around a given point with three values:
 matrix.rotate(45, 100, 150)</pre><br>
 
 ## scale()
-
-`returns` __`SVG.Matrix`__
+<div class=list>возвращает - <tt>SVG.Matrix</tt></div>
 
 Scales matrix uniformal with one value:
 <pre>// javascript
@@ -457,8 +431,7 @@ Scales matrix non-uniformal on a given center point with four values:
 matrix.scale(2, 3, 100, 150)</pre><br>
 
 ## skew()
-
-`returns` __`SVG.Matrix`__
+<div class=list>возвращает - <tt>SVG.Matrix</tt></div>
 
 Skews matrix a given degrees over x and or y axis with two values:
 <pre>// javascript
@@ -480,8 +453,7 @@ matrix.toString()
 // -> matrix(1,0,0,1,0,0)</pre><br>
 
 ## translate()
-
-`returns` __`SVG.Matrix`__
+<div class=list>возвращает - <tt>SVG.Matrix</tt></div>
 
 Translates matrix by a given x and y value:
 <pre>// javascript
@@ -498,9 +470,8 @@ number.valueOf() //-> returns 0.81</pre>
 
 Operators are defined as methods on the `SVG.Number` instance.
 <div class=blockindent><br>
-## at()
-
-`returns` __`SVG.Number`__
+<pre id="6at"><span class="lnk" onmouseover="show('at - предлог в')" onmouseout="hide()">at()</span></pre>
+<div class=list>возвращает - <tt>SVG.Number</tt></div>
 
 Get morphable number at given position:
 <pre>// javascript
@@ -508,16 +479,14 @@ var number = new SVG.Number('79%').morph('3%')
 number.at(0.55).toString() //-> '37.2%'</pre><br>
 
 ## divide()
-
-`returns` __`SVG.Number`__
+<div class=list>возвращает - <tt>SVG.Number</tt></div>
 
 Division:
 <pre>// javascript
 number.divide('3%')</pre><br>
 
 ## minus()
-
-`returns` __`SVG.Number`__
+<div class=list>возвращает - <tt>SVG.Number</tt></div>
 
 Subtraction:
 <pre>// javascript
@@ -525,31 +494,28 @@ number.minus('3%')</pre><br>
 
 ## morph()
 
-`returns` __`itself`__
+<div class=list>возвращает - самого себя (itself)</div>
 
 Make a number morphable:
 <pre>// javascript
 number.morph('11%')</pre><br>
 
 ## plus()
-
-`returns` __`SVG.Number`__
+<div class=list>возвращает - <tt>SVG.Number</tt></div>
 
 Addition:
 <pre>// javascript
 number.plus('3%')</pre><br>
 
 ## times()
-
-`returns` __`SVG.Number`__
+<div class=list>возвращает - <tt>SVG.Number</tt></div>
 
 Multiplication:
 <pre>// javascript
 number.times(2)</pre><br>
 
 ## to()
-
-`returns` __`SVG.Number`__
+<div class=list>возвращает - <tt>SVG.Number</tt></div>
 
 Change number to another unit:
 <pre>// javascript
@@ -573,9 +539,9 @@ set.fill('#ff0')</pre>
 
 A single element can be a member of many sets. Sets also don't have a structural representation, in fact they are just fancy array's.
 <div class=blockindent><br>
-## add()
+<pre id="7add"><span class="lnk" onmouseover="show('add - добавить, сложить')" onmouseout="hide()">add()</span></pre>
 
-`returns` __`itself`__
+<div class=list>возвращает - самого себя (itself)</div>
 
 Add an element to a set:
 <pre>// javascript
@@ -587,16 +553,14 @@ Quite a useful feature of sets is the ability to accept multiple elements at onc
 set.add(rect, circle)</pre><br>
 
 ## animate()
-
-`returns` __`SVG.SetFX`__
+<div class=list>возвращает - <tt>SVG.SetFX</tt></div>
 
 Sets work with animations as well:
 <pre>// javascript
 set.animate(3000).fill('#ff0')</pre><br>
 
 ## bbox()
-
-`returns` __`SVG.BBox`__
+<div class=list>возвращает - <tt>SVG.BBox</tt></div>
 
 Get the bounding box of all elements in the set:
 <pre>// javascript
@@ -604,7 +568,7 @@ set.bbox()</pre><br>
 
 ## clear()
 
-`returns` __`itself`__
+<div class=list>возвращает - самого себя (itself)</div>
 
 Or to remove all elements from a set:
 <pre>// javascript
@@ -612,7 +576,7 @@ set.clear()</pre><br>
 
 ## each()
 
-`returns` __`itself`__
+<div class=list>возвращает - самого себя (itself)</div>
 
 Iterating over all members in a set is the same as with svg containers:
 <pre>// javascript
@@ -623,16 +587,14 @@ set.each(function(i) {
 Note that `this` refers to the current child element.<br><br>
 
 ## first()
-
-`returns` __`SVG.Element`__
+<div class=list>возвращает - <tt>SVG.Element</tt></div>
 
 Gets the first element:
 <pre>// javascript
 set.first()</pre><br>
 
 ## get()
-
-`returns` __`SVG.Element`__
+<div class=list>возвращает - <tt>SVG.Element</tt></div>
 
 Gets the element at a given index:
 <pre>// javascript
@@ -655,8 +617,7 @@ Returns the index of a given element in the set.
 set.index(rect) //-> -1 if element is not a member</pre><br>
 
 ## last()
-
-`returns` __`SVG.Element`__
+<div class=list>возвращает - <tt>SVG.Element</tt></div>
 
 Gets the last element:
 
@@ -665,7 +626,7 @@ set.last()</pre><br>
 
 ## remove()
 
-`returns` __`itself`__
+<div class=list>возвращает - самого себя (itself)</div>
 
 To remove an element from a set:
 
@@ -685,10 +646,8 @@ var vector3 = new SVG.Point([1,1])
 var vector4 = new SVG.Point({x:1,y:1})
 var vector5 = new SVG.Point(new SVG.Point(1,1))</pre>
 <div class=blockindent><br>
-
-## clone()
-
-`returns` __`SVG.Point`__
+<pre id="8clone"><span class="lnk" onmouseover="show('clone - клон, клонировать')" onmouseout="hide()">clone()</span></pre>
+<div class=list>возвращает - <tt>SVG.Point</tt></div>
 
 Get a new `SVG.Point` with the same x/y value.
 <pre>// javascript
@@ -696,7 +655,7 @@ var newPoint = new SVG.Point(1,1).clone()</pre><br>
 
 ## morph()
 
-`returns` __`itself`__
+<div class=list>возвращает - самого себя (itself)</div>
 
 Set the point to be morphable. Usually used with the `at()` method:
 
@@ -705,8 +664,7 @@ var point = new SVG.Point(1,1).morph(11,10)
 point.at(0.5) //-> {x: 6, y: 5.5}</pre><br>
 
 ## at()
-
-`returns` __`SVG.Point`__
+<div class=list>возвращает - <tt>SVG.Point</tt></div>
 
 Get morphable point at given position:
 
@@ -715,8 +673,7 @@ var point = new SVG.Point(1,1).morph(11,10)
 point.at(0.5) //-> {x: 6, y: 5.5}</pre><br>
 
 ## native()
-
-`returns` __`SVGPoint`__
+<div class=list>возвращает - <tt>SVGPoint</tt></div>
 
 Creates a native SVGPoint object outside of any document trees.
 The object is initialized to the SVG.Point point.
@@ -726,8 +683,7 @@ var point = new SVG.Point(1,1).native()
 console.log(point) //-> SVGPoint {x: 1, y: 1}</pre><br>
 
 ## transform()
-
-`returns` __`SVG.Point`__
+<div class=list>возвращает - <tt>SVG.Point</tt></div>
 
 Transform point with matrix, without modifying the original point:
 
