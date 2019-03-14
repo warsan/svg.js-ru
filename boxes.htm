@@ -7,18 +7,16 @@
 </head>
 
 <body>
-<h3>Boxes</h3>
-Getting a bounding box of an element is often influenced by context. SVG.js offers various methods to get a bounding box of an element.<br><br>
+<h3>Ограничительные рамки и окна просмотра</h3>
+Получение рамки, ограничивающей элемент, часто зависит от контекста. SVG.js предлагает различные методы получения ограничительной рамки элемента.<br><br>
 
 <h4 id="1">SVG.Box</h4>
-
-All `SVG.*Box`instances inherit from `SVG.Box`.
+Все экземпляры <tt><span class="lnk" onmouseover="show('то есть, любой из SVG.ViewBox, SVG.BBox и SVG.RBox<br>(символ * обозначает любой символ в любом количестве)')" onmouseout="hide()">SVG.*Box</span></tt> наследуют от <tt>SVG.Box</tt>.
 <div class=blockindent><br>
 <pre id="1merge"><span class="lnk" onmouseover="show('merge - сливать, объединять')" onmouseout="hide()">merge()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
-All `SVG.*Box` prototypes have a nifty little feature. With `merge()`, two `SVG.*Box` instances can be merged into one new instance, basically being the bounding box of the two original boxes. For example:
-
+Все прототипы <tt>SVG.*Box</tt> имеют небольшую отличительную особенность. С помощью метода <tt>merge()</tt> два экземпляра <tt>SVG.*Box</tt> можно объединить в один, новый экземпляр, практически являющийся ограничительной рамкой из двух исходных рамок.<br>
+Например:
 <pre>// javascript
 var box1 = draw.rect(100,100).move(50,50).bbox()
 var box2 = draw.rect(100,100).move(200,200).bbox()
@@ -26,124 +24,126 @@ var box3 = box1.merge(box2)</pre><br>
 
 <pre id="1transform"><span class="lnk" onmouseover="show('transform - преобразовать, трансформировать')" onmouseout="hide()">transform()</span></pre>
 <div class=list>возвращает - <tt>SVG.Box</tt></div>
-
-Transforms the box with given a matrix:
-
+Преобразование рамки с помощью переданной матрицы:
 <pre>// javascript
 var transformedBox = box.transform(matrix)</pre></div><br>
 
 
 <h4 id="2">SVG.ViewBox</h4>
-
-The viewBox specifies a rectangle in user space which should be mapped to the bounds of the viewport established by the given element, taking into account attribute preserveAspectRatio.
+Окно просмотра (<tt><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox" target="_blank">viewBox</a></tt>) определяет прямоугольник в пользовательском пространстве, который должен отображаться в области просмотра
+(<span class="lnk" onmouseover="show('view port - область просмотра - область документа, в которой<br>будут показаны SVG-элементы. Определяется в теге <tt>svg</tt><br>параметрами <tt>x</tt> и <tt>y</tt> - координаты левого верхнего угла области<br>просмотра SVG (по умолчанию равны 0), <tt>width</tt> - ширина,<br><tt>height</tt> - высота')" onmouseout="hide()">viewport</span>),
+установленного данным элементом с учетом атрибута <tt><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio" target="_blank" onmouseover="show('preserve aspect ratio - сохранить соотношение сторон')" onmouseout="hide()">preserveAspectRatio</a></tt>.
 <div class=blockindent><br>
-## viewbox() _as getter_
-
-`constructor on` __`SVG.Element`__
-`returns` __`SVG.ViewBox`__ `which inherits from ` __`SVG.Box`__
-
-Without any arguments an instance of `SVG.ViewBox` will be returned:
-
+<pre id="2viewbox_get"><span class="lnk" onmouseover="show('view box - окно просмотра')" onmouseout="hide()">viewbox()</span>          <i class=low>как получатель (getter)</i></pre>
+<div class=list>конструктор на <tt>SVG.Element</tt></div>
+<div class=list>возвращает - <tt>SVG.ViewBox</tt>, который наследует от <tt>SVG.Box</tt>.</div>
+Без каких-либо аргументов будет возвращен экземпляр <tt>SVG.ViewBox</tt>:
 <pre>// javascript
 var box = draw.viewbox()</pre>
-
-But the best thing about the `viewbox()` method is that you can get the zoom of the viewbox:
-
+Самое лучшее в методе <tt>viewbox()</tt> то, что можно получать <tt>zoom</tt> - масштаб окна просмотра (viewbox):
 <pre>// javascript
 var box = draw.viewbox()
 var zoom = box.zoom</pre>
+Если размеры окна просмотра равны размерам области просмотра - svg-картинке, значение масштаба (<tt>zoom</tt>) будет равным <tt>1</tt>.<br><br>
 
-If the size of the viewbox equals the size of the svg drawing, the zoom value will be 1.
-
-## viewbox() _as setter_
-
-`returns` __`itself`__
-
-The `viewBox` attribute of an <tt>&#60;svg&#62;</tt> element can be managed with the `viewbox()` method. When supplied with four arguments it will act as a setter:
-
+<pre id="2viewbox_set"><span class="lnk" onmouseover="show('view box - окно просмотра')" onmouseout="hide()">viewbox()</span>          <i class=low>как установщик (сеттер)</i></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+Атрибутом <tt>viewBox</tt> svg-элемента можно управлять с помощью метода <tt>viewbox()</tt>. Если предоставить четыре аргумента, он будет действовать как установщик (setter).
 <pre>// javascript
 draw.viewbox(0, 0, 297, 210)</pre>
-
-Alternatively you can also supply an object as the first argument:
-
+Кроме того, также можно в качестве первого аргумента указать объект:
 <pre>// javascript
-draw.viewbox({ x: 0, y: 0, width: 297, height: 210 })</pre></div><br>
+draw.viewbox({ x: 0, y: 0, width: 297, height: 210 })</pre></div><br><br>
 
 
 <h4 id="3">SVG.BBox</h4>
-
-Stands for Bounding Box.
-
-<iframe width="100%" height="375" src="//jsfiddle.net/wout/ear3azfb/embedded/result,js/?accentColor=f06" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-## bbox()
-
-`constructor on` __`SVG.Element`__
-`returns` __`SVG.BBox`__ `which inherits from ` __`SVG.Box`__
-
-Get the bounding box of an element. This is a wrapper for the native `getBBox()` method but adds more values:
-
+Сокращение "BBox" происходит от слов "Bounding Box" - ограничительная рамка.
+<div style="font-family:Segoe UI; font-size:90%; margin-left:10px;">
+&nbsp; &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("bbox1","bbox2");'>Результат</span>
+&nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("bbox2","bbox1");'>Код JavaScript</span>
+<span style="float:right; margin-right:20px;"><a href="https://jsfiddle.net/wout/ear3azfb/?utm_source=website&utm_medium=embed&utm_campaign=ear3azfb" target="_blank">Редактировать в JSFiddle</a></span>
+<div id="bbox1" style="height:220px; background-color:#fff; display:block; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:20px; width:60px;">
+<img src="img/bbox.png"></div>
+<div id="bbox2" style="height:220px; background-color:#eee; display:none; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:100px; width:80px;">
+<pre>var draw = SVG('drawing').size(300,300)<br>
+// draw transformed rect (рисуем трансформированный прямоугольник)
+var rect = draw.rect(175,175).move(75,75).rotate(20).scale(1, 0.5)<br>
+// draw bbox (рисуем ограничительную рамку)
+var b = rect.bbox()
+draw.rect(b.width, b.height).addClass('box').move(b.x, b.y)</pre></div></div><br>
+<div class=blockindent><br>
+<pre id="3bbox"><span class="lnk" onmouseover="show('bbox - сокращ. англ. слов bounding box - ограничительный<br>прямоугольник, ограничительная рамка')" onmouseout="hide()">bbox()</span>  <i class=low>конструктор</i></pre>
+<div class=list>конструктор на <tt>SVG.Element</tt></div>
+<div class=list>возвращает - <tt>SVG.BBox</tt>, который наследует от <tt>SVG.Box</tt>.</div>
+Получает ограничительную рамку вокруг элемента в координатах относительно SVG-документа. Это оболочка для местного метода <tt>getBBox()</tt> с добавлением бо&#769;льшего числа значений:
 <pre>// javascript
 path.bbox()</pre>
-
-This will return an instance of `SVG.BBox` containing the following values:
-
-- `width` (value from native `getBBox`)
-- `height` (value from native `getBBox`)
-- `w` (shorthand for `width`)
-- `h` (shorthand for `height`)
-- `x` (value from native `getBBox`)
-- `y` (value from native `getBBox`)
-- `cx` (center `x` of the bounding box)
-- `cy` (center `y` of the bounding box)
-- `x2` (lower right `x` of the bounding box)
-- `y2` (lower right `y` of the bounding box)<br><br>
+Этот код возвратит экземпляр <tt>SVG.BBox</tt>, содержащий следующие значения:
+<div class=blockindent>
+&nbsp; &#9679; &nbsp; <tt>width</tt> (значение ширины от местного <tt>getBBox</tt>)<br>
+&nbsp; &#9679; &nbsp; <tt>height</tt> (значение высоты от местного <tt>getBBox</tt>)<br>
+&nbsp; &#9679; &nbsp; <tt>w</tt> (сокращение для <tt>width</tt> - ширины)<br>
+&nbsp; &#9679; &nbsp; <tt>h</tt> (сокращение для <tt>height</tt> - высоты)<br>
+&nbsp; &#9679; &nbsp; <tt>x</tt> (значение координаты <tt>x</tt> от местного <tt>getBBox</tt>)<br>
+&nbsp; &#9679; &nbsp; <tt>y</tt> (значение координаты <tt>y</tt> от местного <tt>getBBox</tt>)<br>
+&nbsp; &#9679; &nbsp; <tt>cx</tt> (координата <tt>x</tt> центра ограничительной рамки)<br>
+&nbsp; &#9679; &nbsp; <tt>cy</tt> (координата <tt>y</tt> центра ограничительной рамки)<br>
+&nbsp; &#9679; &nbsp; <tt>x2</tt> (координата <tt>x</tt> нижнего правого угла ограничительной рамки)<br>
+&nbsp; &#9679; &nbsp; <tt>y2</tt> (координата <tt>y</tt> нижнего правого угла ограничительной рамки)</div></div><br><br>
 
 
 <h4 id="4">SVG.RBox</h4>
+Сокращение "RBox" происходит от слов "Rect Box" - прямоугольная рамка.
+Это оболочка для местного метода <tt><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect" target="_blank">getBoundingClientRect()</a></tt>
+(<a href="https://developer.mozilla.org/ru/docs/Web/API/Element/getBoundingClientRect" target="_blank">здесь</a> на русском языке).
+Данная рамка отличается от BBox тем, что ограничительная рамка вокруг визуального представления элемента рассчитывается с учетом всех его преобразований.<br><br>
 
-Stands for Rect Box. It wraps the native `getBoundingClientRect()` method. It's different from the BBox because it calculates the bounding box around the visual representation of the element, including all transformations.
-<iframe width="100%" height="375" src="//jsfiddle.net/mtnrbq/bhunb7xp/embedded/result,js/?accentColor=f06" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<div style="font-family:Segoe UI; font-size:90%; margin-left:10px;">
+&nbsp; &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("rbox1","rbox2");'>Результат</span>
+&nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("rbox2","rbox1");'>Код JavaScript</span>
+<span style="float:right; margin-right:20px;"><a href="https://jsfiddle.net/mtnrbq/bhunb7xp/embedded/result,js/?accentColor=f06" target="_blank">Редактировать в JSFiddle</a></span>
+<div id="rbox1" style="height:220px; background-color:#fff; display:block; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:20px; width:60px;">
+<img src="img/rbox.png"></div>
+<div id="rbox2" style="height:220px; background-color:#eee; display:none; margin:0px; padding:0px;">
+<hr class="underline" style="margin-left:100px; width:80px;">
+<pre>&nbsp;</pre></div></div><br>
+
 <div class=blockindent><br>
-## rbox()
-
-`constructor on` __`SVG.Element`__
-`returns` __`SVG.RBox`__ `which inherits from ` __`SVG.Box`__
-
-Is similar to `bbox()` but will give you the box around the exact visual representation of the element, relative to the screen coordinate system, taking all transformations into account.
+<pre id="4rbox"><span class="lnk" onmouseover="show('rbox - сокращ. англ. слов rectangle box - прямоугольная рамка')" onmouseout="hide()">rbox()</span></pre>
+<div class=list>конструктор на <tt>SVG.Element</tt></div>
+<div class=list>возвращает - <tt>SVG.RBox</tt>, который наследует от <tt>SVG.Box</tt>.</div>
+Метод аналогичен <tt><a href="#3bbox" onmouseover="show('bbox')" onmouseout="hide()">bbox()</a></tt>, но дает рамку вокруг точного визуального представления элемента относительно экранной системы координат, с учетом всех преобразований.
 
 <pre>// javascript
 path.rbox()</pre>
-
-Usually, what is needed is the box relative to the drawing. To get this, pass the __`SVG.Container`__ of the drawing.
-
+Как правило, требуется рамка относительно рисунка. Для его получения передайте <tt>SVG.Container</tt> рисунка.
 <pre>// javascript
 path.rbox(draw)</pre>
+При этом будет возвращён экземпляр <tt>SVG.RBox</tt>, содержащий следующие значения относительно экрана или параметра <tt>SVG.Container</tt>:
+<div class=blockindent>
+&nbsp; &#9679; &nbsp; <tt>width</tt> (фактически видимая ширина)<br>
+&nbsp; &#9679; &nbsp; <tt>height</tt> (фактически видимая высота)<br>
+&nbsp; &#9679; &nbsp; <tt>w</tt> (сокращение для <tt>width</tt>)<br>
+&nbsp; &#9679; &nbsp; <tt>h</tt> (сокращение для <tt>height</tt>)<br>
+&nbsp; &#9679; &nbsp; <tt>x</tt> (фактически видимая позиция по оси x)<br>
+&nbsp; &#9679; &nbsp; <tt>y</tt> (фактически видимая позиция по оси y)<br>
+&nbsp; &#9679; &nbsp; <tt>cx</tt> (координата <tt>x</tt> центра ограничительной рамки)<br>
+&nbsp; &#9679; &nbsp; <tt>cy</tt> (координата <tt>y</tt> центра ограничительной рамки)<br>
+&nbsp; &#9679; &nbsp; <tt>x2</tt> (координата <tt>x</tt> нижнего правого угла ограничительной рамки)<br>
+&nbsp; &#9679; &nbsp; <tt>y2</tt> (координата <tt>y</tt> нижнего правого угла ограничительной рамки)</div>
 
-This will return an instance of `SVG.RBox` containing the following values relative either to the screen or the __`SVG.Container`__  parameter:
+<div class=important><b>Важно:</b> В отличие от других браузеров, браузеры Mozilla имеют толщину линии обводки контура.
+Поэтому в браузерах Mozilla получаемая рамка может отличаться от рамок в других браузерах.
+Такое поведение очень трудно изменить, так что на данный момент это неудобство, с которым приходится жить.</div><br><br>
 
-- `width` (the actual visual width)
-- `height` (the actual visual height)
-- `w` (shorthand for `width`)
-- `h` (shorthand for `height`)
-- `x` (the actual visual position on the x-axis)
-- `y` (the actual visual position on the y-axis)
-- `cx` (center `x` of the bounding box)
-- `cy` (center `y` of the bounding box)
-- `x2` (lower right `x` of the bounding box)
-- `y2` (lower right `y` of the bounding box)
-
-__Important__: Mozilla browsers include stroke widths where other browsers do not. Therefore the resulting box might be different in Mozilla browsers. It is very hard to modify this behaviour so for the time being this is an inconvenience we have to live with.
-
-## addOffset()
-
-`returns` __`itself`__
-
-Adds the offset by the current window scroll position because the native `getBoundingClientRect` changes when window is scrolled.
-
+<pre id="4addOffset"><span class="lnk" onmouseover="show('add offset - добавить смещение')" onmouseout="hide()">addOffset()</span></pre>
+<div class=list>возвращает - самого себя (itself)</div>
+Добавляет смещение по текущей позиции прокрутки окна, так как при прокрутке окна изменяется местный <tt><a href="https://learn.javascript.ru/coordinates" target="_blank">getBoundingClientRect</a></tt>.
 <pre>// javascript
-box.addOffset()</pre></div>
-
+box.addOffset()</pre></div><br><br>
 
 <br><br>
 </body></html>
