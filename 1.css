@@ -59,6 +59,7 @@ em {font-weight:600; font-style:italic; font-size:96%;}
 .note {font-size:100%; color:#2e2b57; background-color:#f0f0f0; margin-top:4px; margin-bottom:4px; margin-left:20px; margin-right:10px; padding-left:10px;}
 .note_trans {font-size:90%; color:#808080; background-color:#ffffe8; margin-top:4px; margin-bottom:4px; margin-left:10px;}
 .warning {font-size:100%; color:#2e2b57; background-color:#ffe5e5; margin-top:4px; margin-bottom:4px; margin-left:10px; padding-left:10px;}
+.important {font-size:100%; color:#000000; background-color:#fffacd; margin-top:4px; margin-bottom:4px; margin-left:20px; margin-right:10px; padding:10px;}
 
 /* Отступы */
 .right_side {background-color:#e0e0e0; float:right; margin-top:20px; font-size:90%; margin-right:20px;}
