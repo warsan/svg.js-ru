@@ -1,6 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
 <html>
-<head><title>Three.js</title></head>
+<head><title>SVG.js</title>
+</head>
 <body>
 <object type="text/site properties">
   <param name="SiteType" value="toc">
@@ -496,4 +497,4 @@
     <param name="Local" value="thanks.htm">
 </object>
 </ul>
-</body></html> 
+</body></html>
