@@ -10,20 +10,20 @@
 </object>
 <ul>
 <li><object type="text/sitemap">
-	<param name="Name" value="svg.js - Îáçîð">
+	<param name="Name" value="svg.js - ÐžÐ±Ð·Ð¾Ñ€">
     <param name="Local" value="overview.htm">
 </object>
 <li><object type="text/sitemap">
-    <param name="Name" value="Óñòàíîâêà">
+    <param name="Name" value="Ð£ÑÑ‚Ð°Ð½Ð¾Ð²ÐºÐ°">
     <param name="Local" value="install.htm">
 </object>
 <li><object type="text/sitemap">
-    <param name="Name" value="Íà÷àëî ðàáîòû">
+    <param name="Name" value="ÐÐ°Ñ‡Ð°Ð»Ð¾ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹">
 <param name="Local" value="intro.htm">
 </object>
 
 <li><object type="text/sitemap">
-	<param name="Name" value="Ðîäèòåëüñêèå ýëåìåíòû">
+	<param name="Name" value="Ð Ð¾Ð´Ð¸Ñ‚ÐµÐ»ÑŒÑÐºÐ¸Ðµ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ñ‹">
 	<param name="Local" value="parents.htm">
 </object>
 <ul><li><object type="text/sitemap">
@@ -53,7 +53,7 @@
 </ul>
 
   <li><object type="text/sitemap">
-    <param name="Name" value="Ýëåìåíòû">
+    <param name="Name" value="Ð­Ð»ÐµÐ¼ÐµÐ½Ñ‚Ñ‹">
     <param name="Local" value="elements.htm">
   </object>
 <ul>
@@ -136,24 +136,24 @@
 </ul>
 
   <li><object type="text/sitemap">
-    <param name="Name" value="Îáðàùåíèå">
+    <param name="Name" value="ÐžÐ±Ñ€Ð°Ñ‰ÐµÐ½Ð¸Ðµ">
     <param name="Local" value="referencing.htm">
   </object>
 <ul>
   <li><object type="text/sitemap">
-    <param name="Name" value="Ïî èäåíòèôèêàòîðó (id)">
+    <param name="Name" value="ÐŸÐ¾ Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ñƒ (id)">
     <param name="Local" value="referencing.htm#1">
   </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="Ïðè ïîìîùè CSS ñåëåêòîðîâ">
+    <param name="Name" value="ÐŸÑ€Ð¸ Ð¿Ð¾Ð¼Ð¾Ñ‰Ð¸ CSS ÑÐµÐ»ÐµÐºÑ‚Ð¾Ñ€Ð¾Ð²">
     <param name="Local" value="referencing.htm#2">
   </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="×åðåç ñóùåñòâóþùèå ýëåìåíòû DOM">
+    <param name="Name" value="Ð§ÐµÑ€ÐµÐ· ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ðµ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ñ‹ DOM">
     <param name="Local" value="referencing.htm#3">
   </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="Ïðè ïîìîùè jQuery èëè Zepto">
+    <param name="Name" value="ÐŸÑ€Ð¸ Ð¿Ð¾Ð¼Ð¾Ñ‰Ð¸ jQuery Ð¸Ð»Ð¸ Zepto">
     <param name="Local" value="referencing.htm#4">
   </object>
   <li><object type="text/sitemap">
@@ -175,62 +175,62 @@
 </ul>
 
   <li><object type="text/sitemap">
-    <param name="Name" value="Óïðàâëåíèå">
+    <param name="Name" value="Ð£Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ">
     <param name="Local" value="manipulating.htm">
   </object>
 <ul>
   <li><object type="text/sitemap">
-    <param name="Name" value="Àòðèáóòû">
+    <param name="Name" value="ÐÑ‚Ñ€Ð¸Ð±ÑƒÑ‚Ñ‹">
     <param name="Local" value="manipulating.htm#1">
   </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="Ïîçèöèîíèðîâàíèå">
+    <param name="Name" value="ÐŸÐ¾Ð·Ð¸Ñ†Ð¸Ð¾Ð½Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ">
     <param name="Local" value="manipulating.htm#2">
   </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="Èçìåíåíèå ðàçìåðîâ">
+    <param name="Name" value="Ð˜Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ðµ Ñ€Ð°Ð·Ð¼ÐµÑ€Ð¾Ð²">
     <param name="Local" value="manipulating.htm#3">
   </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="Ñèíòàêñè÷åñêèé &quot;ñàõàð&quot;">
+    <param name="Name" value="Ð¡Ð¸Ð½Ñ‚Ð°ÐºÑÐ¸Ñ‡ÐµÑÐºÐ¸Ð¹ &quot;ÑÐ°Ñ…Ð°Ñ€&quot;">
     <param name="Local" value="manipulating.htm#4">
   </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="Òðàíñôîðìàöèÿ">
+    <param name="Name" value="Ð¢Ñ€Ð°Ð½ÑÑ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ñ">
     <param name="Local" value="manipulating.htm#5">
   </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="Ñòèëè">
+    <param name="Name" value="Ð¡Ñ‚Ð¸Ð»Ð¸">
     <param name="Local" value="manipulating.htm#6">
   </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="Êëàññû">
+    <param name="Name" value="ÐšÐ»Ð°ÑÑÑ‹">
     <param name="Local" value="manipulating.htm#7">
   </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="Äàííûå">
+    <param name="Name" value="Ð”Ð°Ð½Ð½Ñ‹Ðµ">
     <param name="Local" value="manipulating.htm#8">
   </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="Ïàìÿòü">
+    <param name="Name" value="ÐŸÐ°Ð¼ÑÑ‚ÑŒ">
     <param name="Local" value="manipulating.htm#9">
   </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="&quot;Äåðåâî&quot; äîêóìåíòà">
+    <param name="Name" value="&quot;Ð”ÐµÑ€ÐµÐ²Ð¾&quot; Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð°">
     <param name="Local" value="manipulating.htm#10">
   </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="Îðãàíèçàöèÿ ýëåìåíòîâ">
+    <param name="Name" value="ÐžÑ€Ð³Ð°Ð½Ð¸Ð·Ð°Ñ†Ð¸Ñ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð²">
     <param name="Local" value="manipulating.htm#11">
   </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="Ãåîìåòðèÿ">
+    <param name="Name" value="Ð“ÐµÐ¾Ð¼ÐµÑ‚Ñ€Ð¸Ñ">
     <param name="Local" value="manipulating.htm#12">
   </object>
 </ul>
 
   <li><object type="text/sitemap">
-    <param name="Name" value="Ïðÿìîóãîëüíèêè">
+    <param name="Name" value="ÐžÐ³Ñ€Ð°Ð½Ð¸Ñ‡Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ðµ Ñ€Ð°Ð¼ÐºÐ¸ Ð¸ Ð¾ÐºÐ½Ð° Ð¿Ñ€Ð¾ÑÐ¼Ð¾Ñ‚Ñ€Ð°">
     <param name="Local" value="boxes.htm">
   </object>
 <ul>
@@ -253,49 +253,49 @@
 </ul>
 
   <li><object type="text/sitemap">
-    <param name="Name" value="Àíèìàöèè">
+    <param name="Name" value="ÐÐ½Ð¸Ð¼Ð°Ñ†Ð¸Ð¸">
     <param name="Local" value="animating.htm">
   </object>
 <ul>
   <li><object type="text/sitemap">
-    <param name="Name" value="Àíèìàöèÿ">
+    <param name="Name" value="ÐÐ½Ð¸Ð¼Ð°Ñ†Ð¸Ñ">
     <param name="Local" value="animating.htm#1">
   </object>
     <li><object type="text/sitemap">
-    <param name="Name" value="Óïðàâëåíèå">
+    <param name="Name" value="Ð£Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ">
     <param name="Local" value="animating.htm#2">
   </object>
     <li><object type="text/sitemap">
-    <param name="Name" value="Ðàñ÷åò âðåìåíè (òàéìèíã)">
+    <param name="Name" value="Ð Ð°ÑÑ‡ÐµÑ‚ Ð²Ñ€ÐµÐ¼ÐµÐ½Ð¸ (Ñ‚Ð°Ð¹Ð¼Ð¸Ð½Ð³)">
     <param name="Local" value="animating.htm#3">
   </object>
     <li><object type="text/sitemap">
-    <param name="Name" value="Ôóíêöèè îáðàòíîãî âûçîâà">
+    <param name="Name" value="Ð¤ÑƒÐ½ÐºÑ†Ð¸Ð¸ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð³Ð¾ Ð²Ñ‹Ð·Ð¾Ð²Ð°">
     <param name="Local" value="animating.htm#4">
   </object>
 </ul>
 
   <li><object type="text/sitemap">
-    <param name="Name" value="Ñîáûòèÿ">
+    <param name="Name" value="Ð¡Ð¾Ð±Ñ‹Ñ‚Ð¸Ñ">
     <param name="Local" value="events.htm">
   </object>
 <ul>
   <li><object type="text/sitemap">
-    <param name="Name" value="Áàçîâûå ñîáûòèÿ">
+    <param name="Name" value="Ð‘Ð°Ð·Ð¾Ð²Ñ‹Ðµ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ">
     <param name="Local" value="events.htm#1">
   </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="Ñëóøàòåëè ñîáûòèé">
+    <param name="Name" value="Ð¡Ð»ÑƒÑˆÐ°Ñ‚ÐµÐ»Ð¸ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ð¹">
     <param name="Local" value="events.htm#2">
   </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="Íàñòðàèâàåìûå ñîáûòèÿ">
+    <param name="Name" value="ÐÐ°ÑÑ‚Ñ€Ð°Ð¸Ð²Ð°ÐµÐ¼Ñ‹Ðµ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ">
     <param name="Local" value="events.htm#3">
   </object>
 </ul>
 
   <li><object type="text/sitemap">
-    <param name="Name" value="Êëàññû">
+    <param name="Name" value="ÐšÐ»Ð°ÑÑÑ‹">
     <param name="Local" value="classes.htm">
 </object>
 <ul>
@@ -334,12 +334,12 @@
 </ul>
 
   <li><object type="text/sitemap">
-    <param name="Name" value="Èìïîðò/Ýêñïîðò SVG">
+    <param name="Name" value="Ð˜Ð¼Ð¿Ð¾Ñ€Ñ‚/Ð­ÐºÑÐ¿Ð¾Ñ€Ñ‚ SVG">
     <param name="Local" value="import_export.htm">
 </object>
 
   <li><object type="text/sitemap">
-    <param name="Name" value="Ðàñøèðåíèå">
+    <param name="Name" value="Ð Ð°ÑÑˆÐ¸Ñ€ÐµÐ½Ð¸Ðµ">
     <param name="Local" value="extending.htm">
 </object>
 <ul>
@@ -350,12 +350,12 @@
 </ul>
 
   <li><object type="text/sitemap">
-    <param name="Name" value="Ó÷åáíèêè è ïðèìåðû">
+    <param name="Name" value="Ð£Ñ‡ÐµÐ±Ð½Ð¸ÐºÐ¸ Ð¸ Ð¿Ñ€Ð¸Ð¼ÐµÑ€Ñ‹">
     <param name="Local" value="examples.htm">
 </object>
 
   <li><object type="text/sitemap">
-    <param name="Name" value="Ïëàãèíû">
+    <param name="Name" value="ÐŸÐ»Ð°Ð³Ð¸Ð½Ñ‹">
     <param name="Local" value="plugins.htm">
 </object>
 <ul>
@@ -442,58 +442,58 @@
 </ul>
 
   <li><object type="text/sitemap">
-    <param name="Name" value="Ñîòðóäíè÷åñòâî">
+    <param name="Name" value="Ð¡Ð¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾">
     <param name="Local" value="contributing.htm">
 </object>
 <ul>
   <li><object type="text/sitemap">
-    <param name="Name" value="Ñòèëü íàïèñàíèÿ êîäà">
+    <param name="Name" value="Ð¡Ñ‚Ð¸Ð»ÑŒ Ð½Ð°Ð¿Ð¸ÑÐ°Ð½Ð¸Ñ ÐºÐ¾Ð´Ð°">
     <param name="Local" value="contributing.htm#1">
 </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="Äîêóìåíòàöèÿ">
+    <param name="Name" value="Ð”Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð°Ñ†Ð¸Ñ">
     <param name="Local" value="contributing.htm#2">
 </object>
 </ul>
 
   <li><object type="text/sitemap">
-    <param name="Name" value="×Àñòî çàäàâàåìûå ÂÎïðîñû">
+    <param name="Name" value="Ð§ÐÑÑ‚Ð¾ Ð·Ð°Ð´Ð°Ð²Ð°ÐµÐ¼Ñ‹Ðµ Ð’ÐžÐ¿Ñ€Ð¾ÑÑ‹">
     <param name="Local" value="faq.htm">
 </object>
 <ul>
   <li><object type="text/sitemap">
-    <param name="Name" value="Ïðè èíèöèàëèçàöèè SVG.js ñîçäàþòñÿ äâà SVG. Ýòî îøèáêà?">
+    <param name="Name" value="ÐŸÑ€Ð¸ Ð¸Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ð¸ SVG.js ÑÐ¾Ð·Ð´Ð°ÑŽÑ‚ÑÑ Ð´Ð²Ð° SVG. Ð­Ñ‚Ð¾ Ð¾ÑˆÐ¸Ð±ÐºÐ°?">
     <param name="Local" value="faq.htm#1">
 </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="Ìîæåò ëè SVG.js ðàáîòàòü íà Node.js?">
+    <param name="Name" value="ÐœÐ¾Ð¶ÐµÑ‚ Ð»Ð¸ SVG.js Ñ€Ð°Ð±Ð¾Ñ‚Ð°Ñ‚ÑŒ Ð½Ð° Node.js?">
     <param name="Local" value="faq.htm#2">
 </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="Êàê ìîæíî èçìåíèòü ýëåìåíò, êîòîðûé óæå ñóùåñòâóåò â DOM?">
+    <param name="Name" value="ÐšÐ°Ðº Ð¼Ð¾Ð¶Ð½Ð¾ Ð¸Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¹ ÑƒÐ¶Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚ Ð² DOM?">
     <param name="Local" value="faq.htm#3">
 </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="Íóæíà ïîìîøü, ÷òîáû õîòü ÷òî-òî çàðàáîòàëî...">
+    <param name="Name" value="ÐÑƒÐ¶Ð½Ð° Ð¿Ð¾Ð¼Ð¾ÑˆÑŒ, Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ñ…Ð¾Ñ‚ÑŒ Ñ‡Ñ‚Ð¾-Ñ‚Ð¾ Ð·Ð°Ñ€Ð°Ð±Ð¾Ñ‚Ð°Ð»Ð¾...">
     <param name="Local" value="faq.htm#4">
 </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="ß íàøåë îøèáêó. Êóäà ñîîáùèòü îá ýòîì?">
+    <param name="Name" value="Ð¯ Ð½Ð°ÑˆÐµÐ» Ð¾ÑˆÐ¸Ð±ÐºÑƒ. ÐšÑƒÐ´Ð° ÑÐ¾Ð¾Ð±Ñ‰Ð¸Ñ‚ÑŒ Ð¾Ð± ÑÑ‚Ð¾Ð¼?">
     <param name="Local" value="faq.htm#5">
 </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="Ãäå ìîæíî íàéòè ó÷åáíèêè?">
+    <param name="Name" value="Ð“Ð´Ðµ Ð¼Ð¾Ð¶Ð½Ð¾ Ð½Ð°Ð¹Ñ‚Ð¸ ÑƒÑ‡ÐµÐ±Ð½Ð¸ÐºÐ¸?">
     <param name="Local" value="faq.htm#6">
 </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="Êàê âíåñòè ñâîé âêëàä èëè èñïðàâèòü ÷òî-ëèáî â äîêóìåíòàõ?">
+    <param name="Name" value="ÐšÐ°Ðº Ð²Ð½ÐµÑÑ‚Ð¸ ÑÐ²Ð¾Ð¹ Ð²ÐºÐ»Ð°Ð´ Ð¸Ð»Ð¸ Ð¸ÑÐ¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ Ñ‡Ñ‚Ð¾-Ð»Ð¸Ð±Ð¾ Ð² Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð°Ñ…?">
     <param name="Local" value="faq.htm#7">
 </object>
 </ul>
 
   <li><object type="text/sitemap">
-    <param name="Name" value="Ïðèçíàòåëüíîñòü è áëàãîäàðíîñòü">
+    <param name="Name" value="ÐŸÑ€Ð¸Ð·Ð½Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚ÑŒ Ð¸ Ð±Ð»Ð°Ð³Ð¾Ð´Ð°Ñ€Ð½Ð¾ÑÑ‚ÑŒ">
     <param name="Local" value="thanks.htm">
 </object>
 </ul>
-</body></html>
+</body></html> 
