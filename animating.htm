@@ -28,40 +28,32 @@ You can also animate non-numeric unit values using the `attr()` method:
 <pre>// javascript
 rect.attr('x', '10%').animate().attr('x', '50%')</pre><br>
 
-<h5>Упрощение</h5>
-All available ease types are:
-
-<div class=list> <tt>&#60;&#62;</tt> - упрощение <tt>in</tt> и <tt>out</tt></div>
-<div class=list> <tt>&#62;</tt> - ease <tt>out</tt></div>
-<div class=list> <tt>&#60;</tt> - ease <tt>in</tt></div>
-<div class=list> <tt>-</tt> - linear</div>
-<div class=list> <tt>=</tt> - external control</div>
-<div class=list> <tt>a</tt> - функция</div>
-
-For the latter, here is an example of the default `&#60;&#62;` function:
-
+<h5>Плавность анимации</h5>
+Все доступные типы плавности течения анимации:
+<div class=list> <tt>&#60;&#62;</tt> - плавное начало и окончание, т.е. анимация начинается медленно, затем ускоряется и к концу движения опять замедляется</div>
+<div class=list> <tt>&#62;</tt> - плавное окончание( начинается быстро, к концу замедляется)</div>
+<div class=list> <tt>&#60;</tt> - плавное начало (медленно начинается, к концу ускоряется)</div>
+<div class=list> <tt>-</tt> - линейная, т.е. скорость анимации одинакова от начала и до конца</div>
+<div class=list> <tt>=</tt> - внешнее управление</div>
+<div class=list> <tt>a</tt> - функция.</div>
+Для последнего типа вот пример функции, использующейся по умолчанию - <tt>&#60;&#62;</tt>:
 <pre>// javascript
 function(pos) { return (-Math.cos(pos * Math.PI) / 2) + 0.5 }</pre>
-
-For more easing equations, have a look at the (link: https://github.com/svgdotjs/svg.easing.js text: svg.easing.js target: _blank) plugin.<br>
+Для большего числа уравнений плавности посмотрите плагин <a href="https://github.com/svgdotjs/svg.easing.js" target="_blank">svg.easing.js</a>.<br>
 
 
 <div class=blockindent><br>
 <pre id="1animate"><span class="lnk" onmouseover="show('animate - анимация')" onmouseout="hide()">animate()</span></pre>
 <div class=list>возвращает - <tt>SVG.FX</tt></div>
-
 <pre>// javascript
 rect.animate().move(150, 150)</pre>
-Метод <tt>animate()</tt> будет принимать три аргумента. Первый - <tt>duration</tt> (продолжительность), второй - <tt>ease</tt> (легкость) и третий - <tt>delay</tt> (задержка):
-The `animate()` method will take three arguments. The first is `duration`, the second `ease` and the third `delay`:
+Метод <tt>animate()</tt> будет принимать три аргумента. Первый - <tt>duration</tt> (продолжительность), второй - <tt>ease</tt> (плавность) и третий - <tt>delay</tt> (задержка):
 <pre>// javascript
 rect.animate(2000, '>', 1000).attr({ fill: '#f03' })</pre>
-
-Alternatively you can pass an object as the first argument:
+Кроме того, можно в качестве первого аргумента передать объект:
 <pre>// javascript
 rect.animate({ ease: '&#60;', delay: '1.5s' }).attr({ fill: '#f03' })</pre>
 По умолчанию значение для <tt>duration</tt> устанавливается как <tt>1000</tt>, для <tt>ease</tt> будет установлено <tt>&#60;&#62;</tt>.
-By default `duration` will be set to `1000`, `ease` will be set to `&#60;&#62;`.
 Можно объединять несколько анимаций вместе повторным вызовом <tt>animate</tt>:
 <pre>// javascript
 rect.animate({ ease: '&#60;', delay: '1.5s' }).attr({ fill: '#f03' }).animate().dmove(50,50)</pre><br>
@@ -75,9 +67,9 @@ rect.fx.situation //-> everything is in here (все здесь)</pre>
 Доступные значения:
 <div class=list> <tt>start</tt> (время старта как число в миллисекундах)</div>
 <div class=list> <tt>play</tt> (проигрывать анимацию или нет; значения <tt>true</tt> или <tt>false</tt>)</div>
-<div class=list> <tt>pause</tt> (time when the animation was last paused)</div>
+<div class=list> <tt>pause</tt> (время, когда анимация последний раз приостанавливалась, т.е. время последней паузы)</div>
 <div class=list> <tt>duration</tt> (выбранная продолжительность анимации)</div>
-<div class=list> <tt>ease</tt> (the chosen easing calculation)</div>
+<div class=list> <tt>ease</tt> (выбранный расчет плавности)</div>
 <div class=list> <tt>finish</tt> (<tt>start</tt> + <tt>duration</tt>)</div>
 <div class=list> <tt>loop</tt> (текущий цикл; <tt>true</tt>, <tt>false</tt> или число; если число, то это обратный отсчет)</div>
 <div class=list> <tt>loops</tt> (количество циклов; <tt>true</tt>, <tt>false</tt> или число; если число, то это общее количество циклов)</div>
