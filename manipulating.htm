@@ -373,37 +373,28 @@ element.translate(0.5, -1)</pre></div><br><br>
 
 <h4 id="6">Стили</h4>
 <div class=blockindent><br>
-## style() _as setter_
-
+<pre id="6style_set"><span class="lnk" onmouseover="show('style - стиль')" onmouseout="hide()">style()</span>          <i class=low>как установщик (сеттер)</i></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
-With the `style()` method the `style` attribute can be managed like attributes with `attr`:
+С помощью метода <tt>style()</tt> можно управлять атрибутом <tt>style</tt> также как атрибутами с помощью <tt>attr</tt>:
 <pre>// javascript
 element.style('cursor', 'pointer')</pre>
-
-Multiple styles can be set at once using an object:
+Несколько стилей могут быть установлены одновременно, если в качестве аргумента использовать объект:
 <pre>// javascript
 element.style({ cursor: 'pointer', fill: '#f03' })</pre>
-
-Or a css string:
+Или css-строку:
 <pre>// javascript
 element.style('cursor:pointer;fill:#f03;')</pre>
-
-Explicitly deleting individual style definitions works the same as with the `attr()` method:
+Прямое удаление отдельных стилевых определений работает точно также как у метода <tt>attr()</tt>:
 <pre>// javascript
 element.style('cursor', null)</pre><br>
 
-## style() _as getter_
-
-`returns` __`value`__ _(string, number, ...)_
-
-Similar to `attr()` the `style()` method can also act as a getter:
-
+<pre id="6style_get"><span class="lnk" onmouseover="show('style - стиль')" onmouseout="hide()">transform()</span>          <i class=low>как получатель (геттер)</i></pre>
+<div class=list>возвращает значение (value) (строку (string), число (number), ...)</div>
+Аналогично методу <tt>attr()</tt>, метод <tt>style()</tt> также может действовать как получатель (геттер):
 <pre>// javascript
 element.style('cursor')
-// => pointer</pre>
-
-Or even a full getter:
+// => pointer (указатель)</pre>
+Или даже как полный получатель:
 <pre>// javascript
 element.style()
 // => 'cursor:pointer;fill:#f03;'</pre><br>
@@ -427,7 +418,7 @@ element.show()</pre><br>
 element.visible()</pre></div><br>
 
 
-<h4 id="7">Имена классов</h4>
+<h4 id="7">Классы</h4>
 <div class=blockindent><br>
 <pre id="7addClass"><span class="lnk" onmouseover="show('add class - добавить класс')" onmouseout="hide()">addClass()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
@@ -589,20 +580,21 @@ rect.toParent(group) // looks the same as before</pre><br>
 
 <pre id="10ungroup"><span class="lnk" onmouseover="show('ungroup - разгруппировать<br>flatten - выравнивать, расплющить')" onmouseout="hide()">ungroup() / flatten()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
-Break up a group/container and move all the elements to a given parent node without changing their visual representations. The result is a flat svg structure, e.g. for exporting.
-
+Разбивает группу/контейнер и перемещает все элементы в данный родительский узел, не изменяя их видимого представления. Результатом является плоская структура SVG, например, для экспорта.
+Break up a group/container and move all the elements to a given parent node without changing their visual representations. The result is a flat svg structure, e.g. for exporting.<br><br>
+Разгруппировать все элементы в этой группе рекурсивно и поместить их в данного родителя
 Ungroup all elements in this group recursively and places them into the given parent
 
 <pre>// javascript
 group.ungroup(parent, depth)
+// (default: parent container of the calling element)
 // (default: parent container of the calling element)</pre>
-
+Вызов этого метода на весь документ целиком для получения "плоской" svg-структуры:
 Call it on the whole document to get a flat svg structure:
 
 <pre>// javascript
 drawing.ungroup()</pre>
-
+Расформировываем группу (<tt>group</tt>) и помещаем все элементы в <tt>drawing</tt>.
 Break up the group and places all elements in the drawing:
 
 <pre>// javascript
@@ -619,119 +611,94 @@ Flat and export svg:
 var svgString = drawing.ungroup().svg()</pre></div><br><br>
 
 
-<h4 id="11">Arranging</h4>
-You can arrange elements within their parent SVG document using the following methods.
+<h4 id="11">Организация элементов</h4>
+Можно изменять расположение элементов в пределах их родительского SVG-документа при помощи следующих методов:
 <div class=blockindent><br>
 <pre id="11after"><span class="lnk" onmouseover="show('after - после, затем')" onmouseout="hide()">after()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
-Insert an element after another:
-
+Вставляет один элемент после другого:
 <pre>// javascript
-// inserts circle after rect
+// inserts circle after rect (вставка круга после прямоугольника)
 rect.after(circle)</pre><br>
 
-## before()
+<pre id="11before"><span class="lnk" onmouseover="show('before - перед, до, раньше')" onmouseout="hide()">before()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
-Insert an element before another:
-
+Вставляет один элемент перед другим:
 <pre>// javascript
-// inserts circle before rect
+// inserts circle before rect (вставка круга перед прямоугольником)
 rect.before(circle)</pre><br>
 
-## back()
+<pre id="11back"><span class="lnk" onmouseover="show('back - назад, обратно')" onmouseout="hide()">back()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
+Перемещает элемент в конец:
 Move element to the back:
 
 <pre>// javascript
 rect.back()</pre><br>
 
-## backward()
+<pre id="11backward"><span class="lnk" onmouseover="show('backward - назад, в обратном направлении')" onmouseout="hide()">backward()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
-Move element one step backward:
-
+Перемещает элемент на один шаг назад:
 <pre>// javascript
 rect.backward()</pre><br>
 
-## front()
+<pre id="11front"><span class="lnk" onmouseover="show('front - перед, передняя часть')" onmouseout="hide()">front()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
+Перемещает элемент в начало:
 Move element to the front:
 
 <pre>// javascript
 rect.front()</pre><br>
 
-## forward()
+<pre id="11forward"><span class="lnk" onmouseover="show('forward - вперед')" onmouseout="hide()">forward()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
-Move element one step forward:
-
+Перемещает элемент на один шаг вперед:
 <pre>// javascript
 rect.forward()</pre><br>
 
-## next()
-
+<pre id="11next"><span class="lnk" onmouseover="show('next - следующий')" onmouseout="hide()">next()</span></pre>
 <div class=list>возвращает <tt>SVG.Element</tt></div>
-
-Get the next sibling:
-
+Получает следующий, одноуровневый элемент (соседний):
 <pre>// javascript
 rect.next()</pre><br>
 
-## position()
+<pre id="11position"><span class="lnk" onmouseover="show('position - позиция, положение')" onmouseout="hide()">position()</span></pre>
 <div class=list>возвращает  число (<tt>number</tt>)</div>
-
-Get the position (a number) of rect between its siblings:
-
+Получает позицию (в виде числа) прямоугольника (<tt>rect</tt>) среди своих соседей по уровню иерархии:
 <pre>// javascript
 rect.position()</pre><br>
 
-## previous()
-
+<pre id="11previous"><span class="lnk" onmouseover="show('previous - предыдущий')" onmouseout="hide()">previous()</span></pre>
 <div class=list>возвращает <tt>SVG.Element</tt></div>
-
-Get the previous sibling:
-
+Получает предыдущий, одноуровневый элемент (соседний):
 <pre>// javascript
 rect.previous()</pre><br>
 
-## siblings()
+<pre id="11siblings"><span class="lnk" onmouseover="show('siblings - одноуровневые элементы, братья и сестры, сибсы')" onmouseout="hide()">siblings()</span></pre>
 <div class=list>возвращает - массив (<tt>array</tt>)</div>
-
-The arrange.js module brings some additional methods. To get all siblings of rect, including rect itself:
-
+Метод используется для получения всех соседних элементов, включая и сам прямоугольник <tt>rect</tt>. То есть, получаем все элементы на одном уровне с вызывающим, включая и сам вызывающий элемент.<br>
+Плагин (модуль) <tt>arrange.js</tt> предоставляет несколько дополнительных методов.
 <pre>// javascript
 rect.siblings()</pre></div><br><br>
 
 
 <h4 id="12">Геометрия</h4>
 <div class=blockindent><br>
-## point()
-
-`returns` __[`SVG.Point`](/classes/#svg-point)__
-
-Transforms a point from screen coordinates to the elements coordinate system.
-
+<pre id="12point"><span class="lnk" onmouseover="show('point - точка')" onmouseout="hide()">point()</span></pre>
+<div class=list>возвращает - <tt><a href="classes.htm#8" onmouseover="show('SVG.Point')" onmouseout="hide()">SVG.Point</a></tt></div>
+Преобразует координаты точки из системы коодинат экрана в систему координат элементов.
 <pre>// javascript
-// e is some mouseevent
+// e is some mouseevent (e - это какое-либо "мышиное" событие)
 var point = path.point(e.screenX, e.screenY) // {x, y}</pre><br>
 
-## inside()
-
+<pre id="12inside"><span class="lnk" onmouseover="show('inside - внутри')" onmouseout="hide()">inside()</span></pre>
 <div class=list>возвращает - логическое значение (boolean)</div>
-
-To check if a given point is inside the bounding box of an element you can use the `inside()` method:
-
+Метод <tt>inside()</tt> используется для проверки, находится ли заданная точка внутри ограничительной рамки элемента:
 <pre>// javascript
 var rect = draw.rect(100, 100).move(50, 50)<br>
-rect.inside(25, 30) //-> returns false
-rect.inside(60, 70) //-> returns true</pre>
-
-<div class=note><b>Примечание:</b> the `x` and `y` positions are tested against the relative position of the element. Any offset on the parent element is not taken into account.</div></div>
-
+rect.inside(25, 30) //-> returns false (возвращает значение false - ложь)
+rect.inside(60, 70) //-> returns true (возвращает значение true - истина)</pre>
+<div class=note><b>Примечание:</b> позиция по координатам <tt>x</tt> и <tt>y</tt> проверяется относительно позиции элемента. Никакое смещение родительского элемента не учитывается.</div></div><br>
 
 <br><br>
 </body></html>
