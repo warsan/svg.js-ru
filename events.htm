@@ -38,97 +38,70 @@ element.fire(event, { arbitrary: data })</pre><br>
 
 <pre id="2element.event"><span class="lnk" onmouseover="show('element event - событие элемента')" onmouseout="hide()"><span class="shadow">element.</span>event()</span></pre>
 <div class=list>возвращает - <tt>event</tt></div>
-
-When a given event is fired using `fire()`, the passed event will be stored locally. The `event()` method provides access to that stored event:
-
+Когда, с помощью метода <tt>fire()</tt>, вызывается данное событие, то переданное событие будет сохранено локально. Метод <tt>event()</tt> предоставляет доступ к этому сохраненному событию:
 <pre>// javascript
-var event = element.event()</pre>
+var event = element.event()</pre><br>
 
-
-## <span class="subject">element.</span>on()
-
+<pre id="2element.on"><span class="lnk" onmouseover="show('element on - элемент включен')" onmouseout="hide()"><span class="shadow">element.</span>on()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
 <pre>// javascript
 var click = function() {
   this.fill({ color: '#f06' })
-}
-
+}<br>
 element.on('click', click)</pre>
-
-**Note:** The context of `this` in the callback is bound to the element. You can change this context by applying your own object:
-
+<div class=note><b>Примечание:</b> Контекст <tt>this</tt> в функции обратного вызова связан с элементом (<tt>element</tt>). Можно изменить этот контекст, применив свой собственный объект:
 <pre>// javascript
-element.on('click', click, window) // context of this is window</pre>
+element.on('click', click, window) // context of this is window (здесь контекстом является window)</pre></div><br>
 
-## <span class="subject">element.</span>off()
-
+<pre id="2element.off"><span class="lnk" onmouseover="show('element off - элемент отключен')" onmouseout="hide()"><span class="shadow">element.</span>off()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
-Unbinding events is just as easy:
-
+Снимать привязку событий также просто:
 <pre>// javascript
 element.off('click', click)</pre>
-
-Or to unbind all listeners for a given event:
-
+Или отменить привязку всех слушателей событий для данного события:
 <pre>// javascript
 element.off('click')</pre>
-
-Or even unbind all listeners for all events:
-
+Или даже снять привязку всех слушателей событий для всех событий:
 <pre>// javascript
-element.off()</pre>
+element.off()</pre><br>
 
-<br>
-# Other elements
-
-Adding and removing event listeners from elements also works on other elements
-
-## <span class="subject">SVG.</span>on()
-
+<h5>Другие элементы</h5>
+Добавление и удаление слушателей событий от элементов также работает и на других элементах.
+<pre id="2SVG.on"><span class="lnk" onmouseover="show('SVG on - SVG включен')" onmouseout="hide()"><span class="shadow">SVG.</span>on()</span></pre>
 <pre>// javascript
-SVG.on(window, 'click', click)</pre>
-
-## <span class="subject">SVG.</span>off()
-
+SVG.on(window, 'click', click)</pre><br>
+<pre id="2SVG.off"><span class="lnk" onmouseover="show('SVG off - SVG отключен')" onmouseout="hide()"><span class="shadow">SVG.</span>off()</span></pre>
 <pre>// javascript
 SVG.off(window, 'click', click)</pre></div><br><br>
 
 
 <h4 id="3">Настраиваемые события</h4>
-
-You can even use your own events.
-
-Just add an event listener for your event:
+Также можно использовать свои собственные события.<br>
+Просто добавьте слушателя события для своего события:
 <pre>// javascript
 element.on('myevent', function() {
   alert('ta-da!')
 })</pre>
-
-Now you are ready to fire the event whenever you need:
-
+Теперь все готово для запуска события всякий раз, когда понадобится:
 <pre>// javascript
 function whenSomethingHappens() {
   element.fire('myevent')
 }<br>
 // or if you want to pass an event
-// or if you want to pass an event
+// или, если нужно пропустить событие
 function whenSomethingHappens(event) {
   element.fire(event)
 }</pre>
-
-You can also pass some data to the event:
-
+Также можно передать некие данные на событие:
 <pre>// javascript
 function whenSomethingHappens() {
   element.fire('myevent', {some:'data'})
 }<br>
 element.on('myevent', function(e) {
-  alert(e.detail.some) // outputs 'data'
+  alert(e.detail.some) // outputs 'data' (выходные 'данные')
 })</pre>
-
-SVG.js supports namespaced events following the syntax `event.namespace`.
+SVG.js поддерживает события пространства имен со следующим синтаксисом <tt>event.namespace</tt>.
+SVG.js supports namespaced events following the syntax `event.namespace`.<br>
 
 A namespaced event behaves like a normal event with the difference that you can remove it without touching handlers from other namespaces.
 
@@ -138,20 +111,19 @@ element.on('myevent.namespace', function(e) {
   // do something (здесь делаем что-нибудь)
 })<br>
 // detach all handlers of namespace for myevent
-// detach all handlers of namespace for myevent
+// отсоединить все обработчики пространства имен для события myevent
 element.off('myevent.namespace')<br>
 // detach all handlers of namespace
-// detach all handlers of namespace
+// отсоединить все обработчики пространства имен
 element.off('.namespace')<br>
 // detach all handlers including all namespaces
-// detach all handlers including all namespaces
+// отсоединить все обработчики, включая все пространства имен
 element.off('myevent')</pre>
 
 However, you can't fire a specific namespaced event. Calling `element.fire('myevent.namespace')` won't do anything while `element.fire('myevent')` works and fires all attached handlers of the event
 
-<div class=important><b>Важно:</b>_Important: always make sure you namespace your event to avoid conflicts. Preferably use something very specific. So `event.wicked` for example would be better than something generic like `event.svg`.</div><br><br>
-
-
+<div class=important><b>Важно:</b> Во избежание конфликтов, всегда проверяйте пространство имен события. Желательно использовать что-то конкретное.
+Так например, <tt><span class="lnk" onmouseover="show('event wicked - злое событие')" onmouseout="hide()">event.wicked</span></tt> будет лучше, чем нечто общее, вроде <tt><span class="lnk" onmouseover="show('event svg - svg событие')" onmouseout="hide()">event.svg</span></tt>.</div><br><br>
 
 <br><br>
 </body></html>
