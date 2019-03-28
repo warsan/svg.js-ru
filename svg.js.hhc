@@ -158,19 +158,19 @@
     <param name="Local" value="referencing.htm#4">
   </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="Circular reference">
+    <param name="Name" value="Круговые ссылки">
     <param name="Local" value="referencing.htm#5">
   </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="Child references">
+    <param name="Name" value="Дочерние ссылки">
     <param name="Local" value="referencing.htm#6">
   </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="Parent references">
+    <param name="Name" value="Родительские ссылки">
     <param name="Local" value="referencing.htm#7">
   </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="URI references">
+    <param name="Name" value="URI ссылки">
     <param name="Local" value="referencing.htm#8">
   </object>
 </ul>
