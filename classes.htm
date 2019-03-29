@@ -8,7 +8,8 @@
 
 <body>
 <h3>Классы</h3>
-SVG.js adds a lot of functionality that is not related to the SVG spec. Most of the extras are part of the OO nature but there are other useful utilities as well.<br><br>
+SVG.js добавляет множество функций, не связанных со спецификацией SVG.
+Большинство дополнений являются частью <a href="https://ru.wikipedia.org/wiki/%D0%9E%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D0%BD%D0%BE-%D0%BE%D1%80%D0%B8%D0%B5%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%B5_%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5" target="_blank">объектно-ориентированного программирования</a>, но есть и другие полезные утилиты.<br><br>
 
 <h4 id="1">SVG.Array</h4>
 Предназначен для простых строк значений, разделенных пробелами:
@@ -25,12 +26,11 @@ new SVG.Array([ .343,  .669, .119, 0,   0
 <div class=list>возвращает - новый экземпляр</div>
 Данный метод превратит массив в заданную позицию между&nbsp;<tt>0</tt> и&nbsp;<tt>1</tt>:
 <pre>// javascript
-array.at(0.27).toString() //-> returns (возвращает) '27,0 73,100 127,127'</pre><br>
+array.at(0.27).toString() // -> returns (возвращает) '27,0 73,100 127,127'</pre><br>
 
 <pre id="1bbox"><span class="lnk" onmouseover="show('bbox - сокращ. англ. слов bounding box - ограничительный<br>прямоугольник, ограничительная рамка')" onmouseout="hide()">bbox()</span></pre>
 <div class=list>возвращает - объект</div>
-Метод получает ограничительную рамку геометрического объекта из массива:
-Gets the bounding box of the geometry of the array:
+Метод получает ограничительную рамку геометрического объекта, представленного массивом:
 <pre>// javascript
 array.bbox()</pre>
 <div class=note><b>Примечание:</b> Этот метод доступен только для <tt><a href="#2" onmouseover="show('SVG.PointArray')" onmouseout="hide()">SVG.PointArray</a></tt> и <tt><a href="#3" onmouseover="show('SVG.PathArray')" onmouseout="hide()">SVG.PathArray</a></tt>.</div><br>
@@ -47,68 +47,58 @@ var clone = array.clone()</pre>
 
 <pre id="1morph"><span class="lnk" onmouseover="show('morph - морф, оборотень, превращаться')" onmouseout="hide()">morph()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
-In order to animate array values the `morph()` method lets you pass a destination value. This can be either the string value, a plain array or an instance of the same type of SVG.js array:
+Для анимации значений массива метод <tt>morph()</tt> позволяет передать конечное значение. Это может быть либо строковое значение, либо простой массив, либо экземпляр массива SVG.js того же типа:
 <pre>// javascript
 var array = new SVG.PointArray([[0, 0], [100, 100]])
 array.morph('100,0 0,100 200,200')</pre>
-
-This method will prepare the array ensuring both the source and destination arrays have the same length.
-
-<div class=note><b>Примечание:</b> In order to morph paths with different lengths, you need to include the [svg.pathmorphing.js](/plugins/svg-pathmorphing-js) plugin.</div><br>
+Этот метод подготовит массив, обеспечивая одинаковую длину как исходного, так и конечного массивов.
+<div class=note><b>Примечание:</b> Для преобразования путей различной длины нужно подключить плагин <a href="https://github.com/svgdotjs/svg.pathmorphing.js" target="_blank">svg.pathmorphing.js</a>.</div><br>
 
 <pre id="1move"><span class="lnk" onmouseover="show('move - двигать, перемещать')" onmouseout="hide()">move()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
-Moves geometry of the array with the given `x` and `y` values:
+Перемещает геометрический элемент, представленный массивом, с заданными значениями координат&nbsp;<tt>x</tt> и&nbsp;<tt>y</tt>.
 <pre>// javascript
 var array = new SVG.PointArray([[0, 0], [100, 100]])
 array.move(33,75)
-array.toString() //-> returns (возвращает) '33,75 133,175'</pre>
+array.toString() // -> returns (возвращает) '33,75 133,175'</pre>
 <div class=note><b>Примечание:</b> Этот метод доступен только для <tt><a href="#2" onmouseover="show('SVG.PointArray')" onmouseout="hide()">SVG.PointArray</a></tt> и <tt><a href="#3" onmouseover="show('SVG.PathArray')" onmouseout="hide()">SVG.PathArray</a></tt>.</div><br>
 
 <pre id="1reverse"><span class="lnk" onmouseover="show('reverse - задний ход, реверс')" onmouseout="hide()">reverse()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
 Изменяет порядок массива на обратный:
-Reverses the order of the array:
 <pre>// javascript
 var array = new SVG.PointArray([[0, 0], [100, 100]])
 array.reverse()
-array.toString() //-> returns (возвращает) '100,100 0,0'</pre><br>
+array.toString() // -> returns (возвращает) '100,100 0,0'</pre><br>
 
-<pre id="1settle"><span class="lnk" onmouseover="show('settle - ')" onmouseout="hide()">settle()</span></pre>
+<pre id="1settle"><span class="lnk" onmouseover="show('settle - урегулирование, заселение, улаживание')" onmouseout="hide()">settle()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
-When morphing is done the `settle()` method will eliminate any transitional points like duplicates:
+По завершении трансформации (морфинга), метод <tt>settle()</tt> удалит все переходные точки, типа дубликатов.
 <pre>// javascript
 array.settle()</pre><br>
 
 <pre id="1size"><span class="lnk" onmouseover="show('size - размер')" onmouseout="hide()">size()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
-Resizes geometry of the array by the given `width` and `height` values:
+Изменяет массив геометрического элемента по заданным значениям ширины (<tt>width</tt>) и высоты (<tt>height</tt>):
 <pre>// javascript
 var array = new SVG.PointArray([[0, 0], [100, 100]])
 array.move(100,100).size(222,333)
-array.toString() //-> returns '100,100 322,433'</pre>
-
+array.toString() // -> returns (возвращает) '100,100 322,433'</pre>
 <div class=note><b>Примечание:</b> Этот метод доступен только для <tt><a href="#2" onmouseover="show('SVG.PointArray')" onmouseout="hide()">SVG.PointArray</a></tt> и <tt><a href="#3" onmouseover="show('SVG.PathArray')" onmouseout="hide()">SVG.PathArray</a></tt>.</div><br>
 
 <pre id="1transform"><span class="lnk" onmouseover="show('transform - преобразование, превращение')" onmouseout="hide()">transform()</span></pre>
 <div class=list>возвращает - <tt>SVG.PointArray</tt></div>
-
-Transforms the points in the array with matrix, without modifying the original array:
+Преобразует точки массива с помощью матрицы, без изменения исходного массива:
 <pre>// javascript
 var array = new SVG.PointArray([[0, 0], [100, 100]])
 array.transform(new SVG.Matrix().translate(1, 2)).toString()
-//-> '1,2 101,102'</pre>
+//-> returns (возвращает) '1,2 101,102'</pre>
 
 <div class=note><b>Примечание:</b> Этот метод доступен только для <tt><a href="#2" onmouseover="show('SVG.PointArray')" onmouseout="hide()">SVG.PointArray</a></tt>.</div></div><br><br>
 
 <h4 id="2">SVG.PointArray</h4>
 <div class=list>наследует от <tt>SVG.Array</tt>.</div>
-
-Is a bit more complex and is used for polyline and polygon elements. This is a poly-point string:
+SVG.PointArray чуть сложнее SVG.Array и используется для элементов ломаная линия (polyline) и многоугольник (polygon). Это многоместная строка:
 <pre>// javascript
 '0,0 100,100'
 // or (или)
@@ -116,64 +106,55 @@ Is a bit more complex and is used for polyline and polygon elements. This is a p
 // or (или)
 '0, 0, 100, 100'</pre>
 Представление в виде "плоского" массива:
-The flat array representation:
 <pre>// javascript
 [0, 0, 100, 100]</pre>
 Представление в виде многомерного массива:
-The multi-dimensional array representation:
 <pre>// javascript
 [
   [0, 0]
 , [100, 100]
 ]</pre>
-
-Precompiling it as an `SVG.PointArray`:
+Предварительная компиляция в виде <tt>SVG.PointArray</tt>:
 <pre>// javascript
 new SVG.PointArray([
   [0, 0]
 , [100, 100]
 ])</pre>
-
-Note that every instance of `SVG.Polyline` and `SVG.Polygon` carries a reference to the `SVG.PointArray` instance:
+Обратите внимание, что каждый экземпляр <tt>SVG.Polyline</tt> и <tt>SVG.Polygon</tt> содержит ссылку на экземпляр <tt>SVG.PointArray</tt>:
 <pre>// javascript
-polygon.array() //-> returns the SVG.PointArray instance</pre><br>
+polygon.array() // -> returns the SVG.PointArray instance
+                // -> возвращает экземпляр SVG.PointArray</pre><br><br>
 
 
 <h4 id="3">SVG.PathArray</h4>
 <div class=list>наследует от <tt>SVG.Array</tt>.</div>
-
-Path arrays carry arrays representing every segment in a path string:
+Массивы путей (PathArray) содержат массивы, представляющие каждый сегмент строки пути:
 <pre>// javascript
 'M0 0L100 100z'</pre>
 Представление в виде "плоского" массива:
-The flat array representation:
 <pre>// javascript
 [ 'M', 0, 0, 'L', 100, 100, 'z' ]</pre>
 Представление в виде многомерного массива:
-The multi-dimensional array representation:
 <pre>// javascript
 [
   ['M', 0, 0]
 , ['L', 100, 100]
 , ['z']
 ]</pre>
-
-Precompiling it as an `SVG.PathArray`:
+Предварительная компиляция в виде <tt>SVG.PathArray</tt>:
 <pre>// javascript
 new SVG.PathArray([
   ['M', 0, 0]
 , ['L', 100, 100]
 , ['z']
 ])</pre>
-
-Note that every instance of `SVG.Path` carries a reference to the `SVG.PathArray` instance:
+Обратите внимание, что каждый экземпляр <tt>SVG.Path</tt> содержит ссылку на экземпляр <tt>SVG.PathArray</tt>:
 <pre>// javascript
 path.array() // -> returns the SVG.PathArray instance
              // -> возвращает экземпляр SVG.PathArray</pre>
 
 <h5>Синтаксис</h5>
-Синтаксис массивов путей (PathArray) довольно предсказуем. В основном это литеральные представления в виде двумерных массивов.
-The syntax for patharrays is very predictable. They are basically literal representations in the form of two dimentional arrays.
+Синтаксис массивов путей (PathArray) довольно предсказуем. В основном это <a href="https://ru.wikipedia.org/wiki/%D0%9B%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D0%BB_(%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82%D0%B8%D0%BA%D0%B0)" target="_blank">литеральные</a> представления в виде двумерных массивов.
 <div class=blockindent>
 &nbsp; &nbsp; &nbsp; &nbsp; <b>Move To</b> (переместить в)<br>
 Исходный синтаксис <tt>M0 0</tt> или <tt>m0 0</tt>. Синтаксис SVG.js <tt>['M',0,0]</tt> или <tt>['m',0,0]</tt>.<br>
@@ -190,15 +171,15 @@ The syntax for patharrays is very predictable. They are basically literal repres
 &nbsp; &nbsp; &nbsp; &nbsp; <b>Bezier curve</b> (кривая Безье)<br>
 Исходный синтаксис <tt>C20 20 40 20 50 10</tt> или <tt>c20 20 40 20 50 10</tt>. Синтаксис SVG.js <tt>['C',20,20,40,20,50,10]</tt> или <tt>['c',20,20,40,20,50,10]</tt>.<br>
 
-&nbsp; &nbsp; Or mirrored with <tt>S</tt>:<br>
+&nbsp; &nbsp; Или зеркальное отражение с <tt>S</tt> (от smooth - гладкое (соединение)):<br>
 
 Исходный синтаксис <tt>S40 20 50 10</tt> или <tt>s40 20 50 10</tt>. Синтаксис SVG.js <tt>['S',40,20,50,10]</tt> или <tt>['s',40,20,50,10]</tt>.<br>
 
-&nbsp; &nbsp; Or quadratic with <tt>Q</tt>:<br>
+&nbsp; &nbsp; Или квадратичная кривая с <tt>Q</tt> (от quadratic - квадратичная):<br>
 
 Исходный синтаксис <tt>Q20 20 50 10</tt> или <tt>q20 20 50 10</tt>. Синтаксис SVG.js <tt>['Q',20,20,50,10]</tt> или <tt>['q',20,20,50,10]</tt>.<br>
 
-&nbsp; &nbsp; Or a complete shortcut with <tt>T</tt>:<br>
+&nbsp; &nbsp; Или полное сокращение с <tt>T</tt> (для соединения нескольких квадратичных кривых Безье):<br>
 
 Исходный синтаксис <tt>T50 10</tt> или <tt>t50 10</tt>. Синтаксис SVG.js <tt>['T',50,10]</tt> или <tt>['t',50,10]</tt>.<br>
 
@@ -208,6 +189,7 @@ The syntax for patharrays is very predictable. They are basically literal repres
 &nbsp; &nbsp; &nbsp; &nbsp; <b>Close</b> (закрыть)<br>
 Исходный синтаксис <tt>Z</tt> или <tt>z</tt>. Синтаксис SVG.js <tt>['Z']</tt> или <tt>['z']</tt>.</div>
 Наилучшую документацию по путям можно найти на <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths" target="_blank">MDN</a>. <a href="https://developer.mozilla.org/ru/docs/Web/SVG/Tutorial/Paths" target="_blank">Вот эта же страница</a> на русском языке.<br><br>
+
 
 <h4 id="4">SVG.Color</h4>
 В SVG.js имеется специальный класс цвета, обрабатывающий различные типы значений цвета. Допустимые значения:
@@ -220,11 +202,10 @@ The syntax for patharrays is very predictable. They are basically literal repres
 <div class=blockindent><br>
 <pre id="4at"><span class="lnk" onmouseover="show('at - предлог в')" onmouseout="hide()">at()</span></pre>
 <div class=list>возвращает - <tt>SVG.Color</tt></div>
-
-Get morphable color at given position:
+Получает изменяемый цвет в заданной позиции:
 <pre>// javascript
 var color = new SVG.Color('#ff0066').morph('#000')
-color.at(0.5).toHex() //-> '#7f0033'</pre><br>
+color.at(0.5).toHex() // -> '#7f0033'</pre><br>
 
 <pre id="4brightness"><span class="lnk" onmouseover="show('brightness - яркость')" onmouseout="hide()">brightness()</span></pre>
 <div class=list>возвращает - число (<tt>number</tt>)</div>
@@ -235,8 +216,7 @@ color.brightness() // -> returns (возвращает) 0.344</pre>
 
 <pre id="4morph"><span class="lnk" onmouseover="show('morph - превращаться, морф, оборотень')" onmouseout="hide()">morph()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
-Make a color morphable:
+Делает цвет изменяемым:
 <pre>// javascript
 color.morph('#000')</pre><br>
 
@@ -250,11 +230,11 @@ color.toHex() // -> returns (возвращает) '#ff0066'</pre><br>
 <div class=list>возвращает - строку (<tt>string</tt>)</div>
 Метод получает значение цвета в виде строки RGB:
 <pre>// javascript
-color.toRgb() //-> returns (возвращает) 'rgb(255,0,102)'</pre></div><br>
+color.toRgb() // -> returns (возвращает) 'rgb(255,0,102)'</pre></div><br>
 
 
 <h4 id="5">SVG.Matrix</h4>
-
+Матрицы в SVG.js имеют свой собственный класс <tt>SVG.Matrix</tt>, заключающий в себе собственный <tt>SVGMatrix</tt>.
 Matrices in SVG.js have their own class `SVG.Matrix`, wrapping the native `SVGMatrix`. They add a lot of functionality like extracting transform values, matrix morphing and improvements on the native methods.<br><br>
 
 In SVG.js, matrices accept various values on initialization.
@@ -262,34 +242,35 @@ In SVG.js, matrices accept various values on initialization.
 Без значения:
 <pre>// javascript
 var matrix = new SVG.Matrix
-matrix.toString() //-> returns matrix(1,0,0,1,0,0)</pre>
-
+matrix.toString() // -> returns matrix(1,0,0,1,0,0)
+                  // -> возвращает матрицу (1,0,0,1,0,0)</pre>
 Шесть аргументов:
 <pre>// javascript
 var matrix = new SVG.Matrix(1, 0, 0, 1, 100, 150)
-matrix.toString() //-> returns matrix(1,0,0,1,100,150)</pre>
-
+matrix.toString() // -> returns matrix(1,0,0,1,100,150)
+                  // -> возвращает матрицу (1,0,0,1,100,150)</pre>
 Строковое значение:
 <pre>// javascript
 var matrix = new SVG.Matrix('1,0,0,1,100,150')
-matrix.toString() //-> returns matrix(1,0,0,1,100,150)</pre>
-
-An object value:
+matrix.toString() // -> returns matrix(1,0,0,1,100,150)
+                  // -> возвращает матрицу (1,0,0,1,100,150)</pre>
+Значение - объект:
 <pre>// javascript
 var matrix = new SVG.Matrix({ a: 1, b: 0, c: 0, d: 1, e: 100, f: 150 })
-matrix.toString() //-> returns matrix(1,0,0,1,100,150)</pre><br>
-
-A native `SVGMatrix`:
+matrix.toString() // -> returns matrix(1,0,0,1,100,150)
+                  // -> возвращает матрицу (1,0,0,1,100,150)</pre>
+Локальный <tt>SVGMatrix</tt>:
 <pre>// javascript
 var svgMatrix = svgElement.getCTM()
 var matrix = new SVG.Matrix(svgMatrix)
-matrix.toString() //-> returns matrix(1,0,0,1,0,0)</pre>
-
-Even an instance of `SVG.Element`:
+matrix.toString() // -> returns matrix(1,0,0,1,0,0)
+                  // -> возвращает матрицу (1,0,0,1,0,0)</pre>
+Даже экземпляр <tt>SVG.Element</tt>:
 <pre>// javascript
 var rect = draw.rect(50, 25)
 var matrix = new SVG.Matrix(rect)
-matrix.toString() //-> returns matrix(1,0,0,1,0,0)</pre>
+matrix.toString() // -> returns matrix(1,0,0,1,0,0)
+                  // -> возвращает матрицу (1,0,0,1,0,0)</pre>
 <div class=blockindent><br>
 <pre id="5around"><span class="lnk" onmouseover="show('around - вокруг')" onmouseout="hide()">around()</span></pre>
 <div class=list>возвращает - <tt>SVG.Matrix</tt></div>
@@ -494,59 +475,51 @@ number.to('px')</pre></div><br><br>
 
 
 <h4 id="7">SVG.Set</h4>
-
-Sets are very useful if you want to modify or animate multiple elements at once. A set will accept all the same methods accessible on individual elements, even the ones that you add with your own plugins! Creating a set is exactly as you would expect:
+Наборы (<tt>set</tt>) пригодятся там, где нужно изменить или анимировать несколько элементов одновременно.
+Набор будет принимать все, те же самые методы, доступные для отдельных элементов, даже те, что добавляются с помощью своих собственных плагинов!<br>
+Создание набора именно таково, как и ожидалось:
 <pre>// javascript
-// create some elements
+// create some elements (создадим несколько элементов)
 var rect = draw.rect(100,100)
-var circle = draw.circle(100).move(100,100).fill('#f09')
-
+var circle = draw.circle(100).move(100,100).fill('#f09')<br>
 // create a set and add the elements
+// создадим набор и добавим в него элементы
 var set = draw.set()
-set.add(rect).add(circle)
-
+set.add(rect).add(circle)<br>
 // change the fill of all elements in the set at once
+// изменим цвет заливки сразу всех элементов набора
 set.fill('#ff0')</pre>
-
-A single element can be a member of many sets. Sets also don't have a structural representation, in fact they are just fancy array's.
+Одиночный элемент может быть частью нескольких наборов. Также наборы не имеют структурного представления, на самом деле это просто необычные массивы.
 <div class=blockindent><br>
 <pre id="7add"><span class="lnk" onmouseover="show('add - добавить, сложить')" onmouseout="hide()">add()</span></pre>
-
 <div class=list>возвращает - самого себя (itself)</div>
-
-Add an element to a set:
+Добавляет элемент в набор (<tt>set</tt>):
 <pre>// javascript
 set.add(rect)</pre>
-
-Quite a useful feature of sets is the ability to accept multiple elements at once:
-
+Очень полезным свойством наборов является возможность одновременного принятия нескольких элементов:
 <pre>// javascript
 set.add(rect, circle)</pre><br>
 
-## animate()
+<pre id="7animate"><span class="lnk" onmouseover="show('animate - анимировать')" onmouseout="hide()">animate()</span></pre>
 <div class=list>возвращает - <tt>SVG.SetFX</tt></div>
 
 Sets work with animations as well:
 <pre>// javascript
 set.animate(3000).fill('#ff0')</pre><br>
 
-## bbox()
+<pre id="7bbox"><span class="lnk" onmouseover="show('b(ounding) box - ограничительная рамка')" onmouseout="hide()">bbox()</span></pre>
 <div class=list>возвращает - <tt>SVG.BBox</tt></div>
-
-Get the bounding box of all elements in the set:
+Получает ограничительную рамку для всех элементов набора (<tt>set</tt>):
 <pre>// javascript
 set.bbox()</pre><br>
 
-## clear()
-
+<pre id="7clear"><span class="lnk" onmouseover="show('clear - очистить')" onmouseout="hide()">clear()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
-Or to remove all elements from a set:
+Метод удаляет все элементы из набора (<tt>set</tt>):
 <pre>// javascript
 set.clear()</pre><br>
 
-## each()
-
+<pre id="7each"><span class="lnk" onmouseover="show('each - каждый, всякий, любой')" onmouseout="hide()">each()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
 
 Iterating over all members in a set is the same as with svg containers:
@@ -557,59 +530,47 @@ set.each(function(i) {
 
 Note that `this` refers to the current child element.<br><br>
 
-## first()
+<pre id="7first"><span class="lnk" onmouseover="show('first - первый')" onmouseout="hide()">first()</span></pre>
 <div class=list>возвращает - <tt>SVG.Element</tt></div>
-
-Gets the first element:
+Получает первый элемент:
 <pre>// javascript
 set.first()</pre><br>
 
-## get()
+<pre id="7get"><span class="lnk" onmouseover="show('get - получить')" onmouseout="hide()">get()</span></pre>
 <div class=list>возвращает - <tt>SVG.Element</tt></div>
-
-Gets the element at a given index:
+Получает элемент по указанному индексу:
 <pre>// javascript
 set.get(1)</pre><br>
 
-## has()
-
-`returns` __`boolean`__
-
-Determine if an element is member of the set:
+<pre id="7has"><span class="lnk" onmouseover="show('has - имеет')" onmouseout="hide()">has()</span></pre>
+<div class=list>возвращает - логическое значение (<tt>boolean</tt>)</div>
+Метод определяет, является ли элемент частью набора (<tt>set</tt>):
 <pre>// javascript
 set.has(rect)</pre><br>
 
-## index()
-
-`returns` __`number`__
-
-Returns the index of a given element in the set.
+<pre id="7index"><span class="lnk" onmouseover="show('index - индекс')" onmouseout="hide()">index()</span></pre>
+<div class=list>возвращает - число (<tt>number</tt>)</div>
+Возвращает индекс заданного элемента в наборе (<tt>set</tt>):
 <pre>// javascript
-set.index(rect) //-> -1 if element is not a member</pre><br>
+set.index(rect) // -> -1 if element is not a member
+                // -> -1 если элемент не является частью набора</pre><br>
 
-## last()
+<pre id="7last"><span class="lnk" onmouseover="show('last - последний')" onmouseout="hide()">last()</span></pre>
 <div class=list>возвращает - <tt>SVG.Element</tt></div>
-
-Gets the last element:
-
+Получает последний элемент:
 <pre>// javascript
 set.last()</pre><br>
 
-## remove()
-
+<pre id="7remove"><span class="lnk" onmouseover="show('remove - удалить')" onmouseout="hide()">remove()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
-To remove an element from a set:
-
+Метод удаляет элемент из набора (<tt>set</tt>):
 <pre>// javascript
 set.remove(rect)</pre></div><br>
 
 
 <h4 id="8">SVG.Point</h4>
-
-SVG.Point is returned by [point()](/manipulating/#point) but is also a useful class to create vectors.<br>
-
-The contructor can take coordinates in many different forms:
+Класс SVG.Point возвращается <tt><a href="manipulating.htm#12point" onmouseover="show('Метод <tt>point()</tt> преобразует координаты точки<br>из системы координат экрана в систему координат элементов.')" onmouseout="hide()">point()</a></tt>, а также хорош для создания векторов.<br>
+Конструктор может принимать координаты в разных формах:
 <pre>// javascript
 var vector1 = new SVG.Point(1)
 var vector2 = new SVG.Point(1,1)
@@ -619,11 +580,11 @@ var vector5 = new SVG.Point(new SVG.Point(1,1))</pre>
 <div class=blockindent><br>
 <pre id="8at"><span class="lnk" onmouseover="show('at - предлог в')" onmouseout="hide()">at()</span></pre>
 <div class=list>возвращает - <tt>SVG.Point</tt></div>
-
+Получает координаты трансформируемой точки в заданной позиции:
 Get morphable point at given position:
 <pre>// javascript
 var point = new SVG.Point(1,1).morph(11,10)
-point.at(0.5) //-> {x: 6, y: 5.5}</pre><br>
+point.at(0.5) // -> {x: 6, y: 5.5}</pre><br>
 
 <pre id="8clone"><span class="lnk" onmouseover="show('clone - клон, клонировать')" onmouseout="hide()">clone()</span></pre>
 <div class=list>возвращает - <tt>SVG.Point</tt></div>
@@ -637,7 +598,7 @@ var newPoint = new SVG.Point(1,1).clone()</pre><br>
 Set the point to be morphable. Usually used with the `at()` method:
 <pre>// javascript
 var point = new SVG.Point(1,1).morph(11,10)
-point.at(0.5) //-> {x: 6, y: 5.5}</pre><br>
+point.at(0.5) // -> {x: 6, y: 5.5}</pre><br>
 
 <pre id="8native"><span class="lnk" onmouseover="show('native - родной, местный, естественный')" onmouseout="hide()">native()</span></pre>
 <div class=list>возвращает - <tt>SVGPoint</tt></div>
@@ -646,14 +607,14 @@ Creates a native SVGPoint object outside of any document trees.
 The object is initialized to the SVG.Point point.
 <pre>// javascript
 var point = new SVG.Point(1,1).native()
-console.log(point) //-> SVGPoint {x: 1, y: 1}</pre><br>
+console.log(point) // -> SVGPoint {x: 1, y: 1}</pre><br>
 
 <pre id="8transform"><span class="lnk" onmouseover="show('transform - преобразование, превращение')" onmouseout="hide()">transform()</span></pre>
 <div class=list>возвращает - <tt>SVG.Point</tt></div>
 Преобразование точки с помощью матрицы без изменения исходной точки:
 <pre>// javascript
 var point = new SVG.Point(1,1)
-point.transform(new SVG.Matrix().skew(0, 45)) //-> {x: 1, y: 2}</pre></div><br>
+point.transform(new SVG.Matrix().skew(0, 45)) // -> {x: 1, y: 2}</pre></div><br>
 
 <br><br>
 </body></html>
