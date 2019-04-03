@@ -54,21 +54,17 @@ circle.attr({ cx: 50, cy: 40 })</pre>
 а круг <tt>circle</tt> будет перемещен в соответствии с его центром (локальные нулевые координаты круга находятся в центре).
 Однако попытка переместить <tt>circle</tt> по его «верхнему левому углу» или<tt>rect</tt> по его центру потерпит неудачу.
 Строки кода, показанные ниже, будут молчаливо игнорироваться, так как атрибуты, которым они адресованы, изначально не используются элементом, устанавливающим их:
-However, trying to move a `circle` by its 'corner' or a `rect` by its centre in this way will fail. The following lines will get silently ignored as the attributes that are addressed are not natively used by the element setting them:
-
 <pre>// javascript
 rect.attr({ cx: 20, cy: 60 })
 circle.attr({ x: 50, y: 40 })</pre>
 Тем не менее, показанные ниже методы позиционирования, будут работать для всех типов элементов, независимо от того, являются ли атрибуты, которым они адресованы, исходными (родными) для данного типа.
 Так что, в отличие от строк выше, эти строки работают просто отлично:
-However, the positioning methods detailed below will work for all element types, regardless of whether the attributes being addressed are native to the type. So, unlike the lines above, these lines work just fine:
-
 <pre>// javascript
 rect.cx(20).cy(60)
 circle.x(50).y(40)</pre>
 Важно отметить все же, что эти методы предназначены только для использования с пользовательскими (безразмерными) координатами.
-Если например, размер элемента задан в процентах или других единицах, методы позиционирования, которые обращаются к его собственным атрибутам, скорее всего, все еще будут работать, но те, которые обращаются к не родным атрибутам, дадут неожиданные результаты - как получатели (геттеры), так и установщики (сеттеры)!
-It is important to note, though, that these methods are only intended for use with user (unitless) coordinates. If for example, an element has its size set via percentages or other units, the positioning methods that address its native attributes will most likely still work, but the ones that address non-native attributes will give unexpected results -- as both getters and setters!
+Если например, размер элемента задан в процентах или других единицах, методы позиционирования, которые обращаются к его собственным атрибутам, скорее всего, все еще будут работать,
+но те, которые обращаются к неродным атрибутам, дадут неожиданные результаты - как получатели (геттеры), так и установщики (сеттеры)!
 <div class=blockindent><br>
 <pre id="2move"><span class="lnk" onmouseover="show('move - перемещать, двигать')" onmouseout="hide()">move()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
@@ -267,17 +263,13 @@ rect.opacity(0.5)</pre>
 <pre id="5transform_set"><span class="lnk" onmouseover="show('transform - преобразование')" onmouseout="hide()">transform()</span>          <i class=low>как установщик (сеттер)</i></pre>
 <div class=list>возвращает - самого себя (itself)</div>
 <div class=list>анимируется - да</div>
-
-As a setter it has two ways of working. By default transformations are absolute. For example, if you call:
-
+В качестве установщика данный метод имеет два способа работы. По умолчанию трансформации/преобразования являются абсолютными. Например, если вызвать:
 <pre>// javascript
 element.transform({ rotation: 125 }).transform({ rotation: 37.5 })</pre>
-
-The resulting rotation will be `37.5` and not the sum of the two transformations. But if that's what you want there is a way out by adding the `relative` parameter. That would be:
+То результирующий угол поворота будет равен <tt>37.5</tt>, а не сумме двух преобразований. Но, если нужен именно суммарный поворот, выход есть, просто добавьте параметр <tt>relative</tt>. Это будет выглядеть так:
 <pre>// javascript
 element.transform({ rotation: 125 }).transform({ rotation: 37.5, relative: true })</pre>
-
-Alternatively a relative flag can be passed as the second argument:
+Кроме того, флаг относительности (<tt>relative</tt>) может быть передан и как второй аргумент:
 <pre>// javascript
 element.transform({ rotation: 125 }).transform({ rotation: 37.5 }, true)</pre>
 
@@ -300,13 +292,13 @@ element.transform()</pre>
 Возвращаемый <tt>object</tt> содержит следующие значения:<br>
 &nbsp; &#9679; &nbsp; <tt>x</tt> (перемещение по оси <tt>x</tt>)<br>
 &nbsp; &#9679; &nbsp; <tt>y</tt> (перемещение по оси <tt>y</tt>)<br>
-&nbsp; &#9679; &nbsp; <tt>skewX</tt> (calculated skew on x-axis)<br>
-&nbsp; &#9679; &nbsp; <tt>skewY</tt> (calculated skew on y-axis)<br>
+&nbsp; &#9679; &nbsp; <tt>skewX</tt> (рассчитанный наклон по оси <tt>x</tt>)<br>
+&nbsp; &#9679; &nbsp; <tt>skewY</tt> (рассчитанный наклон по оси <tt>y</tt>)<br>
 &nbsp; &#9679; &nbsp; <tt>scaleX</tt> (рассчитанный масштаб по оси <tt>x</tt>)<br>
 &nbsp; &#9679; &nbsp; <tt>scaleY</tt> (рассчитанный масштаб по оси <tt>y</tt>)<br>
 &nbsp; &#9679; &nbsp; <tt>rotation</tt> (рассчитанный поворот)<br>
-&nbsp; &#9679; &nbsp; <tt>cx</tt> (last used rotation centre on x-axis)<br>
-&nbsp; &#9679; &nbsp; <tt>cy</tt> (last used rotation centre on y-axis)<br>
+&nbsp; &#9679; &nbsp; <tt>cx</tt> (координата по оси <tt>x</tt> последнего центра поворота)<br>
+&nbsp; &#9679; &nbsp; <tt>cy</tt> (координата по оси <tt>y</tt> последнего центра поворота)<br>
 Кроме того, для нужного свойства можно передать строковое значение:<br>
 <pre>// javascript
 element.transform('rotation')</pre><br>
@@ -329,8 +321,7 @@ element.flip('y', 100)</pre>
 Наконец, также можно переворачивать элемент сразу вокруг обоих осей не указывая значения оси.
 <pre>// javascript
 element.flip()</pre>
-
-And flipping on both axes at the same offset can be done by passing only a numeric value:
+А переворот вокруг обоих осей с одинаковым смещением можно сделать, передав только одно числовое значение:
 <pre>// javascript
 element.flip(5)</pre><br>
 
@@ -346,10 +337,10 @@ element.rotate(45)</pre>
 // rotate(degrees, cx, cy)
 element.rotate(45, 50, 50)</pre><br>
 
-<pre id="5skew"><span class="lnk" onmouseover="show('skew - ')" onmouseout="hide()">skew()</span></pre>
+<pre id="5skew"><span class="lnk" onmouseover="show('skew - наклон')" onmouseout="hide()">skew()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
 <div class=list>анимируется - да</div>
-Метод <tt>skew()</tt> принимает значения <tt>x</tt> и <tt>y</tt>.
+Метод <tt>skew()</tt> (наклон) принимает значения <tt>x</tt> и <tt>y</tt>.
 <pre>// javascript
 // skew(x, y)
 element.skew(0, 45)</pre><br>
@@ -453,7 +444,6 @@ element.toggleClass('pink-flower')</pre></div><br><br>
 
 <h4 id="8">Данные</h4>
 Метод <tt>data()</tt> позволяет связывать произвольные объекты, строки и числа с элементами SVG.
-The `data()` method allows you to bind arbitrary objects, strings and numbers to SVG elements.
 <div class=blockindent><br>
 <pre id="8data_get"><span class="lnk" onmouseover="show('data - данные')" onmouseout="hide()">data()</span>          <i class=low>как получатель (геттер)</i></pre>
 <div class=list>возвращает значение (<tt>value</tt>)</div>
@@ -524,13 +514,13 @@ rect.forget()</pre></div><br><br>
 <pre>// javascript
 var rect = draw.rect(100, 100)
 var group = draw.group()<br>
-group.add(rect) //-> returns group (возвращает группу)</pre><br>
+group.add(rect) // -> returns group (возвращает группу)</pre><br>
 
 <pre id="10addTo"><span class="lnk" onmouseover="show('add to - добавить в ...')" onmouseout="hide()">addTo()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
 Устанавливает вызывающий элемент как дочерний узел аргумента. Возвращает дочерний элемент:
 <pre>// javascript
-rect.addTo(group) //-> returns rect (возвращает элемент rect)</pre><br>
+rect.addTo(group) // -> returns rect (возвращает элемент rect)</pre><br>
 
 <pre id="10clone"><span class="lnk" onmouseover="show('clone - клон, штамп')" onmouseout="hide()">clone()</span></pre>
 <div class=list>возвращает <tt>SVG.Element</tt></div>
@@ -545,13 +535,13 @@ var clone = rect.clone()</pre>
 <div class=list>возвращает <tt>SVG.Element</tt></div>
 Устанавливает вызывающий элемент (в примере это <tt>group</tt>) в качестве родительского узла для аргумента (т.е. <tt>rect</tt>). Возвращает дочерний элемент:
 <pre>// javascript
-group.put(rect) //-> returns rect (возвращает элемент rect)</pre><br>
+group.put(rect) // -> returns rect (возвращает элемент rect)</pre><br>
 
 <pre id="10putIn"><span class="lnk" onmouseover="show('put in - положить в ...')" onmouseout="hide()">putIn()</span></pre>
 <div class=list>возвращает <tt>SVG.Element</tt></div>
 Устанавливает вызывающий элемент (в примере это <tt>rect</tt>) в качестве дочернего узла для аргумента (т.е. для <tt>group</tt>). Возвращает родительский элемент:
 <pre>// javascript
-rect.putIn(group) //-> returns group (возвращает группу)</pre><br>
+rect.putIn(group) // -> returns group (возвращает группу)</pre><br>
 
 <pre id="10remove"><span class="lnk" onmouseover="show('remove - удалить')" onmouseout="hide()">remove()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
@@ -572,11 +562,10 @@ Same as `toParent()` but with the root-node as parent<br><br>
 
 <pre id="10toParent"><span class="lnk" onmouseover="show('to parent - ')" onmouseout="hide()">toParent()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
+Перемещает элемент к другому родителю (аналогично <tt>addTo</tt>), но без изменения его визуального представления. Все преобразования объединяются и применяются к элементу.
 Moves an element to a different parent (similar to `addTo`), but without changing its visual representation. All transformations are merged and applied to the element.
-
 <pre>// javascript
-rect.toParent(group) // looks the same as before</pre><br>
+rect.toParent(group) // looks the same as before (выглядит так же, как и раньше)</pre><br>
 
 <pre id="10ungroup"><span class="lnk" onmouseover="show('ungroup - разгруппировать<br>flatten - выравнивать, расплющить')" onmouseout="hide()">ungroup() / flatten()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
@@ -631,8 +620,6 @@ rect.before(circle)</pre><br>
 <pre id="11back"><span class="lnk" onmouseover="show('back - назад, обратно')" onmouseout="hide()">back()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
 Перемещает элемент в конец:
-Move element to the back:
-
 <pre>// javascript
 rect.back()</pre><br>
 
@@ -645,8 +632,6 @@ rect.backward()</pre><br>
 <pre id="11front"><span class="lnk" onmouseover="show('front - перед, передняя часть')" onmouseout="hide()">front()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
 Перемещает элемент в начало:
-Move element to the front:
-
 <pre>// javascript
 rect.front()</pre><br>
 
@@ -696,8 +681,8 @@ var point = path.point(e.screenX, e.screenY) // {x, y}</pre><br>
 Метод <tt>inside()</tt> используется для проверки, находится ли заданная точка внутри ограничительной рамки элемента:
 <pre>// javascript
 var rect = draw.rect(100, 100).move(50, 50)<br>
-rect.inside(25, 30) //-> returns false (возвращает значение false - ложь)
-rect.inside(60, 70) //-> returns true (возвращает значение true - истина)</pre>
+rect.inside(25, 30) // -> returns false (возвращает значение false - ложь)
+rect.inside(60, 70) // -> returns true (возвращает значение true - истина)</pre>
 <div class=note><b>Примечание:</b> позиция по координатам <tt>x</tt> и <tt>y</tt> проверяется относительно позиции элемента. Никакое смещение родительского элемента не учитывается.</div></div><br>
 
 <br><br>
