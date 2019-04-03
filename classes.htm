@@ -236,7 +236,7 @@ color.toRgb() // -> returns (возвращает) 'rgb(255,0,102)'</pre></div><
 <h4 id="5">SVG.Matrix</h4>
 Матрицы в SVG.js имеют свой собственный класс <tt>SVG.Matrix</tt>, заключающий в себе собственный <tt>SVGMatrix</tt>.
 Matrices in SVG.js have their own class `SVG.Matrix`, wrapping the native `SVGMatrix`. They add a lot of functionality like extracting transform values, matrix morphing and improvements on the native methods.<br><br>
-
+В SVG.js матрицы принимают различные значения при инициализации.
 In SVG.js, matrices accept various values on initialization.
 
 Без значения:
@@ -274,12 +274,12 @@ matrix.toString() // -> returns matrix(1,0,0,1,0,0)
 <div class=blockindent><br>
 <pre id="5around"><span class="lnk" onmouseover="show('around - вокруг')" onmouseout="hide()">around()</span></pre>
 <div class=list>возвращает - <tt>SVG.Matrix</tt></div>
-
+Выполняет преобразование заданной матрицы вокруг заданной центральной точки:
 Performs a given matrix transformation around a given center point:
 <pre>// javascript
 // cx, cy, matrix
 matrix.around(100, 150, new SVG.Matrix().skew(0, 45))</pre>
-
+Матрица, переданная в качестве третьего аргумента, будет использоваться для умножения.
 The matrix passed as the third argument will be used to multiply.<br><br>
 
 <pre id="5at"><span class="lnk" onmouseover="show('at - предлог в')" onmouseout="hide()">at()</span></pre>
@@ -289,7 +289,7 @@ This method will morph the matrix to a given position between `0` and `1`:
 <pre>// javascript
 matrix.at(0.27)</pre>
 
-This will only work when a destination matirx is defined using the `morph()` method.<br><br>
+This will only work when a destination matrix is defined using the `morph()` method.<br><br>
 
 <pre id="5clone"><span class="lnk" onmouseover="show('clone - клон, клонировать')" onmouseout="hide()">clone()</span></pre>
 <div class=list>возвращает - <tt>SVG.Matrix</tt></div>
@@ -306,11 +306,11 @@ matrix.extract()</pre>
 <div class=blockindent>
 &nbsp; &#9679; &nbsp; <tt>x</tt> (перемещение по оси&nbsp;<tt>x</tt>)<br>
 &nbsp; &#9679; &nbsp; <tt>y</tt> (перемещение по оси&nbsp;<tt>y</tt>)<br>
-&nbsp; &#9679; &nbsp; <tt>skewX</tt> (calculated skew on x-axis)<br>
-&nbsp; &#9679; &nbsp; <tt>skewY</tt> (calculated skew on y-axis)<br>
-&nbsp; &#9679; &nbsp; <tt>scaleX</tt> (calculated scale on x-axis)<br>
-&nbsp; &#9679; &nbsp; <tt>scaleY</tt> (calculated scale on y-axis)<br>
-&nbsp; &#9679; &nbsp; <tt>rotation</tt> (calculated rotation)</div><br>
+&nbsp; &#9679; &nbsp; <tt>skewX</tt> (рассчитанный наклон по оси&nbsp;<tt>x</tt>)<br>
+&nbsp; &#9679; &nbsp; <tt>skewY</tt> (рассчитанный наклон по оси&nbsp;<tt>y</tt>)<br>
+&nbsp; &#9679; &nbsp; <tt>scaleX</tt> (рассчитанный масштаб по оси&nbsp;<tt>x</tt>)<br>
+&nbsp; &#9679; &nbsp; <tt>scaleY</tt> (рассчитанный масштаб по оси&nbsp;<tt>y</tt>)<br>
+&nbsp; &#9679; &nbsp; <tt>rotation</tt> (рассчитанный поворот)</div><br>
 
 <pre id="5flip"><span class="lnk" onmouseover="show('flip - переворот, кувырок')" onmouseout="hide()">flip()</span></pre>
 <div class=list>возвращает - <tt>SVG.Matrix</tt></div>
@@ -337,6 +337,7 @@ matrix.inverse()</pre><br>
 <div class=list>возвращает - самого себя (itself)</div>
 
 In order to animate matrices the `morph()` method lets you pass a destination matrix. This can be any value a `SVG.Matrix` would accept on initialization:
+Это может быть любым значением <tt>SVG.Matrix</tt>, принятое
 <pre>// javascript
 matrix.morph('2,0,0,2,100,150')</pre><br>
 
@@ -348,19 +349,18 @@ matrix.multiply(matrix2)</pre><br>
 
 <pre id="5native"><span class="lnk" onmouseover="show('native - местный, локальный, родной')" onmouseout="hide()">native()</span></pre>
 <div class=list>возвращает - <tt>SVGMatrix</tt></div>
-
-Returns a native `SVGMatrix` extracted from the `SVG.Matrix` instance:
+Возвращает локальный <tt>SVGMatrix</tt>, извлеченный из экземпляра <tt>SVG.Matrix</tt>:
 <pre>// javascript
 matrix.native()</pre><br>
 
 <pre id="5rotate"><span class="lnk" onmouseover="show('rotate - вращать, поворачивать')" onmouseout="hide()">rotate()</span></pre>
 <div class=list>возвращает - <tt>SVG.Matrix</tt></div>
-
+Поворачивает матрицу на угол в градусах, по одному заданному значению:
 Rotates matrix by degrees with one value given:
 <pre>// javascript
 // degrees (градусы)
 matrix.rotate(45)</pre>
-
+Поворачивает матрицу на угол в градусах вокруг заданной точки, по трем значениям:
 Rotates a matrix by degrees around a given point with three values:
 <pre>// javascript
 // degrees, cx, cy (градусы, координаты точки поворота по оси x и y)
@@ -368,12 +368,12 @@ matrix.rotate(45, 100, 150)</pre><br>
 
 <pre id="5scale"><span class="lnk" onmouseover="show('scale - масштаб')" onmouseout="hide()">scale()</span></pre>
 <div class=list>возвращает - <tt>SVG.Matrix</tt></div>
-
+Равномерное масштабирование матрицы по одному, заданному значению:
 Scales matrix uniformal with one value:
 <pre>// javascript
 // scale (масштаб)
 matrix.scale(2)</pre>
-
+Неравномерное масштабирование матрицы по двум значениям:
 Scales matrix non-uniformal with two values:
 <pre>// javascript
 // scaleX, scaleY (масштаб по оси X, масштаб по оси Y)
@@ -381,7 +381,7 @@ matrix.scale(2, 3)</pre>
 
 Scales matrix uniformal on a given center point with three values:
 <pre>// javascript
-// scale, cx, cy
+// scale, cx, cy (масштаб, координаты точки по оси x и y)
 matrix.scale(2, 100, 150)</pre>
 
 Scales matrix non-uniformal on a given center point with four values:
@@ -419,22 +419,22 @@ matrix.translate(10, 20)</pre></div><br>
 
 
 <h4 id="6">SVG.Number</h4>
-
-Numbers in SVG.js have a dedicated number class to be able to process string values. Creating a new number is simple:
+Числа в SVG.js имеют специальный класс чисел, чтобы можно было обрабатывать строковые значения.
+Numbers in SVG.js have a dedicated number class to be able to process string values.<br>
+Создать новое число очень просто:
 <pre>// javascript
 var number = new SVG.Number('78%')
-number.plus('3%').toString() //-> returns '81%'
-number.valueOf() //-> returns 0.81</pre>
+number.plus('3%').toString() // -> returns (возвращает) '81%'
+number.valueOf() // -> returns (возвращает) 0.81</pre>
 
 Operators are defined as methods on the `SVG.Number` instance.
 <div class=blockindent><br>
 <pre id="6at"><span class="lnk" onmouseover="show('at - предлог в')" onmouseout="hide()">at()</span></pre>
 <div class=list>возвращает - <tt>SVG.Number</tt></div>
-
-Get morphable number at given position:
+Получает трансформируемое число в заданной позиции:
 <pre>// javascript
 var number = new SVG.Number('79%').morph('3%')
-number.at(0.55).toString() //-> '37.2%'</pre><br>
+number.at(0.55).toString() // -> '37.2%'</pre><br>
 
 <pre id="6divide"><span class="lnk" onmouseover="show('divide - делить')" onmouseout="hide()">divide()</span></pre>
 <div class=list>возвращает - <tt>SVG.Number</tt></div>
@@ -450,8 +450,7 @@ number.minus('3%')</pre><br>
 
 <pre id="6morph"><span class="lnk" onmouseover="show('morph - превращать, морф, оборотень')" onmouseout="hide()">morph()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
-Make a number morphable:
+Делает число трансформируемым:
 <pre>// javascript
 number.morph('11%')</pre><br>
 
@@ -502,8 +501,7 @@ set.add(rect, circle)</pre><br>
 
 <pre id="7animate"><span class="lnk" onmouseover="show('animate - анимировать')" onmouseout="hide()">animate()</span></pre>
 <div class=list>возвращает - <tt>SVG.SetFX</tt></div>
-
-Sets work with animations as well:
+Устанавливает работу с анимацией:
 <pre>// javascript
 set.animate(3000).fill('#ff0')</pre><br>
 
@@ -521,14 +519,12 @@ set.clear()</pre><br>
 
 <pre id="7each"><span class="lnk" onmouseover="show('each - каждый, всякий, любой')" onmouseout="hide()">each()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
-Iterating over all members in a set is the same as with svg containers:
+Последовательный перебор всех элементов набора, точно такой же, как у svg-контейнеров (т.е. &#60;a&#62;, &#60;defs&#62;, &#60;g&#62;, &#60;marker&#62;, &#60;mask&#62;, &#60;missing-glyph&#62;, &#60;pattern&#62;, &#60;svg&#62;, &#60;switch&#62;, &#60;symbol&#62;):
 <pre>// javascript
 set.each(function(i) {
   this.attr('id', 'shiny_new_id_' + i)
 })</pre>
-
-Note that `this` refers to the current child element.<br><br>
+Обратите внимание, здесь <tt>this</tt> относится к текущему дочернему элементу.<br><br>
 
 <pre id="7first"><span class="lnk" onmouseover="show('first - первый')" onmouseout="hide()">first()</span></pre>
 <div class=list>возвращает - <tt>SVG.Element</tt></div>
