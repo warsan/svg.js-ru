@@ -189,8 +189,7 @@ polyline.array()</pre>
 
 <pre id="5polyline.clear"><span class="lnk" onmouseover="show('polyline clear - очистка ломаных линий')" onmouseout="hide()"><span class="shadow">polyline.</span>clear()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-При анализе данных задаваемой точки, результат кэшируется. Данный метод очищает кэш.
-When the given point data is parsed, the result is cached. This method clears the cache.
+При анализе данных задаваемой точки, результат <a href="https://ru.wikipedia.org/wiki/%D0%9A%D1%8D%D1%88" target="_blank" onmouseover="show(cache)" onmouseout="hide()">кэшируется</a>. Данный метод очищает кэш.
 <pre>// javascript
 polyline.clear()</pre><br>
 
@@ -213,7 +212,7 @@ polyline.animate(3000).plot([[0,0], [100,50], [50,100], [150,50], [200,50], [250
 Элемент &#171;многоугольник&#187; (<tt>polygon</tt>), в отличие от элемента &#171;ломаная линия&#187; (<tt>polyline</tt>), представляется в виде замкнутой формы, состоящей из набора отрезков прямых линий, соединенных между собой:
 <pre>// javascript
 var polygon = draw.polygon('0,0 100,50 50,100').fill('none').stroke({ width: 1 })</pre>
-Строки или массивы многоугольника в точности теже самые, что и строки ломаной линии. При этом не нужно замыкать форму отрезком линии между первой и последней точками, это будет сделано автоматически.<br><br>
+Строки или массивы многоугольника в точности те же самые, что и строки ломаной линии. При этом не нужно замыкать форму отрезком линии между первой и последней точками, это будет сделано автоматически.<br><br>
 <div style="font-family:Segoe UI; font-size:90%; margin-left:10px;">
 &nbsp; &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("polygon1","polygon2");'>Результат</span>
 &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("polygon2","polygon1");'>Код JavaScript</span>
@@ -229,15 +228,14 @@ polygon.fill('#f06').move(20, 20)</pre></div></div><br>
 
 <pre id="6polygon.array"><span class="lnk" onmouseover="show('polygon array - массив многоугольника')" onmouseout="hide()"><span class="shadow">polygon.</span>array()</span></pre>
 <div class=list>возвращает - <tt>SVG.PointArray</tt>.</div>
-References the `SVG.PointArray` instance. Этот метод предназначен скорее для внутреннего использования:
+Ссылается на экземпляр <a href="classes.htm#2" onmouseover="show('SVG.PointArray')" onmouseout="hide()">SVG.PointArray</a>. Этот метод предназначен скорее для внутреннего использования:
 <pre>// javascript
 polygon.array()</pre>
 Больше сведений смотрите в: <a href="classes.htm#2" onmouseover="show('SVG.PointArray')" onmouseout="hide()">SVG.PointArray</a>.<br><br>
 
 <pre id="6polygon.clear"><span class="lnk" onmouseover="show('polygon clear - очистка многоугольника')" onmouseout="hide()"><span class="shadow">polygon.</span>clear()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-При анализе данных задаваемой точки, результат кэшируется. Данный метод очищает кэш.
-When the given point data is parsed, the result is cached. This method clears the cache.
+При анализе данных задаваемой точки, результат <a href="https://ru.wikipedia.org/wiki/%D0%9A%D1%8D%D1%88" target="_blank" onmouseover="show(cache)" onmouseout="hide()">кэшируется</a>. Данный метод очищает кэш.
 <pre>// javascript
 polygon.clear()</pre><br>
 
@@ -286,8 +284,7 @@ path.array()</pre>
 
 <pre id="7path.clear"><span class="lnk" onmouseover="show('path clear - очистка пути')" onmouseout="hide()"><span class="shadow">path.</span>clear()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-При анализе данных пути, результат кэшируется. Данный метод очищает кэш.
-When the given path data is parsed, the result is cached. This method clears the cache.
+При анализе данных пути, результат <a href="https://ru.wikipedia.org/wiki/%D0%9A%D1%8D%D1%88" target="_blank" onmouseover="show(cache)" onmouseout="hide()">кэшируется</a>. Данный метод очищает кэш.
 <pre>// javascript
 path.clear()</pre><br>
 
@@ -313,11 +310,9 @@ path.plot('M10 80 C 40 10, 65 10, 95 80 S 150 150, 180 80')</pre>
 Также метод <tt>plot()</tt> может быть анимирован:
 <pre>// javascript
 path.animate(2000).plot('M10 80 C 40 150, 65 150, 95 80 S 150 10, 180 80').loop(true, true)</pre>
-Существует только базовая поддержка анимации путей, прописанных в SVG.js, то есть, анимация возможна только для путей с теми же командами (<tt>M</tt>, <tt>C</tt>, <tt>S</tt> и т.д.).
-There is only basic support for animating paths baked into SVG.js, which means that only paths with the same commands (`M`,`C`, <tt>S</tt> etc.) are animateable.<br>
-Если нужна анимация путей, которые не
-If you need to animate paths that do not share the same commands in order,
-можно использовать плагин <a href="https://github.com/Fuzzyma/svg.pathmorphing.js" target="_blank" onmouseover="show('плагин для библиотеки SVG.js для включения морфинга/анимации пути')" onmouseout="hide()">svg.pathmorphing.js</a>.</div><br><br>
+Существует только базовая поддержка анимации путей, прописанных в SVG.js, то есть, анимация возможна только для путей с теми же командами (<tt>M</tt>, <tt>C</tt>, <tt>S</tt> и т.д.).<br>
+Если нужна анимация путей, которые не разделяют вышеупомянутые команды надлежащим образом, можно использовать плагин
+<a href="https://github.com/Fuzzyma/svg.pathmorphing.js" target="_blank" onmouseover="show('плагин для библиотеки SVG.js для включения морфинга/анимации пути')" onmouseout="hide()">svg.pathmorphing.js</a>.</div><br><br>
 
 
 <h4 id="8">SVG.Text</h4>
@@ -329,13 +324,10 @@ If you need to animate paths that do not share the same commands in order,
 В отличие от html, текст в svg намного сложнее приручить. Способа создания поступающего текста не существует, так что символы новой строки (<tt>\n</tt>) должны вводиться вручную.
 В SVG.js есть два способа создания текстовых элементов.<br>
 Первый и самый простой способ - предоставить строку текста, разделенную символами новой строки:
-The first and easiest method is to provide a string of text, split by newlines:
 <pre>// javascript
 var text = draw.text("Lorem ipsum dolor sit amet consectetur.\nCras sodales imperdiet auctor.")</pre>
-Этот код автоматически создаст блок текста и вставит символы новой строки, где они необходимы.
-This will automatically create a block of text and insert newlines where necessary.<br>
+Этот код автоматически создаст блок текста и вставит символы новой строки, где они необходимы.<br>
 Второй способ даст вам гораздо больше контроля, но и потребует чуть больше кода:
-The second method will give you much more control but requires a bit more code:
 <pre>// javascript
 var text = draw.text(function(add) {
   add.tspan('Lorem ipsum dolor sit amet ').newLine()
@@ -345,8 +337,7 @@ var text = draw.text(function(add) {
   add.tspan('Nunc ultrices lectus at erat').newLine()
   add.tspan('dictum pharetra elementum ante').newLine()
 })</pre>
-
-If you want to go the other way and don't want to add tspans at all, just one line of text, you can use the `plain()` method instead:
+Можно сделать и по-другому, вообще без применения блоков текста (<tt>tspan</tt>), когда нужно просто добавить одну строку текста воспользуйтесь методом <tt>plain()</tt>:
 <pre>// javascript
 var text = draw.plain('Lorem ipsum dolor sit amet consectetur.')</pre>
 
@@ -365,24 +356,22 @@ This is a shortcut to the `plain` method on the `SVG.Text` instance which doesn'
 var text = draw.text('I know that eggs do well to stay out of frying pans.')
 text.move(20,20).font({ fill: '#f06', family: 'Inconsolata' })</pre></div></div><br>
 
-<pre id="8text.build"><span class="lnk" onmouseover="show('text build - создать текст')" onmouseout="hide()"><span class="shadow">text.</span>build()</span></pre>
+<pre id="8text.build"><span class="lnk" onmouseover="show('text build - собрать текст')" onmouseout="hide()"><span class="shadow">text.</span>build()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
-The `build()` can be used to enable / disable build mode. With build mode disabled, the `plain()` and `tspan()` methods will first call the `clear()` method before adding the new content.
-So when build mode is enabled, `plain()` and `tspan()` will append the new content to the existing content. When passing a block to the `text()` method, build mode is toggled automatically before and after the block is called.
-But in some cases it might be useful to be able to toggle it manually:
+Метод <tt>build()</tt> можно использовать для включения/отключения режима сборки текста. В режиме отключенного создания перед добавлением нового контента, методы <tt>plain()</tt> и <tt>tspan()</tt> сначала будут вызывать метод <tt>clear()</tt>.
+Когда же режим сборки включен, методы <tt>plain()</tt> и <tt>tspan()</tt> будут присоединять новый контент к уже существующему. При передаче блока текста методу <tt>text()</tt> режим сборки автоматически переключается до и после вызова блока.
+Но в некоторых случаях может понадобится возможность переключать его вручную:
 <pre>// javascript
 var text = draw.text('This is just the start, ')<br>
-text.build(true)  // enables build mode<br>
+text.build(true)  // enables build mode (включаем режим сборки)<br>
 var tspan = text.tspan('something pink in the middle ').fill('#00ff97')
 text.plain('and again boring at the end.')<br>
-text.build(false) // disables build mode<br>
+text.build(false) // disables build mode (отключаем режим сборки)<br>
 tspan.animate('2s').fill('#f06')</pre><br>
 
 <pre id="8text.clear"><span class="lnk" onmouseover="show('text clear - очистка текста')" onmouseout="hide()"><span class="shadow">text.</span>clear()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
 Очистка всего содержимого вызываемого текстового элемента:
-Clear all the contents of the called text element:
 <pre>// javascript
 text.clear()</pre><br>
 
@@ -414,20 +403,22 @@ text.font('family', 'Menlo')</pre>
 &nbsp; &#9679; &nbsp; <tt>style</tt> (устанавливает атрибут <tt>font-style</tt>)<br>
 &nbsp; &#9679; &nbsp; <tt>variant</tt> (устанавливает атрибут <tt>font-variant</tt>)<br>
 &nbsp; &#9679; &nbsp; <tt>weight</tt> (устанавливает атрибут <tt>font-weight</tt>)<br>
-
-Any other property will be applied as given. So, for example, the `letter-spacing` property will just be applied as it would be given to the `attr()` method. More on (link: https://www.w3.org/TR/SVG/text.html#FontPropertiesUsedBySVG text: font-related properties here target: _blank).<br><br>
+Любое другое свойство будет применяться как задано. Так например, свойство <tt>letter-spacing</tt> будет применяться так, как было задано методом <tt>attr()</tt>.
+Подробнее о свойствах шрифта <a href="https://www.w3.org/TR/SVG/text.html#FontPropertiesUsedBySVG" target="_blank">здесь</a>.<br><br>
 
 <pre id="8text.font_get"><span class="lnk" onmouseover="show('text font - шрифт текста')" onmouseout="hide()"><span class="shadow">text.</span>font()</span>          <i class=low>как получатель (геттер)</i></pre>
-
-As you might expect, the `font()` method also acts as a getter:
+Как и следовало ожидать, метод <tt>font()</tt> также действует как получатель (геттер):
 <pre>// javascript
 var leading = text.font('leading')</pre><br>
 
 <pre id="8text.leading_set"><span class="lnk" onmouseover="show('text leading - текстовая направляющая')" onmouseout="hide()"><span class="shadow">text.</span>leading()</span>          <i class=low>как установщик (сеттер)</i></pre>
 <div class=list>возвращает - самого себя (itself)</div>
 <div class=list>анимируется - да</div>
-
-As opposed to html, where leading is defined by `line-height`, svg does not have a natural leading equivalent. In svg, lines are not defined naturally. They are defined by `&#60;tspan>` nodes with a `dy` attribute defining the line height and an `x` value resetting the line to the `x` position of the parent text element. But you can also have many nodes in one line defining a different `y`, `dy`, `x` or even `dx` value. This gives us a lot of freedom, but also a lot more responsibility. We have to decide when a new line is defined, where it starts, what its offset is and what it's height is. The `leading()` method in SVG.js tries to ease the pain by giving you behaviour that is much closer to html. In combination with newline separated text, it works just like html:
+В отличие от <tt>html</tt>, где направляющая текста определяется параметром <tt>line-height</tt>, в svg нет естественного эквивалента направляющей. В svg строки не определяются обычным способом.
+Они устанавливаются в узлах <tt>&#60;tspan&#62;</tt> атрибутами <tt>dy</tt> определяющего высоту строки, и <tt>x</tt>, который переустанавливает строку в позицию по оси координат <tt>x</tt> родительского элемента текста.
+При этом, также можно в одной строке иметь множество узлов с разными значениями <tt>y</tt>, <tt>dy</tt>, <tt>x</tt> или даже <tt>dx</tt>. Это дает большую свободу, а также и большую ответственность.
+Следует решить, как будет определена новая строка, где она начинается, каково ее смещение и высота.
+Метод <tt>leading()</tt> в SVG.js пытается облегчить страдания, задавая поведение, наиболее приближенное к <tt>html</tt>. В сочетании с текстом, разделяемым символом новой строки, он работает почти так же, как <tt>html</tt>:
 <pre>// javascript
 var text = draw.text("Lorem ipsum dolor sit amet consectetur.\nCras sodales imperdiet auctor.")
 text.leading(1.3)</pre>
@@ -465,9 +456,9 @@ text.plain('I do not have any expectations.')</pre><br>
 В основном он перестраивает текстовый элемент при изменении атрибутов <tt>font-size</tt> и <tt>x</tt> или <tt>leading()</tt> текстового элемента.
 Этот метод действует также как установщик для включения или отключения перестройки текста:
 <pre>// javascript
-text.rebuild(false) //-> disables rebuilding (отключает перестройку)
-text.rebuild(true)  //-> enables rebuilding and instantaneously rebuilds the text element
-                    //-> включает перестройку и мгновенно перестраивает текстовый элемент</pre><br>
+text.rebuild(false) // -> disables rebuilding (отключает перестройку)
+text.rebuild(true)  // -> enables rebuilding and instantaneously rebuilds the text element
+                    // -> включает перестройку и мгновенно перестраивает текстовый элемент</pre><br>
 
 <pre id="8text.text_set"><span class="lnk" onmouseover="show('text text - текст элемента text')" onmouseout="hide()"><span class="shadow">text.</span>text()</span>          <i class=low>как установщик (сеттер)</i></pre>
 <div class=list>возвращает - самого себя (itself)</div>
@@ -573,13 +564,10 @@ var textPath = text.textPath()</pre><br>
 Прямая ссылка на связанный элемент пути:
 <pre>// javascript
 var path = text.track()</pre>
-
 <div class=note><b>Примечание:</b> <tt>SVG.TextPath</tt> наследует от <tt>SVG.Text</tt>, так что все эти методы также наследуются.</div><br>
 
 <h5>События для <tt>SVG.Text</tt></h5>
 Текстовый элемент имеет одно событие. Оно наступает всякий раз при вызове метода <tt>rebuild()</tt>.
-The text element has one event. It is fired every time the `rebuild()` method is called:
-
 <pre>// javascript
 text.on('rebuild', function() {
   // whatever you need to do after rebuilding (все, что нужно сделать после перестройки)
@@ -768,7 +756,7 @@ stop.at({ offset: 0, color: '#333', opacity: 1 })</pre><br>
 <pre id="12gradient.fill"><span class="lnk" onmouseover="show('gradient fill - заполнение градиента')" onmouseout="hide()"><span class="shadow">gradient.</span>fill()</span></pre>
 <div class=list>возвращает - строковое значение (<tt>string</tt>)</div>
 <pre>// javascript
-gradient.fill() //-> returns 'url(#SvgjsGradient1234)'</pre><br>
+gradient.fill() // -> returns 'url(#SvgjsGradient1234)'</pre><br>
 
 <pre id="12gradient.from"><span class="lnk" onmouseover="show('gradient from - градиент от')" onmouseout="hide()"><span class="shadow">gradient.</span>from()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
@@ -834,7 +822,6 @@ s1.update(0.1, '#0f0', 1)</pre></div><br><br>
 <div class=list>возвращает - <tt>SVG.Stop</tt>, который наследует от <tt>SVG.Element</tt>.</div>
 Элементы <tt>stop</tt> доступны только внутри элементов градиента.
 (элемент <tt>stop</tt> (стоповый цвет) - промежуточный цвет градиента.)
-The stop elements are only available inside gradient elements.
 <pre>// javascript
 var stop = gradient.at(0.5, '#f03')</pre>
 или
@@ -856,20 +843,15 @@ stop.update({ offset: 0, color: '#333', opacity: 1 })</pre></div><br><br>
 <pre id="14pattern"><span class="lnk" onmouseover="show('pattern - шаблон, образец, паттерн')" onmouseout="hide()">pattern()</span>  <i class=low>конструктор</i></pre>
 <div class=list>конструктор на <tt>SVG.Container</tt></div>
 <div class=list>возвращает - <tt>SVG.Pattern</tt>, который наследует от <tt>SVG.Container</tt>.</div>
-Создание шаблона очень похоже на создание градиентов:
-Creating a pattern is very similar to creating gradients:
-
+Создание шаблона очень похоже на создание градиента:
 <pre>// javascript
 var pattern = draw.pattern(20, 20, function(add) {
   add.rect(20,20).fill('#f06')
   add.rect(10,10)
   add.rect(10,10).move(10,10)
 })</pre>
-
-This creates a checkered pattern of 20 x 20 pixels. You can add any available element to your pattern.
-
-Finally, to use the pattern on an element:
-
+Этим кодом создается клетчатый шаблон <tt>20&#215;20</tt> пикселей. В шаблон можно добавлять любой доступный элемент.<br>
+Наконец, код для использования шаблона на элементе:
 <pre>// javascript
 rect.attr({ fill: pattern })</pre>
 или
@@ -897,7 +879,7 @@ draw.rect(100, 100).move(20, 20).radius(10).fill(pattern)</pre></div></div><br>
 <pre id="14pattern.fill"><span class="lnk" onmouseover="show('pattern fill - заливка шаблона')" onmouseout="hide()"><span class="shadow">pattern.</span>fill()</span></pre>
 <div class=list>возвращает - строковое значение (<tt>string</tt>)</div>
 <pre>// javascript
-pattern.fill() //-> returns 'url(#SvgjsPattern1234)'</pre><br>
+pattern.fill() // -> returns 'url(#SvgjsPattern1234)'</pre><br>
 
 <pre id="14pattern.update"><span class="lnk" onmouseover="show('pattern update - обновление шаблона')" onmouseout="hide()"><span class="shadow">pattern.</span>update()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
@@ -952,15 +934,11 @@ rect.on('mouseout', function() {
 <pre id="15maskWith"><span class="lnk" onmouseover="show('mask with - маска с')" onmouseout="hide()">maskWith()</span></pre>
 <div class=list>конструктор на <tt>SVG.Element</tt></div>
 <div class=list>возвращает - самого себя (itself)</div>
-
-The easiest way to mask is to use a single element:
-
+Самый простой способ наложения маски - использовать один элемент:
 <pre>// javascript
 var ellipse = draw.ellipse(80, 40).move(10, 10).fill({ color: '#fff' })<br>
 rect.maskWith(ellipse)</pre>
-Если вы хотите, чтобы замаскированный объект отображался на 100%, вам нужно установить цвет заливки маскирующего объекта на белый. Но также можно использовать градиент:
-If you want the masked object to be rendered at 100% you need to set the fill color of the masking object to white. But you might also want to use a gradient:
-
+Если вы хотите, чтобы маскируемый объект отображался на 100%, вам нужно установить цвет заливки маскирующего объекта на белый. Но также можно использовать градиент:
 <pre>// javascript
 var gradient = draw.gradient('linear', function(stop) {
   stop.at({ offset: 0, color: '#000' })
@@ -984,9 +962,7 @@ mask.remove()</pre><br>
 
 <pre id="15masker"><span class="lnk" onmouseover="show('masker - замаскированный элемент')" onmouseout="hide()">masker</span></pre>
 <div class=list>возвращает - <tt>SVG.Mask</tt>.</div>
-Для вашего удобства на маскирующий элемент также ссылаются в маскированном элементе. Это может быть полезно, если вы хотите изменить маску:
-For your convenience, the masking element is also referenced in the masked element. This can be useful in case you want to change the mask:
-
+Для удобства использования на маскирующий элемент также ссылаются в маскированном элементе. Это может пригодиться, если понадобится изменить маску:
 <pre>// javascript
 rect.masker.fill('#fff')</pre></div><br><br>
 
@@ -1043,7 +1019,7 @@ rect.clipWith(ellipse)</pre><br>
 <pre>// javascript
 rect.unclip()</pre><br>
 
-<pre id="16clipPath.remove"><span class="lnk" onmouseover="show('clip path remove - ')" onmouseout="hide()"><span class="shadow">clipPath.</span>remove()</span></pre>
+<pre id="16clipPath.remove"><span class="lnk" onmouseover="show('clip path remove - удалить путь обрезки')" onmouseout="hide()"><span class="shadow">clipPath.</span>remove()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
 Полное удаление обрезки также приведет к удалению обрезки (метод <tt>unclip()</tt>) со всех обрезанных элементов:
 <pre>// javascript
@@ -1051,8 +1027,7 @@ clip.remove()</pre><br>
 
 <pre id="16clipper"><span class="lnk" onmouseover="show('clipper - ножницы')" onmouseout="hide()">clipper</span></pre>
 <div class=list>возвращает - <tt>SVG.ClipPath</tt>.</div>
-
-For your convenience, the clipping element is also referenced in the clipped element. This can be useful in case you want to change the clipPath:
+Для удобства использования на обрезывающий элемент также ссылаются в обрезанном элементе. Это может пригодиться, если понадобится изменить <tt>clipPath</tt> - контур обрезки:
 <pre>// javascript
 rect.clipper.move(10, 10)</pre></div><br><br>
 
@@ -1210,7 +1185,7 @@ var element = draw.element('symbol', SVG.Parent)</pre>
 Экземпляр <tt>SVG.Bare</tt> содержит дополнительный метод для добавления простого текста:
 <pre>// javascript
 var element = draw.element('title').words('This is a title.')
-//-> &#60;title&#62;This is a title.&#60;/title&#62;</pre></div><br><br>
+// -> &#60;title&#62;This is a title.&#60;/title&#62;</pre></div><br><br>
 
 <br><br>
 </body></html>
