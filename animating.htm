@@ -23,8 +23,7 @@ rect.animate().move(100, 100)</pre>
 Или методы преобразования:
 <pre>// javascript
 rect.animate().rotate(45).skew(25, 0)</pre>
-
-You can also animate non-numeric unit values using the `attr()` method:
+С помощью метода <tt>attr()</tt> также можно анимировать и значения с нечисловыми единицами:
 <pre>// javascript
 rect.attr('x', '10%').animate().attr('x', '50%')</pre><br>
 
@@ -103,8 +102,7 @@ rect.mouseover(function() { this.pause() })</pre><br>
 
 <pre id="2play"><span class="lnk" onmouseover="show('play - воспроизведение, исполнение, игра')" onmouseout="hide()">play()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-Запускаем воспроизведение приостановленной анимации:
-Will start playing a paused animation:
+Запускаем воспроизведение приостановленной анимации (т.е. анимации, установленной на паузу):
 <pre>// javascript
 rect.animate().move(200, 200)<br>
 rect.mouseover(function() { this.pause() })
@@ -141,23 +139,19 @@ rect.stop(true)</pre>
 <div class=blockindent><br>
 <pre id="3at"><span class="lnk" onmouseover="show('at - предлог в')" onmouseout="hide()">at()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-Допустим, нужно контролировать положение анимации с внешним событием, то метод <tt>at()</tt> окажется очень полезным:
-Say you want to control the position of an animation with an external event, then the `at()` method will prove very useful:
-
+Допустим, нужно контролировать положение анимации с внешним событием и здесь метод <tt>at()</tt> окажется очень полезным:
 <pre>// javascript
 var animation = draw.rect(100, 100).move(50, 50).animate('=').move(200, 200)<br>
 document.onmousemove = function(event) {
   animation.at(event.clientX / 1000)
 }</pre>
-
-The value passed as the first argument of `at()` should be a number between `0` and `1`, `0` being the beginning of the animation and `1` being the end. Note that any values below `0` and above `1` will be normalized.
-
-Also note that the value is eased after calling the function. Therefore the position specifies a position in time not in space.<br><br>
+Значением, переданным в качестве первого аргумента <tt>at()</tt>, должно быть число от&nbsp;<tt>0</tt> до&nbsp;<tt>1</tt>, где&nbsp;<tt>0</tt> - начало анимации, а&nbsp;<tt>1</tt> - конец.
+Обратите внимание, что любые значения меньше&nbsp;<tt>0</tt> и больше&nbsp;<tt>1</tt> будут <span class="lnk" onmouseover="show('т.е. значения меньше 0 будут равны 0,<br>а значения больше 1 - равны 1')" onmouseout="hide()">нормализованы</span>.<br>
+Отметьте также, что после вызова функции значение уменьшается. Следовательно позиция указывает положение анимации во времени, а не в пространстве.<br><br>
 
 <pre id="3delay"><span class="lnk" onmouseover="show('delay - задержка, отсрочка')" onmouseout="hide()">delay()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
-Alternatively, you can call `delay()` which will set a delay in ms before the next animation in the queue is run
+Кроме того, можно вызвать метод <tt>delay()</tt>, который установит задержку в миллисекундах перед запуском анимации, следующей в очереди:
 <pre>// javascript
 rect.animate({ ease: '&#60;', delay: '1.5s' }).attr({ fill: '#f03' }).delay(500).animate().dmove(50,50)</pre><br>
 
@@ -169,36 +163,35 @@ rect.animate(3000).move(100, 100).loop()</pre>
 Также можно создать цикл с заданным числом повторений:
 <pre>// javascript
 rect.animate(3000).move(100, 100).loop(3)</pre>
-Циклы идут от начала до конца и опять начинаются сначала (<tt>0->1.0->1.0->1.</tt>)<br>
+Циклы идут от начала до конца и опять начинаются сначала (<tt>0->1.0->1.0->1.</tt>).
+<div class=note_trans><b>Примечание переводчика:</b> в скобках условно показано направление анимации: 0&nbsp;-&nbsp;начало, 1&nbsp;-&nbsp;конец, точка - остановка.</div>
 Также имеется и флаг реверса, который можно передать в качестве второго аргумента:
 <pre>// javascript
 rect.animate(3000).move(100, 100).loop(3, true)</pre>
-Циклы будут полностью реверсироваться перед началом
-Loops will then be completely reversed before starting over (<tt>0->1->0->1->0->1.</tt>).<br><br>
+Циклы будут полностью реверсироваться перед каждым новым стартом (<tt>0->1->0->1->0->1.</tt>).<br><br>
 
 <pre id="3once"><span class="lnk" onmouseover="show('once - один раз, однажды')" onmouseout="hide()">once()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
-Finally, you can perform an action at a specific position only once. Just pass the position and the function which should be executed to the `once` method. You can also decide whether the position which is passed should be handled as position in time (not eased) or position in space (easing applied):
-
+Наконец, можно выполнять действие в определенной позиции только один раз. Просто передайте методу <tt>once</tt> позицию и функцию, которая должна быть выполнена.
+Также можно выбрать, будет ли передаваемая позиция обрабатываться как позиция во времени (плавность не применяется) или позиция в пространстве (плавность применяется):
 <pre>// javascript
 // the 0.5 is handled as uneased value (you can omit the false)
+// половина анимации обрабатывается без применения плавности (значение false можно не указывать)
 rect.animate(3000).move(100, 100).once(0.5, function(pos, eased) {
-  // do something
+  // do something (здесь делается что-нибудь)
 }, false)</pre>
 
 <pre>// javascript
 // the 0.5 is handled as eased value
+// половина анимации обрабатывается без применения плавности
 rect.animate(3000).move(100, 100).once(0.5, function(pos, eased) {
-  // do something
+  // do something (здесь делается что-нибудь)
 }, true)</pre>
-
-The callback function gets the current position uneased and eased.<br><br>
+Функция обратного вызова получает текущую позицию без применения плавности и делает её плавной.<br><br>
 
 <pre id="3queue"><span class="lnk" onmouseover="show('queue - очередь')" onmouseout="hide()">queue()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
 Если нужно вызвать пользовательскую функцию между двумя связанными анимациями, можно просто поставить их в очередь:
-If you want to call a custom funtion between two chained animations, you simply can queue them up:
 <pre>// javascript
 rect.animate({ ease: '&#60;', delay: '1.5s' }).attr({ fill: '#f03' }).queue(function(){<br>
   this.target().fill('#000')
@@ -212,8 +205,7 @@ rect.animate({ ease: '&#60;', delay: '1.5s' }).attr({ fill: '#f03' }).queue(func
 
 <pre id="4after"><span class="lnk" onmouseover="show('after - после, after all - после всего')" onmouseout="hide()">after / afterAll()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
-Furthermore, you can add callback methods using `after()/afterAll()`:
+Далее можно добавлять методы обратного вызова при помощи <tt>after()</tt>/<tt>afterAll()</tt>:
 <pre>// javascript
 rect.animate(3000).move(100, 100).after(function(situation) {
   this.animate().attr({ fill: '#f06' })
@@ -240,7 +232,7 @@ rect.animate(3000).move(100, 100).during(function(pos, morph, eased, situation) 
 rect.animate(3000).move(100, 100).duringAll(function(pos, morph, eased, situation) {
   position = from + (to - from) * pos
 })</pre>
-Обратите внимание, что в начале анимации значение параметра <tt>pos</tt> равно&nbsp;<tt>0</tt>, а в конце анимации равно&nbsp;<tt>1</tt>.<br>
+Отметьте, что в начале анимации значение параметра <tt>pos</tt> равно&nbsp;<tt>0</tt>, а в конце анимации равно&nbsp;<tt>1</tt>.<br>
 Чтобы упростить задачу, в качестве второго аргумента передается функция морфинга - <tt>morph</tt>.
 Эта функция, в качестве первого и второго аргументов, принимает значения&nbsp;<tt>from</tt> и&nbsp;<tt>to</tt>, которые могут быть числом, блоком строк или шестнадцатеричным значением цвета:
 <pre>// javascript
