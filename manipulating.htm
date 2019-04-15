@@ -52,7 +52,7 @@ rect.attr({ x: 20, y: 60 })
 circle.attr({ cx: 50, cy: 40 })</pre>
 Прямоугольник <tt>rect</tt> будет перемещен в соответствии с расположением его верхнего левого угла (т.е. нулевой точкой его координат) в новые координаты,
 а круг <tt>circle</tt> будет перемещен в соответствии с его центром (локальные нулевые координаты круга находятся в центре).
-Однако попытка переместить <tt>circle</tt> по его «верхнему левому углу» или<tt>rect</tt> по его центру потерпит неудачу.
+Однако попытка переместить <tt>circle</tt> по его «верхнему левому углу» или <tt>rect</tt> по его центру потерпит неудачу.
 Строки кода, показанные ниже, будут молчаливо игнорироваться, так как атрибуты, которым они адресованы, изначально не используются элементом, устанавливающим их:
 <pre>// javascript
 rect.attr({ cx: 20, cy: 60 })
@@ -135,12 +135,11 @@ var cy = rect.cy()</pre><br>
 <pre id="2dmove"><span class="lnk" onmouseover="show('dmove - сокращ. англ. слов d move - перемещение')" onmouseout="hide()">dmove()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
 <div class=list>анимируется - да</div>
-Сдвигает элемент по осям координат относительно его текущего положения на заданные значения <tt>x</tt> и <tt>y</tt>.
-Shift the element in both the `x` and `y` directions relative to its current position:
-
+Сдвигает элемент по осям координат, относительно его текущего положения, на заданные значения <tt>x</tt> и <tt>y</tt>.
 <pre>// javascript
 rect.dmove(10, 30)</pre>
-<div class=note><b>Примечание:</b>**Note**: when using `dmove()` (and `dx()` or `dy()` too for that matter), always make sure you provide values of the same unit the element is originally positioned in. So if the element is at `x:10%`, use `element.dx('5%')` and not `element.dx('5px')`.</div><br>
+<div class=note><b>Примечание:</b> при использовании <tt>dmove()</tt> (а также <tt>dx()</tt> или <tt>dy()</tt>), всегда предоставляйте значения одного и того же элемента в тех же единицах, которые были представлены для него изначально.
+Так, если элемент был представлен как <tt>x:10%</tt>, то используйте <tt>element.dx('5%')</tt>, а не <tt>element.dx('5px')</tt>.</div><br>
 
 <pre id="2dx"><span class="lnk" onmouseover="show('dx - сокращ. англ. слов d x - ')" onmouseout="hide()">dx()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
@@ -171,10 +170,8 @@ rect.size(200)</pre>
 Или передачей <tt>null</tt> в качестве значения для аргумента <tt>width</tt>:
 <pre>// javascript
 rect.size(null, 200)</pre>
-
-As with positioning, the size of an element could be set by using `attr()`. But because every type of element is handles its size differently the `size()` method is much more convenient.<br>
-
-There is one exception though: for `SVG.Text` elements, this method takes only one argument and applies the given value to the `font-size` attribute.<br><br>
+Как и в случае с позиционированием, размер элемента может быть установлен с помощью <tt>attr()</tt>. Но, поскольку каждый тип элемента обрабатывает свой размер по-разному, метод <tt>size()</tt> гораздо удобнее.<br>
+Однако есть одно исключение: для элементов <tt>SVG.Text</tt> данный метод принимает только один аргумент и применяет заданное значение к атрибуту <tt>font-size</tt>.<br><br>
 
 <pre id="3width_set"><span class="lnk" onmouseover="show('width - ширина')" onmouseout="hide()">width()</span>          <i class=low>как установщик (сеттер)</i></pre>
 <div class=list>возвращает - самого себя (itself)</div>
@@ -225,7 +222,6 @@ rect.radius(5)</pre></div><br><br>
 <pre>// javascript
 rect.fill({ color: '#f06', opacity: 0.6 })</pre>
 Также будет работать и одно шестнадцатиричное строковое значение:
-A single hex string will work as well:
 <pre>// javascript
 rect.fill('#f06')</pre>
 И последнее, но не менее важное; в качестве заливки также можно использовать картинку, просто передав URL-адрес изображения:
@@ -557,45 +553,32 @@ rect.replace(draw.circle(100))</pre><br>
 
 <pre id="10toDoc"><span class="lnk" onmouseover="show('to doc - в документ')" onmouseout="hide()">toDoc()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-Тоже самое, что и <tt>toParent()</tt>, но с коренным узлом в качестве родительского.
-Same as `toParent()` but with the root-node as parent<br><br>
+Тоже самое, что и <tt>toParent()</tt>, но с коренным узлом в качестве родительского.<br><br>
 
 <pre id="10toParent"><span class="lnk" onmouseover="show('to parent - ')" onmouseout="hide()">toParent()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
 Перемещает элемент к другому родителю (аналогично <tt>addTo</tt>), но без изменения его визуального представления. Все преобразования объединяются и применяются к элементу.
-Moves an element to a different parent (similar to `addTo`), but without changing its visual representation. All transformations are merged and applied to the element.
 <pre>// javascript
 rect.toParent(group) // looks the same as before (выглядит так же, как и раньше)</pre><br>
 
 <pre id="10ungroup"><span class="lnk" onmouseover="show('ungroup - разгруппировать<br>flatten - выравнивать, расплющить')" onmouseout="hide()">ungroup() / flatten()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-Разбивает группу/контейнер и перемещает все элементы в данный родительский узел, не изменяя их видимого представления. Результатом является плоская структура SVG, например, для экспорта.
-Break up a group/container and move all the elements to a given parent node without changing their visual representations. The result is a flat svg structure, e.g. for exporting.<br><br>
-Разгруппировать все элементы в этой группе рекурсивно и поместить их в данного родителя
-Ungroup all elements in this group recursively and places them into the given parent
-
+Разбивает группу/контейнер и перемещает все элементы в заданный родительский узел, не изменяя их видимого представления. Результатом является плоская структура SVG, например, для экспорта.<br><br>
+Рекурсивно разгруппировывает все элементы в этой группе и помещает их в заданного родителя.
 <pre>// javascript
 group.ungroup(parent, depth)
 // (default: parent container of the calling element)
-// (default: parent container of the calling element)</pre>
+// (по умолчанию: родительский контейнер вызывающего элемента)</pre>
 Вызов этого метода на весь документ целиком для получения "плоской" svg-структуры:
-Call it on the whole document to get a flat svg structure:
-
 <pre>// javascript
 drawing.ungroup()</pre>
 Расформировываем группу (<tt>group</tt>) и помещаем все элементы в <tt>drawing</tt>.
-Break up the group and places all elements in the drawing:
-
 <pre>// javascript
 group.ungroup(drawing)</pre>
-
-Break up all groups until it reaches a depth of 3:
-
+Расформировываем все группы до 3 уровня в глубину:
 <pre>// javascript
 drawing.ungroup(null, 3)</pre>
-
-Flat and export svg:
-
+Делаем "плоским" и экспортируем svg:
 <pre>// javascript
 var svgString = drawing.ungroup().svg()</pre></div><br><br>
 
