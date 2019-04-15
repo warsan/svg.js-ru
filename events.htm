@@ -100,13 +100,10 @@ function whenSomethingHappens() {
 element.on('myevent', function(e) {
   alert(e.detail.some) // outputs 'data' (выходные 'данные')
 })</pre>
-SVG.js поддерживает события пространства имен со следующим синтаксисом <tt>event.namespace</tt>.
-SVG.js supports namespaced events following the syntax `event.namespace`.<br>
-
-A namespaced event behaves like a normal event with the difference that you can remove it without touching handlers from other namespaces.
-
+SVG.js поддерживает события пространства имен со следующим синтаксисом <tt><span class="lnk" onmouseover="show('то есть, - <tt>событие.пространство_имен</tt>')" onmouseout="hide()">event.namespace</span></tt>.<br>
+Событие пространства имен ведет себя как обычное событие, с той разницей, что удалить его можно не затрагивая обработчики из других пространств имен.
 <pre>// javascript
-// attach ()
+// attach (подключение)
 element.on('myevent.namespace', function(e) {
   // do something (здесь делаем что-нибудь)
 })<br>
@@ -119,9 +116,7 @@ element.off('.namespace')<br>
 // detach all handlers including all namespaces
 // отсоединить все обработчики, включая все пространства имен
 element.off('myevent')</pre>
-
-However, you can't fire a specific namespaced event. Calling `element.fire('myevent.namespace')` won't do anything while `element.fire('myevent')` works and fires all attached handlers of the event
-
+Однако, запустить определенное событие пространства имен нельзя. Вызов <tt>element.fire('myevent.namespace')</tt> не будет ничего делать, пока работает <tt>element.fire('myevent')</tt> и запускает все подключенные обработчики события.
 <div class=important><b>Важно:</b> Во избежание конфликтов, всегда проверяйте пространство имен события. Желательно использовать что-то конкретное.
 Так например, <tt><span class="lnk" onmouseover="show('event wicked - злое событие')" onmouseout="hide()">event.wicked</span></tt> будет лучше, чем нечто общее, вроде <tt><span class="lnk" onmouseover="show('event svg - svg событие')" onmouseout="hide()">event.svg</span></tt>.</div><br><br>
 
