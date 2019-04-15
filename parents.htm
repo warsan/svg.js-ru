@@ -14,7 +14,9 @@
 
 <h5>SVG.Container</h5>
 <tt>SVG.Container</tt> добавляет в стек родительского наследования ещё один уровень. Куда <tt>SVG.Parent</tt> привносит некоторые низкоуровневые методы, такие как <tt>add()</tt>, <tt>remove()</tt> и <tt>has()</tt>
-`SVG.Container` adds another level to the parent inheritance stack. Where `SVG.Parent` brings some low level methods like `add()`, `remove()` and `has()` to name a few, `SVG.Container` can and should be used if you want to add your own methods. That way the `SVG.Parent` prototype remains clean. Therefore you should always inherit from `SVG.Container` when implementing your own parent elements.
+Where `SVG.Parent` brings some low level methods like `add()`, `remove()` and `has()` to name a few, `SVG.Container` can and should be used if you want to add your own methods. That way the `SVG.Parent` prototype remains clean.
+<tt>SVG.Container</tt> может и должен использоваться для добавления своих собственных методов.
+Таким образом, прототип <tt>SVG.Parent</tt> остается чистым.
 При реализации своих собственных родительских элементов, они всегда должны наследовать от <tt>SVG.Container</tt>.<br><br>
 Стек родительского наследования: <tt>SVG.Element</tt> &#62; <tt>SVG.Parent</tt> &#62; <tt>SVG.Container</tt>.<br><br>
 
@@ -57,33 +59,28 @@ group.path('M10,20L30,40')</pre>
 <div class=blockindent><br>
 <div class=list>конструктор на <tt>SVG.Container</tt></div>
 <div class=list>возвращает - <tt>SVG.Symbol</tt>, который наследует от <tt>SVG.Container</tt>.</div>
-В отличие от элемента <tt>group</tt>, элемент <tt>symbol</tt> является контейнерным элементом. Единственная разница между символами и группами заключается в том, что символы не отображаются. Поэтому элемент <tt>symbol</tt> идеален в сочетании с элементом <tt>use</tt>:
+В отличие от элемента <tt>group</tt>, элемент <tt><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/symbol" target="_blank" onmouseover="show('SVG элемент <tt>symbol</tt> (символ) используется для определения объектов<br>шаблонной графики, которые используются несколько раз в одном и<br>том же документе, добавляя структуру и семантику, и которые можно<br>отобразить с помощью элемента <tt>use</tt>.')" onmouseout="hide()">symbol</a></tt> является контейнерным элементом. Единственная разница между символами и группами заключается в том, что символы не отображаются. Поэтому элемент <tt>symbol</tt> идеален в сочетании с элементом <tt>use</tt>:
 <pre>var symbol = draw.symbol()
 symbol.rect(100, 100).fill('#f09')<br>
 var use  = draw.use(symbol).move(200, 200)</pre></div><br>
 
 
 <h4 id="5">SVG.Defs</h4>
-Элемент <tt>&#60;defs&#62;</tt> является контейнером для элементов, на которые ссылаются. Потомки узла <tt>&#60;defs&#62;</tt> не отображаются напрямую.
-Узел <tt>&#60;defs&#62;</tt> живет в основном документе <tt>&#60;svg&#62;</tt> и к нему можно обращаться с помощью метода <tt>defs()</tt>.
-The <tt>&#60;defs&#62;</tt> element is a container for referenced elements. Descendants of a `&#60;defs&#62;`node are not rendered directly. The `&#60;defs&#62;` node lives in the main `&#60;svg&#62;` document and can be accessed with the `defs()` method.
+Элемент <a href="https://developer.mozilla.org/ru/docs/Web/SVG/%D0%AD%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82/defs" target="_blank" onmouseover="show('<tt>&#60;defs&#62;</tt> от англ. слова definitions - определения. Контейнерный, структурный<br>элемент в SVG. Рекомендуется там, где это возможно, объявлять<br>подобные элементы внутри элемента <tt>defs</tt>.<br>Объекты, созданные внутри элемента <tt>defs</tt> не отображаются сразу;<br>рассматривайте их, как шаблоны или макросы, созданные для<br>будущего использования.<br>Чтобы отрисовать данные элементы в любом месте области<br>просмотра, можно использовать элемент <tt>use</tt>.')" onmouseout="hide()"><tt>&#60;defs&#62;</tt></a> является контейнером для элементов, на которые ссылаются.
+Потомки узла <tt>&#60;defs&#62;</tt> не отображаются напрямую. Узел <tt>&#60;defs&#62;</tt> находится в основном документе <tt>&#60;svg&#62;</tt> и к нему можно обращаться с помощью метода <tt>defs()</tt>.
 <div class=blockindent><br>
 <pre id="5defs"><span class="lnk" onmouseover="show('defs - сокращ. англ. слова definitions - определения')" onmouseout="hide()">defs()</span> <i class=low>конструктор</i></pre>
 <div class=list>конструктор на <tt>SVG.Container</tt></div>
 <div class=list>возвращает - <tt>SVG.Defs</tt>, который наследует от <tt>SVG.Container</tt>.</div>
-
 <pre>// javascript
 var defs = draw.defs()</pre>
 Определения (defs) также доступны от любого другого элемента через метод <tt>doc()</tt>:
-The defs are also available on any other element through the `doc()` method:
-
 <pre>// javascript
 var defs = rect.doc().defs()</pre>
-Узел (нода) определений (defs) работает точно также, как и группы.
-The defs node works exactly the same as groups.</div><br><br>
+Узел (node) определений (defs) работает точно также, как и группы.</div><br><br>
 
 <h4 id="6">SVG.A</h4>
-Создает гиперссылку, которая будет активирована на всех дочерних элементах.
+Создает гиперссылку (<tt><a href="https://developer.mozilla.org/ru/docs/Web/SVG/%D0%AD%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82/a" target="_blank" onmouseover="show('от англ. слова anchor - якорь,<br>контейнерный SVG элемент,<br>определяющий ссылку')" onmouseout="hide()">&#60;a&#62;</a></tt>), которая будет активирована на всех дочерних элементах.
 <div class=blockindent><br>
 <pre id="6link"><span class="lnk" onmouseover="show('link - ссылка, соединение, звено')" onmouseout="hide()">link()</span>  <i class=low>конструктор</i></pre>
 <div class=list>конструктор на <tt>SVG.Container</tt></div>
@@ -99,9 +96,7 @@ URL-адрес ссылки может быть обновлен методом 
 <pre>link.target('_blank')</pre>
 Также, элементы могут быть связаны другим способом, с помощью метода <tt>linkTo()</tt>:
 <pre>rect.linkTo('http://svgdotjs.github.io/')</pre>
-Кроме того, блок может быть передан вместо URL-адреса для дополнительных параметров элемента ссылки:
-Alternatively, a block can be passed instead of a URL for more options on the link element:
-
+Кроме того, вместо URL-адреса для дополнительных параметров элемента ссылки, может быть передан блок:
 <pre>rect.linkTo(function(link) {
   link.to('http://svgdotjs.github.io/').target('_blank')
 })</pre></div><br>
