@@ -65,7 +65,7 @@ var elements = $('#drawing g.my-group .my-element').each(function() {
 
 
 <h4 id="5">Круговые ссылки</h4>
-Every element instance within SVG.js has a reference to the actual `node`.
+Внутри SVG.js каждый экземпляр элемента имеет ссылку на действующий узел - <tt>node</tt>.
 <div class=blockindent><br>
 <pre id="5node"><span class="lnk" onmouseover="show('node - узел, нода')" onmouseout="hide()">node</span></pre>
 <div class=list>возвращает - <tt>SVGElement</tt></div>
@@ -127,8 +127,8 @@ draw.first()</pre><br>
 <pre>// javascript
 var rect   = draw.rect(20, 30)
 var circle = draw.circle(50)<br>
-draw.get(0) //-> returns rect (возвращает прямоугольник)
-draw.get(1) //-> returns circle (возвращает круг)</pre><br>
+draw.get(0) // -> returns rect (возвращает прямоугольник)
+draw.get(1) // -> returns circle (возвращает круг)</pre><br>
 
 <pre id="6has"><span class="lnk" onmouseover="show('has - имеет')" onmouseout="hide()">has()</span></pre>
 <div class=list>возвращает - логическое значение (<tt>boolean</tt>)</div>
@@ -136,8 +136,8 @@ draw.get(1) //-> returns circle (возвращает круг)</pre><br>
 <pre>// javascript
 var rect  = draw.rect(100, 50)
 var group = draw.group()<br>
-draw.has(rect)  //-> returns true (возвращает значение true)
-group.has(rect) //-> returns false (возвращает значение false)</pre><br>
+draw.has(rect)  // -> returns true (возвращает значение true)
+group.has(rect) // -> returns false (возвращает значение false)</pre><br>
 
 <pre id="6index"><span class="lnk" onmouseover="show('index - индекс')" onmouseout="hide()">index()</span></pre>
 <div class=list>возвращает - число (<tt>number</tt>)</div>
@@ -145,8 +145,8 @@ group.has(rect) //-> returns false (возвращает значение false)
 <pre>// javascript
 var rect  = draw.rect(100, 50)
 var group = draw.group()<br>
-draw.index(rect)  //-> returns 0 (возвращает 0)
-group.index(rect) //-> returns -1 (возвращает -1)</pre>
+draw.index(rect)  // -> returns 0 (возвращает 0)
+group.index(rect) // -> returns -1 (возвращает -1)</pre>
 
 <pre id="6last"><span class="lnk" onmouseover="show('last - последний')" onmouseout="hide()">last()</span></pre>
 <div class=list>возвращает - <tt>SVG.Element</tt></div>
@@ -164,7 +164,7 @@ draw.last()</pre></div><br><br>
 <pre>// javascript
 var draw = SVG('drawing')
 var rect = draw.rect(100, 100)<br>
-rect.doc() //-> returns draw (возвращает draw - рисование)</pre><br>
+rect.doc() // -> returns draw (возвращает draw - рисование)</pre><br>
 
 <pre id="7parent_within"><span class="lnk" onmouseover="show('parent - родитель')" onmouseout="hide()">parent()</span>  <i class=low>внутри svg-документа</i></pre>
 <div class=list>возвращает - <tt>SVG.Element</tt></div>
@@ -176,18 +176,18 @@ var draw   = SVG('drawing')
 var nested = draw.nested().addClass('test')
 var group  = nested.group()
 var rect   = group.rect(100, 100)<br>
-rect.parent()           //-> returns group  (возвращает group - группу)
-rect.parent(SVG.Doc)    //-> returns draw   (возвращает draw - рисование)
-rect.parent(SVG.Nested) //-> returns nested (возвращает nested - вложенное)
-rect.parent(SVG.G)      //-> returns group  (возвращает group - группу)
-rect.parent('.test')    //-> returns nested (возвращает nested - вложенное)</pre><br>
+rect.parent()           // -> returns group  (возвращает group - группу)
+rect.parent(SVG.Doc)    // -> returns draw   (возвращает draw - рисование)
+rect.parent(SVG.Nested) // -> returns nested (возвращает nested - вложенное)
+rect.parent(SVG.G)      // -> returns group  (возвращает group - группу)
+rect.parent('.test')    // -> returns nested (возвращает nested - вложенное)</pre><br>
 
 <pre id="7parent_topmost"><span class="lnk" onmouseover="show('parent - родитель')" onmouseout="hide()">parent()</span>  <i class=low>на самом верхнем svg-документе</i></pre>
 <div class=list>возвращает - <tt>HTMLNode</tt></div>
 <pre>// javascript
 var draw = SVG('drawing')<br>
-draw.parent() //-> returns the wrapping html element with id 'drawing'
-              //-> возвращает html элемент-упаковку с идентификатором 'drawing'</pre><br>
+draw.parent() // -> returns the wrapping html element with id 'drawing'
+              // -> возвращает html элемент-упаковку с идентификатором 'drawing'</pre><br>
 
 <pre id="7parents"><span class="lnk" onmouseover="show('parents - родители')" onmouseout="hide()">parents()</span></pre>
 <div class=list>возвращает - массив (<tt>array</tt>)</div>
@@ -208,13 +208,13 @@ rect.parents(SVG.G)   // returns (возвращает) [group1, group2]</pre></
 <div class=list>возвращает - <tt>SVG.Element</tt></div>
 Единственное, что требуется, это имя атрибута:
 <pre>// javascript
-use.reference('href') //-> returns used element instance
-                      //-> возвращает используемый экземпляр элемента
+use.reference('href') // -> returns used element instance
+                      // -> возвращает используемый экземпляр элемента
 // or (или)
-rect.reference('fill') //-> returns gradient or pattern instance for example
-                       //-> возвращает градиент или например, образец шаблона
+rect.reference('fill') // -> returns gradient or pattern instance for example
+                       // -> возвращает градиент или например, образец шаблона
 // or (или)
-circle.reference('clip-path') //-> returns clip instance (возвращает экземпляр вырезки)</pre></div><br><br>
+circle.reference('clip-path') // -> returns clip instance (возвращает экземпляр вырезки)</pre></div><br><br>
 
 <br><br>
 </body></html>
