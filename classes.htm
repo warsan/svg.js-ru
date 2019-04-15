@@ -234,11 +234,8 @@ color.toRgb() // -> returns (возвращает) 'rgb(255,0,102)'</pre></div><
 
 
 <h4 id="5">SVG.Matrix</h4>
-Матрицы в SVG.js имеют свой собственный класс <tt>SVG.Matrix</tt>, заключающий в себе собственный <tt>SVGMatrix</tt>.
-Matrices in SVG.js have their own class `SVG.Matrix`, wrapping the native `SVGMatrix`. They add a lot of functionality like extracting transform values, matrix morphing and improvements on the native methods.<br><br>
-В SVG.js матрицы принимают различные значения при инициализации.
-In SVG.js, matrices accept various values on initialization.
-
+Матрицы в SVG.js имеют свой собственный класс <tt>SVG.Matrix</tt>, заключающий в себе собственный <tt>SVGMatrix</tt>. Они добавляют множество функций, таких как извлечение значений преобразования, матричное преобразование и усовершенствование собственных (локальных) SVG-методов.<br><br>
+Матрицы в SVG.js при инициализации принимают различные значения.<br>
 Без значения:
 <pre>// javascript
 var matrix = new SVG.Matrix
@@ -275,21 +272,17 @@ matrix.toString() // -> returns matrix(1,0,0,1,0,0)
 <pre id="5around"><span class="lnk" onmouseover="show('around - вокруг')" onmouseout="hide()">around()</span></pre>
 <div class=list>возвращает - <tt>SVG.Matrix</tt></div>
 Выполняет преобразование заданной матрицы вокруг заданной центральной точки:
-Performs a given matrix transformation around a given center point:
 <pre>// javascript
 // cx, cy, matrix
 matrix.around(100, 150, new SVG.Matrix().skew(0, 45))</pre>
-Матрица, переданная в качестве третьего аргумента, будет использоваться для умножения.
-The matrix passed as the third argument will be used to multiply.<br><br>
+Матрица, переданная в качестве третьего аргумента, будет использоваться для умножения.<br><br>
 
 <pre id="5at"><span class="lnk" onmouseover="show('at - предлог в')" onmouseout="hide()">at()</span></pre>
 <div class=list>возвращает - <tt>SVG.Matrix</tt></div>
-
-This method will morph the matrix to a given position between `0` and `1`:
+Этот метод преобразует данную матрицу в заданную позицию между&nbsp;<tt>0</tt> и&nbsp;<tt>1</tt>:
 <pre>// javascript
 matrix.at(0.27)</pre>
-
-This will only work when a destination matrix is defined using the `morph()` method.<br><br>
+Он работает только тогда, когда матрица назначения определена с помощью метода <tt>morph()</tt>.<br><br>
 
 <pre id="5clone"><span class="lnk" onmouseover="show('clone - клон, клонировать')" onmouseout="hide()">clone()</span></pre>
 <div class=list>возвращает - <tt>SVG.Matrix</tt></div>
@@ -335,9 +328,8 @@ matrix.inverse()</pre><br>
 
 <pre id="5morph"><span class="lnk" onmouseover="show('morph - превращать, морф, оборотень')" onmouseout="hide()">morph()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
-In order to animate matrices the `morph()` method lets you pass a destination matrix. This can be any value a `SVG.Matrix` would accept on initialization:
-Это может быть любым значением <tt>SVG.Matrix</tt>, принятое
+Метод <tt>morph()</tt> позволяет передать матрицу назначения при анимации матриц.
+Это может быть любым значением <tt>SVG.Matrix</tt>, принятым при инициализации:
 <pre>// javascript
 matrix.morph('2,0,0,2,100,150')</pre><br>
 
@@ -356,12 +348,10 @@ matrix.native()</pre><br>
 <pre id="5rotate"><span class="lnk" onmouseover="show('rotate - вращать, поворачивать')" onmouseout="hide()">rotate()</span></pre>
 <div class=list>возвращает - <tt>SVG.Matrix</tt></div>
 Поворачивает матрицу на угол в градусах, по одному заданному значению:
-Rotates matrix by degrees with one value given:
 <pre>// javascript
 // degrees (градусы)
 matrix.rotate(45)</pre>
 Поворачивает матрицу на угол в градусах вокруг заданной точки, по трем значениям:
-Rotates a matrix by degrees around a given point with three values:
 <pre>// javascript
 // degrees, cx, cy (градусы, координаты точки поворота по оси x и y)
 matrix.rotate(45, 100, 150)</pre><br>
@@ -369,65 +359,55 @@ matrix.rotate(45, 100, 150)</pre><br>
 <pre id="5scale"><span class="lnk" onmouseover="show('scale - масштаб')" onmouseout="hide()">scale()</span></pre>
 <div class=list>возвращает - <tt>SVG.Matrix</tt></div>
 Равномерное масштабирование матрицы по одному, заданному значению:
-Scales matrix uniformal with one value:
 <pre>// javascript
 // scale (масштаб)
 matrix.scale(2)</pre>
 Неравномерное масштабирование матрицы по двум значениям:
-Scales matrix non-uniformal with two values:
 <pre>// javascript
 // scaleX, scaleY (масштаб по оси X, масштаб по оси Y)
 matrix.scale(2, 3)</pre>
-
-Scales matrix uniformal on a given center point with three values:
+Равномерное масштабирование матрицы по заданной центральной точке с тремя значениями:
 <pre>// javascript
-// scale, cx, cy (масштаб, координаты точки по оси x и y)
+// scale, cx, cy (масштаб, координаты точки по осям x и y)
 matrix.scale(2, 100, 150)</pre>
-
-Scales matrix non-uniformal on a given center point with four values:
+Неравномерное масштабирование матрицы по заданной центральной точке с четырьмя значениями:
 <pre>// javascript
-// scaleX, scaleY, cx, cy
+// scaleX, scaleY, cx, cy (масштаб по осям x и y, координаты точки центра по осям x и y)
 matrix.scale(2, 3, 100, 150)</pre><br>
 
 <pre id="5skew"><span class="lnk" onmouseover="show('skew - наклон')" onmouseout="hide()">skew()</span></pre>
 <div class=list>возвращает - <tt>SVG.Matrix</tt></div>
-
-Skews matrix a given degrees over x and or y axis with two values:
+Наклон (перекос) матрицы на заданное число градусов по оси <tt>x</tt> и/или <tt>y</tt> с двумя значениями:
 <pre>// javascript
-// degreesX, degreesY
+// degreesX, degreesY (градусы по осям x и y)
 matrix.skew(0, 45)</pre>
-
-Skews matrix a given degrees over x and or y axis on a given point with four values:
+Наклон (перекос) матрицы на заданное число градусов по оси <tt>x</tt> и/или <tt>y</tt> относительно заданной точки, с четырьмя значениями:
 <pre>// javascript
-// degreesX, degreesY, cx, cy
+// degreesX, degreesY, cx, cy (градусы по осям x и y, координаты точки центра по осям x и y)
 matrix.skew(0, 45, 150, 100)</pre><br>
 
 <pre id="5toString"><span class="lnk" onmouseover="show('to string - в строку')" onmouseout="hide()">toString()</span></pre>
 <div class=list>возвращает - строку (<tt>string</tt>)</div>
-
-Converts the matrix to a transform string:
+Конвертирует матрицу в строку преобразования:
 <pre>// javascript
 matrix.toString()
 // -> matrix(1,0,0,1,0,0)</pre><br>
 
 <pre id="5translate"><span class="lnk" onmouseover="show('translate - перевод, перенос')" onmouseout="hide()">translate()</span></pre>
 <div class=list>возвращает - <tt>SVG.Matrix</tt></div>
-
-Translates matrix by a given x and y value:
+Переносит матрицу на заданные значения <tt>x</tt> и <tt>y</tt><br>
 <pre>// javascript
 matrix.translate(10, 20)</pre></div><br>
 
 
 <h4 id="6">SVG.Number</h4>
-Числа в SVG.js имеют специальный класс чисел, чтобы можно было обрабатывать строковые значения.
-Numbers in SVG.js have a dedicated number class to be able to process string values.<br>
+Числа в SVG.js имеют специальный класс чисел, с возможностью обработки строковых значений.<br>
 Создать новое число очень просто:
 <pre>// javascript
 var number = new SVG.Number('78%')
 number.plus('3%').toString() // -> returns (возвращает) '81%'
 number.valueOf() // -> returns (возвращает) 0.81</pre>
-
-Operators are defined as methods on the `SVG.Number` instance.
+<a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Expressions_and_Operators" target="_blank">Операторы</a> определяются как методы экземпляра <tt>SVG.Number</tt>.
 <div class=blockindent><br>
 <pre id="6at"><span class="lnk" onmouseover="show('at - предлог в')" onmouseout="hide()">at()</span></pre>
 <div class=list>возвращает - <tt>SVG.Number</tt></div>
@@ -577,7 +557,6 @@ var vector5 = new SVG.Point(new SVG.Point(1,1))</pre>
 <pre id="8at"><span class="lnk" onmouseover="show('at - предлог в')" onmouseout="hide()">at()</span></pre>
 <div class=list>возвращает - <tt>SVG.Point</tt></div>
 Получает координаты трансформируемой точки в заданной позиции:
-Get morphable point at given position:
 <pre>// javascript
 var point = new SVG.Point(1,1).morph(11,10)
 point.at(0.5) // -> {x: 6, y: 5.5}</pre><br>
@@ -590,17 +569,14 @@ var newPoint = new SVG.Point(1,1).clone()</pre><br>
 
 <pre id="8morph"><span class="lnk" onmouseover="show('morph - морф, оборотень, превращаться')" onmouseout="hide()">morph()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
-Set the point to be morphable. Usually used with the `at()` method:
+Устанавливает точку преобразования. Обычно используется с методом <tt>at()</tt>:
 <pre>// javascript
 var point = new SVG.Point(1,1).morph(11,10)
 point.at(0.5) // -> {x: 6, y: 5.5}</pre><br>
 
 <pre id="8native"><span class="lnk" onmouseover="show('native - родной, местный, естественный')" onmouseout="hide()">native()</span></pre>
 <div class=list>возвращает - <tt>SVGPoint</tt></div>
-
-Creates a native SVGPoint object outside of any document trees.
-The object is initialized to the SVG.Point point.
+Создает локальный объект <tt>SVGPoint</tt> вне всех древовидных структур документа. Объект инициализируется как точка <tt>SVG.Point</tt>.
 <pre>// javascript
 var point = new SVG.Point(1,1).native()
 console.log(point) // -> SVGPoint {x: 1, y: 1}</pre><br>
