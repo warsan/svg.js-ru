@@ -105,8 +105,7 @@ ellipse.radius(75, 50)</pre></div><br><br>
 Создает линию от точки <tt>A</tt> до точки <tt>B</tt>:
 <pre>// javascript
 var line = draw.line(0, 0, 100, 150).stroke({ width: 1 })</pre>
-Создание элемента &#171;линия&#187; (<tt>line</tt>) может быть выполнено четырьмя способами. Посмотрите на метод <tt>plot()</tt>, чтобы увидеть все его возможности.
-Creating a line element can be done in four ways. Look at the `plot()` method to see all the possibilities.<br><br>
+Создание элемента &#171;линия&#187; (<tt>line</tt>) может быть выполнено четырьмя способами. Посмотрите на метод <tt>plot()</tt>, чтобы увидеть все эти возможности.<br><br>
 <div style="font-family:Segoe UI; font-size:90%; margin-left:10px;">
 &nbsp; &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("line1","line2");'>Результат</span>
 &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("line2","line1");'>Код JavaScript</span>
@@ -122,11 +121,9 @@ line.stroke({ color: '#f06', width: 10, linecap: 'round' })</pre></div></div><br
 
 <pre id="4line.array"><span class="lnk" onmouseover="show('line array - массив линий')" onmouseout="hide()"><span class="shadow">line.</span>array()</span></pre>
 <div class=list>возвращает - <tt>SVG.PointArray</tt></div>
-
-References the `SVG.PointArray` instance. Этот метод предназначен скорее для внутреннего использования:
+Ссылается на экземпляр <tt>SVG.PointArray</tt>. Этот метод предназначен скорее для внутреннего использования:
 <pre>// javascript
 polyline.array()</pre>
-
 Больше сведений смотрите в: <a href="classes.htm#2" onmouseover="show('SVG.PointArray')" onmouseout="hide()">SVG.PointArray</a>.<br><br>
 
 <pre id="4line.plot"><span class="lnk" onmouseover="show('line plot - план (прокладка) линии')" onmouseout="hide()"><span class="shadow">line.</span>plot()</span></pre>
@@ -156,7 +153,6 @@ line.animate(3000).plot([[200, 200], [100, 150]])</pre></div><br><br>
 <div class=list>конструктор на <tt>SVG.Container</tt></div>
 <div class=list>возвращает - <tt>SVG.Polyine</tt>, который наследует от <tt>SVG.Shape</tt>.</div>
 Элемент &#171;ломаная линия&#187; (<tt>polyline</tt>) определяет набор, связанных между собой, отрезков прямой линии. Обычно ломаные линии представляют собой незамкнутые фигуры:
-The polyline element defines a set of connected straight line segments. Typically, polyline elements define open shapes:
 <pre>// javascript
 var polyline = draw.polyline('0,0 100,50 50,100').fill('none').stroke({ width: 1 })</pre>
 Строки кода ломаной линии состоят из списка точек, разделенных между собой запятыми или пробелами. Так что, вполне будут работать как <tt>x,y x,y x,y</tt>, так и <tt>x y x y x y</tt> или даже <tt>x,y,x,y,x,y</tt>.<br>
@@ -182,7 +178,7 @@ polyline.stroke({ color: '#f06', width: 4, linecap: 'round', linejoin: 'round' }
 
 <pre id="5polyline.array"><span class="lnk" onmouseover="show('polyline array - массив ломаных линий')" onmouseout="hide()"><span class="shadow">polyline.</span>array()</span></pre>
 <div class=list>возвращает - <tt>SVG.PointArray</tt>.</div>
-References the `SVG.PointArray` instance. Этот метод предназначен скорее для внутреннего использования:
+Ссылается на экземпляр <tt>SVG.PointArray</tt>. Этот метод предназначен скорее для внутреннего использования:
 <pre>// javascript
 polyline.array()</pre>
 Больше сведений смотрите в: <a href="classes.htm#2" onmouseover="show('SVG.PointArray')" onmouseout="hide()">SVG.PointArray</a>.<br><br>
@@ -422,31 +418,28 @@ var leading = text.font('leading')</pre><br>
 <pre>// javascript
 var text = draw.text("Lorem ipsum dolor sit amet consectetur.\nCras sodales imperdiet auctor.")
 text.leading(1.3)</pre>
-
-This will render a text element with a tspan element for each line, with a `dy` value of `130%` of the font size.<br>
-
-Note that the `leading()` method assumes that every first level tspan in a text node represents a new line. Using `leading()` on text elements containing multiple tspans in one line (e.g. without a wrapping tspan defining a new line) will render scrambled. So it is advisable to use this method with care, preferably only when throwing newline separated text at the text element or calling the `newLine()` method on every first level tspan added in the block passed as an argument to the text element.<br><br>
+Этот код отобразит текстовый элемент с элементом <tt>tspan</tt> для каждой строки со значением <tt>dy</tt>, равным&nbsp;130% размера шрифта.<br>
+Обратите внимание, что метод <tt>leading()</tt> предполагает, что каждый <tt>tspan</tt> первого уровня в текстовом узле, представляет новую строку.
+Использование <tt>leading()</tt> на текстовых элементах, содержащих несколько <tt>tspan</tt> в одной строке (например, без обертки в <tt>tspan</tt>, определения новой строки), покажет их перемешанными.
+Поэтому рекомендуется использовать этот метод осторожно, предпочтительно только при добавлении в текстовый элемент текста, разделенного символом новой строки,
+или при вызове метода <tt>newLine()</tt> на каждый <tt>tspan</tt> первого уровня, добавленном в блок, переданный в качестве аргумента текстовому элементу.<br><br>
 
 <pre id="8text.leading_get"><span class="lnk" onmouseover="show('text leading - текстовая направляющая')" onmouseout="hide()"><span class="shadow">text.</span>leading()</span>          <i class=low>как получатель (геттер)</i></pre>
 <div class=list>возвращает - значение (value)</div>
-
-Get the current leading value:
+Метод получает текущее значение текстовой направляющей:
 <pre>// javascript
 var leading = text.leading()</pre><br>
 
 <pre id="8text.lines"><span class="lnk" onmouseover="show('text lines - линии текста')" onmouseout="hide()"><span class="shadow">text.</span>lines()</span></pre>
 <div class=list>возвращает - <tt>SVG.Set</tt></div>
-
-All first level tspans can be referenced with the `lines()` method:
+На все <tt>tspan</tt> первого уровня можно ссылаться с помощью метода <tt>lines()</tt>:
 <pre>// javascript
 text.lines()</pre>
-
-This will return an instance of `SVG.Set` including all `tspan` elements.<br><br>
+Метод возвратит экземпляр <tt>SVG.Set</tt>, включая все элементы <tt>tspan</tt>.<br><br>
 
 <pre id="8text.plain"><span class="lnk" onmouseover="show('text plain - простой (обычный) текст')" onmouseout="hide()"><span class="shadow">text.</span>plain()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
-If the content of the element doesn't need any styling or multiple lines, it might be sufficient to just add some plain text:
+Если содержимое элемента не требует никакой стилизации или многострочности, данный метод может довольно просто добавлять обычный текст:
 <pre>// javascript
 text.plain('I do not have any expectations.')</pre><br>
 
@@ -462,8 +455,7 @@ text.rebuild(true)  // -> enables rebuilding and instantaneously rebuilds the te
 
 <pre id="8text.text_set"><span class="lnk" onmouseover="show('text text - текст элемента text')" onmouseout="hide()"><span class="shadow">text.</span>text()</span>          <i class=low>как установщик (сеттер)</i></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
-Changing text afterwards is also possible with the `text()` method:
+С помощью метода <tt>text()</tt> возможно впоследствии изменять текст:
 <pre>// javascript
 text.text('Brilliant!')</pre><br>
 
@@ -475,8 +467,7 @@ text.text()</pre><br>
 
 <pre id="8text.tspan"><span class="lnk" onmouseover="show('text t(ext) span - текст текстового блока')" onmouseout="hide()"><span class="shadow">text.</span>tspan()</span></pre>
 <div class=list>возвращает - <tt>SVG.Tspan</tt></div>
-
-Just adding one tspan is also possible:
+Метод предоставляет возможность добавления одного блока текста (<tt>tspan</tt>):
 <pre>// javascript
 text.tspan(' on a train...').fill('#f06')</pre></div><br><br>
 
@@ -486,8 +477,7 @@ text.tspan(' on a train...').fill('#f06')</pre></div><br><br>
 <pre id="9path"><span class="lnk" onmouseover="show('path - путь')" onmouseout="hide()">path()</span>  <i class=low>конструктор для textPath</i></pre>
 <div class=list>конструктор на <tt>SVG.Text</tt></div>
 <div class=list>возвращает - <tt>SVG.TextPath</tt>, который наследует от <tt>SVG.Text</tt>.</div>
-
-A nice feature in svg is the ability to run text along a path:
+Красивой функцией в svg является возможность показывать текст вдоль пути:
 <pre>// javascript
 var text = draw.text(function(add) {
   add.tspan('We go ')
@@ -496,21 +486,16 @@ var text = draw.text(function(add) {
 })<br>
 var path = 'M 100 200 C 200 100 300 0 400 100 C 500 200 600 300 700 200 C 800 100 900 100 900 100'<br>
 text.path(path).font({ size: 42.5, family: 'Verdana' })</pre>
-
-When calling the `path()` method on a text element, the text element is mutated into an intermediate between a text and a path element. From that point on the text element will also feature a `plot()` method to update the path:
-
+При вызове к текстовому элементу метода <tt>path()</tt>, текстовый элемент будет видоизменен в нечто среднее между текстом и элементом путь. С этого момента для обновления пути на текстовый элемент также будет влиять метод <tt>plot()</tt>:
 <pre>// javascript
 text.plot('M 300 500 C 200 100 300 0 400 100 C 500 200 600 300 700 200 C 800 100 900 100 900 100')</pre>
-
-Attributes specific to the `&#60;textPath&#62;` element can be applied to the textPath instance itself:
-
+Атрибуты, определенные для элемента <tt>&#60;textPath&#62;</tt>, могут быть применены к самому экземпляру <tt>textPath</tt>:
 <pre>// javascript
 text.textPath().attr('startOffset', '50%')</pre>
 И конечно же, они могут быть анимированы:
 <pre>// javascript
 text.textPath().animate(3000).attr('startOffset', '80%')</pre>
-
-<div class=note><b>Примечание:</b> If a `startOffset` other than a percentage is given, then the value represents a distance along the path measured in the current user coordinate system.</div><br>
+<div class=note><b>Примечание:</b> Если параметр <tt><span class="lnk" onmouseover="show('start offset - начальное смещение')" onmouseout="hide()">startOffset</span></tt> задан не в процентах, то значение представляет собой расстояние вдоль пути, измеренное в системе координат текущего пользователя.</div><br>
 
 <div style="font-family:Segoe UI; font-size:90%; margin-left:10px;">
 &nbsp; &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("dragon1","dragon2");'>Результат</span>
@@ -541,8 +526,7 @@ function updateText(textPath) {
 
 <pre id="9textPath.array"><span class="lnk" onmouseover="show('text path array - массив пути текста')" onmouseout="hide()"><span class="shadow">textPath.</span>array()</span></pre>
 <div class=list>возвращает - <tt>SVG.PathArray</tt></div>
-
-Get the path array of the underlying path:
+Метод получает массив основного, исходного пути:
 <pre>// javascript
 var array = text.textPath().array()</pre><br>
 
@@ -592,16 +576,14 @@ tspan.clear()</pre><br>
 <pre id="10tspan.dx"><span class="lnk" onmouseover="show('t(ext)span d(ynamic)  (координата) x - динамическая координата x текстового блока')" onmouseout="hide()"><span class="shadow">tspan.</span>dx()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
 <div class=list>анимируется - да</div>
-
-Define the dynamic `x` value of the element, much like a html element with `position:relative` and `left` defined:
+Определяет динамическое значение координаты <tt>x</tt> элемента, очень похоже на элемент <tt>html</tt> с определенными параметрами <tt>position:relative</tt> и <tt>left</tt>:
 <pre>// javascript
 tspan.dx(30)</pre><br>
 
 <pre id="10tspan.dy"><span class="lnk" onmouseover="show('t(ext)span d(ynamic)  (координата) y - динамическая координата y текстового блока')" onmouseout="hide()"><span class="shadow">tspan.</span>dy()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
 <div class=list>анимируется - да</div>
-
-Define the dynamic `y` value of the element, much like a html element with `position:relative` and `top` defined:
+Определяет динамическое значение координаты <tt>y</tt> элемента, очень похоже на элемент <tt>html</tt> с определенными параметрами <tt>position:relative</tt> и <tt>top</tt>:
 <pre>// javascript
 tspan.dy(30)</pre><br>
 
@@ -619,8 +601,7 @@ tspan.length()</pre><br>
 
 <pre id="10tspan.newLine"><span class="lnk" onmouseover="show('t(ext)span new line - новая строка (перенос строки) текстового блока')" onmouseout="hide()"><span class="shadow">tspan.</span>newLine()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
-The `newLine()` is a convenience method for adding a new line with a `dy` attribute using the current "leading":
+Метод <tt>newLine()</tt> удобен для добавления новой строки с атрибутом <tt>dy</tt> с использованием текущей текстовой направляющей:
 <pre>// javascript
 var text = draw.text(function(add) {
   add.tspan('Lorem ipsum dolor sit amet ').newLine()
@@ -633,15 +614,11 @@ var text = draw.text(function(add) {
 
 <pre id="10tspan.text"><span class="lnk" onmouseover="show('t(ext)span text - текст текстового блока')" onmouseout="hide()"><span class="shadow">tspan.</span>text()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
-
-Update the content of the tspan. This can be done by either passing a string:
+Метод обновляет содержимое текстового блока <tt>tspan</tt>. Это можно сделать либо передачей строки:
 <pre>// javascript
 tspan.text('Just a string.')</pre>
-
-Which will basicly call the `plain()` method:
-
-Or by passing a block to add more specific content inside the called tspan:
-
+Которая по существу будет вызовом метода <tt>plain()</tt>:<br>
+Либо передачей блока текста для добавления более конкретного содержимого в вызываемый текстовый блок <tt>tspan</tt>:
 <pre>// javascript
 tspan.text(function(add) {
   add.plain('Just plain text.')
@@ -857,8 +834,7 @@ rect.attr({ fill: pattern })</pre>
 или
 <pre>// javascript
 rect.fill(pattern)</pre>
-
-By passing the pattern instance as the fill on any element, the `fill()` method will be called on the pattern instance.<br><br>
+При передаче экземпляра шаблона в качестве любого элемента заполнения, метод <tt>fill()</tt> будет вызываться на экземпляр шаблона.<br><br>
 <div style="font-family:Segoe UI; font-size:90%; margin-left:10px;">
 &nbsp; &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("pattern1","pattern2");'>Результат</span>
 &nbsp; &nbsp; <span class="lnk" onclick='javascript:show_img("pattern2","pattern1");'>Код JavaScript</span>
@@ -879,7 +855,7 @@ draw.rect(100, 100).move(20, 20).radius(10).fill(pattern)</pre></div></div><br>
 <pre id="14pattern.fill"><span class="lnk" onmouseover="show('pattern fill - заливка шаблона')" onmouseout="hide()"><span class="shadow">pattern.</span>fill()</span></pre>
 <div class=list>возвращает - строковое значение (<tt>string</tt>)</div>
 <pre>// javascript
-pattern.fill() // -> returns 'url(#SvgjsPattern1234)'</pre><br>
+pattern.fill() // -> returns (возвращает) 'url(#SvgjsPattern1234)'</pre><br>
 
 <pre id="14pattern.update"><span class="lnk" onmouseover="show('pattern update - обновление шаблона')" onmouseout="hide()"><span class="shadow">pattern.</span>update()</span></pre>
 <div class=list>возвращает - самого себя (itself)</div>
