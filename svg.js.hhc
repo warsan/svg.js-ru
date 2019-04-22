@@ -369,75 +369,75 @@
     <param name="Local" value="plugins.htm#2">
 </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="svg.easing.js">
+    <param name="Name" value="declarative.js">
     <param name="Local" value="plugins.htm#3">
 </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="svg.draw.js">
+    <param name="Name" value="svg.draggable.js">
     <param name="Local" value="plugins.htm#4">
 </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="svg.draggable.js">
+    <param name="Name" value="svg.draw.js">
     <param name="Local" value="plugins.htm#5">
 </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="svg.filter.js">
+    <param name="Name" value="svg.easing.js">
     <param name="Local" value="plugins.htm#6">
 </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="svg.foreignobject.js">
+    <param name="Name" value="svg.filter.js">
     <param name="Local" value="plugins.htm#7">
 </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="svg.intersections.js">
+    <param name="Name" value="svg.foreignobject.js">
     <param name="Local" value="plugins.htm#8">
 </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="svg.math.js">
+    <param name="Name" value="svg.intersections.js">
     <param name="Local" value="plugins.htm#9">
 </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="svg.path.js">
+    <param name="Name" value="svg.math.js">
     <param name="Local" value="plugins.htm#10">
 </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="svg.pathmorphing.js">
+    <param name="Name" value="svg.panzoom.js">
     <param name="Local" value="plugins.htm#11">
 </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="svg.resize.js">
+    <param name="Name" value="svg.path.js">
     <param name="Local" value="plugins.htm#12">
 </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="svg.screenbbox.js">
+    <param name="Name" value="svg.pathmorphing.js">
     <param name="Local" value="plugins.htm#13">
 </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="svg.select.js">
+    <param name="Name" value="svg.resize.js">
     <param name="Local" value="plugins.htm#14">
 </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="svg.shapes.js">
+    <param name="Name" value="svg.screenbbox.js">
     <param name="Local" value="plugins.htm#15">
 </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="svg.textmorph.js">
+    <param name="Name" value="svg.select.js">
     <param name="Local" value="plugins.htm#16">
 </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="svg.topath.js">
+    <param name="Name" value="svg.shapes.js">
     <param name="Local" value="plugins.htm#17">
 </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="svg.topoly.js">
+    <param name="Name" value="svg.textmorph.js">
     <param name="Local" value="plugins.htm#18">
 </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="svg.panzoom.js">
+    <param name="Name" value="svg.topath.js">
     <param name="Local" value="plugins.htm#19">
 </object>
   <li><object type="text/sitemap">
-    <param name="Name" value="declarative.js">
+    <param name="Name" value="svg.topoly.js">
     <param name="Local" value="plugins.htm#20">
 </object>
 </ul>
