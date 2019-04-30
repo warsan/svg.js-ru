@@ -2031,42 +2031,31 @@ path.animate().plot('M100 0 H190 V90 H100 Z')</pre>
 Для работы данного модуля требуется svg.js, версии большей или равной 2.1.1</div></div><br>
 
 &nbsp; &#9679; &nbsp; <tt><a href="https://svgjs.com/docs/3.0/plugins/svg-resize-js/" target="_blank" id="14">svg.resize.js</a></tt>
-<div class=indent1><a href="https://github.com/fuzzyma/svg.resize.js" target="_blank">svg.resize.js</a> to resize elements with your mouse.</div>
+<div class=indent1>Плагин <a href="https://github.com/fuzzyma/svg.resize.js" target="_blank">svg.resize.js</a> для изменения размеров элементов с помощью мышки.</div>
 <div class=indent1><a class='link' onclick='javascript:show_txt(this)'> &nbsp; &nbsp; &nbsp; Справка по плагину</a>
-<div style='display:none;' onclick='javascript:show_txt(this)'>An extension of svg.js which allows to resize elements which are selected with svg.select.js<br>
-
-For a demo see http://svgdotjs.github.io/svg.resize.js/<br><br>
+<div style='display:none;' onclick='javascript:show_txt(this)'>Расширение библиотеки svg.js, которое позволяет изменять размеры элементов, выбранных с помощью плагина svg.select.js<br>
+Демонстрационный пример смотрите на <a href="https://svgjs.com/svg.resize.js/demo/index.html" target="_blank">http://svgdotjs.github.io/svg.resize.js/</a>.<br><br>
 
 <h4>Начало работы</h4>
-
-    Install svg.resize.js using bower:
+Установите svg.resize.js при помощи bower:
 <pre>bower install svg.resize.js</pre>
-
-    Include the script after svg.js and svg.select.js into your page
-
+Подключите его в своем html-документе, после подключения библиотеки svg.js и плагина <tt>svg.select.js</tt>:
 <pre>&#60;script src="svg.js"&#62;&#60;/script&#62;
 &#60;script src="svg.select.js"&#62;&#60;/script&#62;
 &#60;script src="svg.resize.js"&#62;&#60;/script&#62;</pre>
-
-    Select a rectangle and make it resizeable:
+Выделите прямоугольник и дайте ему возможность изменять размеры:
 <pre>&#60;div id="myDrawing"&#62;&#60;/div&#62;<br>
 var drawing = new SVG('myDrawing').size(500, 500);
 drawing.rect(50,50).selectize().resize()</pre>
 
 <h4>Использование</h4>
-
-Activate resizing
-
+Включение возможности изменения размеров:
 <pre>var draw = SVG('drawing');
 var rect = draw.rect(100,100);
 rect.selectize().resize();</pre>
-
-Deactivate resizing
-
+Отключение возможности изменения размеров:
 <pre>rect.resize('stop');</pre>
-
-Keep element within constrained box
-
+Сохранение элемента внутри ограничительной рамки:
 <pre>var draw = SVG('drawing');
 var rect = draw.rect(100, 100);
 var opt = {
@@ -2081,143 +2070,121 @@ rect.selectize().resize(opt)</pre><br>
 
 <h4>Опции</h4>
 
-    snapToGrid: Snaps the shape to a virtual grid while resizing (default 1)
-    snapToAngle: Snaps to an angle when rotating (default 0.1)
-    constraint: Keep element within constrained box (see usage above); The box snaps to the grid defined by snapToGrid.
-    saveAspectRatio: Save aspect ratio of the element while resizing with left-top, left-bottom, right-top, right-bottom points.<br><br>
+&nbsp; &#9679; &nbsp; <code>snapToGrid</code>: привязка фигуры при изменении размера к виртуальной сетке (значение по умолчанию равно&nbsp;<tt>1</tt>).<br>
+&nbsp; &#9679; &nbsp; <code>snapToAngle</code>: привязка фигуры при повороте к углу (значение по умолчанию равно&nbsp;<tt>0.1</tt>)<br>
+&nbsp; &#9679; &nbsp; <code>constraint</code>: сохранение элемента внутри ограничительной рамки (пример использования смотрите выше); прямоугольник <tt>rect</tt> привязывается к сетке, определенной <tt>snapToGrid</tt>.<br>
+&nbsp; &#9679; &nbsp; <code>saveAspectRatio</code>: сохранение пропорций элемента при изменении размеров, определяемых координатами левой верхней, левой нижней, правой верхней и правой нижней точек.<br><br>
 
 <h4>События</h4>
-
-    resizing: Fired when changes occur
-    resizedone: Fired when resizing is done<br><br>
-
+&nbsp; &#9679; &nbsp; <code>resizing</code>: запускается при изменении размеров.
+&nbsp; &#9679; &nbsp; <code>resizedone</code>: запускается по завершении изменеия размеров.<br><br>
 <h4>Известные проблемы</h4>
-
-    resize nested svgs does not work</div></div><br>
+&nbsp; &#9679; &nbsp; Не работает изменение размеров вложенных элементов svg.</div></div><br>
 
 &nbsp; &#9679; &nbsp; <tt><a href="https://svgjs.com/docs/3.0/plugins/svg-screenbbox-js/" target="_blank" id="15">svg.screenbbox.js</a></tt>
-<div class=indent1><a href="https://github.com/fuzzyma/svg.screenbbox.js" target="_blank">svg.screenbbox.js</a> to get the bbox in screen coordinates from transformed path/polygon/polyline</div>
+<div class=indent1>Плагин <a href="https://github.com/fuzzyma/svg.screenbbox.js" target="_blank">svg.screenbbox.js</a> для получения ограничительной рамки (bbox) в координатах экрана от преобразованных <tt>path</tt>/<tt>polygon</tt>/<tt>polyline</tt> (т.е. пути/многоугольника/ломаной линии).</div>
 <div class=indent1><a class='link' onclick='javascript:show_txt(this)'> &nbsp; &nbsp; &nbsp; Справка по плагину</a>
-<div style='display:none;' onclick='javascript:show_txt(this)'>A plugin for the svgjs library which gets the bbox of a path/polygon/polyline after all transformations applied.<br>
-
-The returned bounding box is in the screens coordinate space which means that the scroll offset is not applied (same as with screenCTM)<br><br>
+<div style='display:none;' onclick='javascript:show_txt(this)'>Плагин библиотеки svg.js для получения ограничительной рамки пути/многоугольника/ломаной линии после применения всех преобразований.<br>
+Возвращает ограничительную рамку в пространстве экранных координат, то есть без учета смещения прокрутки
+(так же, как у <tt><a href="https://msdn.microsoft.com/ru-ru/office/hh535760(v=vs.90)" target="_blank" onclick='no_js(event)' onmouseover="show('screen current transformation matrix - текущая матрица<br>преобразования в экранных координатах')" onmouseout="hide()">screenCTM</a></tt>).<br><br>
 
 <h4>Начало работы</h4>
-
 <pre>bower install svg.screenbbox.js</pre>
-
 <pre>// add some viewbox madness to make this more interesting
-var nested = draw.viewbox(0, 0, 300, 200).nested().viewbox(-50, 20, 200, 300)
-
-// create path with transformation
-var path = draw.path('M150 0 L75 200 L225 200 Z').rotate(25).scale(0.5)
-
+// для большего интереса добавим в viewbox немного безумия
+var nested = draw.viewbox(0, 0, 300, 200).nested().viewbox(-50, 20, 200, 300)<br>
+// create path with transformation (создать путь с преобразованием)
+var path = draw.path('M150 0 L75 200 L225 200 Z').rotate(25).scale(0.5)<br>
 // get bounding box in screen coordinates
-var bbox = path.screenBBox()
-
+// получить ограничительную рамку в координатах экрана
+var bbox = path.screenBBox()<br>
 // do something with it, e.g. draw a reactangle around (with jQuery here)
+// что-нибудь делаем, например рисуем вокруг прямоугольник (тут с jQuery)
 $('&#60;div&#62;').css({
   position:'absolute',
   width:bbox.width,
   height:bbox.height,
   left:bbox.x+window.pageXOffset, // dont forget to add the scroll offset
-  top:bbox.y+window.pageYOffset,  // dito
+                                  // не забудьте добавить смещение прокрутки
+  top:bbox.y+window.pageYOffset,  // dito (здесь тоже)
   outline:'3px solid black'
 }).appendTo('body')</pre><br>
 
 <h4>Зависимости</h4>
-
-This module requires svg.js >= v2.2.0
-</div></div><br>
+Для работы данного модуля требуется svg.js версии равной или большей 2.2.0.</div></div><br>
 
 &nbsp; &#9679; &nbsp; <tt><a href="https://svgjs.com/docs/3.0/plugins/svg-select-js/" target="_blank" id="16">svg.select.js</a></tt>
-<div class=indent1><a href="https://github.com/fuzzyma/svg.select.js" target="_blank">svg.select.js</a> to select elements.</div>
+<div class=indent1>Плагин <a href="https://github.com/fuzzyma/svg.select.js" target="_blank">svg.select.js</a> для выбора элементов.</div>
 <div class=indent1><a class='link' onclick='javascript:show_txt(this)'> &nbsp; &nbsp; &nbsp; Справка по плагину</a>
-<div style='display:none;' onclick='javascript:show_txt(this)'>An extension of svg.js which allows to select elements with mouse
-
-<div class=note><b>Примечание:</b> Duo to naming conflicts the exported method was renamed from select() to selectize().</div>
-
-For a demo see http://svgdotjs.github.io/svg.select.js/<br><br>
+<div style='display:none;' onclick='javascript:show_txt(this)'>Расширение библиотеки svg.js, которое позволяет выбирать элементы с помощью мышки.
+<div class=note><b>Примечание:</b> Из-за конфликта названий поставляемый метод был переименован из <tt>select()</tt> в <tt>selectize()</tt>.</div>
+Демонстрационный пример смотрите на <a href="https://svgjs.com/svg.select.js/demo/index.html" target="_blank">http://svgdotjs.github.io/svg.select.js/</a>.<br><br>
 
 <h4>Начало работы</h4>
-
-    Install svg.select.js using bower:
+Установите svg.select.js при помощи <tt>bower</tt>:
 <pre>bower install svg.select.js</pre>
-
-    Include the script after svg.js into your page
+Подключите его в своем html-документе, после подключения библиотеки svg.js:
 <pre>&#60;script src="svg.js"&#62;&#60;/script&#62;
 &#60;script src="svg.select.js"&#62;&#60;/script&#62;</pre>
-
-    Select a rectangle using this simple piece of code:
+Выберите прямоугольник, используя этот простой кусок кода:
 <pre>&#60;div id="myDrawing"&#62;&#60;/div&#62;<br>
 var drawing = new SVG('myDrawing').size(500, 500);
 drawing.rect(50,50).selectize()</pre>
 
 <h4>Использование</h4>
-
-Select
-
+Выбор:
 <pre>var draw = SVG('drawing');
 var rect = draw.rect(100,100);
 rect.selectize();<br>
-// or deepSelect
+// or (или) deepSelect
 rect.selectize({deepSelect:true});</pre>
-
-Unselect
-
+Отмена выбора:
 <pre>rect.selectize(false);<br>
-// or deepSelect
+// or (или) deepSelect
 rect.selectize(false, {deepSelect:true});</pre>
-
-You can specify which points to be drawn (default all will be drawn)<br>
-
-The list can be an array of strings or a comma separated list / string, representing each position, in correspondence with the classes:<br>
-&nbsp; &#9679; &nbsp; lt - left top<br>
-&nbsp; &#9679; &nbsp; rt - right top<br>
-&nbsp; &#9679; &nbsp; rb - right bottom<br>
-&nbsp; &#9679; &nbsp; lb - left bottom<br>
-&nbsp; &#9679; &nbsp; t - top<br>
-&nbsp; &#9679; &nbsp; r - right<br>
-&nbsp; &#9679; &nbsp; b - bottom<br>
-&nbsp; &#9679; &nbsp; l - left<br>
-
-Example of drawing only top and right points:
-
+Можно указать, какие точки должны быть нарисованы (по умолчанию нарисованы будут все).<br>
+Список может быть массивом строк или списком/строкой, представляющий каждую позицию, разделяемых запятой, в соответствии с классами:<br>
+&nbsp; &#9679; &nbsp; <tt>lt</tt> - верхняя левая (left top)<br>
+&nbsp; &#9679; &nbsp; <tt>rt</tt> - верхняя правая (right top)<br>
+&nbsp; &#9679; &nbsp; <tt>rb</tt> - нижняя правая (right bottom)<br>
+&nbsp; &#9679; &nbsp; <tt>lb</tt> - нижняя левая (left bottom)<br>
+&nbsp; &#9679; &nbsp; <tt>t</tt> - верхняя (top)<br>
+&nbsp; &#9679; &nbsp; <tt>r</tt> - правая (right)<br>
+&nbsp; &#9679; &nbsp; <tt>b</tt> - нижняя (bottom)<br>
+&nbsp; &#9679; &nbsp; <tt>l</tt> - левая (left)<br>
+Пример рисования только верхней и правой точек:
 <pre>rect.selectize({
-  points: ['t', 'r'] // or 't, r'
+  points: ['t', 'r'] // or (или) 't, r'
 })</pre>
-
-There is also an extra option called pointsExclude which can be a list of points to be excluded from the points list.<br>
-
-So let's say that you need all the points except top and right:
-
+Также имеется дополнительная опция <tt>pointsExclude</tt>, которая может быть списком точек, которые нужно исключить из списка точек.<br>
+Допустим, вам нужны все точки, кроме верхней и правой:
 <pre>rect.selectize({
-  pointsExclude: ['t', 'r'] // or 't, r'
+  pointsExclude: ['t', 'r'] // or (или) 't, r'
 })</pre>
 
 You can style the selection with the classes<br>
-&nbsp; &#9679; &nbsp; svg_select_boundingRect<br>
-&nbsp; &#9679; &nbsp; svg_select_points<br>
-&nbsp; &#9679; &nbsp; svg_select_points_lt - left top<br>
-&nbsp; &#9679; &nbsp; svg_select_points_rt - right top<br>
-&nbsp; &#9679; &nbsp; svg_select_points_rb - right bottom<br>
-&nbsp; &#9679; &nbsp; svg_select_points_lb - left bottom<br>
-&nbsp; &#9679; &nbsp; svg_select_points_t - top<br>
-&nbsp; &#9679; &nbsp; svg_select_points_r - right<br>
-&nbsp; &#9679; &nbsp; svg_select_points_b - bottom<br>
-&nbsp; &#9679; &nbsp; svg_select_points_l - left<br>
-&nbsp; &#9679; &nbsp; svg_select_points_rot - rotation point<br>
-&nbsp; &#9679; &nbsp; svg_select_points_point - deepSelect points<br>
+&nbsp; &#9679; &nbsp; <tt>svg_select_boundingRect</tt><br>
+&nbsp; &#9679; &nbsp; <tt>svg_select_points</tt><br>
+&nbsp; &#9679; &nbsp; <tt>svg_select_points_lt</tt> - верхняя левая (left top)<br>
+&nbsp; &#9679; &nbsp; <tt>svg_select_points_rt</tt> - верхняя правая (right top)<br>
+&nbsp; &#9679; &nbsp; <tt>svg_select_points_rb</tt> - нижняя правая (right bottom)<br>
+&nbsp; &#9679; &nbsp; <tt>svg_select_points_lb</tt> - нижняя левая (left bottom)<br>
+&nbsp; &#9679; &nbsp; <tt>svg_select_points_t</tt> - верхняя (top)<br>
+&nbsp; &#9679; &nbsp; <tt>svg_select_points_r</tt> - правая (right)<br>
+&nbsp; &#9679; &nbsp; <tt>svg_select_points_b</tt> - нижняя (bottom)<br>
+&nbsp; &#9679; &nbsp; <tt>svg_select_points_l</tt> - левая (left)<br>
+&nbsp; &#9679; &nbsp; <tt>svg_select_points_rot</tt> - точка поворота (rotation point)<br>
+&nbsp; &#9679; &nbsp; <tt>svg_select_points_point</tt> - deepSelect points<br>
 
 <h4>Опции</h4>
-&nbsp; &#9679; &nbsp; points: Points should be drawn (default ['lt', 'rt', 'rb', 'lb', 't', 'r', 'b', 'l'])<br>
-&nbsp; &#9679; &nbsp; pointsExclude: Same as points option, only thing that this excludes listed points, you can use (default [])<br>
-&nbsp; &#9679; &nbsp; classRect: Classname of the rect from the bounding Box (default svg_select_boundingRect)<br>
-&nbsp; &#9679; &nbsp; classPoints: Classname/Prefix of the Points (default svg_select_points)<br>
-&nbsp; &#9679; &nbsp; pointSize: Size of the point. Radius for the pointType: 'circle' or size of a rect for pointType: 'rect' (default 7)<br>
-&nbsp; &#9679; &nbsp; rotationPoint: Draws the point for doing rotation (default true)<br>
-&nbsp; &#9679; &nbsp; deepSelect: Only for polygon/polyline/line. Selects the points itself (default false)<br>
-&nbsp; &#9679; &nbsp; pointType: Type of a point, circle or rect or function (see functions for drawing circle or rect points) (default circle)</div></div><br>
+&nbsp; &#9679; &nbsp; <tt>points</tt>: точки, которые должны быть нарисованы (значение по умолчанию <tt>['lt', 'rt', 'rb', 'lb', 't', 'r', 'b', 'l']</tt>)<br>
+&nbsp; &#9679; &nbsp; <tt>pointsExclude</tt>: Same as points option, only thing that this excludes listed points, you can use (значение по умолчанию <tt>[]</tt> - пустой массив)<br>
+&nbsp; &#9679; &nbsp; <tt>classRect</tt>: Classname of the rect from the bounding Box (значение по умолчанию <tt>svg_select_boundingRect</tt>)<br>
+&nbsp; &#9679; &nbsp; <tt>classPoints</tt>: Classname/Prefix of the Points (значение по умолчанию <tt>svg_select_points</tt>)<br>
+&nbsp; &#9679; &nbsp; <tt>pointSize</tt>: Size of the point. Radius for the pointType: 'circle' or size of a rect for pointType: 'rect' (значение по умолчанию&nbsp;<tt>7</tt>)<br>
+&nbsp; &#9679; &nbsp; <tt>rotationPoint</tt>: Draws the point for doing rotation (значение по умолчанию <tt>true</tt>)<br>
+&nbsp; &#9679; &nbsp; <tt>deepSelect</tt>: только для <tt>polygon</tt>/<tt>polyline</tt>/<tt>line</tt> т.е. многоугольника, ломаной линии и линии. Выбирайте точки самостоятельно (значение по умолчанию <tt>false</tt>).<br>
+&nbsp; &#9679; &nbsp; <tt>pointType</tt>: тип точки - круг, прямоугольник или функция (смотрите фукнции для рисования точек круга или прямоугольника). (значение по умолчанию <tt>circle</tt> - круг)</div></div><br>
 
 &nbsp; &#9679; &nbsp; <tt><a href="https://svgjs.com/docs/3.0/plugins/svg-shapes-js/" target="_blank" id="17">svg.shapes.js</a></tt>
 <div class=indent1>Плагин <a href="https://github.com/svgdotjs/svg.shapes.js" target="_blank">svg.shapes.js</a> увеличивает число фигур на основе многоугольников.</div>
