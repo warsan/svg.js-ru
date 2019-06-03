@@ -114,13 +114,13 @@ Connects two elements. If called multiple times, the lines will be curved.
 &nbsp; &#9679; &nbsp; setLineColor (Function)</div><br><br>
 
 <code>computeLineCoordinates(con)</code><br>
-
+Функция, вычисляющая новые координаты.
 The function that computes the new coordinates. It can be overriden with a custom function.
 <div class=list>
 <h5>Параметры</h5>
 &nbsp; &#9679; &nbsp; Connectable con: The connectable instance.
 <h5>Возврат</h5>
-&nbsp; &#9679; &nbsp; Object An object containing the x1, x2, y1 and y2 coordinates.</div><br><br>
+&nbsp; &#9679; &nbsp; Object Объект, содержащий координаты <tt>x1</tt>, <tt>x2</tt>, <tt>y1</tt> и <tt>y2</tt>. An object containing the x1, x2, y1 and y2 coordinates.</div><br><br>
 
 <code>update()</code><br>
 Обновляет координаты линии.<br><br>
@@ -258,7 +258,7 @@ Sets the connector and marker color.
 Смотрите файл <a href="https://github.com/loredanacirstea/svg.connectable.js/blob/master/LICENSE" target="_blank" onclick='no_js(event)'>лицензии</a>.</div></div><br>
 
 &nbsp; &#9679; &nbsp; <tt><a href="https://svgjs.com/docs/3.0/plugins/svg-declarative-js/" target="_blank" id="3">svg.declarative.js</a></tt>
-<div class=indent1><a href="https://github.com/saivan/svg.declarative.js" target="_blank">svg.declartive.js</a> a plugin for SVG.js which allows for super fast, interruptible, declarative animations. All animations are physically driven, so you can get very realistic animations with this library; whilst animating a huge number of items.</div>
+<div class=indent1>Плагин <a href="https://github.com/saivan/svg.declarative.js" target="_blank">svg.declartive.js</a> для библиотеки SVG.js, который обеспечивает сверхбыструю, прерываемую, декларативную анимацию. which allows for super fast, interruptible, declarative animations. All animations are physically driven, so you can get very realistic animations with this library; whilst animating a huge number of items.</div>
 <div class=indent1><a class='link' onclick='javascript:show_txt(this)'> &nbsp; &nbsp; &nbsp; Справка по плагину</a>
 <div style='display:none;' onclick='javascript:show_txt(this)'>
 
@@ -410,11 +410,11 @@ rect.draggable()</pre>
 
 <h4>События</h4>
 Данный плагин запускает четыре разных события:<br>
-&nbsp; &#9679; &nbsp; перед перетаскиванием - beforedrag (имеется возможность отмены)<br>
-&nbsp; &#9679; &nbsp; начало перетаскивания - dragstart<br>
-&nbsp; &#9679; &nbsp; процесс перетаскивания - dragmove (имеется возможность отмены)<br>
-&nbsp; &#9679; &nbsp; окончание перетаскивания - dragend<br>
-К этим событиям можно присоединять/отсоединять (bind/unbind) слушателей:
+&nbsp; &#9679; &nbsp; перед перетаскиванием - <tt>beforedrag</tt> (имеется возможность отмены)<br>
+&nbsp; &#9679; &nbsp; начало перетаскивания - <tt>dragstart</tt><br>
+&nbsp; &#9679; &nbsp; процесс перетаскивания - <tt>dragmove</tt> (имеется возможность отмены)<br>
+&nbsp; &#9679; &nbsp; окончание перетаскивания - <tt>dragend</tt><br>
+К этим событиям можно присоединять/отсоединять (<tt>bind</tt>/<tt>unbind</tt>) слушателей:
 <pre>// bind (присоединение)
 rect.on('dragstart.namespace', function (event) {
   // event.detail.event hold the given data explained below
@@ -960,7 +960,7 @@ for more details check out each effects doc below
     Turbulence
 
 <h4>Base Effect Class</h4>
-in(effect)
+<h5>in(effect)</h5>
 
 gets or sets the in attribute of the effect
 
@@ -985,7 +985,7 @@ gets or sets the in attribute of the effect
   var input2 = blur.in()
 })</pre>
 
-in2(effect)
+<h5>in2(effect)</h5>
 
 gets or sets the in2 attribute of the effect
 this function works the same as the in method.
@@ -997,72 +997,72 @@ gets or sets the result attribute of the effect
     string: if a string is provided it will set the value of the result attribute.
     if no arguments are provided it will act as a getter and return the value of the result attribute
 
-Blend
+<h5>Blend</h5>
 
 W3 doc
 
-filter.blend(in1, in2, mode)
-//or
+<pre>filter.blend(in1, in2, mode)
+// or (или)
 new SVG.BlendEffect({in1, in2, mode})
 
-    in1: an effect or the result of effect
-    in2: same as in1
-    mode: "normal | multiply | screen | darken | lighten" defaults to "normal"
+  in1: an effect or the result of effect
+  in2: same as in1
+  mode: "normal | multiply | screen | darken | lighten" defaults to "normal"</pre>
 
 chaining when this effect is called right after another effect, for example:
 
-filter.offset(10).blend(filter.$source)
+<pre>filter.offset(10).blend(filter.$source)</pre>
 
 the first input is set to the offset effect and the second input is set to filter.$source or what ever was passed as the first argument, and the second input becomes the mode
-ColorMatrix
+
+<h5>ColorMatrix</h5>
 
 W3 doc
 
-filter.colorMatrix(type, values);
-//or
+<pre>filter.colorMatrix(type, values);
+// or (или)
 new SVG.ColorMatrixEffect({type, values});
 
-    type: "matrix | saturate | hueRotate | luminanceToAlpha"
-    values
-        type="matrix": values would be a matrix the size of 4x5
-        type="saturate": number (0 to 1)
-        type="hueRotate": number (0 to 360) deg
-        type="luminanceToAlpha": value not needed
+  type: "matrix | saturate | hueRotate | luminanceToAlpha"
+  values
+    type="matrix": values would be a matrix the size of 4x5
+    type="saturate": number (0 to 1)
+    type="hueRotate": number (0 to 360) deg
+    type="luminanceToAlpha": value not needed</pre>
 
-ComponentTransfer
+<h5>ComponentTransfer</h5>
 
 W3 doc
 
-filter.componentTransfer(components);
-// or
+<pre>filter.componentTransfer(components);
+// or (или)
 filter.componentTransfer(function (add) { add.funcA({ type... }) });
-//or
-new SVG.ComponentTransferEffect();
+// or (или)
+new SVG.ComponentTransferEffect();</pre>
 
     components: an object which is set for all chanels or r, g, b, a properties for each chanel
 
-      type: "identity | table | discrete | linear | gamma",
+<pre>  type: "identity | table | discrete | linear | gamma",
 
-      //type="table"
-      tableValues: "0 0.5 2 1", //number separated by spaces
+  //type="table"
+  tableValues: "0 0.5 2 1", //number separated by spaces
 
-      //type="linear"
-      slope: 1, //number
-      intercept: 3,//number
+  //type="linear"
+  slope: 1, //number
+  intercept: 3,//number
 
-      //type="gamma"
-      amplitude: 0, //number
-      exponent: 0, //number
-      offset: 0 //number
-    }
+  //type="gamma"
+  amplitude: 0, //number
+  exponent: 0, //number
+  offset: 0 //number
+}</pre>
 
-Composite
+<h5>Composite</h5>
 
 W3 doc
-
-filter.composite(in1, in2, operator);
-//or
-new SVG.CompositeEffect({in1, in2, operator});
+<pre>filter.composite(in1, in2, operator);
+// or (или)
+new SVG.CompositeEffect({in1, in2, operator});</pre>
 
     in1: an effect or the result of an effect
     in2: same as in1
@@ -1074,39 +1074,38 @@ filter.flood('black',0.5).composite(filter.$sourceAlpha,'in')
 
 the first input is set to the flood effect and the second input is set to filter.$sourceAlpha or what ever was passed as the first argument.
 also the second argument becomes the operator
-ConvolveMatrix
+
+<h5>ConvolveMatrix</h5>
 
 W3 doc
-
-filter.convolveMatrix(matrix);
-//or
-new SVG.ConvolveMatrixEffect({matrix});
+<pre>filter.convolveMatrix(matrix);
+// or (или)
+new SVG.ConvolveMatrixEffect({matrix});</pre>
 
     matrix: a square matrix of numbers that will be applied to the image
         exmaple:
 
-    [
-      1,0,0,
-      0,1,0,
-      0,0,1
-    ]
+<pre>[
+  1,0,0,
+  0,1,0,
+  0,0,1
+]</pre>
 
-DiffuseLighting
+<h5>DiffuseLighting</h5>
 
 W3 doc
-
-filter.diffuseLighting(surfaceScale, lightingColor, diffuseConstant, kernelUnitLength);
-//or
-new SVG.DiffuseLightingEffect({surfaceScale, lightingColor, diffuseConstant, kernelUnitLength});
+<pre>filter.diffuseLighting(surfaceScale, lightingColor, diffuseConstant, kernelUnitLength);
+// or (или)
+new SVG.DiffuseLightingEffect({surfaceScale, lightingColor, diffuseConstant, kernelUnitLength});</pre>
 
 very complicated, just check out the W3 doc
-DisplacementMap
+
+<h5>DisplacementMap</h5>
 
 W3 doc
-
-filter.displacementMap(in1, in2, scale, xChannelSelector, yChannelSelector);
-//or
-new SVG.DisplacementMapEffect({in1, in2, scale, xChannelSelector, yChannelSelector});
+<pre>filter.displacementMap(in1, in2, scale, xChannelSelector, yChannelSelector);
+// or (или)
+new SVG.DisplacementMapEffect({in1, in2, scale, xChannelSelector, yChannelSelector});</pre>
 
 very complicated, just check out the W3 doc
 
@@ -1116,96 +1115,89 @@ filter.offset(20,50).displacementMap(filter.$source,2)
 
 the first input is set to the offset effect and the second input is set to filter.$source or what ever was passed as the first argument.
 also the second argument becomes the scale, and the third argument is the xChannelSelector and so on
-Flood
+
+<h5>Flood</h5>
 
 W3 doc
-
-filter.flood(color,opacity);
-//or
-new SVG.FloodEffect(color,opacity);
+<pre>filter.flood(color,opacity);
+// or (или)
+new SVG.FloodEffect(color,opacity);</pre>
 
     color: a named or hex color in string format
     opacity: number form 0 to 1
 
-GaussianBlur
+<h5>GaussianBlur</h5>
 
 W3 doc
-
-filter.gaussianBlur(x, y);
-//or
-new SVG.GaussianBlurEffect({x, y});
+<pre>filter.gaussianBlur(x, y);
+// or (или)
+new SVG.GaussianBlurEffect({x, y});</pre>
 
     x: blur on the X
     y: blur on the y, will default to the x if not provided
 
-Image
+<h5>Image</h5>
 
 W3 doc
+<pre>filter.image(src);
+// or (или)
+new SVG.ImageEffect({src});</pre>
 
-filter.image(src);
-//or
-new SVG.ImageEffect({src});
-
-Merge
+<h5>Merge</h5>
 
 W3 doc
-
-filter.merge();
-//or
-new SVG.MergeEffect();
+<pre>filter.merge();
+// or (или)
+new SVG.MergeEffect();</pre>
 
     Array: an Array of effects or effect results filter.merge([effectOne,"result-two",another_effect])
     chaining you can also chain the merge effect filter.offset(10).merge(anotherEffect) which will result in a merge effect with its first input set to the offset effect and its second input set to anotherEffect
 
-Morphology
+<h5>Morphology</h5>
 
 W3 doc
-
-filter.morphology(operator, radius);
-//or
-new SVG.MorphologyEffect({operator, radius});
+<pre>filter.morphology(operator, radius);
+// or (или)
+new SVG.MorphologyEffect({operator, radius});</pre>
 
     operator: "erode | dilate"
     radius: a single number or a string of two numbers separated by a space
         the first number is the X
         the second number is the Y, if no second number was provided it will default to the first number
 
-Offset
+<h5>Offset</h5>
 
 W3 doc
-
-filter.offset(x, y);
-//or
-new SVG.OffsetEffect({x, y});
+<pre>filter.offset(x, y);
+// or (или)
+new SVG.OffsetEffect({x, y});</pre>
 
     x: move on the X
     y: move on the y, will default to the x if not provided
 
-SpecularLighting
+<h5>SpecularLighting</h5>
 
 W3 doc
-
-filter.specularLighting(surfaceScale, lightingColor, diffuseConstant, specularExponent, kernelUnitLength);
-//or
-new SVG.SpecularLightingEffect(surfaceScale, lightingColor, diffuseConstant, specularExponent, kernelUnitLength);
+<pre>filter.specularLighting(surfaceScale, lightingColor, diffuseConstant, specularExponent, kernelUnitLength);
+// or (или)
+new SVG.SpecularLightingEffect(surfaceScale, lightingColor, diffuseConstant, specularExponent, kernelUnitLength);</pre>
 
 very complicated, just check out the W3 doc
-Tile
+
+<h5>Tile</h5>
 
 W3 doc
-
-filter.tile();
-//or
-new SVG.TileEffect();
+<pre>filter.tile();
+// or (или)
+new SVG.TileEffect();</pre>
 
 no arguments, but if you want to find out what it does check out the W3 doc
-Turbulence
 
+<h5>Turbulence</h5>
 W3 doc
-
-filter.turbulence(baseFrequency, numOctaves, seed, stitchTiles, type);
-//or
-new SVG.TurbulenceEffect({baseFrequency, numOctaves, seed, stitchTiles, type});
+<pre>filter.turbulence(baseFrequency, numOctaves, seed, stitchTiles, type);
+// or (или)
+new SVG.TurbulenceEffect({baseFrequency, numOctaves, seed, stitchTiles, type});</pre>
 
 very complicated, just check out the W3 doc</div></div><br>
 
@@ -1641,88 +1633,68 @@ draw.polygon(
 <img src="img/svg.math.js3.png" onmouseover="show('пример стрелки')" onmouseout="hide()"></div></div><br>
 
 &nbsp; &#9679; &nbsp; <tt><a href="https://svgjs.com/docs/3.0/plugins/svg-panzoom-js/" target="_blank" id="11">svg.panzoom.js</a></tt>
-<div class=indent1><a href="https://github.com/svgdotjs/svg.panzoom.js" target="_blank">svg.panzoom.js</a> a plugin for svg.js which enables panzoom for viewbox elements.</div>
+<div class=indent1>Плагин <a href="https://github.com/svgdotjs/svg.panzoom.js" target="_blank">svg.panzoom.js</a> включает панорамирование и масштабирование всех элементов в окне просмотра.</div>
 <div class=indent1><a class='link' onclick='javascript:show_txt(this)'> &nbsp; &nbsp; &nbsp; Справка по плагину</a>
-<div style='display:none;' onclick='javascript:show_txt(this)'>A plugin for svg.js that enables panzoom for svg elements
+<div style='display:none;' onclick='javascript:show_txt(this)'>Плагин для svg.js, который разрешает возможность панорамирования/масштабирования всех svg-элементов.
 
 <h3>Начало работы</h3>
-
 <pre>npm install @svgdotjs/svg.panzoom.js</pre>
-
-<pre>// enables panZoom
+<pre>// enables panZoom (включаем panZoom)
 var canvas = SVG().addTo('#id')
-  .size(1000,1000).panZoom()
-
-// zoom programatically
+  .size(1000,1000).panZoom()<br>
+// zoom programatically (программируем масштаб)
 canvas.zoom(lvl, point)</pre>
-
-You can configure panZoom by passing options to it.
-
-&nbsp; &#9679; &nbsp; zoomMin: Minimal zoom level<br>
-&nbsp; &#9679; &nbsp; zoomMax: Maximal zoom level<br>
-&nbsp; &#9679; &nbsp; zoomFactor: How much is zoomed by one mouse wheel step<br>
-
-This could look like this:
-
+Можно настроить <tt>panZoom</tt>, передавая ему следующие параметры:<br>
+&nbsp; &#9679; &nbsp; <code>zoomMin</code> - минимальный уровень масштабирования<br>
+&nbsp; &#9679; &nbsp; <code>zoomMax</code> - максимальный уровень масштабирования<br>
+&nbsp; &#9679; &nbsp; <code>zoomFactor</code> - насколько изменяется масштаб при повороте на один шаг колеса мышки.<br>
+Это может выглядеть так:
 <pre>var canvas = SVG().addTo('#id')
   .size(1000,1000)
   .panZoom({zoomMin: 0.5, zoomMax: 20})</pre>
-
-Setting the min and max value will automatically restrict the zoom to the provided level.
-However you are still able to change the zoom out of that bonds by calling zoom(lvl) programatically.
-
-On touchable devices a pinchZoom gesture is supported. Min and max values also apply here.
-
-Zooming is animatable, too:
-
-<pre>canvas.zoom(1) // uses center of viewport by default
+Установка минимального и максимального значений автоматически ограничивает масштабирование в заданных рамках. Тем не менее, остается возможность изменять масштаб этих рамок программно вызовом <tt>zoom(lvl)</tt>.<br>
+На сенсорных устройствах поддерживается жест <tt>pinchZoom</tt>. Также применимы здесь минимальные и максимальные значения.<br>
+Также масштабирование можно анимировать:
+<pre>canvas.zoom(1) // uses center of viewport by default (по умолчанию используется центр области просмотра)
     .animate()
     .zoom(2, {x:100, y:100}) // zoom into specified point</pre>
-
-To disable panZoom or change its options just call it again with false or the new options.
+Для отключения <tt>panZoom</tt> или изменения его параметров просто вызовите его повторно с <tt>false</tt> в качестве параметра или новыми параметрами.
 
 <h3>API</h3>
+Плагин <tt>svg.panzoom.js</tt> добавляет в &#60;svg&#62; метод <tt>.zoom()</tt>.<br>
 
-svg.panzoom.js adds the .zoom() method to &#60;svg&#62;<br>
-
-&nbsp; &#9679; &nbsp; zoom() - returns current zoom level<br>
-&nbsp; &#9679; &nbsp; zoom(Number) - will zoom in or out depending if the Number is greater or less than the current zoom level<br>
-&nbsp; &#9679; &nbsp; zoom(Number, {x,y}) - will zoom with the x/y coordinate as center point<br>
-&nbsp; &#9679; &nbsp; zoom(Number, new SVG.Point(x,y)) - will zoom with the x/y coordinate as center point<br><br>
+&nbsp; &#9679; &nbsp; <code>zoom()</code> - возвращает текущий уровень масштабирования<br>
+&nbsp; &#9679; &nbsp; <code>zoom(Number)</code> - будет изменять масштаб в зависимости от переданного числа в аргументе <tt>Number</tt>, если это число больше или меньше текущего уровня масштабирования<br>
+&nbsp; &#9679; &nbsp; <code>zoom(Number, {x,y})</code> - будет изменять масштаб относительно центральной точки с координатами, переданными как <tt>x</tt> и <tt>y</tt><br>
+&nbsp; &#9679; &nbsp; <code>zoom(Number, new SVG.Point(x,y))</code> - будет изменять масштаб относительно центральной точки с координатами, переданными как <tt>x</tt> и <tt>y</tt>.<br><br>
 <table class="tbl_1" border="1" cellpadding="5">
 <tr class="head"><td>Метод</td><td>Возвращаемое значение</td></tr>
-<tr valign="top"><td><tt>zoom()</tt></td><td>Number</td></tr>
-<tr valign="top"><td><tt>zoom(Number)</tt></td><td>element</td></tr>
-<tr valign="top"><td><tt>zoom(Number, {x,y}) </tt></td><td>element</td></tr>
-<tr valign="top"><td><tt>zoom(Number, new SVG.Point(x,y))</tt></td><td>element</td></tr></table><br>
+<tr valign="top"><td><tt>zoom()</tt></td><td>число</td></tr>
+<tr valign="top"><td><tt>zoom(Number)</tt></td><td>элемент</td></tr>
+<tr valign="top"><td><tt>zoom(Number, {x,y}) </tt></td><td>элемент</td></tr>
+<tr valign="top"><td><tt>zoom(Number, new SVG.Point(x,y))</tt></td><td>элемент</td></tr></table><br>
 
 <h3>События</h3>
+Срабатывает несколько событий, выполняя различные действия. Это позволяет реагировать на действия, а в некоторых случаях останавливать действие с помощью <tt><a href="https://developer.mozilla.org/ru/docs/Web/API/Event/preventDefault" target="_blank" onclick='no_js(event)' onmouseover="show('Отменяет событие, если оно отменяемое, без остановки<br>дальнейшего распространения этого события.')" onmouseout="hide()">preventDefault()</a></tt>.<br>
 
-Multiple events are fired doing different actions. This allow you to respond to actions and in some cases stop an action via preventDefault().
-
-zoom is fired when a mouse wheel event or programmable zoom() triggers a zoom. This usually doesn't happen on mobile devices, in which case pinchZoomStart is fired when a zoom happens.
-
-Events fired from SVG.js are CustomEvents, so the arguments passed from svg.panzoom.js are in in the .detail property.<br>
+<tt>zoom</tt> is fired when a mouse wheel event or programmable zoom() triggers a zoom. This usually doesn't happen on mobile devices, in which case pinchZoomStart is fired when a zoom happens.<br>
+События, запускаемые из SVG.js являются настраиваемыми событиями - <a href="https://developer.mozilla.org/ru/docs/Web/API/CustomEvent" target="_blank" onclick='no_js(event)' onmouseover="show('CustomEvent представляет события, инициализированные<br>приложением для любых целей.')" onmouseout="hide()">CustomEvent</a>, поэтому аргументы передаются от svg.panzoom.js в свойство <tt>.detail</tt><br>
 <table class="tbl_1" border="1" cellpadding="5">
-<tr class="head"><td>Название события<br>Event Name</td><td>Значение аргумента<br>Argument Value</td><td><br>preventDefault support</td></tr>
-<tr valign="top"><td><tt>zoom</tt></td><td><tt>{ lvl, focus }</tt></td><td>YES</td></tr>
-<tr valign="top"><td><tt>panStart</tt></td><td><tt>{ event }</tt></td><td>NO</td></tr>
-<tr valign="top"><td><tt>panEnd</tt></td><td><tt>{ event }</tt></td><td>NO</td></tr>
-<tr valign="top"><td><tt>pinchZoomStart</tt></td><td><tt>{ event }</tt></td><td>YES</td></tr>
-<tr valign="top"><td><tt>pinchZoomEnd</tt></td><td><tt>{ event }</tt></td><td>NO</td></tr></table><br>
-
-Where lvl is the new zoom level, focus is point of zoom and event is the event that triggered the action.
-
-An example of stopping a pan-zoom action:
-
+<tr class="head"><td>Название события</td><td>Значение аргумента</td><td>Поддерживается ли<br><tt style="text-transform:none; font-size:120%;">preventDefault</tt></td></tr>
+<tr valign="top"><td><tt>zoom</tt></td><td><tt>{ lvl, focus }</tt></td><td>да</td></tr>
+<tr valign="top"><td><tt>panStart</tt></td><td><tt>{ event }</tt></td><td>нет</td></tr>
+<tr valign="top"><td><tt>panEnd</tt></td><td><tt>{ event }</tt></td><td>нет</td></tr>
+<tr valign="top"><td><tt>pinchZoomStart</tt></td><td><tt>{ event }</tt></td><td>да</td></tr>
+<tr valign="top"><td><tt>pinchZoomEnd</tt></td><td><tt>{ event }</tt></td><td>нет</td></tr></table>
+, где <tt><a href="boxes.htm#1" onmouseover="show('SVG.Box')" onmouseout="hide()">lvl</a></tt> - это новый уровень масштабирования, <tt><a href="classes.htm#8" onmouseover="show('SVG.Point')" onmouseout="hide()">focus</a></tt> - точка масштабирования, а <tt>event</tt> - событие, которое вызвало данное действие.<br>
+Пример остановки действия панорамирования/масштабирования:
 <pre>var canvas = SVG().addTo('#id')
   .size(1000,1000).panZoom()
 
 canvas.on('pinchZoomStart', function(ev) {
     ev.preventDefault()
     // ...
-})</pre>
-</div></div><br>
+})</pre></div></div><br><br>
 
 &nbsp; &#9679; &nbsp; <tt><a href="https://svgjs.com/docs/3.0/plugins/svg-path-js/" target="_blank" id="12">svg.path.js</a></tt>
 <div class=indent1><a href="https://github.com/otm/svg.path.js" target="_blank">svg.path.js</a> для прорисовки путей вручную (от Nils Lagerkvist).</div>
@@ -1736,252 +1708,222 @@ svg.path.js лицензируется в соответствии с услов
 &#60;script src="svg.path.js"&#62;&#60;/script&#62;</pre>
 
 <h3>Примеры</h3>
-Имеются реальные примеры на <a href="http://otm.github.io/svg.path.js/" target="_blank" onclick='no_js(event)'>http://otm.github.io/svg.path.js/</a>.
+Имеются реальные примеры на <a href="http://otm.github.io/svg.path.js/" target="_blank" onclick='no_js(event)'>http://otm.github.io/svg.path.js/</a>.<br>
 
 <h3>Введение</h3>
-Пути состоят из комбинаций следующих элементов:<br>
-&nbsp; &#9679; &nbsp; Moveto<br>
-&nbsp; &#9679; &nbsp; Lineto<br>
-&nbsp; &#9679; &nbsp; Curveto<br>
-&nbsp; &#9679; &nbsp; Arcto<br>
-&nbsp; &#9679; &nbsp; ClosePath<br>
-
-The different commands are case-sensitive; an upper-case command specifies its arguments as absolute positions, while a lower-case command specified points relative to the current position. It is always possible to specify a negative value as an argument to a command: negative angles will be anti-clockwise, absolute x and y positions will be taken as negative coordinates, negative relative x values will move to the left, and negative relative y values will move upwards.
+Пути состоят из комбинаций следующих элементов или команд:<br>
+&nbsp; &#9679; &nbsp; <b>Moveto</b> - переместить к...
+<div class=indent>Команда используется в начале элемента &#60;path&#62; для указания точки, откуда начнется рисование. В качестве параметров она принимает координаты точки, к которой нужно перейти.
+Если курсор уже был где-либо на странице, между старым и новым местом линия не появится. Обозначается команда буквой&nbsp;<tt>M</tt> или&nbsp;<tt>m</tt>.</div>
+&nbsp; &#9679; &nbsp; <b>Lineto</b> - линия к...
+<div class=indent>Этой командой рисуется линия от текущей точки к точке с координатами&nbsp;<tt>x</tt> и&nbsp;<tt>y</tt>, переданными в качестве параметров. Обозначается команда буквой&nbsp;<tt>L</tt> или&nbsp;<tt>l</tt>.
+У команды Lineto имеются две дополнительные версии для рисования линии по горизонтали (<tt>H</tt> или&nbsp;<tt>h</tt>) и по вертикали (<tt>V</tt> или&nbsp;<tt>v</tt>).</div>
+&nbsp; &#9679; &nbsp; <b>Curveto</b> - кривая к...
+<div class=indent>Рисует кубическую (обозначается буквой&nbsp;<tt>C</tt> или&nbsp;<tt>c</tt>) или квадратичную (обозначается как&nbsp;<tt>Q</tt> или&nbsp;<tt>q</tt>) <a href="https://learn.javascript.ru/bezier" target="_blank" onclick='no_js(event)'>кривую Безье</a>.
+Для соединения гладких кривых Безье доступны команды&nbsp;<tt>T</tt> и&nbsp;<tt>S</tt>.</div>
+&nbsp; &#9679; &nbsp; <b>Arcto</b> - дуга к...
+<div class=indent>Создает эллиптическую кривую. Обозначается буквой&nbsp;<tt>A</tt> или&nbsp;<tt>a</tt>.</div>
+&nbsp; &#9679; &nbsp; <b>ClosePath</b> - закрыть путь (замкнуть контур)
+<div class=indent>Команда ClosePath рисует прямую линию от текущей позиции до начальной (первой) точки пути.</div>
+Все команды, кроме ClosePath, чувствительны к регистру и существуют в двух вариантах; вызов команды с заглавной буквы (т.е. в верхнем регистре) обозначает абсолютные координаты на странице, а команда со строчной буквой (в нижнем регистре) - относительно текущей позиции.
+Для команды ClosePath неважно в каком регистре набрана буква Z (или z), выполнение будет одинаковым.<br>
+В качестве аргумента команды всегда можно указывать отрицательные значения: отрицательные углы означают поворот против часовой стрелки,
+отрицательные значения&nbsp;<tt>x</tt> и&nbsp;<tt>y</tt> в случае абсолютных координат будут приняты как отрицательные координаты,
+отрицательные относительные значения&nbsp;<tt>x</tt> будут означать перемещение влево, а отрицательные относительные значения&nbsp;<tt>y</tt> - перемещение вверх.<br>
 
 <h3>Дополнительные сведения</h3>
 Для получения дополнительной информации относительно прорисовки путей рекомендуется посмотреть следующие ресурсы:<br>
 &nbsp; &#9679; &nbsp; <a href="http://commons.oreilly.com/wiki/index.php/SVG_Essentials/Paths" target="_blank" onclick='no_js(event)'>http://commons.oreilly.com/wiki/index.php/SVG_Essentials/Paths</a><br>
 &nbsp; &#9679; &nbsp; <a href="https://developer.mozilla.org/en-US/docs/SVG/Attribute/d" target="_blank" onclick='no_js(event)'>https://developer.mozilla.org/en-US/docs/SVG/Attribute/d</a><br>
+&nbsp; &#9679; &nbsp; <a href="https://developer.mozilla.org/ru/docs/Web/SVG/Tutorial/Paths" target="_blank" onclick='no_js(event)'>https://developer.mozilla.org/ru/docs/Web/SVG/Tutorial/Paths</a><br>
+&nbsp; &#9679; &nbsp; <a href="https://developer.mozilla.org/ru/docs/Web/SVG/Attribute/d" target="_blank" onclick='no_js(event)'>https://developer.mozilla.org/ru/docs/Web/SVG/Attribute/d</a><br><br>
 
 <h4>Moveto</h4>
-
-Moveto elements can be thought of as picking up the drawing instrument and setting it down somewhere else. There is no line drawn between the previous point and the specified point. It is good practice to open all paths with a Moveto command, because without an initial Moveto, commands will be executed with the starting point at wherever it happened to be previously, possibly resulting in undefined behaviour.
-M({x, y})
-
-Two parameters are required x and y and they are absolute coordinates:
-
-var rect = draw.path().M({x: 100, y: 100})
-
-m({dx, dy})
-
-Two parameters are required dx and dy and they are relative coordinates:
-
-var rect = draw.path().m({x: 100, y: 100})
+Команду Moveto можно представить как если бы взять карандаш и переместить его к какой-либо точке будущего рисунка. Между предыдущей точкой и точкой, переданной в качестве параметров, никакой линии не будет нарисовано.
+Будет правильным начинать любой путь с команды Moveto, так как без неё следующая команда будет выполняться начиная с точки, в которой наш карандаш находился ранее, и может привести к неопределенным последствиям.<br>
+Команда обозначается буквой&nbsp;<tt>M</tt> или&nbsp;<tt>m</tt>; вызов команды с заглавной буквы обозначает абсолютные координаты, а команда со строчной буквой - координаты относительно текущей позиции.
+<h5><code>M({x, y})</code></h5>
+Требуются два параметра&nbsp;<tt>x</tt> и&nbsp;<tt>y</tt>, которые являются абсолютными координатами:
+<pre>var rect = draw.path().M({x: 100, y: 100})</pre>
+<h5><code>m({dx, dy})</code></h5>
+Требуются два параметра&nbsp;<tt>dx</tt> и&nbsp;<tt>dy</tt>, которые являются относительными координатами:
+<pre>var rect = draw.path().m({x: 100, y: 100})</pre><br>
 
 <h4>Lineto</h4>
-
-Lineto elements will draws a straight line. This line moves from the current position to the specified location.
-L({x, y})
-
-Two parameters are required x and y and they are absolute coordinates:
-
-var rect = draw.path().M({x: 100, y: 100}).L({x: 150, y: 150})
-
-l({dx, dy})
-
-Two parameters are required dx and dy and they are relative coordinates:
-
-var rect = draw.path().m({x: 100, y: 100}).l({x: 150, y: 150})
-
-H(x)
-
-This is a special version of the Lineto which specifies a Horizontal movement. One parameter x is required and is absolute.
-
-var rect = draw.path().m({x: 100, y: 100}).H(150)
-
-h(dx)
-
-This is a special version of the Lineto which specifies a Horizontal movement. One parameter dx is required and is relative movement to the right.
-
-var rect = draw.path().m({x: 100, y: 100}).h(150)
-
-V(y)
-
-This is a special version of the Lineto which specifies a Vertival movement. One parameter y is required and is absolute.
-
-var rect = draw.path().m({x: 100, y: 100}).V(150)
-
-v(dy)
-
-This is a special version of the Lineto which specifies a Vertival movement. One parameter dy is required and is the relative movement up.
-
-var rect = draw.path().m({x: 100, y: 100}).v(150)
+Команда Lineto рисует прямую линию. Эта линия проходит от текущей позиции до позиции, определяемой переданными параметрами.<br>
+<h5><code>L({x, y})</code></h5>
+Требуются два параметра&nbsp;<tt>x</tt> и&nbsp;<tt>y</tt>, которые являются абсолютными координатами:
+<pre>var rect = draw.path().M({x: 100, y: 100}).L({x: 150, y: 150})</pre>
+<h5><code>l({dx, dy})</code></h5>
+Требуются два параметра&nbsp;<tt>dx</tt> и&nbsp;<tt>dy</tt>, которые являются относительными координатами:
+<pre>var rect = draw.path().m({x: 100, y: 100}).l({x: 150, y: 150})</pre>
+<h5><code>H(x)</code></h5>
+Это специальная версия Lineto, которая определяет перемещение по горизонтали. Требуется один параметр&nbsp;<tt>x</tt> - абсолютная координата.
+<pre>var rect = draw.path().m({x: 100, y: 100}).H(150)</pre>
+<h5><code>h(dx)</code></h5>
+Это специальная версия Lineto, которая определяет перемещение по горизонтали. Требуется один параметр&nbsp;<tt>dx</tt>, который определяет перемещение вправо относительно текущей позиции.
+<pre>var rect = draw.path().m({x: 100, y: 100}).h(150)</pre>
+<h5><code>V(y)</code></h5>
+Это специальная версия Lineto, которая определяет перемещение по вертикали. Требуется один параметр&nbsp;<tt>y</tt> - абсолютная координата.
+<pre>var rect = draw.path().m({x: 100, y: 100}).V(150)</pre>
+<h5><code>v(dy)</code></h5>
+Это специальная версия Lineto, которая определяет перемещение по вертикали. Требуется один параметр&nbsp;<tt>dy</tt>, который определяет перемещение вверх относительно текущей позиции.
+<pre>var rect = draw.path().m({x: 100, y: 100}).v(150)</pre><br>
 
 <h4>Curveto</h4>
+Команда Curveto определяет <a href="https://learn.javascript.ru/bezier" target="_blank" onclick='no_js(event)'>кривую Безье</a>. Имеется два вида кривых Безье: кубические и квадратичные.
+Квадратичные кривые Безье это частный случай кубических кривых Безье, в которых контрольная точка для каждого из концов кривой одна и та же.
+<h5><code>C({c1x, c1y}, {c2x, c2y}, {x, y})</code></h5>
+Кубические кривые Безье принимают в качестве аргументов три объекта. Первые два объекта - это контрольные точки для начальной и конечных точек кривой соответственно, в абсолютных координатах.
+Последний объект - это конечная точка отрезка кривой.
+<pre>var rect = draw.path().m({x: 100, y: 100}).C({x: 100, y: 200}, {x: 200, y: 200}, {x: 200, y: 100})</pre>
 
-Curveto commands specify a Bezier curve. There are two types of Bezier curves: Cubic and Quadratic. Quadratic Bezier curves are a special case of the Cubic bezier curves, in that the control point for each end is the same.
-C({c1x, c1y}, {c2x, c2y}, {x, y})
+<h5><code>c({dc1x, dc1y}, {dc2x, dc2y}, {dx, dy})</code></h5>
+Кубические кривые Безье с относительными координатами также принимают на входе три объекта. Первые два объекта - это контрольные точки для начальной и конечных точек кривой соответственно, в относительных координатах.
+Последний объект - это конечная точка отрезка кривой. Обе контрольные точки относительны начальной точке, а не конечной. Значения&nbsp;<tt>dx</tt> и&nbsp;<tt>dy</tt> это расстояния от начальной точки вправо и вниз, соответственно.
+<pre>var rect = draw.path().M({x: 100, y: 100}).c({x: 0, y: 100}, {x: 100, y: 100}, {x: 100, y: 0})</pre>
 
-Cubic Bezier curves takes three objects. The two first objects are control points for the initial point and end point respectively in absolute coordinates. The last object is is the end point of the curveto segment.
-
-var rect = draw.path().m({x: 100, y: 100}).C({x: 100, y: 200}, {x: 200, y: 2oo}, {x: 200, y: 100})
-
-c({dc1x, dc1y}, {dc2x, dc2y}, {dx, dy})
-
-Cubic Bezier curves in relative form takes three objects as inputs. The two first objects are control points for the initial point and end point respectively in relative coordinates. The last object is is the end point of the curveto segment. The two control points are both relative to the initial point, not the end point. dx and dy are the distance to the right and down respectively.
-
-var rect = draw.path().M({x: 100, y: 100}).c({x: 0, y: 100}, {x: 100, y: 100}, {x: 100, y: 0})
-
-Q({cx, cy}, {x, y})
+<h5><code>Q({cx, cy}, {x, y})</code></h5>
 
 Quadratic Bezier curves are a special case of the Cubic bezier curves, in that the control point for each end is the same. cx and cy are the absolute coordinates of the control point, and x and y are absolute coordinates of the end point.
 
-var rect = draw.path().M({x: 100, y: 100}).Q({x: 100, y: 200}, {x: 200, y: 100})
+<pre>var rect = draw.path().M({x: 100, y: 100}).Q({x: 100, y: 200}, {x: 200, y: 100})</pre>
 
-q({dcx, dcy}, {dx, dy})
+<h5><code>q({dcx, dcy}, {dx, dy})</code></h5>
 
 Quadratic Bezier curve in the relative form. dcx and dcy are the direction in the x and y directions of the control point. dx and dy are the distances in the x and y directions, respectively, of the end point.
 
-var rect = draw.path().M({x: 100, y: 100}).q({x: 50, y: 100}, {x: 100, y: 0})
+<pre>var rect = draw.path().M({x: 100, y: 100}).q({x: 50, y: 100}, {x: 100, y: 0})</pre>
 
-S({x, y}, {x, y})
-
+<h5><code>S({x, y}, {x, y})</code></h5>
+Для соединения гладких кривых Безье доступны команды&nbsp;<tt>T</tt> и&nbsp;<tt>S</tt>.
 For chains of smooth Bezier curves, the T and S commands are available. Their syntax is simpler than the other Curveto commands because it is assumed that the first control point is the reflection about the previous point from the previous control point, or that it actually IS the previous point if there was no previous control point. The S function will draw a Cubic Bezier segment where the two arguments are the second and third parameter in the C function respectively.
 
-var rect = draw.path()
-	.M({x: 100, y: 100})
-	.C({x: 100, y: 200}, {x: 200, y: 2oo}, {x: 200, y: 100})
-	.S({x: 300, y:200}, {x: 300, y: 100}) // The "reflected control point will be `{x:200, y:100}`
+<pre>var rect = draw.path()
+  .M({x: 100, y: 100})
+  .C({x: 100, y: 200}, {x: 200, y: 2oo}, {x: 200, y: 100})
+  .S({x: 300, y:200}, {x: 300, y: 100}) // The "reflected control point will be `{x:200, y:100}`</pre>
 
-T({x, y})
+<h5><code>T({x, y})</code></h5>
 
-As the S function is a convenience function for drawing Cubic Bezier is the T function a convenience function for drawing Quadratic Bezier curves. The point argument is the endpoint of the curve. The control point will be the reflectins of the previous control point, or the previous point if no control point excists.
+As the S function is a convenience function for drawing Cubic Bezier is the T function a convenience function for drawing Quadratic Bezier curves. The point argument is the endpoint of the curve. The control point will be the reflectins of the previous control point, or the previous point if no control point excists.<br>
 
 <h4>Arcto</h4>
+Команда Arcto создает эллиптическую кривую, а не кривую Безье. Центр дуги рассчитывается по другим переменным. Объявление Arcto относительно сложно: <tt>(rp, xAxisRotate, largeArcFlag, sweepFlag, p)</tt>.
+Где <tt>rp</tt> - это радиус в направлении осей&nbsp;<tt>x</tt> и&nbsp;<tt>y</tt>, соответственно;
+<span class="lnk" onmouseover="show('x axis rotate - поворот по оси x')" onmouseout="hide()"><tt>xAxisRotate</tt></span> определяет ориентацию (поворот) дуги относительно оси&nbsp;<tt>x</tt>, измеряется в градусах, причем положительные значения означают поворот дуги по часовой стрелки, отрицательные - против часовой стрелки;
+значение <span class="lnk" onmouseover="show('large arc flag - флаг (т.е. это значение логическое) большой дуги')" onmouseout="hide()"><tt>largeArcFlag</tt></span> равно&nbsp;<tt>0</tt> или&nbsp;<tt>1</tt> и определяет какая дуга будет нарисована - наименьшая (<tt>0</tt>) или наибольшая (<tt>1</tt>);
+значение <tt>sweepFlag</tt> также может быть либо&nbsp;<tt>0</tt> либо&nbsp;<tt>1</tt> и определяет, должна ли дуга проходить по часовой стрелке (<tt>1</tt>) или против часовой стрелки (<tt>0</tt>).
+Значением <tt>p</tt> являются координаты конечной точки пути.
+The Arcto will create an elliptical curve rather than a Bezier curve. The center of the arc is calculated from the other variables. The declaration of an arcto is relatively complicated: (rp, xAxisRotate, largeArcFlag, sweepFlag, p). Where rp is the radius in x and y directions respectively; the largeArcFlag has a value of 0 or 1, and determines whether the smallest (0) or largest (1) arc possible is drawn; the sweepFlag is either 0 or 1, and determines if the arc should be swept in a clockwise (1) or anti-clockwise (0) direction. p are the end point of the path.<br>
+Больше сведений смотрите на <a href="http://commons.oreilly.com/wiki/index.php/SVG_Essentials/Paths#Elliptical_Arc" target="_blank" onclick='no_js(event)'>SVG Essentials</a>.
+<h5><code>A(rx, ry, xAxisRotate, largeArcFlag, sweepFlag, p)</code></h5>
 
-The Arcto will create an elliptical curve rather than a Bezier curve. The center of the arc is calculated from the other variables. The declaration of an arcto is relatively complicated: (rp, xAxisRotate, largeArcFlag, sweepFlag, p). Where rp is the radius in x and y directions respectively; the largeArcFlag has a value of 0 or 1, and determines whether the smallest (0) or largest (1) arc possible is drawn; the sweepFlag is either 0 or 1, and determines if the arc should be swept in a clockwise (1) or anti-clockwise (0) direction. p are the end point of the path. For more informatin see SVG Essentials
-A(rx, ry, xAxisRotate, largeArcFlag, sweepFlag, p)
+<pre>var rect = draw.path()
+  .M({x: 125, y: 75})
+  .A(100, 50, 0, 0, 0, {x: 225, y: 125})</pre>
 
-var rect = draw.path()
-	.M({x: 125, y: 75})
-	.A(100, 50, 0, 0, 0, {x: 225, y: 125})
-
-a(rx, ry, xAxisRotate, largeArcFlag, sweepFlag, p)
-
-Please note that the only relative coordinate is p
-
-var rect = draw.path()
-	.M({x: 125, y: 75})
-	.a(100, 50, 0, 0, 0, {x: 100, y: 50})
+<h5><code>a(rx, ry, xAxisRotate, largeArcFlag, sweepFlag, p)</code></h5>
+Обратите внимание, что единственной относительной координатой является&nbsp;<tt>р</tt>.
+<pre>var rect = draw.path()
+  .M({x: 125, y: 75})
+  .a(100, 50, 0, 0, 0, {x: 100, y: 50})</pre><br>
 
 <h4>Closepath</h4>
+Команда ClosePath рисует прямую линию от текущей позиции до первой, начальной точки пути. Это самая простая команда, которая не принимает никаких параметров.
+При этом она находит кратчайший путь по прямой до начальной точки, пересекая другие пути, если они попадаются у неё на пути.
+<h5><code>Z()</code></h5>
+<pre>var rect = draw.path()
+  .M({x: 100, y: 100})
+  .L({x: 150, y: 150})
+  .L({x: 100, y: 150})
+  .Z()</pre><br>
 
-The ClosePath command will simply draw a straight line from the current position to the first point in the path. It is the simplest command, and takes no parameters. It will take the shortest linear path to the starting point, intersecting other paths if they fall in the way.
-Z()
+<h3>Вспомогательные функции</h3>
+<h5><code>clear()</code></h5>
+Очищает путь от всех отрезков.<br><br>
 
-var rect = draw.path()
-	.M({x: 100, y: 100})
-	.L({x: 150, y: 150})
-	.L({x: 100, y: 150})
-	.Z()
-
-Utility functions
-clear()
-
-Clear the path from all segments.
-getSegmentCount()
-
-Get the segment count from the path
-
-var rect = draw.path()
+<h5><code>getSegmentCount()</code></h5>
+Получает количество отрезков пути.
+<pre>var rect = draw.path()
 .M(10, 10)
 .L(150, 10)
 .L({x:150, y:150})
-.Z()
+.Z()<br>
+console.log('Segment count: ' + rect.getSegmentCount(1))</pre><br>
 
-console.log('Segment count: ' + rect.getSegmentCount(1))
-
-getSegment(index)
-
-Get the segment with index index from the path
-
-var rect = draw.path()
+<h5><code>getSegment(index)</code></h5>
+Получает отрезок пути с индексом, указанным в параметре <tt>index</tt>.
+<pre>var rect = draw.path()
 .M(10, 10)
 .L(150, 10)
 .L({x:150, y:150})
-.Z()
+.Z()<br>
+var lineSegment = rect.getSegment(1)</pre><br>
 
-var lineSegment = rect.getSegment(1)
-
-removeSegment(index)
-
-Remove the segement with index index in the path.
-
-var rect = draw.path()
+<h5><code>removeSegment(index)</code></h5>
+Удаляет отрезок пути с индексом, указанным в параметре <tt>index</tt>.
+<pre>var rect = draw.path()
 .M(10, 10)
 .L(150, 10)
 .L({x:150, y:150})
-.Z()
+.Z()<br>
+rect.removeSegment(3)</pre><br>
 
-rect.removeSegment(3)
-
-replaceSegment(index, segment)
-
-Replace a segment in the path with a new segment.
-
-var rect = draw.path()
+<h5><code>replaceSegment(index, segment)</code></h5>
+Заменяет отрезок пути новым отрезком.
+<pre>var rect = draw.path()
 .M(10, 10)
 .L(150, 10)
 .L({x:150, y:150})
-.Z()
-
+.Z()<br>
 var lineSegment = rect.getSegment(1)
 rect.replaceSegment(1, rect.getSegment(2))
-rect.replaceSegment(2, lineSegment)
+rect.replaceSegment(2, lineSegment)</pre><br>
 
-drawAnimated(options)
-
-Animates the drawing of the path. It takes an optional options object which can have three arguments, duration, delay and easing. duration and delay is in milliseconds, easing can be one of the following:
-
-    &#60;&#62;: ease in and out
-
-        : ease out
-
-    &#60;: ease in
-    -: linear
-    =: external control
-    a function
-
-You can find more documentation regarfing the easing functionality in the main svg.js documentation.
-
-var rect = draw.path()
+<h5><code>drawAnimated(options)</code></h5>
+Анимирует прорисовку пути. Эта функция принимает дополнительный, необязательный объект <tt>options</tt>, который может иметь три аргумента:
+продолжительность анимации (<tt>duration</tt>), задержка перед анимацией (<tt>delay</tt>) и плавность течения анимации (<tt>easing</tt>).
+Продолжительность и задержка измеряются в миллисекундах, плавность устанавливается как один из следующих вариантов:
+<div class=list><tt>&#60;&#62;</tt> - плавное начало и окончание, т.е. анимация начинается медленно, затем ускоряется и к концу движения опять замедляется</div>
+<div class=list><tt>&nbsp;&#62;</tt> - плавное окончание (начинается быстро, к концу замедляется)</div>
+<div class=list><tt>&nbsp;&#60;</tt> - плавное начало (медленно начинается, к концу ускоряется)</div>
+<div class=list><tt>&nbsp;-</tt> - линейная, т.е. скорость анимации одинакова от начала и до конца</div>
+<div class=list><tt>&nbsp;=</tt> - внешнее управление</div>
+<div class=list><tt>&nbsp;&nbsp;</tt> - функция.</div>
+Более подробную справку относительно функций плавности можно получить в <a href="animating.htm#1">основной документации по svg.js</a>.
+<pre>var rect = draw.path()
 .M(10, 10)
 .L(150, 10)
 .L({x:150, y:150})
 .Z()
 .drawAnimated({
 	delay: 3000
-})
+})</pre><br>
 
-update(autoredraw)
+<h5><code>update(autoredraw)</code></h5>
+Получает и устанавливает, если путь должен автоматически перерисовываться при обновлении.
+<pre>var rect = draw.path()
+  .update(false)
+  .M({x: 100, y: 100})
+  .L({x: 150, y: 150})
+  .L({x: 100, y: 150})
+  .Z()<br>
+  // nothing happens until we call redraw manually
+  // ничего не происходит пока не вызвать redraw вручную
+  rect.redraw()</pre><br>
 
-Get and set if the path should auto redraw when updated.
-
-var rect = draw.path()
-	.update(false)
-	.M({x: 100, y: 100})
-	.L({x: 150, y: 150})
-	.L({x: 100, y: 150})
-	.Z()
-
-	// nothing happens until we call redraw manually
-	rect.redraw()
-
-redraw()
-
-Redraw the path manually
-
-var rect = draw.path()
-	.update(false)
-	.M({x: 100, y: 100})
-	.L({x: 150, y: 150})
-	.L({x: 100, y: 150})
-	.Z()
-
-	// nothing happens until we call redraw manually
-	rect.redraw()
-
-Copyright: Creative Commons: Attribution-Sharealike license Attributions: MDN</div></div><br>
+<h5><code>redraw()</code></h5>
+Перерисовывает путь вручную
+<pre>var rect = draw.path()
+  .update(false)
+  .M({x: 100, y: 100})
+  .L({x: 150, y: 150})
+  .L({x: 100, y: 150})
+  .Z()<br>
+  // nothing happens until we call redraw manually
+  // ничего не происходит пока не вызвать redraw вручную
+  rect.redraw()</pre></div></div><br>
 
 &nbsp; &#9679; &nbsp; <tt><a href="https://svgjs.com/docs/3.0/plugins/svg-pathmorphing-js/" target="_blank" id="13">svg.pathmorphing.js</a></tt>
 <div class=indent1><a href="https://github.com/svgdotjs/svg.pathmorphing.js" target="_blank">svg.pathmorphing.js</a> to make path animatable</div>
@@ -2292,52 +2234,55 @@ svg.topoly.js лицензируется в соответствии с усло
 <h3>Использование</h3>
 Подключите данный плагин в своем html-документе, после подключения библиотеки SVG.js или затребуйте / импортируйте его.<br>
 Для конвертирования пути в многоугольник:
-<pre>const data = 'M82.3,160.4c6.5,5.2,13.6,9.5,21.2,12.8c7.6,3.3,14.7,4.9,21.5,4.9c7.3,0,12.6-1.1,15.9-3.4c3.3-2.2,4.9-5.4,4.9-9.5 c0-2.2-0.6-4.1-1.7-5.6c-1.1-1.5-2.8-2.9-4.9-4.2c-2.2-1.3-4.7-2.6-7.7-3.8c-3-1.2-6.5-2.6-10.4-4.1l-22.7-9.5 c-4.9-1.9-9.5-4.3-14-7.4c-4.5-3.1-8.4-6.7-11.8-10.9c-3.4-4.2-6-9-8-14.5c-2-5.4-2.9-11.4-2.9-18c0-7.9,1.7-15.2,5.1-22 c3.4-6.8,8-12.8,14-18c6-5.1,13.1-9.2,21.5-12.2c8.3-3,17.4-4.5,27.4-4.5c10.5,0,21.1,2,31.9,5.9c10.8,3.9,20.3,10.1,28.8,18.5 L166,85.1c-6.2-4.3-12.1-7.6-17.8-9.8c-5.7-2.2-11.9-3.4-18.7-3.4c-6,0-10.7,1-14,3.1c-3.4,2.1-5.1,5.1-5.1,9.3 c0,4.3,2.4,7.6,7.2,10c4.8,2.3,11.4,5.1,19.8,8.3l22.2,8.7c11.4,4.5,20.2,10.8,26.4,18.8c6.2,8,9.3,18.4,9.3,31.2 c0,7.7-1.6,15.1-4.8,22.2c-3.2,7.1-7.8,13.3-13.9,18.7c-6.1,5.3-13.5,9.6-22.3,12.8c-8.8,3.2-18.9,4.8-30.3,4.8 c-11.6,0-23.5-2.1-35.8-6.3c-12.3-4.2-23.3-10.8-33.3-19.8L82.3,160.4z'
-
-const canvas = SVG().addTo('body')
-
-var path = canvas.path(data)
-
+<pre>const data = 'M82.3,160.4c6.5,5.2,13.6,9.5,21.2,12.8c7.6,3.3,14.7,4.9,21.5,4.9c7.3,0,12.6-1.1,15.9-3.4
+              c3.3-2.2,4.9-5.4,4.9-9.5 c0-2.2-0.6-4.1-1.7-5.6c-1.1-1.5-2.8-2.9-4.9-4.2c-2.2-1.3-4.7-2.6-7.7-3.8
+              c-3-1.2-6.5-2.6-10.4-4.1l-22.7-9.5 c-4.9-1.9-9.5-4.3-14-7.4c-4.5-3.1-8.4-6.7-11.8-10.9
+              c-3.4-4.2-6-9-8-14.5c-2-5.4-2.9-11.4-2.9-18c0-7.9,1.7-15.2,5.1-22 c3.4-6.8,8-12.8,14-18
+              c6-5.1,13.1-9.2,21.5-12.2c8.3-3,17.4-4.5,27.4-4.5c10.5,0,21.1,2,31.9,5.9c10.8,3.9,20.3,10.1,28.8,18.5
+              L166,85.1c-6.2-4.3-12.1-7.6-17.8-9.8c-5.7-2.2-11.9-3.4-18.7-3.4c-6,0-10.7,1-14,3.1
+              c-3.4,2.1-5.1,5.1-5.1,9.3 c0,4.3,2.4,7.6,7.2,10c4.8,2.3,11.4,5.1,19.8,8.3l22.2,8.7
+              c11.4,4.5,20.2,10.8,26.4,18.8c6.2,8,9.3,18.4,9.3,31.2 c0,7.7-1.6,15.1-4.8,22.2
+              c-3.2,7.1-7.8,13.3-13.9,18.7c-6.1,5.3-13.5,9.6-22.3,12.8c-8.8,3.2-18.9,4.8-30.3,4.8
+              c-11.6,0-23.5-2.1-35.8-6.3c-12.3-4.2-23.3-10.8-33.3-19.8L82.3,160.4z'<br>
+const canvas = SVG().addTo('body')<br>
+var path = canvas.path(data)<br>
 var polygon = path.toPoly()</pre>
 По умолчанию, вновь созданный путь <b>заменит</b> исходную фигуру. Если замена фигура не нужна, используйте <tt>toPoly(false)</tt>.<br>
 The newly created path will replace the original shape by default. If you don't want your shape to be replaced, use toPath(false).<br>
-
+Этот новый путь возвращается и может быть позднее добавлен в документ:
 The new path is given back and can be added to the document later:
-
 <pre>rect = rect.toPath(false).insertAfter(rect)</pre>
 
-<h4>Samples</h4>
-
+<h4>Выборки Samples</h4>
+По умолчанию значением выборки является <tt>1%</tt>. Это значит, что каждый 1% полной длины пути будет отмечен точкой. Обратите внимание, что эти точки фиксации в командах пути всегда добавляются как дополнительные точки.
+То есть, <tt>1%</tt> никогда не приводит к 100 точкам. Скорее, это больше похоже на <tt>100 + число команд пути</tt>.
 The default sample value is '1%'. This means that every 1% of the total length of the path, a point will be registered. Please note, that the fixpoints of the path commands are always added as extra points. This means, that '1%' will not always result in 100 points. Instead it will be more like 100 + number of path commands.<br>
-
+Существует три способа приблизиться к значению выборки.
 There are three ways to approach the sample value.<br>
 
 <code>% value</code><br>
-
+Если значение указано в процентах, то будет вставляться точка через каждые <tt>x%</tt> от полной длины пути.
 This will insert a point every x% of the total length.
-
 <h5>Пример:</h5>
 <pre>path.toPoly('0.5%')</pre><br>
 
 <code>px value</code><br>
-
+Если значение указано в пикселах, будут добавляться точки через фиксированное расстояние, пока не завершится вся продолжительность пути.
 This will add points on a fixed distance until the total length is reached.
 <h5>Пример:</h5>
 <pre>path.toPoly('3px')</pre>
 
 <code>number value</code><br>
-
+Если значение указано как число, то будет размещено данное количество выборок на равном расстоянии по всей длине пути.
 This will equally spread a given amount of samples over the total length.
-
 <h5>Пример:</h5>
 <pre>path.toPoly(400)</pre>
 
 <h4>Типы</h4>
-
-If a path is closed (ending with a z) a SVG.Polygon will be generated, otherwise a SVG.Polyline.
+Если путь замкнут (заканчивается на <span class="lnk" onmouseover="show('буквой <tt>z</tt> обозначается команда <tt>ClosePath</tt>,<br>которая замыкает путь, соединяя начальную<br>и конечную точки')" onmouseout="hide()"><tt>z</tt></span>), то будет создан SVG.Polygon, в противном случае создается SVG.Polyline.
 
 <h4>SVG.PathArray</h4>
-Метод <tt>toPoly()</tt> на SVG.Path является посредником того же самого метода на SVG.PathArray. Это делает возможным конвертирование данных пути в данные точки, даже без прорисовки фигуры:
+Метод <tt>toPoly()</tt> на SVG.Path является посредником того же метода на SVG.PathArray. Это делает возможным конвертирование данных пути в данные точки, даже без прорисовки фигуры:
 The toPoly() method on a SVG.Path is a proxy to the same method on SVG.PathArray. This makes it possible to convert path data to point data, even without ever drawing a shape:
 
 <pre>var pathArray = new SVG.PathArray(data)<br>
