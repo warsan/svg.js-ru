@@ -11,7 +11,7 @@
 Вот список всех доступных плагинов для SVG.js с краткими пояснениями. Если вы написали что-то ещё, пожалуйста, дайте нам знать!
 <div class=blockindent><br>
 &nbsp; &#9679; &nbsp; <tt><a href="https://svgjs.com/docs/3.0/plugins/svg-colorat-js/" target="_blank" id="1">svg.colorat.js</a></tt><br>
-<div class=indent1>Плагин <a href="https://github.com/svgdotjs/svg.colorat.js" target="_blank">svg.colorat.js</a> - это расширение для библиотеки SVG.js, которое позволяет выбрать цвет градиента в определенной заданной позиции.</div>
+<div class=indent1>Плагин <a href="https://github.com/svgdotjs/svg.colorat.js" target="_blank" onmouseover="show('color at - цвет в... (определенной точке)')" onmouseout="hide()">svg.colorat.js</a> - это расширение для библиотеки SVG.js, которое позволяет выбрать цвет градиента в определенной заданной позиции.</div>
 <div class=indent1><a class='link' onclick='javascript:show_txt(this)'> &nbsp; &nbsp; &nbsp; Справка по плагину</a>
 <div style='display:none;' onclick='javascript:show_txt(this)'>Расширение для библиотеки SVG.js, которое позволяет выбрать цвет градиента в определенной заданной позиции.<br>
 Демонстрацию можно увидеть на <a href="https://jsfiddle.net/wout/sn7um5fr/" target="_blank" onclick='no_js(event)'>этой странице</a>.
@@ -43,7 +43,7 @@ draw.circle(10).center(85, 120).fill(gradient.colorAt(0.75))
 draw.circle(10).center(110, 120).fill(gradient.colorAt(1))</pre></div></div><br>
 
 &nbsp; &#9679; &nbsp; <tt><a href="https://svgjs.com/docs/3.0/plugins/svg-connectable-js/" target="_blank" id="2">svg.connectable.js</a></tt><br>
-<div class=indent1>Плагин <a href="https://github.com/jillix/svg.connectable.js" target="_blank">svg.connectable.js</a> для соединения элементов. (автор плагина jillix)</div>
+<div class=indent1>Плагин <a href="https://github.com/jillix/svg.connectable.js" target="_blank" onmouseover="show('connectable - возможность соединения')" onmouseout="hide()">svg.connectable.js</a> для соединения элементов. (автор плагина jillix)</div>
 <div class=indent1><a class='link' onclick='javascript:show_txt(this)'> &nbsp; &nbsp; &nbsp; Справка по плагину</a>
 <div style='display:none;' onclick='javascript:show_txt(this)'>Библиотека JavaScript для соединения SVG элементов.<br>
 
@@ -90,47 +90,43 @@ draw.circle(10).center(110, 120).fill(gradient.colorAt(1))</pre></div></div><br>
 Этот демонстрационный пример на jsfiddle: <a href="https://jsfiddle.net/u8qck0h3/" target="_blank" onclick='no_js(event)'>https://jsfiddle.net/u8qck0h3/</a>.<br><br>
 
 <h4>Документация</h4>
-<code>connectable(options, elmTarget)</code><br>
-Соединяет два элемента. Если вызвать несколько раз, линии будут кривыми.
-Connects two elements. If called multiple times, the lines will be curved.
-<div class=list>
+<code><span class="lnk" onmouseover="show('Значение является объектом.<br>connectable - возможность соединения')" onmouseout="hide()">connectable</span>(<span class="lnk" onmouseover="show(type_obj+'<br>options - опции, параметры')" onmouseout="hide()">options</span>, <span class="lnk" onmouseover="show('значением должен быть SVGElement<br>elmTarget - сокращ. англ. слов target element - целевой элемент')" onmouseout="hide()">elmTarget</span>)</code><br>
+Соединяет два элемента. Если вызвать несколько раз, соединительные линии будут изогнутыми.
+<div class=blockindent>
 <h5>Параметры</h5>
-
-    Object options: An object containing the following fields:
-&nbsp; &#9679; &nbsp; container (SVGElement): The line elements container.<br>
-&nbsp; &#9679; &nbsp; markers (SVGElement): The marker elements container.<br>
-&nbsp; &#9679; &nbsp; padEllipse (Boolean): If true, the line coordinates will be placed with a padding.<br>
-&nbsp; &#9679; &nbsp; SVGElement elmTarget: The target SVG element.<br>
+<tt><span class="lnk" onmouseover="show(type_obj+'<br>options - опции, параметры')" onmouseout="hide()">options</span></tt>: объект, содержащий следующие поля:
+<div class=list><tt><span class="lnk" onmouseover="show('значением должен быть SVGElement.<br>container - контейнер, ёмкость, стандартная тара')" onmouseout="hide()">container</span></tt>: контейнер элементов-линий.</div>
+<div class=list><tt><span class="lnk" onmouseover="show('значением должен быть SVGElement.<br>markers - маркеры')" onmouseout="hide()">markers</span></tt>: контейнер элементов-маркеров.</div>
+<div class=list><tt><span class="lnk" onmouseover="show(type_bool+'<br>padEllipse - сокращ. англ. слов padding<br>ellipse - эллипс отступа')" onmouseout="hide()">padEllipse</span></tt>: если значением является <tt>true</tt>, то координаты линии будут даны с отступом.</div>
+<span class="lnk" onmouseover="show('значением должен быть SVGElement<br>elmTarget - сокращ. англ. слов target element - целевой элемент')" onmouseout="hide()"><tt>elmTarget</tt></span>: целевой SVG-элемент.<br>
 
 <h5>Возврат</h5>
+Возвращается объект <tt><span class="lnk" onmouseover="show(type_obj+'<br>connectable - возможность соединения')" onmouseout="hide()">connectable</span></tt>, в котором содержатся:
+<div class=list><span class="lnk" onmouseover="show('значением должен быть SVGElement<br>source - источник, исходник')" onmouseout="hide()"><tt>source</tt></span>: исходный элемент.</div>
+<div class=list><span class="lnk" onmouseover="show('значением должен быть SVGElement<br>target - цель')" onmouseout="hide()"><tt>target</tt></span>: целевой элемент.</div>
+<div class=list><span class="lnk" onmouseover="show('значением должен быть SVGElement<br>line - линия')" onmouseout="hide()"><tt>line</tt></span>: элемент линия.</div>
+<div class=list><span class="lnk" onmouseover="show('значением должен быть SVGElement<br>marker - маркер, метка')" onmouseout="hide()"><tt>marker</tt></span>: элемент маркер.</div>
+<div class=list><span class="lnk" onmouseover="show(type_func+'<br>compute line coordinates - вычислить координаты линии')" onmouseout="hide()"><tt>computeLineCoordinates</tt></span> (функция)</div>
+<div class=list><span class="lnk" onmouseover="show(type_func+'<br>update - обновить')" onmouseout="hide()"><tt>update</tt></span> (функция)</div>
+<div class=list><span class="lnk" onmouseover="show(type_func+'<br>set line color - установить цвет линии')" onmouseout="hide()"><tt>setLineColor</tt></span> (функция)</div></div><br><br>
 
-    Object The connectable object containing:
-&nbsp; &#9679; &nbsp; source (SVGElement): The source element.<br>
-&nbsp; &#9679; &nbsp; target (SVGElement): The target element.<br>
-&nbsp; &#9679; &nbsp; line (SVGElement): The line element.<br>
-&nbsp; &#9679; &nbsp; marker (SVGElement): The marker element.<br>
-&nbsp; &#9679; &nbsp; computeLineCoordinates (Function)<br>
-&nbsp; &#9679; &nbsp; update (Function)<br>
-&nbsp; &#9679; &nbsp; setLineColor (Function)</div><br><br>
-
-<code>computeLineCoordinates(con)</code><br>
-Функция, вычисляющая новые координаты.
-The function that computes the new coordinates. It can be overriden with a custom function.
-<div class=list>
+<code><span class="lnk" onmouseover="show(type_obj+'<br>compute line coordinates - вычислить координаты линии.')" onmouseout="hide()">computeLineCoordinates</span>(<span class="lnk" onmouseover="show('Значением должен быть экземпляр объекта <tt>connectable</tt>.<br>con - сокращ. от англ. слова connectable - возможное соединение.')" onmouseout="hide()">con</span>)</code><br>
+Функция, вычисляющая новые координаты. Она может быть переопределена на пользовательскую функцию.
+<div class=blockindent>
 <h5>Параметры</h5>
-&nbsp; &#9679; &nbsp; Connectable con: The connectable instance.
+<div class=list><tt><span class="lnk" onmouseover="show('Значением должен быть экземпляр объекта <tt>connectable</tt>.<br>con - сокращ. от англ. слова connectable - возможное соединение.')" onmouseout="hide()">con</span></tt>: экземпляр объекта <tt>connectable</tt>.</div>
 <h5>Возврат</h5>
-&nbsp; &#9679; &nbsp; Object Объект, содержащий координаты <tt>x1</tt>, <tt>x2</tt>, <tt>y1</tt> и <tt>y2</tt>. An object containing the x1, x2, y1 and y2 coordinates.</div><br><br>
+Возвращается объект, содержащий координаты <tt>x1</tt>, <tt>x2</tt>, <tt>y1</tt> и <tt>y2</tt>.</div><br><br>
 
-<code>update()</code><br>
+<code><span class="lnk" onmouseover="show('update - обновление')" onmouseout="hide()">update</span>()</code><br>
 Обновляет координаты линии.<br><br>
 
-<code>setLineColor(color, c)</code><br>
+<code><span class="lnk" onmouseover="show('set line color - установить цвет линии')" onmouseout="hide()">setLineColor</span>(<span class="lnk" onmouseover="show(type_string+'<br>color - цвет.')" onmouseout="hide()">color</span>, <span class="lnk" onmouseover="show('Значением должен быть экземпляр объекта <tt>connectable</tt>.<br>c - сокращ. от англ. слова connectable - возможное соединение.')" onmouseout="hide()">c</span>)</code><br>
 Устанавливает цвет линии.
-<div class=list>
+<div class=blockindent>
 <h5>Параметры</h5>
-&nbsp; &#9679; &nbsp; String color: The new color.<br>
-&nbsp; &#9679; &nbsp; Connectable c: The connectable instance.</div><br><br>
+<div class=list><tt><span class="lnk" onmouseover="show(type_string+'<br>color - цвет.')" onmouseout="hide()">color</span></tt>: значение нового цвета.</div>
+<div class=list><tt><span class="lnk" onmouseover="show('Значением должен быть экземпляр объекта <tt>connectable</tt>.<br>c - сокращ. от англ. слова connectable - возможное соединение.')" onmouseout="hide()">c</span></tt>: экземпляр объекта <tt>connectable</tt>.</div></div><br><br>
 
 <h4>Как принять участие</h4>
 Есть идея? Нашли ошибку? Посмотрите <a href="https://github.com/jillix/svg.connectable.js/blob/master/CONTRIBUTING.md" target="_blank" onclick='no_js(event)'>как принять участие</a>.<br><br>
@@ -139,113 +135,103 @@ The function that computes the new coordinates. It can be overriden with a custo
 Смотрите файл <a href="https://github.com/jillix/svg.connectable.js/blob/master/LICENSE" target="_blank" onclick='no_js(event)'>лицензии</a>.<br><br></div></div>
 
 <div class=indent1><a href="https://github.com/loredanacirstea/svg.connectable.js" target="_blank">svg.connectable.js fork</a> для соединения SVG элементов (автор плагина loredanacirstea)<br>
-added: curved connectors, you can use any self-made path as a connector, choosable 'center'/'perifery' attachment, 'perifery' attachment for source / target SVG Paths uses smallest-distance algorithm between PathArray points</div>
+добавлено: изогнутые соединительные линии, возможность использования в качестве соединителя своего собственного пути, возможность выбрать присоединение по центру - <tt>center</tt> или по краю <tt>perifery</tt>,
+для исходного, целевого SVG путей (SVG Path) присоединение по краю использует алгоритм наименьшего расстояния между точками массива путей (PathArray).</div>
 <div class=indent1><a class='link' onclick='javascript:show_txt(this)'> &nbsp; &nbsp; &nbsp; Справка по плагину</a>
 <div style='display:none;' onclick='javascript:show_txt(this)'>Библиотека JavaScript для соединения SVG элементов.<br><br>
 
 <h4>Использование</h4>
-
-Following example can be tested in the following jsfiddle: https://jsfiddle.net/L2sjjc3b/80/<br>
-
-Example source code also in https://github.com/loredanacirstea/svg.connectable.js/tree/master/example.<br>
+Вот <a href="https://jsfiddle.net/L2sjjc3b/80/" target="_blank" onclick='no_js(event)'>пример на jsfiddle.net</a>, на котором можно попрактиковаться.<br>
+Также пример исходного кода на <a href="https://github.com/loredanacirstea/svg.connectable.js/tree/master/example" target="_blank" onclick='no_js(event)'>гитхабе</a>.<br>
 
 Работа данной библиотеки зависит от наличия:<br>
-&nbsp; &#9679; &nbsp; SVG.js<br>
-&nbsp; &#9679; &nbsp; svg.draggy.js (note this is the @jillix fork of the original svg.draggable.js project)<br>
+<div class=list><a href="https://github.com/svgdotjs/svg.js" target="_blank" onclick='no_js(event)'>SVG.js</a></div>
+<div class=list><a href="https://github.com/jillix/svg.draggy.js" target="_blank" onclick='no_js(event)'>svg.draggy.js</a> (обратите внимание, что это форк от @jillix исходного проекта <a href="https://github.com/svgdotjs/svg.draggable.js" target="_blank" onclick='no_js(event)'>svg.draggable.js</a>)</div>
 
-
-Different from original jillix library:<br>
-
-&nbsp; &#9679; &nbsp; the connector can be any SVG Path element defined through use() (usually connectors are reused). See example. Note the two M points added for attachment precision.<br>
-&nbsp; &#9679; &nbsp; you can define the type of attachment (center, perifery) separate for source and target<br>
-&nbsp; &#9679; &nbsp; you can have straight/curved connectors - available for the 'default' connector.<br>
-&nbsp; &#9679; &nbsp; functions for changing the connection settings after initializing it.<br>
-&nbsp; &#9679; &nbsp; padEllipse function from jillix is used automatically for ellipses ('perifery' attachment).<br>
+Отличия от исходной <a href="https://github.com/jillix/svg.connectable.js" target="_blank" onclick='no_js(event)'>библиотеки под авторством jillix</a>:<br>
+&nbsp; &#9679; &nbsp; соединитель может быть любым элементом SVG Path, определенным с помощью метода <tt>use()</tt> (обычно соединители используются повторно).
+Смотрите пример. Обратите внимание на две точки <tt>M</tt>, добавленные для точности присоединения.<br>
+&nbsp; &#9679; &nbsp; можно определять тип присоединения (по центру - <tt>center</tt> и по краю - <tt>perifery</tt>) раздельно для источника и цели.<br>
+&nbsp; &#9679; &nbsp; можно использовать как прямые (<tt>straight</tt>), так и изогнутые (<tt>curved</tt>) соединители - доступны для соединителя по умолчанию (<tt>default</tt>).<br>
+&nbsp; &#9679; &nbsp; функции для изменения параметров соединителя после его инициализации.<br>
+&nbsp; &#9679; &nbsp; функция <tt>padEllipse</tt> от jillix используется автоматически при соединении кривой линией (при соединении по краю - <tt>perifery</tt>).<br>
 
 <h4>Документация</h4>
-<code>connectable(options, elmTarget)</code><br>
+<code><span class="lnk" onmouseover="show('Значение является объектом.<br>connectable - возможность соединения')" onmouseout="hide()">connectable</span>(<span class="lnk" onmouseover="show(type_obj+'<br>options - опции, параметры')" onmouseout="hide()">options</span>, <span class="lnk" onmouseover="show('значением должен быть SVGElement<br>elmTarget - сокращ. англ. слов target element - целевой элемент')" onmouseout="hide()">elmTarget</span>)</code><br>
 Соединяет два элемента.
-<div class=list>
+<div class=blockindent>
 <h5>Параметры</h5>
-
-    Object options: An object containing any of the following fields:<br>
-&nbsp; &#9679; &nbsp; container (SVGElement): The connector elements container. Defaults to source parent.<br>
-&nbsp; &#9679; &nbsp; markers (SVGElement): The marker elements container. Defaults to source parent.<br>
-&nbsp; &#9679; &nbsp; sourceAttach (String): Connector attachment for source element: 'center' / 'perifery'. Defaults to 'center'<br>
-&nbsp; &#9679; &nbsp; targetAttach (String): Connector attachment for target element: 'center' / 'perifery'. Defaults to 'center'<br>
-&nbsp; &#9679; &nbsp; type (String): Connector type: 'straight' or 'curved'. Defaults to 'straight'<br>
-&nbsp; &#9679; &nbsp; marker (String/SVGElement): Can be: an SVGElement / 'null' / 'default'. Defaults to 'null'<br>
-&nbsp; &#9679; &nbsp; color (String): Connector color. Defaults to '#000000'<br>
-&nbsp; &#9679; &nbsp; SVGElement elmTarget: The target SVG element.<br>
+<tt><span class="lnk" onmouseover="show(type_obj+'<br>options - опции, параметры')" onmouseout="hide()">options</span></tt>: объект, содержащий любые из следующих полей:
+<div class=list><tt><span class="lnk" onmouseover="show('значением должен быть SVGElement.<br>container - контейнер, ёмкость, стандартная тара')" onmouseout="hide()">container</span></tt>: контейнер элементов-линий. Значением по умолчанию  является родительский элемент исходника.</div>
+<div class=list><tt><span class="lnk" onmouseover="show('значением должен быть SVGElement.<br>markers - маркеры')" onmouseout="hide()">markers</span></tt>: контейнер элементов-маркеров. Значением по умолчанию  является родительский элемент исходника.</div>
+<div class=list><tt><span class="lnk" onmouseover="show(type_string+'<br>source attach - присоединение к источнику')" onmouseout="hide()">sourceAttach</span></tt>: соединительная линия при соединении с исходным элементом. Может быть либо по центру - <tt>center</tt>, либо по краю - <tt>perifery</tt>. Значение по умолчанию <tt>center</tt>.</div>
+<div class=list><tt><span class="lnk" onmouseover="show(type_string+'<br>target attach - присоединение к цели')" onmouseout="hide()">targetAttach</span></tt>: соединительная линия при соединении с целевым элементом. Может быть либо по центру - <tt>center</tt>, либо по краю - <tt>perifery</tt>. Значение по умолчанию <tt>center</tt>.</div>
+<div class=list><tt><span class="lnk" onmouseover="show(type_string+'<br>type - тип')" onmouseout="hide()">type</span></tt>: тип присоединения: прямая линия - <tt>straight</tt> или изогнутая - <tt>curved</tt>. Значение по умолчанию <tt>straight</tt>.</div>
+<div class=list><tt><span class="lnk" onmouseover="show('значением может быть либо строка, либо SVGElement<br>marker - маркер, метка')" onmouseout="hide()">marker</span></tt>. Возможные значения: <tt>SVGElement</tt> / <tt>null</tt> / <tt>default</tt>. Значение по умолчанию <tt>null</tt>.</div>
+<div class=list><tt><span class="lnk" onmouseover="show(type_string+'<br>color - цвет')" onmouseout="hide()">color</span></tt>: цвет соединительной линии. Значение по умолчанию <tt>#000000</tt>.</div>
+<span class="lnk" onmouseover="show('значением должен быть SVGElement<br>elmTarget - сокращ. англ. слов target element - целевой элемент')" onmouseout="hide()"><tt>elmTarget</tt></span>: целевой SVG-элемент.<br>
 
 <h5>Возврат</h5>
+Возвращается объект <tt><span class="lnk" onmouseover="show(type_obj+'<br>connectable - возможность соединения')" onmouseout="hide()">connectable</span></tt>, в котором содержатся:<br>
+<div class=list><span class="lnk" onmouseover="show('значением должен быть SVGElement<br>source - источник, исходник')" onmouseout="hide()"><tt>source</tt></span>: исходный элемент.</div>
+<div class=list><span class="lnk" onmouseover="show('значением должен быть SVGElement<br>target - цель')" onmouseout="hide()"><tt>target</tt></span>: целевой элемент.</div>
+<div class=list><span class="lnk" onmouseover="show('значением должен быть SVGElement<br>connector - соединитель')" onmouseout="hide()"><tt>connector</tt></span>: соединительный элемент.</div>
+<div class=list><span class="lnk" onmouseover="show('значением должен быть SVGElement<br>marker - маркер, метка')" onmouseout="hide()"><tt>marker</tt></span>: элемент маркер.</div>
+<div class=list><span class="lnk" onmouseover="show(type_func+'<br>compute connector coordinates - вычислить координаты соединителя')" onmouseout="hide()"><tt>computeConnectorCoordinates</tt></span> (функция)</div>
+<div class=list><span class="lnk" onmouseover="show(type_func+'<br>update - обновить')" onmouseout="hide()"><tt>update</tt></span> (функция)</div>
+<div class=list><span class="lnk" onmouseover="show(type_func+'<br>set connector color - установить цвет соединителя')" onmouseout="hide()"><tt>setConnectorColor</tt></span> (функция)</div>
+<div class=list><span class="lnk" onmouseover="show(type_func+'<br>set marker - установить маркер')" onmouseout="hide()"><tt>setMarker</tt></span> (функция)</div>
+<div class=list><span class="lnk" onmouseover="show(type_func+'<br>set connector attachment - установить (тип) присоединения соединителя')" onmouseout="hide()"><tt>setConnectorAttachment</tt></span> (функция)</div>
+<div class=list><span class="lnk" onmouseover="show(type_func+'<br>set connector - установить соединитель')" onmouseout="hide()"><tt>setConnector</tt></span> (функция)</div>
+<div class=list><span class="lnk" onmouseover="show(type_func+'<br>set type - установить тип')" onmouseout="hide()"><tt>setType</tt></span> (функция)</div></div><br><br>
 
-    Object The connectable object containing:<br>
-&nbsp; &#9679; &nbsp; source (SVGElement): The source element.<br>
-&nbsp; &#9679; &nbsp; target (SVGElement): The target element.<br>
-&nbsp; &#9679; &nbsp; connector (SVGElement): The connector element.<br>
-&nbsp; &#9679; &nbsp; marker (SVGElement): The marker element.<br>
-&nbsp; &#9679; &nbsp; computeConnectorCoordinates (Function)<br>
-&nbsp; &#9679; &nbsp; update (Function)<br>
-&nbsp; &#9679; &nbsp; setConnectorColor (Function)<br>
-&nbsp; &#9679; &nbsp; setMarker (Function)<br>
-&nbsp; &#9679; &nbsp; setConnectorAttachment (Function)<br>
-&nbsp; &#9679; &nbsp; setConnector (Function)<br>
-&nbsp; &#9679; &nbsp; setType (Function)</div><br><br>
-
-<code>computeConnectorCoordinates(con)</code><br>
-Функция, которая вычисляет новые координаты.
-The function that computes the new coordinates. It can be overriden with a custom function.
-<div class=list>
+<code><span class="lnk" onmouseover="show(type_obj+'<br>compute connector coordinates - вычислить координаты соединителя.')" onmouseout="hide()">computeConnectorCoordinates</span>(<span class="lnk" onmouseover="show('Значением должен быть экземпляр объекта <tt>connectable</tt>.<br>con - сокращ. от англ. слова connectable - возможное соединение.')" onmouseout="hide()">con</span>)</code><br>
+Функция, вычисляющая новые координаты. Она может быть переопределена на пользовательскую функцию.
+<div class=blockindent>
 <h5>Параметры</h5>
-&nbsp; &#9679; &nbsp; Connectable con: The connectable instance.<br>
+<div class=list><tt><span class="lnk" onmouseover="show('Значением должен быть экземпляр объекта <tt>connectable</tt>.<br>con - сокращ. от англ. слова connectable - возможное соединение.')" onmouseout="hide()">con</span></tt>: экземпляр объекта <tt>connectable</tt>.</div>
 <h5>Возврат</h5>
-&nbsp; &#9679; &nbsp; Object Returns the new SVG PathArray for the connector.</div><br><br>
+Возвращается объект с новым массивом пути SVG (PathArray) для соединителя.</div><br><br>
 
-<code>update()</code><br>
+<code><span class="lnk" onmouseover="show('update - обновление')" onmouseout="hide()">update</span>()</code><br>
 Обновляет координаты линии.<br><br>
 
-<code>setConnectorColor(color, c)</code><br>
-Устанавливает цвет соединителя и маркера.
-<div class=list>
+<code><span class="lnk" onmouseover="show('set connector color - установить цвет соединителя')" onmouseout="hide()">setConnectorColor</span>(<span class="lnk" onmouseover="show(type_string+'<br>color - цвет.')" onmouseout="hide()">color</span>, <span class="lnk" onmouseover="show('Значением должен быть экземпляр объекта <tt>connectable</tt>.<br>c - сокращ. от англ. слова connectable - возможное соединение.')" onmouseout="hide()">c</span>)</code><br>
+Устанавливает цвет линии.
+<div class=blockindent>
 <h5>Параметры</h5>
-&nbsp; &#9679; &nbsp; String color: The new color.<br>
-&nbsp; &#9679; &nbsp; Connectable c: The connectable instance. Optional</div><br><br>
+<div class=list><tt><span class="lnk" onmouseover="show(type_string+'<br>color - цвет.')" onmouseout="hide()">color</span></tt>: значение нового цвета.</div>
+<div class=list><tt><span class="lnk" onmouseover="show('Значением должен быть экземпляр объекта <tt>connectable</tt>.<br>c - сокращ. от англ. слова connectable - возможное соединение.')" onmouseout="hide()">c</span></tt>: экземпляр объекта <tt>connectable</tt>. Дополнительный, необязательный параметр.</div></div><br><br>
 
-<code>setMarker(marker, markers, c)</code><br>
+<code><span class="lnk" onmouseover="show('set marker - установить маркер')" onmouseout="hide()">setMarker</span>(<span class="lnk" onmouseover="show('значением должен быть SVGElement или строка<br>marker - маркер, метка')" onmouseout="hide()">marker</span>, <span class="lnk" onmouseover="show('значением должен быть SVGElement<br>markers - маркеры, метки')" onmouseout="hide()">markers</span>, <span class="lnk" onmouseover="show('Значением должен быть экземпляр объекта <tt>connectable</tt>.<br>c - сокращ. от англ. слова connectable - возможное соединение.')" onmouseout="hide()">c</span>)</code><br>
 Устанавливает маркер.
-<div class=list>
+<div class=blockindent>
 <h5>Параметры</h5>
-&nbsp; &#9679; &nbsp; SVGElement/String marker: New marker element / 'null' / 'default'.<br>
-&nbsp; &#9679; &nbsp; SVGElement markers: Group parent for markers. Defaults to source.parent<br>
-&nbsp; &#9679; &nbsp; Connectable c: The connectable instance. Optional.</div><br><br>
+<div class=list><span class="lnk" onmouseover="show('значением должен быть SVGElement или строка<br>marker - маркер, метка')" onmouseout="hide()"><tt>marker</tt></span>: новый элемент маркер. Возможные значения: <tt>SVGElement</tt> / <tt>null</tt> / <tt>default</tt>. Значение по умолчанию <tt>null</tt>.</div>
+<div class=list><span class="lnk" onmouseover="show('значением должен быть SVGElement<br>markers - маркеры, метки')" onmouseout="hide()"><tt>markers</tt></span>: родительский элемент группы маркеров. Значением по умолчанию является родительский элемент исходника.</div>
+<div class=list><tt><span class="lnk" onmouseover="show('Значением должен быть экземпляр объекта <tt>connectable</tt>.<br>c - сокращ. от англ. слова connectable - возможное соединение.')" onmouseout="hide()">c</span></tt>: экземпляр объекта <tt>connectable</tt>. Дополнительный, необязательный параметр.</div></div><br><br>
 
-<code>setConnectorAttachment(element, type, c)</code><br>
-
-Sets the connector's type of attachment.
-<div class=list>
+<code>setConnectorAttachment(element, type, <span class="lnk" onmouseover="show('Значением должен быть экземпляр объекта <tt>connectable</tt>.<br>c - сокращ. от англ. слова connectable - возможное соединение.')" onmouseout="hide()">c</span>)</code><br>
+Устанавливает тип присоединения соединителя.
+<div class=blockindent>
 <h5>Параметры</h5>
+<div class=list>String element: 'source' / 'target'</div>
+<div class=list>String type: 'center' / 'perifery'. For paths, the 'perifery' option takes the PathArray point which is closest to the source/target attachment point. For ellipses, it uses the jillix algorithm for padEllipse (padding area aorund the ellipse). For all other, it uses the 4 middle side points from the bbox() rectangle.</div>
+<div class=list><tt><span class="lnk" onmouseover="show('Значением должен быть экземпляр объекта <tt>connectable</tt>.<br>c - сокращ. от англ. слова connectable - возможное соединение.')" onmouseout="hide()">c</span></tt>: экземпляр объекта <tt>connectable</tt>. Дополнительный, необязательный параметр.</div></div><br><br>
 
-&nbsp; &#9679; &nbsp; String element: 'source' / 'target'<br>
-&nbsp; &#9679; &nbsp; String type: 'center' / 'perifery'. For paths, the 'perifery' option takes the PathArray point which is closest to the source/target attachment point. For ellipses, it uses the jillix algorithm for padEllipse (padding area aorund the ellipse). For all other, it uses the 4 middle side points from the bbox() rectangle.<br>
-&nbsp; &#9679; &nbsp; Connectable c: The connectable instance. Optional.</div><br><br>
-
-<code>setConnector(connector, c)</code><br>
+<code>setConnector(connector, <span class="lnk" onmouseover="show('Значением должен быть экземпляр объекта <tt>connectable</tt>.<br>c - сокращ. от англ. слова connectable - возможное соединение.')" onmouseout="hide()">c</span>)</code><br>
 Устанавливает соединитель.
-
-<div class=list>
+<div class=blockindent>
 <h5>Параметры</h5>
+<div class=list>SVGElement/String connector: New connector element / 'default'.</div>
+<div class=list><tt><span class="lnk" onmouseover="show('Значением должен быть экземпляр объекта <tt>connectable</tt>.<br>c - сокращ. от англ. слова connectable - возможное соединение.')" onmouseout="hide()">c</span></tt>: экземпляр объекта <tt>connectable</tt>. Дополнительный, необязательный параметр.</div></div><br><br>
 
-&nbsp; &#9679; &nbsp; SVGElement/String connector: New connector element / 'default'.
-&nbsp; &#9679; &nbsp; Connectable c: The connectable instance. Optional.</div><br><br>
-
-<code>setType(type, c)</code><br>
-
-Sets the connector and marker color.
-<div class=list>
+<code>setType(type, <span class="lnk" onmouseover="show('Значением должен быть экземпляр объекта <tt>connectable</tt>.<br>c - сокращ. от англ. слова connectable - возможное соединение.')" onmouseout="hide()">c</span>)</code><br>
+Устанавливает тип соединительной линии.
+<div class=blockindent>
 <h5>Параметры</h5>
 &nbsp; &#9679; &nbsp; String type: Connector type for default connector: 'straight' / 'curved'. Defaults to 'straight'
-&nbsp; &#9679; &nbsp; Connectable c: The connectable instance. Optional.</div><br><br>
+<div class=list><tt><span class="lnk" onmouseover="show('Значением должен быть экземпляр объекта <tt>connectable</tt>.<br>c - сокращ. от англ. слова connectable - возможное соединение.')" onmouseout="hide()">c</span></tt>: экземпляр объекта <tt>connectable</tt>. Дополнительный, необязательный параметр.</div></div><br><br>
 
 <h4>Как принять участие</h4>
 
