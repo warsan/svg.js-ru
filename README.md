@@ -5,3 +5,4 @@
 
 Посмотреть перевод онлайн [можно здесь](https://customizer.github.io/svg.js-ru/svg.js-ru.htm).
 
+[Эксперимент](https://warsan.github.io/svg.js-ru/docs/index.md)
