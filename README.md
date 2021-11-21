@@ -6,4 +6,4 @@
 Посмотреть перевод онлайн [можно здесь](https://customizer.github.io/svg.js-ru/svg.js-ru.htm).
 
 [Эксперимент с индекс](https://warsan.github.io/svg.js-ru/docs/index.htm)
-[Эксперимент с реадми](https://warsan.github.io/svg.js-ru/docs/readme.md)
+[Эксперимент с реадми](https://warsan.github.io/svg.js-ru/docs/README.md)
