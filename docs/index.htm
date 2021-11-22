@@ -9,7 +9,21 @@
 
 Это глава. Для создания директории docs.
   
-  <svg id="svg" width="400" height="400"></svg>
+<svg id="svg" width="400" height="400"></svg>
+<script>
+var s = Snap("#svg");
+var фон = s.rect(50,50, 300,300);
+фон.attr({ fill: "#8a04" });
+
+var нимб = s.rect(100,100, 300,300);   // квадр
+нимб.attr({ fill: "#fff" });
+
+var глаз = s.circle(200,200, 60);    // круг
+окно = s.group(нимб, глаз);
+
+var кино = s.rect(0,0, 300,300);
+кино.attr({ mask: окно });
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.4.1/snap.svg-min.js"></script>
 </body>
 </html>
