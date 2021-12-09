@@ -10,6 +10,7 @@
   </style>
 </head>
 <body>
+  <svg id="svg" width="400" height="400"></svg>
 <script>
 var s = Snap("#svg");
 var фон = s.rect(50,50, 300,300);
@@ -24,8 +25,8 @@ var глаз = s.circle(200,200, 60);    // круг
 var кино = s.rect(0,0, 300,300);
 кино.attr({ mask: окно });
 </script>
-<svg id="svg" width="400" height="400"></svg>
-<script src="https://warsan.github.io/svg.js-ru/docs/snap.js"></script>
+
+<!--<script src="https://warsan.github.io/svg.js-ru/docs/snap.js"></script>-->
 </body>
 </html>
 
